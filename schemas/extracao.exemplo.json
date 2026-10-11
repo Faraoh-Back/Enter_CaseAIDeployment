@@ -1,0 +1,22 @@
+{
+  "numero_processo": "3871230-78.2024.8.26.0002",
+  "classe_processual": "Procedimento Comum Cível",
+  "comarca": "São Paulo",
+  "resultado_sentenca": "parcial_procedencia",
+  "danos_materiais_centavos": 600000,
+  "danos_morais_centavos": 30000,
+  "valor_total_explicito_centavos": null,
+  "mes_base_correcao": "2025-12",
+  "data_citacao": "2026-02-27",
+  "tema": "cancelamento unilateral de plano de saúde",
+  "fundamento_decisao": "Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.",
+  "evidencias": {
+    "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+    "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido",
+    "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+    "mes_base_correcao": "correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)",
+    "data_citacao": "desde a citação (27/02/2026)",
+    "tema": "cancelamento unilateral de plano de saúde",
+    "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+  }
+}

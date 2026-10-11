@@ -1,0 +1,18 @@
+# Credenciais e configuração local
+.env
+.env.*
+!.env.example
+
+# Dependências e build
+node_modules/
+dist/
+coverage/
+
+# Execuções locais; o ZIP final será preparado por lista explícita
+outputs/
+deliverables/
+*.log
+
+# Arquivos temporários
+.DS_Store
+*.tmp

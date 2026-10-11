@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Extração de sentença — contrato 0.2",
+  "description": "Estrutura de uma extração. Aptidão para cálculo depende também das regras semânticas em docs/CONTRATOS.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "numero_processo", "classe_processual", "comarca", "resultado_sentenca",
+    "danos_materiais_centavos", "danos_morais_centavos", "valor_total_explicito_centavos",
+    "mes_base_correcao", "data_citacao", "tema", "fundamento_decisao", "evidencias"
+  ],
+  "properties": {
+    "numero_processo": {
+      "type": "string",
+      "pattern": "^[0-9]{7}-[0-9]{2}\\.[0-9]{4}\\.[0-9]\\.[0-9]{2}\\.[0-9]{4}$"
+    },
+    "classe_processual": { "$ref": "#/$defs/textoOuNulo" },
+    "comarca": { "$ref": "#/$defs/textoOuNulo" },
+    "resultado_sentenca": {
+      "enum": ["procedencia", "parcial_procedencia", "improcedencia", "extincao", null]
+    },
+    "danos_materiais_centavos": { "$ref": "#/$defs/centavosOuNulo" },
+    "danos_morais_centavos": { "$ref": "#/$defs/centavosOuNulo" },
+    "valor_total_explicito_centavos": { "$ref": "#/$defs/centavosOuNulo" },
+    "mes_base_correcao": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$"
+    },
+    "data_citacao": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$",
+      "format": "date"
+    },
+    "tema": { "$ref": "#/$defs/textoOuNulo" },
+    "fundamento_decisao": { "$ref": "#/$defs/textoOuNulo" },
+    "evidencias": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identificacao", "resultado", "valores", "mes_base_correcao",
+        "data_citacao", "tema", "fundamento_decisao"
+      ],
+      "properties": {
+        "identificacao": { "type": "string", "minLength": 1 },
+        "resultado": { "$ref": "#/$defs/textoOuNulo" },
+        "valores": { "$ref": "#/$defs/textoOuNulo" },
+        "mes_base_correcao": { "$ref": "#/$defs/textoOuNulo" },
+        "data_citacao": { "$ref": "#/$defs/textoOuNulo" },
+        "tema": { "$ref": "#/$defs/textoOuNulo" },
+        "fundamento_decisao": { "$ref": "#/$defs/textoOuNulo" }
+      }
+    }
+  },
+  "$defs": {
+    "textoOuNulo": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "centavosOuNulo": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  }
+}
