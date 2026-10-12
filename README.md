@@ -58,6 +58,8 @@ Para uma chamada real, configure `OPENAI_API_KEY` no `.env` local e rode `npm ru
 
 ## Como será utilizado
 
+A S1 está sendo desenvolvida uma tarefa por vez. A **S1.1** adicionou os testes de aceitação; `npm run test:s1` apresenta duas falhas esperadas porque o grafo de análise e o exportador definitivo ainda não existem. `npm test` continua executando os 14 testes da S0. Consulte [S1_TASKS.md](docs/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
+
 Após a implementação e a inicialização do servidor, o contrato previsto é:
 
 ```bash

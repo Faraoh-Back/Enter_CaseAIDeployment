@@ -1,0 +1,29 @@
+{
+  "registrado_em": "2026-10-12T01:33:57.709Z",
+  "tarefa": "S1.1 — testes de aceitação em vermelho",
+  "node": "v20.20.2",
+  "teste_sha256": "0bf44410da194ad9047f6010cb518a8823252da0c3281e515ec643aff5947f08",
+  "s1": {
+    "comando": "npm run test:s1",
+    "exit_code": 1,
+    "testes": 2,
+    "aprovados": 0,
+    "falhas": 2,
+    "motivos": [
+      "Grafo analisar_carteira ainda ausente no projeto de trabalho",
+      "Módulo src/exportar-xlsx.mjs ainda ausente"
+    ],
+    "asserts_apos_funcionalidades_ausentes": "ainda não exercitados contra implementação",
+    "saida": "\n> enter-case-ai-deployment@0.1.0 test:s1\n> node tests/s1.test.mjs\n\nTAP version 13\n# Subtest: S1: sentença e CSVs viram processo, resumo, auditoria e relatório pelo grafo\nnot ok 1 - S1: sentença e CSVs viram processo, resumo, auditoria e relatório pelo grafo\n  ---\n  duration_ms: 51.280103\n  location: '/home/dev/GitPessoal/Enter_CaseAIDeployment/tests/s1.test.mjs:91:1'\n  failureType: 'testCodeFailure'\n  error: 'S1 ainda não implementada: falta o grafo analisar_carteira no projeto de trabalho'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///home/dev/GitPessoal/Enter_CaseAIDeployment/tests/s1.test.mjs:94:10)\n    async Test.run (node:internal/test_runner/test:797:9)\n    async Test.processPendingSubtests (node:internal/test_runner/test:526:7)\n  ...\n# Subtest: S1: exportação preserva os outputs em uma planilha XLSX real e reaberta\nnot ok 2 - S1: exportação preserva os outputs em uma planilha XLSX real e reaberta\n  ---\n  duration_ms: 2.367777\n  location: '/home/dev/GitPessoal/Enter_CaseAIDeployment/tests/s1.test.mjs:163:1'\n  failureType: 'testCodeFailure'\n  error: \"Cannot find module '/home/dev/GitPessoal/Enter_CaseAIDeployment/src/exportar-xlsx.mjs' imported from /home/dev/GitPessoal/Enter_CaseAIDeployment/tests/s1.test.mjs\"\n  code: 'ERR_MODULE_NOT_FOUND'\n  stack: |-\n    finalizeResolution (node:internal/modules/esm/resolve:283:11)\n    moduleResolve (node:internal/modules/esm/resolve:952:10)\n    defaultResolve (node:internal/modules/esm/resolve:1188:11)\n    ModuleLoader.defaultResolve (node:internal/modules/esm/loader:708:12)\n    #cachedDefaultResolve (node:internal/modules/esm/loader:657:25)\n    ModuleLoader.resolve (node:internal/modules/esm/loader:640:38)\n    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:264:38)\n    ModuleLoader.import (node:internal/modules/esm/loader:605:34)\n    defaultImportModuleDynamicallyForModule (node:internal/modules/esm/utils:221:31)\n    importModuleDynamicallyCallback (node:internal/modules/esm/utils:260:12)\n    TestContext.<anonymous> (file:///home/dev/GitPessoal/Enter_CaseAIDeployment/tests/s1.test.mjs:165:28)\n    Test.runInAsyncScope (node:async_hooks:206:9)\n    Test.run (node:internal/test_runner/test:796:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:526:18)\n    Test.postRun (node:internal/test_runner/test:889:19)\n    Test.run (node:internal/test_runner/test:835:12)\n  ...\n1..2\n# tests 2\n# suites 0\n# pass 0\n# fail 2\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 71.707823\n"
+  },
+  "regressao_s0": {
+    "comando": "npm test",
+    "exit_code": 0,
+    "testes": 14,
+    "aprovados": 14,
+    "falhas": 0,
+    "origem": "Execução observada nesta mesma tarefa, antes do ajuste da asserção do prompt S1."
+  },
+  "chamadas_reais_llm": 0,
+  "implementacao_producao_alterada": false
+}

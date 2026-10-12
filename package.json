@@ -9,7 +9,8 @@
     "s0:build": "node scripts/build-s0.mjs",
     "s0:check": "node scripts/check-s0.mjs",
     "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
-    "test": "node tests/s0.test.mjs"
+    "test": "node tests/s0.test.mjs",
+    "test:s1": "node tests/s1.test.mjs"
   },
   "dependencies": {
     "@ironclad/rivet-node": "1.25.0",

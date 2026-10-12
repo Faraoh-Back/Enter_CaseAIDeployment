@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0 concluída, com validação pelo SDK e outputs do aplicativo Rivet enviados pelo candidato e conferidos. [Evidências e reprodução](S0_VALIDACAO.md). S1–S5 ainda não executadas.
+**Estado:** S0 concluída. S1.1 concluída com testes de aceitação em vermelho; implementação da S1 ainda não iniciada. [Tarefas e evidências S1](S1_TASKS.md). S2–S5 ainda não executadas.
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -47,11 +47,13 @@ O candidato também enviou uma execução do **resumo-base** no aplicativo: os 1
 
 ## S1 — uma condenação do texto ao documento
 
-- [ ] **Vermelho:** teste externo do caso `3871230-78.2024.8.26.0002`, incluindo extração, evidências, dinheiro, decisão e artefato; conferir os valores esperados da matriz.
-- [ ] **Verde:** ler as referências no grafo, extrair a sentença, validar dados, calcular em Code Nodes, decidir e produzir resumo e Markdown.
-- [ ] Exportar uma planilha real `.xlsx`, reabri-la e comparar as células com os outputs; adicionar trilha de cálculo e justificativa.
-- [ ] Expor comando local que execute o projeto e grave o diretório de execução. Registrar comando real no README após verificação.
-- [ ] **Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas.
+Execução em tarefas separadas, com revisão e commits feitos pelo candidato. [Escopo de cada tarefa](S1_TASKS.md). Parar ao concluir a tarefa da rodada.
+
+- [x] **S1.1 — Vermelho:** teste externo do caso `3871230-78.2024.8.26.0002`, incluindo extração simulada, evidências, dinheiro, decisão e artefato; conferir os valores esperados da matriz. Duas falhas observadas por funcionalidades ausentes; S0 permanece verde.
+- [ ] **S1.2 — Verde:** formalizar schemas de processo/resumo; ler as referências no grafo, extrair a sentença, validar dados, calcular em Code Nodes, decidir e produzir resumo e Markdown. Avaliar a extração completa em chamada real separada.
+- [ ] **S1.3 — XLSX:** exportar uma planilha real `.xlsx`, reabri-la e comparar as células com os outputs; adicionar trilha de cálculo e justificativa.
+- [ ] **S1.4 — Execução local:** expor comando que execute o projeto e grave o diretório de execução; conferir grafo e exportação integrados. Registrar comando real no README após verificação.
+- [ ] **S1.5 — Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas; incorporar os testes S1 verdes à suíte padrão.
 
 **Saída:** uma condenação produz os artefatos de ponta a ponta. Não basta entregar um JSON de extração.
 

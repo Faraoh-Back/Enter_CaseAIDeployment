@@ -8,6 +8,7 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s0-llm.json](s0-llm.json) | Chamada mínima à OpenAI pelo SDK. |
 | [s0-reproducao.json](s0-reproducao.json) | Instalação limpa e reprodução das provas. |
 | [s0-aplicativo.json](s0-aplicativo.json) | Outputs enviados pelo candidato dos três grafos no aplicativo; encerra a pendência de desktop da S0. |
+| [s1.1-vermelho.json](s1.1-vermelho.json) | Falhas observadas nos testes de aceitação S1 antes da implementação; regressão S0 aprovada. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |
