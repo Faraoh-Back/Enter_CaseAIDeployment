@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { loadProjectFromFile, runGraphInFile } from '@ironclad/rivet-node';
+import { loadProjectFromFile, runGraphInFile } from '../src/rivet-runtime.mjs';
 import ExcelJS from 'exceljs';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';

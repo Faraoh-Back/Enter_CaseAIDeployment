@@ -131,9 +131,9 @@ data:
           visualData: 2.8396657074174776/499.14253331037145/380/21//
     analisar_carteira:
       metadata:
-        description: "S2.2: uma sentença, quatro resultados e cinco subgrafos. Defaults
-          do caso de desenvolvimento. Run faz uma chamada à OpenAI. Lotes e
-          pendências serão tratados em S2/S3."
+        description: "S2.4: uma sentença; até três chamadas totais, validação,
+          pendências e auditoria. Requer plugin local enter-bounded-extraction.
+          Lotes em S3."
         id: analisar_carteira
         name: analisar_carteira
       nodes:
@@ -368,6 +368,8 @@ data:
             useAsGraphPartialOutput: false
             useErrorOutput: false
           outgoingConnections:
+            - controle->"3. Validar extração" s1_validacao/controle
+            - controle->"5. Consolidar outputs" s1_consolidacao/controle
             - response->"3. Validar extração" s1_validacao/resposta
             - response->"5. Consolidar outputs" s1_consolidacao/resposta
             - usage->"5. Consolidar outputs" s1_consolidacao/uso
@@ -386,6 +388,7 @@ data:
             useAsGraphPartialOutput: false
             useErrorOutput: false
           outgoingConnections:
+            - preparado->"2. Extrair sentença" s1_extracao/preparado
             - preparado->"3. Validar extração" s1_validacao/preparado
             - preparado->"5. Consolidar outputs" s1_consolidacao/preparado
             - sentenca->"2. Extrair sentença" s1_extracao/sentenca
@@ -433,6 +436,14 @@ data:
           outgoingConnections:
             - data->"6. Consolidar e redigir relatório" s1_consolidar/calculo
           visualData: 0/360/320/null//
+        '[s1_consolidacao_in_controle]:graphInput "controle"':
+          data:
+            dataType: object
+            id: controle
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/controle
+          visualData: 0/1080/320/null//
         '[s1_consolidacao_in_extracao]:graphInput "extracao"':
           data:
             dataType: object
@@ -448,7 +459,7 @@ data:
             useDefaultValueInput: false
           outgoingConnections:
             - data->"6. Consolidar e redigir relatório" s1_consolidar/modelo
-          visualData: 0/1080/320/null//
+          visualData: 0/1260/320/null//
         '[s1_consolidacao_in_preparado]:graphInput "preparado"':
           data:
             dataType: object
@@ -2668,14 +2679,15 @@ data:
               const { memoria, ...financeiro } = inputs.calculo.value;
               const referencias = inputs.preparado.value;
               const extraction = inputs.extracao.value;
-              const vitoria = ['improcedencia','extincao'].includes(extraction.resultado_sentenca);
+              const vitoria = ['improcedencia','extincao'].includes(inputs.base.value.resultado_sentenca);
+              const pendente = inputs.base.value.status_processamento !== 'ok';
               const processo = { ...inputs.base.value, ...financeiro,
-                motivo_decisao: vitoria ? 'sem_condenacao' : financeiro.decisao_recurso === 'recorrer' ? 'beneficio_positivo' : 'beneficio_nao_positivo' };
+                motivo_decisao: pendente ? 'revisao_necessaria' : vitoria ? 'sem_condenacao' : financeiro.decisao_recurso === 'recorrer' ? 'beneficio_positivo' : 'beneficio_nao_positivo' };
               if (!validateProcesso(processo)) throw new Error(`SAIDA_INVALIDA: processo: ${JSON.stringify(validateProcesso.errors)}`);
               const recomendar = processo.decisao_recurso === 'recorrer';
               const resumo = { data_referencia: referencias.referencia, total_identificado: 1, vitorias_confirmadas: vitoria ? 1 : 0,
-                resultados_desconhecidos: 0, condenacoes: vitoria ? 0 : 1, processos_aptos: 1, pendencias: 0,
-                passivo_centavos: processo.valor_atualizado_centavos, recursos_recomendados: recomendar ? 1 : 0,
+                resultados_desconhecidos: processo.resultado_sentenca===null ? 1 : 0, condenacoes: ['procedencia','parcial_procedencia'].includes(processo.resultado_sentenca)?1:0, processos_aptos: pendente?0:1, pendencias: pendente?1:0,
+                passivo_centavos: processo.valor_atualizado_centavos ?? 0, recursos_recomendados: recomendar ? 1 : 0,
                 custo_recursos_centavos: recomendar ? processo.custo_recurso_centavos : 0,
                 beneficio_esperado_recursos_centavos: recomendar ? processo.beneficio_esperado_centavos : 0 };
               if (!validateResumo(resumo)) throw new Error(`SAIDA_INVALIDA: resumo: ${JSON.stringify(validateResumo.errors)}`);
@@ -2685,16 +2697,24 @@ data:
                 entrada: usage.prompt_tokens, saida: usage.completion_tokens, total: usage.total_tokens,
               } : null;
               const auditoria = [{ numero_processo: processo.numero_processo, extracao: extraction,
-                resposta_original: inputs.resposta.value, indice_base: vitoria ? null : referencias.indices[extraction.mes_base_correcao].numero_indice,
-                indice_final: vitoria ? null : referencias.indices[referencias.referencia.slice(0, 7)].numero_indice,
-                tentativas: 1, versao_extrator: 's1.2-v1', modelo_solicitado: inputs.modelo.value,
+                resposta_original: inputs.resposta.value, indice_base: memoria ? referencias.indices[extraction.mes_base_correcao]?.numero_indice ?? null : null,
+                indice_final: !memoria ? null : referencias.indices[referencias.referencia.slice(0, 7)].numero_indice,
+                tentativas: inputs.controle.value.historico.length, historico_tentativas: inputs.controle.value.historico, versao_extrator: 's2.4-v1', modelo_solicitado: inputs.modelo.value,
                 tokens, custo_monetario: null, memoria }];
               function reais(cents) {
                 const abs = BigInt(cents < 0 ? -cents : cents);
                 const whole = (abs / 100n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
                 return `${cents < 0 ? '-' : ''}R$ ${whole},${(abs % 100n).toString().padStart(2, '0')}`;
               }
-              const report = vitoria ? [
+              const report = pendente ? [
+                '# Análise de uma sentença — S2', '', `Processo: ${processo.numero_processo}. Data-base: ${resumo.data_referencia}.`,
+                `Estado: ${processo.status_processamento}. Decisão pendente de revisão.`,
+                ...processo.problemas.map(p=>`${p.codigo}: ${p.mensagem}`),
+                `Cobertura: 0/1 processo apto; 1 pendência. Resultados desconhecidos: ${resumo.resultados_desconhecidos}.`,
+                `Passivo conhecido: ${reais(resumo.passivo_centavos)}; total parcial. ${processo.valor_atualizado_centavos===null?'Esta sentença foi excluída da soma por atualização desconhecida; zero na soma não significa ausência de exposição.':'Atualização conhecida incluída; decisão de recurso excluída por falta de subsídios.'}`,
+                'Recursos recomendados: 0. Custos e benefícios somam apenas recomendações aptas; pendências foram excluídas.',
+                'Escopo: uma sentença; revisar dados antes de decidir. Estes números não representam a carteira completa.',
+              ].join('\n') : vitoria ? [
                 '# Análise de uma sentença — S2', '',
                 `Data-base: ${resumo.data_referencia}. Processo: ${processo.numero_processo}.`, '',
                 `Resultado: ${processo.resultado_sentenca}. **Sem condenação** nesta sentença.`,
@@ -2729,6 +2749,7 @@ data:
               - resposta
               - uso
               - modelo
+              - controle
             outputNames:
               - processos
               - resumo
@@ -2755,6 +2776,14 @@ data:
           outgoingConnections:
             - data->"3. Extrair sentença (OpenAI)" s1_extrair/model
           visualData: 0/180/320/null//
+        '[s1_extracao_in_preparado]:graphInput "preparado"':
+          data:
+            dataType: object
+            id: preparado
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"3. Extrair sentença (OpenAI)" s1_extrair/preparado
+          visualData: 0/360/320/null//
         '[s1_extracao_in_sentenca]:graphInput "sentenca"':
           data:
             dataType: string
@@ -2763,6 +2792,11 @@ data:
           outgoingConnections:
             - data->"2. Instruções de extração" s1_prompt/sentenca
           visualData: 0/0/320/null//
+        '[s1_extracao_out_controle]:graphOutput "controle"':
+          data:
+            dataType: object
+            id: controle
+          visualData: 1280/180/320/null//
         '[s1_extracao_out_response]:graphOutput "response"':
           data:
             dataType: string
@@ -2772,41 +2806,22 @@ data:
           data:
             dataType: object
             id: usage
-          visualData: 1280/180/320/null//
-        '[s1_extrair]:chat "3. Extrair sentença (OpenAI)"':
+          visualData: 1280/360/320/null//
+        '[s1_extrair]:enterBoundedExtraction "3. Extrair sentença (OpenAI)"':
           data:
-            additionalParameters: []
             cache: false
-            enableFunctionUse: false
             maxTokens: 2500
-            modalitiesIncludeAudio: false
-            modalitiesIncludeText: false
             model: gpt-4.1-mini-2025-04-14
             outputUsage: true
-            parallelFunctionCalling: true
-            reasoningEffort: ""
             responseFormat: json_schema
             responseSchemaName: extracao_sentenca
-            stop: ""
             temperature: 0
-            top_p: 1
-            useAdditionalParametersInput: false
             useAsGraphPartialOutput: false
-            useFrequencyPenaltyInput: false
-            useMaxTokensInput: false
             useModelInput: true
-            usePredictedOutput: false
-            usePresencePenaltyInput: false
-            useReasoningEffortInput: false
             useServerTokenCalculation: true
-            useStop: false
-            useStopInput: false
-            useTemperatureInput: false
-            useTopP: false
-            useTopPInput: false
-            useUseTopPInput: false
-            useUserInput: false
+            validationGraph: s1_validacao
           outgoingConnections:
+            - controle->"controle" s1_extracao_out_controle/value
             - response->"response" s1_extracao_out_response/value
             - usage->"usage" s1_extracao_out_usage/value
           visualData: 840/0/320/null//
@@ -3087,7 +3102,19 @@ data:
                 } } };
               }
 
-              return calcularCondenacao(inputs);
+              if (inputs.parametros.value.pendente) return
+              {resultado:{type:'object',value:{
+                principal_corrigido_centavos:null,juros_centavos:null,valor_atualizado_centavos:null,
+                beneficio_esperado_centavos:null,decisao_recurso:'pendente',memoria:null}}};
+              const resultado=calcularCondenacao(inputs);
+
+              if (inputs.parametros.value.sem_decisao) {
+                resultado.resultado.value.beneficio_esperado_centavos=null;
+                resultado.resultado.value.decisao_recurso='pendente';
+                for (const key of Object.keys(resultado.resultado.value.memoria)) if (key.startsWith('beneficio_')) delete resultado.resultado.value.memoria[key];
+              }
+
+              return resultado;
             inputNames:
               - parametros
             outputNames:
@@ -3187,7 +3214,7 @@ data:
             code: |
               // Todas as interpretações e associações das referências ocorrem neste Code Node.
               function fail(message) { throw new Error(`ENTRADA_INVALIDA: ${message}`); }
-              function csv(value, delimiter, headers, key) {
+              function csv(value, delimiter, headers, key, allowEmpty = false) {
                 const text = value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
                 const rows = []; let row = [], cell = '', quoted = false, closed = false;
                 for (let i = 0; i < text.length; i++) {
@@ -3214,11 +3241,13 @@ data:
                   if (!id || Object.hasOwn(map, id) || ['__proto__', 'constructor', 'prototype'].includes(id)) fail(`Chave vazia ou duplicada: ${id}`);
                   map[id] = item;
                 }
-                if (!Object.keys(map).length) fail('Referência vazia');
+                if (!allowEmpty && !Object.keys(map).length) fail('Referência vazia');
                 return map;
               }
               const text = inputs.processos_texto.value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
               const pieces = text.split(/={20,}\nProcesso nº ([\d.\-]+)\n={20,}\n/);
+              const blockIds = pieces.filter((_, i) => i % 2 === 1);
+              if (new Set(blockIds).size !== blockIds.length) fail('Identidade duplicada entre blocos');
               if (pieces.length !== 3 || pieces[0].trim()) fail('S1 aceita exatamente uma sentença delimitada; nenhum lote será truncado');
               const numero = pieces[1], sentenca = pieces[2].trim();
               if (!/^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/.test(numero)) fail('Formato CNJ inválido');
@@ -3247,16 +3276,16 @@ data:
                 row.percentual = Number(row.probabilidade_reversao.slice(0, -1));
                 if (row.percentual > 100) fail('Probabilidade acima de 100%');
               }
-              const subsidios = csv(inputs.subsidios_texto.value, ',', ['numero_processo','status_subsidios'], 'numero_processo');
-              if (Object.keys(subsidios).length !== 1 || !subsidios[numero]) fail('Subsídios devem corresponder exatamente à sentença recebida');
-              const status = subsidios[numero].status_subsidios;
-              if (!probabilidades[status]) fail('Subsídio ou probabilidade desconhecidos');
+              const subsidios = csv(inputs.subsidios_texto.value, ',', ['numero_processo','status_subsidios'], 'numero_processo', true);
+              if (Object.keys(subsidios).some(id => id !== numero)) fail('Subsídios devem corresponder exatamente à sentença recebida');
+              const status = subsidios[numero]?.status_subsidios ?? null;
+              if (status !== null && !probabilidades[status]) fail('Subsídio ou probabilidade desconhecidos');
               const tribunal = numero.split('.').slice(2, 4).join('.');
               if (!custos[tribunal]) fail('Custo do tribunal ausente');
               return {
                 sentenca: { type: 'string', value: sentenca },
                 preparado: { type: 'object', value: { numero, sentenca, referencia, indices, custo: custos[tribunal],
-                  status_subsidios: status, probabilidade: probabilidades[status].percentual } },
+                  status_subsidios: status, probabilidade: status === null ? null : probabilidades[status].percentual } },
               };
             inputNames:
               - processos_texto
@@ -3278,6 +3307,15 @@ data:
         id: s1_validacao
         name: s1_validacao
       nodes:
+        '[s1_validacao_in_controle]:graphInput "controle"':
+          data:
+            dataType: object
+            id: controle
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"4. Validar evidências e preparar cálculo"
+              s1_validar/controle
+          visualData: 0/360/320/null//
         '[s1_validacao_in_preparado]:graphInput "preparado"':
           data:
             dataType: object
@@ -3296,6 +3334,11 @@ data:
             - data->"4. Validar evidências e preparar cálculo"
               s1_validar/resposta
           visualData: 0/180/320/null//
+        '[s1_validacao_out_avaliacao]:graphOutput "Avaliação da extração"':
+          data:
+            dataType: object
+            id: avaliacao
+          visualData: 880/720/320/null//
         '[s1_validacao_out_base]:graphOutput "base"':
           data:
             dataType: object
@@ -4297,11 +4340,13 @@ data:
               } } };
 
               }
+              function validarCompleto(inputs) {
               // validateSchema e validarSemanticaS0 são incorporados pelo build, sem imports no runtime.
               const referencias = inputs.preparado.value;
               let extraction;
               try { extraction = JSON.parse(inputs.resposta.value); }
               catch { throw new Error('EXTRACAO_INVALIDA: resposta não é JSON completo'); }
+              if (extraction?.numero_processo !== referencias.numero) throw new Error('IDENTIDADE_DIVERGENTE: CNJ divergente da entrada');
               const validation = validarSemanticaS0({ extracao: { value: extraction }, sentenca: { value: referencias.sentenca } }).validacao.value;
               if (!validation.apto_calculo) throw new Error(`EXTRACAO_INVALIDA: ${validation.problemas.join('; ')}`);
               if (extraction.numero_processo !== referencias.numero) throw new Error('EXTRACAO_INVALIDA: CNJ divergente da entrada');
@@ -4340,16 +4385,81 @@ data:
                 parametros: { type: 'object', value: { condenacao_centavos: total,
                   indice_base: BigInt(index.numero_indice.replace('.', '')).toString(),
                   indice_final: BigInt(referencias.indices[referencias.referencia.slice(0, 7)].numero_indice.replace('.', '')).toString(),
-                  meses, probabilidade_percentual: referencias.probabilidade, custo_centavos: referencias.custo.centavos } },
+                  meses, probabilidade_percentual: referencias.probabilidade ?? 0, custo_centavos: referencias.custo.centavos } },
               };
+
+              }
+              const referencias = inputs.preparado.value;
+              const historico = inputs.controle?.value?.historico ?? [];
+              let resultado;
+              try {
+                resultado = validarCompleto(inputs);
+              } catch (error) {
+                if (error.message.startsWith('REFERENCIA_AUSENTE:')) throw error;
+                let original;
+                try { original = JSON.parse(inputs.resposta.value); } catch { original = null; }
+                if (!original || typeof original!=='object' || Array.isArray(original)) original=null;
+                const identidade = original?.numero_processo === referencias.numero;
+                const fonte = referencias.sentenca;
+                const literal = value => typeof value === 'string' && value.length > 0 && fonte.includes(value);
+                const evidence = original?.evidencias;
+                const patterns = {procedencia:/JULGO PROCEDENTE/i,parcial_procedencia:/JULGO PARCIALMENTE PROCEDENTE/i,
+                  improcedencia:/JULGO IMPROCEDENTE/i,extincao:/EXTINTO.*SEM RESOLUÇÃO|EXTINGO.*SEM RESOLUÇÃO/i};
+                const resultadoConhecido = identidade && literal(evidence?.resultado) && patterns[original?.resultado_sentenca]?.test(evidence.resultado);
+                const base = {numero_processo:referencias.numero, classe_processual:null,comarca:null,resultado_sentenca:resultadoConhecido?original.resultado_sentenca:null,
+                  danos_materiais_centavos:null,danos_morais_centavos:null,mes_base_correcao:null,data_citacao:null,tema:null,fundamento_decisao:null,
+                  evidencias:{identificacao:`Processo nº ${referencias.numero}`,resultado:resultadoConhecido?evidence.resultado:null,valores:null,
+                    mes_base_correcao:null,data_citacao:null,tema:null,fundamento_decisao:null},
+                  tribunal:referencias.custo.tribunal,status_processamento:'pendente_revisao',problemas:[],
+                  status_subsidios:referencias.status_subsidios,probabilidade_reversao_percentual:referencias.probabilidade,
+                  valor_condenacao_centavos:null,meses_completos:null,custo_recurso_centavos:referencias.custo.centavos};
+                // Preserva dinheiro somente quando cada componente coincide com o dispositivo inteiro
+                // e com uma evidência literal. Um resultado válido não autoriza confiar nos demais campos.
+                const dispositivo = fonte.split(/Ante o exposto,/i)[1] ?? '';
+                if (resultadoConhecido && literal(evidence?.valores)) {
+                  for (const [field,kind] of [['danos_materiais_centavos','materiais'],['danos_morais_centavos','morais']]) {
+                    const matches = [...dispositivo.matchAll(/R\$\s*([\d.]+),(\d{2}) a título de danos (materiais|morais)/g)].filter(m=>m[3]===kind);
+                    const amount = matches.length===1 ? BigInt(matches[0][1].replaceAll('.',''))*100n+BigInt(matches[0][2]) : 0n;
+                    if (matches.length<=1 && Number.isSafeInteger(original[field]) && original[field]>=0 && BigInt(original[field])===amount
+                        && (!matches.length || evidence.valores.includes(matches[0][0]))) base[field]=original[field];
+                  }
+                  if (base.danos_materiais_centavos!==null && base.danos_morais_centavos!==null &&
+                      Number.isSafeInteger(base.danos_materiais_centavos+base.danos_morais_centavos)) {
+                    base.valor_condenacao_centavos=base.danos_materiais_centavos+base.danos_morais_centavos;
+                    base.evidencias.valores=evidence.valores;
+                  }
+                }
+                let codigo='EXTRACAO_INVALIDA';
+                if (original && !identidade) codigo='IDENTIDADE_DIVERGENTE';
+                else if (identidade) {
+                  validateSchema(original);
+                  if (validateSchema.errors?.some(e=>['format','pattern'].includes(e.keyword) && ['/data_citacao','/mes_base_correcao'].includes(e.instancePath))) codigo='DATA_INVALIDA';
+                  else if (original.data_citacao>referencias.referencia || original.mes_base_correcao>referencias.referencia.slice(0,7)) codigo='DATA_FUTURA';
+                  else if (['data_citacao','mes_base_correcao','danos_materiais_centavos','danos_morais_centavos'].some(k=>original[k]==null)) codigo='DADO_AUSENTE';
+                }
+                if (historico.at(-1)?.estado==='falha_transporte') {codigo='FALHA_TRANSPORTE';base.status_processamento='erro';}
+                base.problemas=[{codigo,mensagem:codigo==='FALHA_TRANSPORTE'?'Limite de tentativas de transporte atingido.':error.message}];
+                resultado={base:{type:'object',value:base},extracao:{type:'object',value:original??{}},parametros:{type:'object',value:{pendente:true}}};
+              }
+              if (resultado.base.value.status_processamento==='ok' && referencias.status_subsidios===null && !resultado.parametros.value.sem_condenacao) {
+                resultado.base.value.status_processamento='pendente_revisao';
+                resultado.base.value.problemas=[{codigo:'SUBSIDIO_NAO_LOCALIZADO',mensagem:'Não há linha de subsídios para esta identidade; decisão econômica pendente.'}];
+                resultado.parametros.value.sem_decisao=true;
+              }
+              resultado.avaliacao={type:'object',value:{aprovada:resultado.parametros.value.pendente!==true,
+                problemas:resultado.parametros.value.pendente===true?resultado.base.value.problemas:[]}};
+              return resultado;
             inputNames:
               - preparado
               - resposta
+              - controle
             outputNames:
               - base
               - extracao
               - parametros
+              - avaliacao
           outgoingConnections:
+            - avaliacao->"Avaliação da extração" s1_validacao_out_avaliacao/value
             - base->"base" s1_validacao_out_base/value
             - extracao->"extracao" s1_validacao_out_extracao/value
             - parametros->"parametros" s1_validacao_out_parametros/value

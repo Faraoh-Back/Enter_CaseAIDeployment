@@ -1,0 +1,581 @@
+{
+  "etapa": "S2.4",
+  "executado_em": "2026-10-12T16:09:38.180Z",
+  "node": "v20.20.2",
+  "sdk": "1.25.0",
+  "metodo": "Projeto Rivet real com transporte interceptado; sem chamada paga. Testes CLI reabrem JSON/XLSX e conferem manifestos.",
+  "chamadas_reais": 0,
+  "conjunto_reservado_executado": false,
+  "aceite_visual": "pendente: plugin local deve ser carregado no aplicativo",
+  "testes": {
+    "comando": "npm test",
+    "total": 84,
+    "aprovados": 84,
+    "falhas": 0,
+    "suites": [
+      {
+        "testes": 14,
+        "aprovados": 14,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 2,
+        "aprovados": 2,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 11,
+        "aprovados": 11,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 7,
+        "aprovados": 7,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 7,
+        "aprovados": 7,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 2,
+        "aprovados": 2,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 13,
+        "aprovados": 13,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 20,
+        "aprovados": 20,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      },
+      {
+        "testes": 8,
+        "aprovados": 8,
+        "falhas": 0,
+        "cancelados": 0,
+        "ignorados": 0,
+        "todo": 0
+      }
+    ],
+    "log_sha256": "888240bc463c4664956173fd055231ef10d7fdb641acc05a42d2a699016adb05"
+  },
+  "hashes": {
+    "projeto": "760d505beb7770e80f74295b6a37e9d3e3f15a688b78043cd287a989f34a67c7",
+    "plugin": "b956a2a471d3e7ccc025a11dc760873d24d7ab0373ec6598b7be894421dcaafb",
+    "teste_incertezas": "238fb638728cd925b4512b790b13ee568b7c884c36fe47c3cecf9bd0d4f99c8d",
+    "teste_transporte": "654e1196e28e78ac113e5e858caf2c67de83716d2d593680f640af2568ed36cd"
+  },
+  "limites": [
+    "Uma sentença por execução; nenhum lote S3.",
+    "Qualidade da LLM real não medida nesta rodada.",
+    "Aceite visual S1.5 não estendido ao novo plugin."
+  ],
+  "exemplos": [
+    {
+      "cenario": "reparo",
+      "requisicoes_simuladas": 2,
+      "outputs": {
+        "auditoria": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "extracao": {
+              "numero_processo": "3871230-78.2024.8.26.0002",
+              "classe_processual": "Procedimento Comum Cível",
+              "comarca": "São Paulo",
+              "resultado_sentenca": "parcial_procedencia",
+              "danos_materiais_centavos": 600000,
+              "danos_morais_centavos": 30000,
+              "valor_total_explicito_centavos": null,
+              "mes_base_correcao": "2025-12",
+              "data_citacao": "2026-02-27",
+              "tema": "cancelamento unilateral de plano de saúde",
+              "fundamento_decisao": "Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.",
+              "evidencias": {
+                "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+                "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido",
+                "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+                "mes_base_correcao": "correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)",
+                "data_citacao": "desde a citação (27/02/2026)",
+                "tema": "cancelamento unilateral de plano de saúde",
+                "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+              }
+            },
+            "resposta_original": "{\n  \"numero_processo\": \"3871230-78.2024.8.26.0002\",\n  \"classe_processual\": \"Procedimento Comum Cível\",\n  \"comarca\": \"São Paulo\",\n  \"resultado_sentenca\": \"parcial_procedencia\",\n  \"danos_materiais_centavos\": 600000,\n  \"danos_morais_centavos\": 30000,\n  \"valor_total_explicito_centavos\": null,\n  \"mes_base_correcao\": \"2025-12\",\n  \"data_citacao\": \"2026-02-27\",\n  \"tema\": \"cancelamento unilateral de plano de saúde\",\n  \"fundamento_decisao\": \"Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.\",\n  \"evidencias\": {\n    \"identificacao\": \"Processo nº 3871230-78.2024.8.26.0002\",\n    \"resultado\": \"JULGO PARCIALMENTE PROCEDENTE o pedido\",\n    \"valores\": \"CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\n    \"mes_base_correcao\": \"correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)\",\n    \"data_citacao\": \"desde a citação (27/02/2026)\",\n    \"tema\": \"cancelamento unilateral de plano de saúde\",\n    \"fundamento_decisao\": \"A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"\n  }\n}\n",
+            "indice_base": "1086.2922",
+            "indice_final": "1117.1189",
+            "tentativas": 2,
+            "historico_tentativas": [
+              {
+                "numero": 1,
+                "estado": "extracao_invalida",
+                "problemas": [
+                  {
+                    "codigo": "EXTRACAO_INVALIDA",
+                    "mensagem": "EXTRACAO_INVALIDA: resposta não é JSON completo"
+                  }
+                ],
+                "resposta_original": "{",
+                "uso": null,
+                "http_status": 200
+              },
+              {
+                "numero": 2,
+                "estado": "aprovada",
+                "problemas": [],
+                "resposta_original": "{\n  \"numero_processo\": \"3871230-78.2024.8.26.0002\",\n  \"classe_processual\": \"Procedimento Comum Cível\",\n  \"comarca\": \"São Paulo\",\n  \"resultado_sentenca\": \"parcial_procedencia\",\n  \"danos_materiais_centavos\": 600000,\n  \"danos_morais_centavos\": 30000,\n  \"valor_total_explicito_centavos\": null,\n  \"mes_base_correcao\": \"2025-12\",\n  \"data_citacao\": \"2026-02-27\",\n  \"tema\": \"cancelamento unilateral de plano de saúde\",\n  \"fundamento_decisao\": \"Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.\",\n  \"evidencias\": {\n    \"identificacao\": \"Processo nº 3871230-78.2024.8.26.0002\",\n    \"resultado\": \"JULGO PARCIALMENTE PROCEDENTE o pedido\",\n    \"valores\": \"CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\n    \"mes_base_correcao\": \"correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)\",\n    \"data_citacao\": \"desde a citação (27/02/2026)\",\n    \"tema\": \"cancelamento unilateral de plano de saúde\",\n    \"fundamento_decisao\": \"A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"\n  }\n}\n",
+                "uso": null,
+                "http_status": 200
+              }
+            ],
+            "versao_extrator": "s2.4-v1",
+            "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+            "tokens": null,
+            "custo_monetario": null,
+            "memoria": {
+              "principal_numerador": "7037849070000",
+              "principal_denominador": "10862922",
+              "juros_numerador": "21113547210000",
+              "juros_denominador": "1086292200",
+              "total_numerador": "724898454210000",
+              "total_denominador": "1086292200",
+              "beneficio_numerador": "-25326860",
+              "beneficio_denominador": "100",
+              "beneficio_residual_positivo": false
+            }
+          }
+        ],
+        "processos": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "classe_processual": "Procedimento Comum Cível",
+            "comarca": "São Paulo",
+            "resultado_sentenca": "parcial_procedencia",
+            "danos_materiais_centavos": 600000,
+            "danos_morais_centavos": 30000,
+            "mes_base_correcao": "2025-12",
+            "data_citacao": "2026-02-27",
+            "tema": "cancelamento unilateral de plano de saúde",
+            "fundamento_decisao": "Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.",
+            "evidencias": {
+              "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+              "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido",
+              "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+              "mes_base_correcao": "correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)",
+              "data_citacao": "desde a citação (27/02/2026)",
+              "tema": "cancelamento unilateral de plano de saúde",
+              "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+            },
+            "tribunal": "TJSP",
+            "status_processamento": "ok",
+            "problemas": [],
+            "status_subsidios": "ausentes",
+            "probabilidade_reversao_percentual": 10,
+            "valor_condenacao_centavos": 630000,
+            "meses_completos": 3,
+            "custo_recurso_centavos": 320000,
+            "principal_corrigido_centavos": 647878,
+            "juros_centavos": 19436,
+            "valor_atualizado_centavos": 667314,
+            "beneficio_esperado_centavos": -253269,
+            "decisao_recurso": "nao_recorrer",
+            "motivo_decisao": "beneficio_nao_positivo"
+          }
+        ],
+        "relatorio_markdown": "# Análise de uma sentença — S1\n\nData-base: 2026-05-31. Processo: 3871230-78.2024.8.26.0002.\n\nRecomendação econômica: **não recorrer**. Benefício líquido esperado: **-R$ 2.532,69**.\n\nResultado: parcial_procedencia. Condenação original: R$ 6.300,00.\nPrincipal corrigido: R$ 6.478,78; juros simples (3 meses completos): R$ 194,36.\nPassivo atualizado: **R$ 6.673,14**.\n\nSubsídios: ausentes; probabilidade de reversão: 10%; custo do recurso: R$ 3.200,00.\nRecursos recomendados: 0; custo dos recomendados: R$ 0,00; benefício esperado dos recomendados: R$ 0,00.\n\nCobertura: 1/1 processo apto; 0 pendências. Êxito: 0/1; resultados desconhecidos: 0.\n\nPremissas: reversão integral da condenação; probabilidades e custos fornecidos no case. Benefício esperado é uma estimativa, sem garantia de economia realizada. Prazos, admissibilidade e reforma parcial não são avaliados.\nEscopo: uma sentença; estes números não representam a carteira completa.",
+        "resumo": {
+          "data_referencia": "2026-05-31",
+          "total_identificado": 1,
+          "vitorias_confirmadas": 0,
+          "resultados_desconhecidos": 0,
+          "condenacoes": 1,
+          "processos_aptos": 1,
+          "pendencias": 0,
+          "passivo_centavos": 667314,
+          "recursos_recomendados": 0,
+          "custo_recursos_centavos": 0,
+          "beneficio_esperado_recursos_centavos": 0
+        }
+      }
+    },
+    {
+      "cenario": "json_invalido",
+      "requisicoes_simuladas": 3,
+      "outputs": {
+        "auditoria": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "extracao": {},
+            "resposta_original": "{",
+            "indice_base": null,
+            "indice_final": null,
+            "tentativas": 3,
+            "historico_tentativas": [
+              {
+                "numero": 1,
+                "estado": "extracao_invalida",
+                "problemas": [
+                  {
+                    "codigo": "EXTRACAO_INVALIDA",
+                    "mensagem": "EXTRACAO_INVALIDA: resposta não é JSON completo"
+                  }
+                ],
+                "resposta_original": "{",
+                "uso": null,
+                "http_status": 200
+              },
+              {
+                "numero": 2,
+                "estado": "extracao_invalida",
+                "problemas": [
+                  {
+                    "codigo": "EXTRACAO_INVALIDA",
+                    "mensagem": "EXTRACAO_INVALIDA: resposta não é JSON completo"
+                  }
+                ],
+                "resposta_original": "{",
+                "uso": null,
+                "http_status": 200
+              },
+              {
+                "numero": 3,
+                "estado": "extracao_invalida",
+                "problemas": [
+                  {
+                    "codigo": "EXTRACAO_INVALIDA",
+                    "mensagem": "EXTRACAO_INVALIDA: resposta não é JSON completo"
+                  }
+                ],
+                "resposta_original": "{",
+                "uso": null,
+                "http_status": 200
+              }
+            ],
+            "versao_extrator": "s2.4-v1",
+            "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+            "tokens": null,
+            "custo_monetario": null,
+            "memoria": null
+          }
+        ],
+        "processos": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "classe_processual": null,
+            "comarca": null,
+            "resultado_sentenca": null,
+            "danos_materiais_centavos": null,
+            "danos_morais_centavos": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": null,
+            "fundamento_decisao": null,
+            "evidencias": {
+              "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+              "resultado": null,
+              "valores": null,
+              "mes_base_correcao": null,
+              "data_citacao": null,
+              "tema": null,
+              "fundamento_decisao": null
+            },
+            "tribunal": "TJSP",
+            "status_processamento": "pendente_revisao",
+            "problemas": [
+              {
+                "codigo": "EXTRACAO_INVALIDA",
+                "mensagem": "EXTRACAO_INVALIDA: resposta não é JSON completo"
+              }
+            ],
+            "status_subsidios": "ausentes",
+            "probabilidade_reversao_percentual": 10,
+            "valor_condenacao_centavos": null,
+            "meses_completos": null,
+            "custo_recurso_centavos": 320000,
+            "principal_corrigido_centavos": null,
+            "juros_centavos": null,
+            "valor_atualizado_centavos": null,
+            "beneficio_esperado_centavos": null,
+            "decisao_recurso": "pendente",
+            "motivo_decisao": "revisao_necessaria"
+          }
+        ],
+        "relatorio_markdown": "# Análise de uma sentença — S2\n\nProcesso: 3871230-78.2024.8.26.0002. Data-base: 2026-05-31.\nEstado: pendente_revisao. Decisão pendente de revisão.\nEXTRACAO_INVALIDA: EXTRACAO_INVALIDA: resposta não é JSON completo\nCobertura: 0/1 processo apto; 1 pendência. Resultados desconhecidos: 1.\nPassivo conhecido: R$ 0,00; total parcial. Esta sentença foi excluída da soma por atualização desconhecida; zero na soma não significa ausência de exposição.\nRecursos recomendados: 0. Custos e benefícios somam apenas recomendações aptas; pendências foram excluídas.\nEscopo: uma sentença; revisar dados antes de decidir. Estes números não representam a carteira completa.",
+        "resumo": {
+          "data_referencia": "2026-05-31",
+          "total_identificado": 1,
+          "vitorias_confirmadas": 0,
+          "resultados_desconhecidos": 1,
+          "condenacoes": 0,
+          "processos_aptos": 0,
+          "pendencias": 1,
+          "passivo_centavos": 0,
+          "recursos_recomendados": 0,
+          "custo_recursos_centavos": 0,
+          "beneficio_esperado_recursos_centavos": 0
+        }
+      }
+    },
+    {
+      "cenario": "subsidio_nao_localizado",
+      "requisicoes_simuladas": 1,
+      "outputs": {
+        "auditoria": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "extracao": {
+              "numero_processo": "3871230-78.2024.8.26.0002",
+              "classe_processual": "Procedimento Comum Cível",
+              "comarca": "São Paulo",
+              "resultado_sentenca": "parcial_procedencia",
+              "danos_materiais_centavos": 600000,
+              "danos_morais_centavos": 30000,
+              "valor_total_explicito_centavos": null,
+              "mes_base_correcao": "2025-12",
+              "data_citacao": "2026-02-27",
+              "tema": "cancelamento unilateral de plano de saúde",
+              "fundamento_decisao": "Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.",
+              "evidencias": {
+                "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+                "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido",
+                "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+                "mes_base_correcao": "correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)",
+                "data_citacao": "desde a citação (27/02/2026)",
+                "tema": "cancelamento unilateral de plano de saúde",
+                "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+              }
+            },
+            "resposta_original": "{\n  \"numero_processo\": \"3871230-78.2024.8.26.0002\",\n  \"classe_processual\": \"Procedimento Comum Cível\",\n  \"comarca\": \"São Paulo\",\n  \"resultado_sentenca\": \"parcial_procedencia\",\n  \"danos_materiais_centavos\": 600000,\n  \"danos_morais_centavos\": 30000,\n  \"valor_total_explicito_centavos\": null,\n  \"mes_base_correcao\": \"2025-12\",\n  \"data_citacao\": \"2026-02-27\",\n  \"tema\": \"cancelamento unilateral de plano de saúde\",\n  \"fundamento_decisao\": \"Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.\",\n  \"evidencias\": {\n    \"identificacao\": \"Processo nº 3871230-78.2024.8.26.0002\",\n    \"resultado\": \"JULGO PARCIALMENTE PROCEDENTE o pedido\",\n    \"valores\": \"CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\n    \"mes_base_correcao\": \"correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)\",\n    \"data_citacao\": \"desde a citação (27/02/2026)\",\n    \"tema\": \"cancelamento unilateral de plano de saúde\",\n    \"fundamento_decisao\": \"A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"\n  }\n}\n",
+            "indice_base": "1086.2922",
+            "indice_final": "1117.1189",
+            "tentativas": 1,
+            "historico_tentativas": [
+              {
+                "numero": 1,
+                "estado": "aprovada",
+                "problemas": [],
+                "resposta_original": "{\n  \"numero_processo\": \"3871230-78.2024.8.26.0002\",\n  \"classe_processual\": \"Procedimento Comum Cível\",\n  \"comarca\": \"São Paulo\",\n  \"resultado_sentenca\": \"parcial_procedencia\",\n  \"danos_materiais_centavos\": 600000,\n  \"danos_morais_centavos\": 30000,\n  \"valor_total_explicito_centavos\": null,\n  \"mes_base_correcao\": \"2025-12\",\n  \"data_citacao\": \"2026-02-27\",\n  \"tema\": \"cancelamento unilateral de plano de saúde\",\n  \"fundamento_decisao\": \"Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.\",\n  \"evidencias\": {\n    \"identificacao\": \"Processo nº 3871230-78.2024.8.26.0002\",\n    \"resultado\": \"JULGO PARCIALMENTE PROCEDENTE o pedido\",\n    \"valores\": \"CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\n    \"mes_base_correcao\": \"correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)\",\n    \"data_citacao\": \"desde a citação (27/02/2026)\",\n    \"tema\": \"cancelamento unilateral de plano de saúde\",\n    \"fundamento_decisao\": \"A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"\n  }\n}\n",
+                "uso": null,
+                "http_status": 200
+              }
+            ],
+            "versao_extrator": "s2.4-v1",
+            "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+            "tokens": null,
+            "custo_monetario": null,
+            "memoria": {
+              "principal_numerador": "7037849070000",
+              "principal_denominador": "10862922",
+              "juros_numerador": "21113547210000",
+              "juros_denominador": "1086292200",
+              "total_numerador": "724898454210000",
+              "total_denominador": "1086292200"
+            }
+          }
+        ],
+        "processos": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "classe_processual": "Procedimento Comum Cível",
+            "comarca": "São Paulo",
+            "resultado_sentenca": "parcial_procedencia",
+            "danos_materiais_centavos": 600000,
+            "danos_morais_centavos": 30000,
+            "mes_base_correcao": "2025-12",
+            "data_citacao": "2026-02-27",
+            "tema": "cancelamento unilateral de plano de saúde",
+            "fundamento_decisao": "Documentação comprova parcialmente os danos; montante pretendido considerado excessivo.",
+            "evidencias": {
+              "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+              "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido",
+              "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+              "mes_base_correcao": "correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)",
+              "data_citacao": "desde a citação (27/02/2026)",
+              "tema": "cancelamento unilateral de plano de saúde",
+              "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+            },
+            "tribunal": "TJSP",
+            "status_processamento": "pendente_revisao",
+            "problemas": [
+              {
+                "codigo": "SUBSIDIO_NAO_LOCALIZADO",
+                "mensagem": "Não há linha de subsídios para esta identidade; decisão econômica pendente."
+              }
+            ],
+            "status_subsidios": null,
+            "probabilidade_reversao_percentual": null,
+            "valor_condenacao_centavos": 630000,
+            "meses_completos": 3,
+            "custo_recurso_centavos": 320000,
+            "principal_corrigido_centavos": 647878,
+            "juros_centavos": 19436,
+            "valor_atualizado_centavos": 667314,
+            "beneficio_esperado_centavos": null,
+            "decisao_recurso": "pendente",
+            "motivo_decisao": "revisao_necessaria"
+          }
+        ],
+        "relatorio_markdown": "# Análise de uma sentença — S2\n\nProcesso: 3871230-78.2024.8.26.0002. Data-base: 2026-05-31.\nEstado: pendente_revisao. Decisão pendente de revisão.\nSUBSIDIO_NAO_LOCALIZADO: Não há linha de subsídios para esta identidade; decisão econômica pendente.\nCobertura: 0/1 processo apto; 1 pendência. Resultados desconhecidos: 0.\nPassivo conhecido: R$ 6.673,14; total parcial. Atualização conhecida incluída; decisão de recurso excluída por falta de subsídios.\nRecursos recomendados: 0. Custos e benefícios somam apenas recomendações aptas; pendências foram excluídas.\nEscopo: uma sentença; revisar dados antes de decidir. Estes números não representam a carteira completa.",
+        "resumo": {
+          "data_referencia": "2026-05-31",
+          "total_identificado": 1,
+          "vitorias_confirmadas": 0,
+          "resultados_desconhecidos": 0,
+          "condenacoes": 1,
+          "processos_aptos": 0,
+          "pendencias": 1,
+          "passivo_centavos": 667314,
+          "recursos_recomendados": 0,
+          "custo_recursos_centavos": 0,
+          "beneficio_esperado_recursos_centavos": 0
+        }
+      }
+    },
+    {
+      "cenario": "transporte_persistente",
+      "requisicoes_simuladas": 3,
+      "outputs": {
+        "auditoria": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "extracao": {},
+            "resposta_original": "",
+            "indice_base": null,
+            "indice_final": null,
+            "tentativas": 3,
+            "historico_tentativas": [
+              {
+                "numero": 1,
+                "estado": "falha_transporte",
+                "problemas": [
+                  {
+                    "codigo": "FALHA_TRANSPORTE",
+                    "mensagem": "HTTP 503: falha transitória ou stream incompleto."
+                  }
+                ],
+                "resposta_original": null,
+                "uso": null,
+                "http_status": 503
+              },
+              {
+                "numero": 2,
+                "estado": "falha_transporte",
+                "problemas": [
+                  {
+                    "codigo": "FALHA_TRANSPORTE",
+                    "mensagem": "HTTP 503: falha transitória ou stream incompleto."
+                  }
+                ],
+                "resposta_original": null,
+                "uso": null,
+                "http_status": 503
+              },
+              {
+                "numero": 3,
+                "estado": "falha_transporte",
+                "problemas": [
+                  {
+                    "codigo": "FALHA_TRANSPORTE",
+                    "mensagem": "HTTP 503: falha transitória ou stream incompleto."
+                  }
+                ],
+                "resposta_original": null,
+                "uso": null,
+                "http_status": 503
+              }
+            ],
+            "versao_extrator": "s2.4-v1",
+            "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+            "tokens": null,
+            "custo_monetario": null,
+            "memoria": null
+          }
+        ],
+        "processos": [
+          {
+            "numero_processo": "3871230-78.2024.8.26.0002",
+            "classe_processual": null,
+            "comarca": null,
+            "resultado_sentenca": null,
+            "danos_materiais_centavos": null,
+            "danos_morais_centavos": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": null,
+            "fundamento_decisao": null,
+            "evidencias": {
+              "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+              "resultado": null,
+              "valores": null,
+              "mes_base_correcao": null,
+              "data_citacao": null,
+              "tema": null,
+              "fundamento_decisao": null
+            },
+            "tribunal": "TJSP",
+            "status_processamento": "erro",
+            "problemas": [
+              {
+                "codigo": "FALHA_TRANSPORTE",
+                "mensagem": "Limite de tentativas de transporte atingido."
+              }
+            ],
+            "status_subsidios": "ausentes",
+            "probabilidade_reversao_percentual": 10,
+            "valor_condenacao_centavos": null,
+            "meses_completos": null,
+            "custo_recurso_centavos": 320000,
+            "principal_corrigido_centavos": null,
+            "juros_centavos": null,
+            "valor_atualizado_centavos": null,
+            "beneficio_esperado_centavos": null,
+            "decisao_recurso": "pendente",
+            "motivo_decisao": "revisao_necessaria"
+          }
+        ],
+        "relatorio_markdown": "# Análise de uma sentença — S2\n\nProcesso: 3871230-78.2024.8.26.0002. Data-base: 2026-05-31.\nEstado: erro. Decisão pendente de revisão.\nFALHA_TRANSPORTE: Limite de tentativas de transporte atingido.\nCobertura: 0/1 processo apto; 1 pendência. Resultados desconhecidos: 1.\nPassivo conhecido: R$ 0,00; total parcial. Esta sentença foi excluída da soma por atualização desconhecida; zero na soma não significa ausência de exposição.\nRecursos recomendados: 0. Custos e benefícios somam apenas recomendações aptas; pendências foram excluídas.\nEscopo: uma sentença; revisar dados antes de decidir. Estes números não representam a carteira completa.",
+        "resumo": {
+          "data_referencia": "2026-05-31",
+          "total_identificado": 1,
+          "vitorias_confirmadas": 0,
+          "resultados_desconhecidos": 1,
+          "condenacoes": 0,
+          "processos_aptos": 0,
+          "pendencias": 1,
+          "passivo_centavos": 0,
+          "recursos_recomendados": 0,
+          "custo_recursos_centavos": 0,
+          "beneficio_esperado_recursos_centavos": 0
+        }
+      }
+    }
+  ]
+}

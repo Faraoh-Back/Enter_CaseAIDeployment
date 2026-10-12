@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile, rename, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
-import { runGraphInFile } from '@ironclad/rivet-node';
+import { runGraphInFile } from './rivet-runtime.mjs';
 import { entradasS1 } from '../scripts/s1-fixture.mjs';
 import { exportarXlsx } from './exportar-xlsx.mjs';
 
@@ -53,10 +53,10 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
     await mkdir(destino,{recursive:true});
     directory = path.resolve(destino,id);
     await mkdir(directory);
-    manifest = { versao_contrato:'s1.4-v1', execucao_id:id, estado:'executando', modo,
+    manifest = { versao_contrato:'s2.4-v1', execucao_id:id, estado:'executando', modo,
       iniciado_em:new Date().toISOString(), encerrado_em:null, duracao_ms:null,
       node:process.version, sdk:'1.25.0', grafo:'analisar_carteira', modelo_solicitado:modelo, parametros_enviados:null,
-      projeto_sha256:hash(project), schemas_sha256:Object.fromEntries(Object.entries(schemas).map(([k,v])=>[k,hash(v)])),
+      plugin_sha256:hash(await readFile('rivet/plugins/enter-bounded-extraction/index.js')), projeto_sha256:hash(project), schemas_sha256:Object.fromEntries(Object.entries(schemas).map(([k,v])=>[k,hash(v)])),
       entradas_sha256:Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,hash(v)])),
       captura_sha256:capturedBytes ? hash(capturedBytes) : null,
       requisicoes_extrator:0, chamadas_reais:0, tokens:null, custo_monetario:null,
@@ -64,14 +64,15 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
     await atomic('manifest.json',json(manifest));
     await atomic('entradas.json',json(raw));
     await atomic('projeto.rivet-project',project);
+    await atomic('plugin-extracao.js',await readFile('rivet/plugins/enter-bounded-extraction/index.js'));
     await atomic('schemas.json',json(schemas));
     if (captured) await atomic('captura.json',capturedBytes);
     console.warn = (...args) => warn(...args.map(redact));
     console.error = (...args) => errorLog(...args.map(redact));
     timer = setTimeout(() => controller.abort(),45000);
     globalThis.fetch = async (url, options) => {
-      if (String(url) !== 'https://api.openai.com/v1/chat/completions' || ++manifest.requisicoes_extrator > 1) {
-        controller.abort(); throw new Error('Limite S1: uma requisição ao endpoint de extração');
+      if (String(url) !== 'https://api.openai.com/v1/chat/completions' || ++manifest.requisicoes_extrator > 3) {
+        controller.abort(); throw new Error('Limite S2: três requisições ao endpoint de extração');
       }
       const body = JSON.parse(options.body);
       manifest.parametros_enviados = { model:body.model, temperature:body.temperature, max_tokens:body.max_tokens,
@@ -82,12 +83,11 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
         return new Response(`data: ${JSON.stringify(chunk)}\n\ndata: [DONE]\n\n`, {headers:{'Content-Type':'text/event-stream'}});
       }
       manifest.chamadas_reais++;
-      try {
+      {
         const response = await nativeFetch(url, { ...options, signal:AbortSignal.any([controller.signal, ...(options.signal ? [options.signal] : [])]) });
         manifest.http_status = response.status;
-        if (!response.ok) controller.abort();
         return response;
-      } catch (error) { controller.abort(); throw error; }
+      }
     };
     const outputs = await runGraphInFile(path.join(directory,'projeto.rivet-project'), {
       graph:'analisar_carteira', openAiKey:modo === 'real' ? apiKey : 'replay-sem-credencial',
@@ -97,6 +97,7 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
       onNodeFinish:({node,outputs:result}) => {
         if (node.id !== 's1_extrair') return;
         responseText = result.response?.value;
+        manifest.limites_extracao = result.controle?.value?.limites ?? null;
         const usage = result.usage?.value;
         if (modo === 'real' && Number.isSafeInteger(usage?.total_tokens)) {
           manifest.tokens = {entrada:usage.prompt_tokens, saida:usage.completion_tokens, total:usage.total_tokens};
@@ -121,7 +122,7 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
     try { await exportador(data,`${xlsx}.tmp`); await rename(`${xlsx}.tmp`,xlsx); }
     finally { await rm(`${xlsx}.tmp`,{force:true}); }
     await register('processos.xlsx');
-    manifest.estado = 'concluida';
+    manifest.estado = data.resumo.pendencias ? 'concluida_com_pendencias' : 'concluida';
   } catch (error) {
     if (manifest) {
       manifest.estado = 'falhou';

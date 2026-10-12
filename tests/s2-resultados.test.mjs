@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
-import { runGraphInFile } from '@ironclad/rivet-node';
+import { runGraphInFile } from '../src/rivet-runtime.mjs';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { sentencesForFixtures } from '../scripts/case-files.mjs';

@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0 e S1 concluídas, incluindo aceite visual S1.5 informado pelo candidato e arquivos locais reconferidos. S2.1 e S2.2 concluídas: quatro resultados normalizados, 56 testes aprovados. S2.3 concluída com aceitação em vermelho; S2.4–S2.6 e S3–S5 não executadas. [Tarefas S2](desenvolvimento/S2_TASKS.md).
+**Estado:** S0 e S1 concluídas; aceite visual S1.5 informado pelo candidato. S2.1–S2.4 concluídas no SDK, com 84 testes aprovados. Novo aceite visual S2.4 pendente, pois requer carregar o plugin local. S2.5–S2.6 e S3–S5 não executadas. [Tarefas S2](desenvolvimento/S2_TASKS.md).
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -59,12 +59,12 @@ Execução em tarefas separadas, com revisão e commits feitos pelo candidato. [
 
 ## S2 — resultados diferentes e tratamento de incerteza
 
-Execução por tarefas, conforme [S2_TASKS.md](desenvolvimento/S2_TASKS.md). S2.1 registrou o vermelho. A S2.2 normalizou os quatro resultados: 13/13 cenários S2 aprovados e incorporados à suíte padrão, agora com 56 testes. S2.3 define 20 cenários de incerteza: 5 aprovados e 15 falhas observadas. Pendências e retentativas serão implementadas na S2.4.
+Execução por tarefas, conforme [S2_TASKS.md](desenvolvimento/S2_TASKS.md). S2.1 registrou o vermelho. A S2.2 normalizou os quatro resultados: 13/13 cenários S2 aprovados e incorporados à suíte padrão, agora com 56 testes. S2.3 define 20 cenários de incerteza: 5 aprovados e 15 falhas observadas. A S2.4 implementou esses contratos: 20/20 verdes e oito testes adicionais de transporte; suíte padrão com 84 testes. [Validação e roteiro do aplicativo](validacao/S2_4_VALIDACAO.md).
 
 - [x] **S2.1 — Vermelho:** casos de procedência, parcial procedência, improcedência e extinção, danos materiais isolados e combinados, valores de pedidos usados como distração em fixtures sintéticas.
 - [x] **S2.2 — Verde:** normalizar os quatro resultados, tratar vitórias sem simular recurso e incorporar a aceitação à suíte padrão.
 - [x] **S2.3 — Vermelho:** datas ausentes/inválidas/futuras, índice ausente, CNJ divergente, subsídio desconhecido, saída malformada e duplicação de processos.
-- [ ] **S2.4 — Verde:** normalização, retentativas limitadas e estados de pendência/erro; impedir recomendações baseadas em valores incompletos.
+- [x] **S2.4 — Verde:** normalização, retentativas limitadas e estados de pendência/erro; impedir recomendações baseadas em valores incompletos.
 - [ ] **S2.5 — Fronteiras e cobertura:** cobrir meses completos, fronteiras de arredondamento e benefício positivo, negativo e exatamente zero; manter uma linha por processo inclusive nas falhas, com totais e cobertura mostrando exclusões.
 - [ ] **S2.6 — Refatorar e integrar:** remover regras duplicadas fora do grafo e verificar reconciliação entre JSON, planilha e relatório.
 

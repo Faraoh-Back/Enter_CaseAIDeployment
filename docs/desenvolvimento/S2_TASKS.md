@@ -1,13 +1,13 @@
 # S2 — desenvolvimento por tarefa
 
-Uma tarefa por rodada, com revisão e commit pelo candidato. Nesta rodada foi concluída **S2.3: aceitação das incertezas**. São 20 cenários, 5 aprovados e 15 falhas observadas, em comando separado. A produção permanece na S2.2, com 56 testes aprovados. [Detalhes e contratos](../validacao/S2_3_VALIDACAO.md).
+Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.4 concluída no SDK**: 84 testes aprovados, incluindo os 20 contratos da S2.3. Aceite visual do novo plugin ainda pendente. [Implementação, validação e instalação](../validacao/S2_4_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
 | S2.1 — aceitação dos resultados | Exercitar os 12 gabaritos de desenvolvimento e um pedido sintético maior; registrar as falhas das vitórias antes de implementar. | Concluída |
 | S2.2 — normalizar os quatro resultados | Fazer os testes de S2.1 passarem; representar vitórias sem simular recurso, preservar condenações, resumo e relatório; incorporar testes verdes à suíte padrão. | Concluída |
 | S2.3 — aceitação das incertezas | Testes de dados ausentes/inválidos/futuros, divergências, duplicatas, JSON inválido, retentativas e falhas HTTP, distinguindo falhas globais de pendências individuais. | Concluída |
-| S2.4 — pendências e retentativas | Implementar contratos de S2.3 no Rivet e ajustar limites do executor; até três tentativas totais, diagnóstico auditável e estados terminais. | Não iniciada |
+| S2.4 — pendências e retentativas | Implementar contratos de S2.3 no Rivet e ajustar limites do executor; até três tentativas totais, diagnóstico auditável e estados terminais. | Concluída no SDK |
 | S2.5 — fronteiras e cobertura | Calendário e dinheiro nas fronteiras; pequeno lote misto, uma linha por identidade, totais parciais e exclusões explícitas. | Não iniciada |
 | S2.6 — integração e aceite | Reconciliar JSON/XLSX/Markdown, revisar responsabilidades e contratos, reunir suítes verdes e registrar aceite local/aplicativo. | Não iniciada |
 
@@ -83,3 +83,12 @@ Próxima tarefa: **S2.3**, somente os contratos/testes das incertezas. Sugestão
 `npm run test:s2:incertezas` executa 20 cenários de dados incompletos, reparo, transporte, quota e falhas globais. Resultado: 5 aprovados, 15 falhas; saída 1. `npm test` permanece verde com os 56 anteriores. Não houve mudança no grafo nem no executor. [Contrato, método e limites](../validacao/S2_3_VALIDACAO.md).
 
 Próxima tarefa: **S2.4**, implementar pendências e orçamento compartilhado de tentativas, migrando as expectativas anteriores de falha terminal sem perder cobertura. Sugestão: `test: define pendências e limite de retentativas da S2`.
+
+
+## S2.4 — resultado atual
+
+Pendências e falhas técnicas preservam a identidade sem autorizar cálculos desconhecidos. Subsídio não localizado preserva a atualização e bloqueia a decisão. Até três chamadas compartilham o mesmo orçamento, com histórico, reparo orientado pelos erros e tratamento de quota/credencial como falha global.
+
+Um plugin local controla transporte e chama o subgrafo validador. Não foram alteradas fórmulas nem dependências. O executor registra pendências, snapshots/hashes do plugin e arquivos válidos. Testes antigos de rejeição foram migrados, preservando a proteção contra recomendações indevidas. `npm test`: **84 aprovados**, sem skips ou chamadas reais. [Evidência](../output/s2.4-validacao.json).
+
+O aplicativo requer instalar o plugin conforme o [roteiro S2.4](../validacao/S2_4_VALIDACAO.md); esse aceite permanece pendente. Próxima tarefa: **S2.5**. Sugestão de commit: `feat: implementa pendências e retentativas auditáveis da S2.4`.

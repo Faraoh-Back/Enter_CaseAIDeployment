@@ -6,4 +6,13 @@ if (inputs.parametros.value.sem_condenacao === true) {
     beneficio_esperado_centavos: null, decisao_recurso: 'nao_recorrer', memoria: null,
   } } };
 }
-return calcularCondenacao(inputs);
+if (inputs.parametros.value.pendente) return {resultado:{type:'object',value:{
+  principal_corrigido_centavos:null,juros_centavos:null,valor_atualizado_centavos:null,
+  beneficio_esperado_centavos:null,decisao_recurso:'pendente',memoria:null}}};
+const resultado=calcularCondenacao(inputs);
+if (inputs.parametros.value.sem_decisao) {
+  resultado.resultado.value.beneficio_esperado_centavos=null;
+  resultado.resultado.value.decisao_recurso='pendente';
+  for (const key of Object.keys(resultado.resultado.value.memoria)) if (key.startsWith('beneficio_')) delete resultado.resultado.value.memoria[key];
+}
+return resultado;

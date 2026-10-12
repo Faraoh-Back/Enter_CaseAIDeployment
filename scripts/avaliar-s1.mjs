@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
-import { runGraphInFile } from '@ironclad/rivet-node';
+import { runGraphInFile } from '../src/rivet-runtime.mjs';
 import { entradasS1 } from './s1-fixture.mjs';
 
 // Avaliação de um caso: não é o executor integrado/CLI de entrega da S1.4.
@@ -22,15 +22,15 @@ console.warn = (...args) => warn(...args.map(redact));
 console.error = (...args) => logError(...args.map(redact));
 let attempts = 0, sent = 0;
 const start = Date.now();
-const evidence = { executado_em: new Date().toISOString(), escopo: 'S1.2: avaliação de uma sentença de desenvolvimento',
+const evidence = { executado_em: new Date().toISOString(), escopo: 'S2.4: avaliação de uma sentença de desenvolvimento, até três chamadas',
   node: process.version, sdk: '1.25.0', modelo_solicitado: model, custo_monetario: null,
   projeto_sha256: hash(await readFile(project)), entradas_sha256: Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, hash(v)])),
-  schema_sha256: hash(await readFile('schemas/extracao.schema.json')), erros_nos: [],
+  plugin_sha256: hash(await readFile('rivet/plugins/enter-bounded-extraction/index.js')), schema_sha256: hash(await readFile('schemas/extracao.schema.json')), erros_nos: [],
 };
 globalThis.fetch = async (url, options) => {
-  if (String(url) !== 'https://api.openai.com/v1/chat/completions' || ++attempts > 1) {
+  if (String(url) !== 'https://api.openai.com/v1/chat/completions' || ++attempts > 3) {
     controller.abort();
-    throw Object.assign(new Error('Limite de uma chamada real ou endpoint inesperado'), { code: 'S1_LIMITE' });
+    throw Object.assign(new Error('Limite de três chamadas reais ou endpoint inesperado'), { code: 'S1_LIMITE' });
   }
   const body = JSON.parse(options.body);
   evidence.parametros_enviados = { model: body.model, temperature: body.temperature, max_tokens: body.max_tokens,
@@ -41,12 +41,10 @@ globalThis.fetch = async (url, options) => {
     evidence.http_status = response.status;
     if (!response.ok) {
       evidence.erro_provedor = redact(await response.clone().text());
-      controller.abort();
     }
     return response;
   } catch (error) {
     evidence.erro_rede = redact(error.cause?.code ?? error.message);
-    controller.abort();
     throw error;
   }
 };

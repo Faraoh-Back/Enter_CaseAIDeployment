@@ -3,7 +3,7 @@ import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import standalone from 'ajv/dist/standalone/index.js';
 import { build } from 'esbuild';
-import { globalRivetNodeRegistry, loadProjectFromFile, serializeProject } from '@ironclad/rivet-node';
+import { globalRivetNodeRegistry, loadProjectFromFile, serializeProject } from '../src/rivet-runtime.mjs';
 import { entradasS1 } from './s1-fixture.mjs';
 
 const extractionSchema = JSON.parse(await readFile('schemas/extracao.schema.json', 'utf8'));
@@ -45,24 +45,27 @@ nodes.push(node('prompt', 's1_prompt', { promptText: await readFile('rivet/promp
 connect('s1_preparar', 'sentenca', 's1_prompt', 'sentenca');
 nodes.push(node('object', 's1_schema', { jsonTemplate: JSON.stringify(transportSchema(extractionSchema), null, 2) }, 840, 500, 'Schema da resposta'));
 nodes.push(node('graphInput', 'modelo', { id: 'modelo', dataType: 'string', defaultValue: 'gpt-4.1-mini-2025-04-14' }, 840, 800, 'Modelo da extração'));
-nodes.push(node('chat', 's1_extrair', { model: 'gpt-4.1-mini-2025-04-14', useModelInput: true,
+nodes.push(node('enterBoundedExtraction', 's1_extrair', { validationGraph:'s1_validacao', model: 'gpt-4.1-mini-2025-04-14', useModelInput: true,
   temperature: 0, maxTokens: 2500, responseFormat: 'json_schema', responseSchemaName: 'extracao_sentenca',
   outputUsage: true, cache: false, useAsGraphPartialOutput: false, useServerTokenCalculation: true }, 1240, 0, '3. Extrair sentença (OpenAI)'));
 connect('modelo', 'data', 's1_extrair', 'model');
+connect('s1_preparar','preparado','s1_extrair','preparado');
 connect('s1_schema', 'output', 's1_extrair', 'responseSchema');
 connect('s1_prompt', 'output', 's1_extrair', 'prompt');
-nodes.push(node('code', 's1_validar', { inputNames: ['preparado','resposta'], outputNames: ['base','extracao','parametros'], code: validation }, 1640, 300, '4. Validar evidências e preparar cálculo'));
+nodes.push(node('code', 's1_validar', { inputNames: ['preparado','resposta','controle'], outputNames: ['base','extracao','parametros','avaliacao'], code: validation }, 1640, 300, '4. Validar evidências e preparar cálculo'));
 connect('s1_preparar', 'preparado', 's1_validar', 'preparado');
 connect('s1_extrair', 'response', 's1_validar', 'resposta');
+connect('s1_extrair','controle','s1_validar','controle');
 nodes.push(node('code', 's1_calcular', { inputNames: ['parametros'], outputNames: ['resultado'], code: `function calcularCondenacao(inputs) {\n${await readFile('rivet/code/calculo-s0.js', 'utf8')}\n}\n${await readFile('rivet/code/s1/calcular.js', 'utf8')}` }, 2040, 0, '5. Calcular e decidir (BigInt)'));
 connect('s1_validar', 'parametros', 's1_calcular', 'parametros');
-nodes.push(node('code', 's1_consolidar', { inputNames: ['base','extracao','calculo','preparado','resposta','uso','modelo'],
+nodes.push(node('code', 's1_consolidar', { inputNames: ['base','extracao','calculo','preparado','resposta','uso','modelo','controle'],
   outputNames: ['processos','resumo','auditoria','relatorio_markdown'], code: consolidation }, 2440, 300, '6. Consolidar e redigir relatório'));
 for (const field of ['base','extracao']) connect('s1_validar', field, 's1_consolidar', field);
 connect('s1_calcular', 'resultado', 's1_consolidar', 'calculo');
 connect('s1_preparar', 'preparado', 's1_consolidar', 'preparado');
 connect('s1_extrair', 'response', 's1_consolidar', 'resposta');
 connect('s1_extrair', 'usage', 's1_consolidar', 'uso');
+connect('s1_extrair','controle','s1_consolidar','controle');
 connect('modelo', 'data', 's1_consolidar', 'modelo');
 for (const [index, [id, dataType]] of Object.entries({ processos: 'object[]', resumo: 'object', auditoria: 'object[]', relatorio_markdown: 'string' }).entries()) {
   nodes.push(node('graphOutput', id, { id, dataType }, 2860, index * 240));
@@ -76,7 +79,7 @@ let mainNodes = nodes;
 let mainConnections = connections;
 const portTypes = { ...Object.fromEntries(Object.keys(inputs).map(k => [k,'string'])),
   sentenca:'string', model:'string', response:'string', resposta:'string', modelo:'string',
-  preparado:'object', base:'object', extracao:'object', parametros:'object', resultado:'object',
+  controle:'object', preparado:'object', base:'object', extracao:'object', parametros:'object', resultado:'object',
   calculo:'object', usage:'object', uso:'object', processos:'object[]', resumo:'object',
   auditoria:'object[]', relatorio_markdown:'string' };
 const stages = [
@@ -119,10 +122,13 @@ for (const [stageIndex, [id,title,memberIds]] of stages.entries()) {
     .map(c=>({...c,outputNodeId:members.has(c.outputNodeId)?id:c.outputNodeId,
       inputNodeId:members.has(c.inputNodeId)?id:c.inputNodeId}));
 }
+// Contrato técnico de validação usado pelo plugin; não inclui regras de domínio no transporte.
+project.graphs.s1_validacao.nodes.push(node('graphOutput','s1_validacao_out_avaliacao',{id:'avaliacao',dataType:'object'},880,720,'Avaliação da extração'));
+project.graphs.s1_validacao.connections.push({outputNodeId:'s1_validar',outputId:'avaliacao',inputNodeId:'s1_validacao_out_avaliacao',inputId:'value'});
 const modelInput = mainNodes.find(n=>n.id==='modelo');
 modelInput.visualData = {x:0,y:1080,width:320};
 project.graphs.analisar_carteira = { metadata: { id: 'analisar_carteira', name: 'analisar_carteira',
-  description: 'S2.2: uma sentença, quatro resultados e cinco subgrafos. Defaults do caso de desenvolvimento. Run faz uma chamada à OpenAI. Lotes e pendências serão tratados em S2/S3.' }, nodes:mainNodes, connections:mainConnections };
+  description: 'S2.4: uma sentença; até três chamadas totais, validação, pendências e auditoria. Requer plugin local enter-bounded-extraction. Lotes em S3.' }, nodes:mainNodes, connections:mainConnections };
 project.metadata.mainGraphId = 'analisar_carteira';
 await writeFile(file, serializeProject(project));
 console.log('Grafo S1 gerado com cinco subgrafos. Grafo-base preservado; nenhuma chamada à LLM durante o build.');

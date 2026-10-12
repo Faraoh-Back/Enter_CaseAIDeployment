@@ -2,14 +2,15 @@
 const { memoria, ...financeiro } = inputs.calculo.value;
 const referencias = inputs.preparado.value;
 const extraction = inputs.extracao.value;
-const vitoria = ['improcedencia','extincao'].includes(extraction.resultado_sentenca);
+const vitoria = ['improcedencia','extincao'].includes(inputs.base.value.resultado_sentenca);
+const pendente = inputs.base.value.status_processamento !== 'ok';
 const processo = { ...inputs.base.value, ...financeiro,
-  motivo_decisao: vitoria ? 'sem_condenacao' : financeiro.decisao_recurso === 'recorrer' ? 'beneficio_positivo' : 'beneficio_nao_positivo' };
+  motivo_decisao: pendente ? 'revisao_necessaria' : vitoria ? 'sem_condenacao' : financeiro.decisao_recurso === 'recorrer' ? 'beneficio_positivo' : 'beneficio_nao_positivo' };
 if (!validateProcesso(processo)) throw new Error(`SAIDA_INVALIDA: processo: ${JSON.stringify(validateProcesso.errors)}`);
 const recomendar = processo.decisao_recurso === 'recorrer';
 const resumo = { data_referencia: referencias.referencia, total_identificado: 1, vitorias_confirmadas: vitoria ? 1 : 0,
-  resultados_desconhecidos: 0, condenacoes: vitoria ? 0 : 1, processos_aptos: 1, pendencias: 0,
-  passivo_centavos: processo.valor_atualizado_centavos, recursos_recomendados: recomendar ? 1 : 0,
+  resultados_desconhecidos: processo.resultado_sentenca===null ? 1 : 0, condenacoes: ['procedencia','parcial_procedencia'].includes(processo.resultado_sentenca)?1:0, processos_aptos: pendente?0:1, pendencias: pendente?1:0,
+  passivo_centavos: processo.valor_atualizado_centavos ?? 0, recursos_recomendados: recomendar ? 1 : 0,
   custo_recursos_centavos: recomendar ? processo.custo_recurso_centavos : 0,
   beneficio_esperado_recursos_centavos: recomendar ? processo.beneficio_esperado_centavos : 0 };
 if (!validateResumo(resumo)) throw new Error(`SAIDA_INVALIDA: resumo: ${JSON.stringify(validateResumo.errors)}`);
@@ -19,16 +20,24 @@ const tokens = usage && Number.isSafeInteger(usage.total_tokens) ? {
   entrada: usage.prompt_tokens, saida: usage.completion_tokens, total: usage.total_tokens,
 } : null;
 const auditoria = [{ numero_processo: processo.numero_processo, extracao: extraction,
-  resposta_original: inputs.resposta.value, indice_base: vitoria ? null : referencias.indices[extraction.mes_base_correcao].numero_indice,
-  indice_final: vitoria ? null : referencias.indices[referencias.referencia.slice(0, 7)].numero_indice,
-  tentativas: 1, versao_extrator: 's1.2-v1', modelo_solicitado: inputs.modelo.value,
+  resposta_original: inputs.resposta.value, indice_base: memoria ? referencias.indices[extraction.mes_base_correcao]?.numero_indice ?? null : null,
+  indice_final: !memoria ? null : referencias.indices[referencias.referencia.slice(0, 7)].numero_indice,
+  tentativas: inputs.controle.value.historico.length, historico_tentativas: inputs.controle.value.historico, versao_extrator: 's2.4-v1', modelo_solicitado: inputs.modelo.value,
   tokens, custo_monetario: null, memoria }];
 function reais(cents) {
   const abs = BigInt(cents < 0 ? -cents : cents);
   const whole = (abs / 100n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   return `${cents < 0 ? '-' : ''}R$ ${whole},${(abs % 100n).toString().padStart(2, '0')}`;
 }
-const report = vitoria ? [
+const report = pendente ? [
+  '# Análise de uma sentença — S2', '', `Processo: ${processo.numero_processo}. Data-base: ${resumo.data_referencia}.`,
+  `Estado: ${processo.status_processamento}. Decisão pendente de revisão.`,
+  ...processo.problemas.map(p=>`${p.codigo}: ${p.mensagem}`),
+  `Cobertura: 0/1 processo apto; 1 pendência. Resultados desconhecidos: ${resumo.resultados_desconhecidos}.`,
+  `Passivo conhecido: ${reais(resumo.passivo_centavos)}; total parcial. ${processo.valor_atualizado_centavos===null?'Esta sentença foi excluída da soma por atualização desconhecida; zero na soma não significa ausência de exposição.':'Atualização conhecida incluída; decisão de recurso excluída por falta de subsídios.'}`,
+  'Recursos recomendados: 0. Custos e benefícios somam apenas recomendações aptas; pendências foram excluídas.',
+  'Escopo: uma sentença; revisar dados antes de decidir. Estes números não representam a carteira completa.',
+].join('\n') : vitoria ? [
   '# Análise de uma sentença — S2', '',
   `Data-base: ${resumo.data_referencia}. Processo: ${processo.numero_processo}.`, '',
   `Resultado: ${processo.resultado_sentenca}. **Sem condenação** nesta sentença.`,

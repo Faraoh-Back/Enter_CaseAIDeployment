@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { runGraphInFile } from '@ironclad/rivet-node';
+import { runGraphInFile } from '../src/rivet-runtime.mjs';
 import Ajv from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { entradasS1 } from '../scripts/s1-fixture.mjs';

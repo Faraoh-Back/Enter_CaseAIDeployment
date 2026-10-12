@@ -1,6 +1,6 @@
 // Todas as interpretações e associações das referências ocorrem neste Code Node.
 function fail(message) { throw new Error(`ENTRADA_INVALIDA: ${message}`); }
-function csv(value, delimiter, headers, key) {
+function csv(value, delimiter, headers, key, allowEmpty = false) {
   const text = value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
   const rows = []; let row = [], cell = '', quoted = false, closed = false;
   for (let i = 0; i < text.length; i++) {
@@ -27,11 +27,13 @@ function csv(value, delimiter, headers, key) {
     if (!id || Object.hasOwn(map, id) || ['__proto__', 'constructor', 'prototype'].includes(id)) fail(`Chave vazia ou duplicada: ${id}`);
     map[id] = item;
   }
-  if (!Object.keys(map).length) fail('Referência vazia');
+  if (!allowEmpty && !Object.keys(map).length) fail('Referência vazia');
   return map;
 }
 const text = inputs.processos_texto.value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
 const pieces = text.split(/={20,}\nProcesso nº ([\d.\-]+)\n={20,}\n/);
+const blockIds = pieces.filter((_, i) => i % 2 === 1);
+if (new Set(blockIds).size !== blockIds.length) fail('Identidade duplicada entre blocos');
 if (pieces.length !== 3 || pieces[0].trim()) fail('S1 aceita exatamente uma sentença delimitada; nenhum lote será truncado');
 const numero = pieces[1], sentenca = pieces[2].trim();
 if (!/^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/.test(numero)) fail('Formato CNJ inválido');
@@ -60,14 +62,14 @@ for (const [status, row] of Object.entries(probabilidades)) {
   row.percentual = Number(row.probabilidade_reversao.slice(0, -1));
   if (row.percentual > 100) fail('Probabilidade acima de 100%');
 }
-const subsidios = csv(inputs.subsidios_texto.value, ',', ['numero_processo','status_subsidios'], 'numero_processo');
-if (Object.keys(subsidios).length !== 1 || !subsidios[numero]) fail('Subsídios devem corresponder exatamente à sentença recebida');
-const status = subsidios[numero].status_subsidios;
-if (!probabilidades[status]) fail('Subsídio ou probabilidade desconhecidos');
+const subsidios = csv(inputs.subsidios_texto.value, ',', ['numero_processo','status_subsidios'], 'numero_processo', true);
+if (Object.keys(subsidios).some(id => id !== numero)) fail('Subsídios devem corresponder exatamente à sentença recebida');
+const status = subsidios[numero]?.status_subsidios ?? null;
+if (status !== null && !probabilidades[status]) fail('Subsídio ou probabilidade desconhecidos');
 const tribunal = numero.split('.').slice(2, 4).join('.');
 if (!custos[tribunal]) fail('Custo do tribunal ausente');
 return {
   sentenca: { type: 'string', value: sentenca },
   preparado: { type: 'object', value: { numero, sentenca, referencia, indices, custo: custos[tribunal],
-    status_subsidios: status, probabilidade: probabilidades[status].percentual } },
+    status_subsidios: status, probabilidade: status === null ? null : probabilidades[status].percentual } },
 };

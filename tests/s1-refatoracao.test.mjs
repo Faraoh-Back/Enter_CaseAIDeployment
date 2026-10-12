@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile, mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { loadProjectFromFile } from '@ironclad/rivet-node';
+import { loadProjectFromFile } from '../src/rivet-runtime.mjs';
 import { executarS1 } from '../src/executar-s1.mjs';
 
 test('S1.5: orquestrador delega às cinco responsabilidades em subgrafos', async () => {
@@ -24,6 +24,8 @@ test('S1.5: quatro outputs permanecem equivalentes à captura anterior à refato
   const expected = structuredClone(record.outputs);
   // Replay não reporta consumo da chamada histórica como consumo atual.
   expected.auditoria[0].tokens = null;
+  expected.auditoria[0].versao_extrator = 's2.4-v1';
+  expected.auditoria[0].historico_tentativas=[{numero:1,estado:'aprovada',problemas:[],resposta_original:record.resposta_llm_original,uso:null,http_status:200}];
   for(const name of ['processos','resumo','auditoria']) {
     assert.deepEqual(JSON.parse(await readFile(path.join(diretorio,`${name}.json`))),expected[name]);
   }

@@ -118,7 +118,7 @@ Por sentença, até três tentativas totais de extração, contando falhas de tr
 | Prazo global excedido | Interromper chamadas restantes; marcar execução `interrompida`, preservar resultados já recebidos. |
 | Exportação falha | Estado `falhou`; outputs de análise preservados, sem anunciar artefato final inexistente. |
 
-Timeout, concorrência de chamadas e limites de tentativas são configuração registrada. Proposta inicial: duas chamadas simultâneas, 120 segundos por tentativa e 30 minutos por execução; revisar após medir S1. Cada caso deve receber um estado terminal na consolidação normal. Interrupções globais registram também a quantidade de casos ainda não processados.
+Timeout, concorrência de chamadas e limites de tentativas são configuração registrada. Proposta para a carteira: duas chamadas simultâneas, 120 segundos por tentativa e 30 minutos por execução; ainda não implementada. Na S2.4, uma sentença usa três tentativas, dez segundos por tentativa, quarenta segundos para extração e quarenta e cinco na CLI. Cada caso deve receber um estado terminal na consolidação normal. Interrupções globais registram também a quantidade de casos ainda não processados.
 
 ## 7. Manifesto, persistência e API
 
@@ -166,6 +166,6 @@ Vitórias válidas preservam subsídios e probabilidade do CSV como referência;
 
 Internamente, a validação transmite `{ "sem_condenacao": true }` ao subgrafo financeiro para evitar executar fórmulas de condenação. Essa sinalização não altera o contrato público nem dispensa validação semântica. O relatório de extinção esclarece que a ausência de resolução do mérito não demonstra encerramento definitivo de toda exposição. Os schemas existentes já comportam esses valores e não foram flexibilizados.
 
-## 11. Aceitação S2.3 — ainda não implementada
+## 11. Aceitação S2.3 — implementada na S2.4
 
-A [especificação testável das incertezas](../validacao/S2_3_VALIDACAO.md) distingue falhas individuais de referências globais, define os códigos de problema e o histórico de tentativas. O limite de três inclui transporte e extração, sem multiplicar retries do SDK pelos de validação. Esta seção é alvo da S2.4: o código atual permanece na S2.2 e a suíte correspondente está em vermelho.
+A [especificação testável das incertezas](../validacao/S2_3_VALIDACAO.md) distingue falhas individuais de referências globais, define os códigos de problema e o histórico de tentativas. O limite de três inclui transporte e extração, sem multiplicar retries do SDK pelos de validação. A S2.4 implementou os 20 cenários e os incorporou à suíte padrão. A auditoria `s2.4-v1` inclui histórico de todas as chamadas, resposta original, estado, problemas, uso e status HTTP. O plugin local controla transporte e chama a validação do grafo; o SDK e o aplicativo usam o mesmo código. Veja [limites efetivos, compatibilidade e instalação](../validacao/S2_4_VALIDACAO.md).

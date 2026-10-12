@@ -49,14 +49,25 @@ test('S1.4: CLI executa grafo e exportador, grava artefatos íntegros e isola ex
   assert.notEqual(first.diretorio, second.diretorio);
   assert.deepEqual(await readFile(path.join(second.diretorio, 'processos.json')), await readFile(path.join(first.diretorio, 'processos.json')));
 });
-test('S1.4: resposta rejeitada deixa manifesto falhou sem anunciar artefatos', async t => {
+test('S2.4: resposta rejeitada exporta pendências auditáveis, sem decisão ou cálculo', async t => {
   const root = await setup(t);
-  await assert.rejects(cli(root, ['--replay', '--captura', 'docs/output/s1.2-llm-rejeitada.json']), e => e.code === 1);
+  await cli(root, ['--replay', '--captura', 'docs/output/s1.2-llm-rejeitada.json']);
   const [id] = await readdir(root);
   const manifest = JSON.parse(await readFile(path.join(root,id,'manifest.json')));
-  assert.equal(manifest.estado,'falhou');
-  assert.deepEqual(manifest.artefatos,[]);
-  assert.match(JSON.stringify(manifest.erros), /Evidencia inexistente/);
+  assert.equal(manifest.estado,'concluida_com_pendencias');
+  assert.equal(manifest.requisicoes_extrator,3);
+  assert.equal(manifest.artefatos.length,5);
+  assert.deepEqual(manifest.erros,[]);
+  const [p]=JSON.parse(await readFile(path.join(root,id,'processos.json')));
+  assert.equal(p.valor_atualizado_centavos,null);assert.equal(p.decisao_recurso,'pendente');
+  assert.match(JSON.stringify(p.problemas),/Evidencia inexistente/);
+  const book=new ExcelJS.Workbook();await book.xlsx.readFile(path.join(root,id,'processos.xlsx'));
+  assert.ok(book.getWorksheet('Pendencias').actualRowCount>1);
+  const sheet=book.getWorksheet('Processos');
+  assert.equal(sheet.getCell(2,sheet.getRow(1).values.indexOf('Valor atualizado (R$)')).value,null);
+  const [audit]=JSON.parse(await readFile(path.join(root,id,'auditoria.json')));
+  assert.equal(audit.historico_tentativas.length,3);
+  assert.ok(audit.historico_tentativas.every(h=>h.estado==='extracao_invalida'));
   const response = await readFile(path.join(root,id,'extracao-resposta.txt'));
   assert.equal(createHash('sha256').update(response).digest('hex'),manifest.extracao_resposta_sha256);
 });
