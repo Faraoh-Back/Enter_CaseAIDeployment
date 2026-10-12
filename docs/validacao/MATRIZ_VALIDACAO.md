@@ -104,3 +104,7 @@ O registro final deve distinguir: teste offline, avaliação LLM de desenvolvime
 ## 5. Progresso de robustez até S2.5
 
 A [S2.5](S2_5_VALIDACAO.md) oferece evidência determinística para R02, R04, R05, R10 e R12: 122 testes verdes, incluindo fronteiras civis/monetárias, sete identidades reconciliadas e exclusões explícitas. R02 ainda exige 100/100 na carteira real; esta prova é 7/7 em desenvolvimento. O aceite final da matriz não foi antecipado: qualidade da LLM, conjunto reservado, carteira completa, aplicativo atualizado e entregáveis finais permanecem pendentes.
+
+## 6. Integração S2.6
+
+A [S2.6](S2_6_VALIDACAO.md) amplia a evidência de integridade dos artefatos: 128 testes aprovados, 7/7 identidades e reconciliação de células, totais, pendências, auditoria e relatório. O XLSX é gerado e reaberto no teste integrado. Aceite local concluído; desktop atualizado, qualidade da LLM e critérios da carteira completa permanecem pendentes.

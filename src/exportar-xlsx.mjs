@@ -86,7 +86,7 @@ export async function exportarXlsx(analise, destino) {
   for (const entry of analise.auditoria) {
     for (const [field, value] of Object.entries(entry)) {
       if (field === 'numero_processo') continue;
-      if (field === 'memoria') auditValue(entry.numero_processo, '', value);
+      if (field === 'memoria') auditValue(entry.numero_processo, value === null ? 'memoria' : '', value);
       else if (field === 'extracao') {
         for (const [key, item] of Object.entries(value)) {
           auditValue(entry.numero_processo, key === 'evidencias' ? '' : `extracao.${key}`, item);

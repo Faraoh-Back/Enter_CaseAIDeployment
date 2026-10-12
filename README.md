@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S2.5 implementada: fronteiras de calendário/dinheiro e lote misto com cobertura financeira e decisória; 122 testes offline aprovados. A CLI integrada continua individual; o grafo `analisar_lote` foi validado com sete casos. Atualize o plugin local antes do novo aceite visual, ainda pendente. [Validação e reprodução S2.5](docs/validacao/S2_5_VALIDACAO.md). Carteira completa e API ficam nas próximas tarefas.
+**Estado atual:** S2.6 implementada e validada localmente: 128 testes offline aprovados, incluindo reconciliação JSON/XLSX/Markdown de sete casos. Aceite do aplicativo atualizado ainda pendente. A CLI integrada continua individual; `s2:check` gera o lote de desenvolvimento. [Validação e reprodução S2.6](docs/validacao/S2_6_VALIDACAO.md). Carteira completa e API ficam nas próximas etapas.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -58,7 +58,7 @@ Para uma chamada real, configure `OPENAI_API_KEY` no `.env` local e rode `npm ru
 
 ## Como será utilizado
 
-A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 122 testes de S0, S1 e S2 até a S2.5; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/desenvolvimento/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
+A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 128 testes de S0, S1 e S2 até a S2.6; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/desenvolvimento/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
 
 Após a implementação e a inicialização do servidor, o contrato previsto é:
 
@@ -119,6 +119,6 @@ A documentação está organizada por finalidade em [docs/README.md](docs/README
 
 ## Fronteiras e cobertura S2.5
 
-`npm run test:s2:fronteiras` executa 25 cenários de calendário e dinheiro. `npm run test:s2:cobertura` executa 13 cenários de lote, reconciliação e exclusões. Todos integram `npm test` (122 testes).
+`npm run test:s2:fronteiras` executa 25 cenários de calendário e dinheiro. `npm run test:s2:cobertura` executa 13 cenários de lote, reconciliação e exclusões. Todos integram `npm test` (128 testes, incluindo a integração S2.6).
 
-`npm run s2:check` gera JSONs, relatório e manifesto de um lote misto de sete identidades em `outputs/s2.5/<execucao_id>/`, com transporte inteiramente simulado e sem cobrança. O grafo `analisar_lote` reutiliza a análise individual, sem omitir pendências. Veja [contratos, resultados e roteiro do aplicativo](docs/validacao/S2_5_VALIDACAO.md). A tarefa seguinte é S2.6; a CLI de produção da carteira e sua avaliação completa continuam pendentes.
+`npm run s2:check` gera JSONs, XLSX, relatório e manifesto de um lote misto de sete identidades em `outputs/s2.6/<execucao_id>/`, com transporte inteiramente simulado e sem cobrança. O grafo `analisar_lote` reutiliza a análise individual, sem omitir pendências. Veja [contratos, resultados e roteiro do aplicativo](docs/validacao/S2_5_VALIDACAO.md). A [S2.6](docs/validacao/S2_6_VALIDACAO.md) reconcilia os artefatos com `npm run test:s2:integracao`; a CLI de produção da carteira e sua avaliação completa continuam pendentes.

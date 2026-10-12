@@ -180,3 +180,7 @@ O resumo agora exige `processos_com_valor_atualizado`, `processos_sem_valor_atua
 Passivo soma os valores finais por processo; custos e benefícios somam apenas recomendações. Todas as somas monetárias usam `BigInt` e só são convertidas para número seguro no final. Estouro individual gera `erro`/`VALOR_FORA_INTERVALO` e decisão pendente; estouro agregado impede a publicação com `TOTAL_INSEGURO`. Benefício positivo arredondado a zero tem justificativa explícita também no relatório do lote.
 
 A CLI individual continua `analisar_carteira`, com manifesto `s2.5-v1`. `npm run s2:check` é uma prova offline do lote pequeno, sem se apresentar como execução final dos 100 casos. Calendário mantém a fórmula civil da seção 3; os outros dias de referência são provas do helper, sem mudar a data-base do case. [Validação S2.5](../validacao/S2_5_VALIDACAO.md).
+
+## 13. Integração S2.6
+
+O diagnóstico offline exporta os mesmos outputs do lote em JSON, XLSX e Markdown, sem recalcular regras no Node. O manifesto enumera seis artefatos, incluindo entradas e XLSX, com hashes; o formato do manifesto do executor individual não mudou. Na auditoria XLSX, memória nula é representada pelo campo `memoria` com valor vazio; frações continuam texto e dados desconhecidos não viram zero. Os seis testes de integração verificam o contrato em arquivos reabertos. [Aceite local e limites](../validacao/S2_6_VALIDACAO.md).

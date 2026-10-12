@@ -24,10 +24,13 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s2.4-validacao.json](s2.4-validacao.json) | 84 testes offline aprovados, hashes e exemplos reais do grafo com transporte simulado; aceite visual pendente. |
 | [s2.5-validacao.json](s2.5-validacao.json) | 122 testes, vermelho observado, hashes e lote misto de sete casos com transporte simulado. |
 | [s2.5-relatorio.md](s2.5-relatorio.md) | Relatório do lote misto, com exclusões financeiras e decisórias explícitas. |
+| [s2.6-validacao.json](s2.6-validacao.json) | 128 testes, reconciliação integrada, hashes e entradas prontas para aceite offline da consolidação no aplicativo. |
+| [s2.6-processos.xlsx](s2.6-processos.xlsx) | Sete processos, resumo, auditoria e pendências exportados na prova S2.6. |
+| [s2.6-relatorio.md](s2.6-relatorio.md) | Markdown da mesma execução S2.6, reconciliado com JSON e XLSX. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |
 
 Os registros anteriores são históricos: por exemplo, `s0-offline.json` ainda informa que aguardava a conferência no desktop quando foi produzido. A confirmação posterior está em `s0-aplicativo.json` e em [S0_VALIDACAO.md](../validacao/S0_VALIDACAO.md).
 
-Execuções dos comandos locais continuam gerando arquivos em `outputs/s0/`, `outputs/s1.2/` e `outputs/s1.4/`, fora do Git. `docs/output/` guarda as evidências selecionadas para revisão, com sua origem declarada; esses arquivos não são sobrescritos pelos comandos locais. A avaliação S1.2 e seus limites estão em [S1_2_VALIDACAO.md](../validacao/S1_2_VALIDACAO.md).
+Execuções dos comandos locais continuam gerando arquivos em `outputs/s0/`, `outputs/s1.2/` `outputs/s1.4/` e `outputs/s2.6/`, fora do Git. `docs/output/` guarda as evidências selecionadas para revisão, com sua origem declarada; esses arquivos não são sobrescritos pelos comandos locais. A avaliação S1.2 e seus limites estão em [S1_2_VALIDACAO.md](../validacao/S1_2_VALIDACAO.md).

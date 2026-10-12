@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0/S1 e S2.1–S2.5 concluídas no SDK, com 122 testes aprovados. Lote misto de sete casos reconciliado; novo aceite visual pendente. S2.6 e S3–S5 ainda não executadas. [Tarefas S2](desenvolvimento/S2_TASKS.md).
+**Estado:** S0/S1 e implementação local S2.1–S2.6 concluídas, com 128 testes aprovados. JSON/XLSX/Markdown do lote de sete casos reconciliados; aceite visual S2 pendente. S3–S5 ainda não executadas. [Tarefas S2](desenvolvimento/S2_TASKS.md).
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -66,7 +66,7 @@ Execução por tarefas, conforme [S2_TASKS.md](desenvolvimento/S2_TASKS.md). S2.
 - [x] **S2.3 — Vermelho:** datas ausentes/inválidas/futuras, índice ausente, CNJ divergente, subsídio desconhecido, saída malformada e duplicação de processos.
 - [x] **S2.4 — Verde:** normalização, retentativas limitadas e estados de pendência/erro; impedir recomendações baseadas em valores incompletos.
 - [x] **S2.5 — Fronteiras e cobertura:** cobrir meses completos, fronteiras de arredondamento e benefício positivo, negativo e exatamente zero; manter uma linha por processo inclusive nas falhas, com totais e cobertura mostrando exclusões.
-- [ ] **S2.6 — Refatorar e integrar:** remover regras duplicadas fora do grafo e verificar reconciliação entre JSON, planilha e relatório.
+- [x] **S2.6 — Refatorar e integrar:** responsabilidades revisadas e JSON, planilha e relatório reconciliados; 128 testes verdes. **Aceite local concluído; aplicativo pendente**, conforme [S2_6_VALIDACAO.md](validacao/S2_6_VALIDACAO.md).
 
 A S2.5 acrescenta 25 testes de fronteiras e 13 de cobertura, além de uma prova offline de lote misto: [validação e limites](validacao/S2_5_VALIDACAO.md).
 

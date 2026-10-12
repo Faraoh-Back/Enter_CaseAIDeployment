@@ -12,3 +12,5 @@
 - [S2.5 — fronteiras e cobertura](S2_5_VALIDACAO.md).
 - [Revisão do resumo-base no aplicativo](REVISAO_EXECUCAO_APLICATIVO.md).
 - [Evidências preservadas](../output/README.md).
+
+A [S2.6](S2_6_VALIDACAO.md) registra a reconciliação JSON/XLSX/Markdown, 128 testes verdes e o roteiro de aceite do aplicativo ainda pendente.

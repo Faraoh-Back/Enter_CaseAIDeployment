@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {mkdir,writeFile,readFile} from 'node:fs/promises';
 import {createHash,randomUUID} from 'node:crypto';
 import {runGraphInFile} from '../src/rivet-runtime.mjs';
+import {exportarXlsx} from '../src/exportar-xlsx.mjs';
 import {loteMisto} from '../tests/helpers/s2-lote.mjs';
 
 // Prova offline de desenvolvimento. O mock fornece anotações; não classifica documentos.
@@ -26,17 +27,18 @@ finally {globalThis.fetch=original;clearTimeout(timer);abort.abort();}
 const data=Object.fromEntries(['processos','resumo','auditoria','relatorio_markdown'].map(k=>[k,outputs[k].value]));
 assert.equal(data.processos.length,7);assert.equal(data.resumo.passivo_centavos,f.expected.passivo);
 assert.equal(data.resumo.processos_com_valor_atualizado,4);assert.equal(data.resumo.decisoes_concluidas,3);
-const dir=`outputs/s2.5/${new Date().toISOString().replace(/[:.]/g,'-')}-${randomUUID()}`;
+const dir=`outputs/s2.6/${new Date().toISOString().replace(/[:.]/g,'-')}-${randomUUID()}`;
 await mkdir(dir,{recursive:true});
 const json=v=>JSON.stringify(v,null,2)+'\n',hash=b=>createHash('sha256').update(b).digest('hex');
 await writeFile(`${dir}/entradas.json`,json(f.raw));
 for(const name of ['processos','resumo','auditoria'])await writeFile(`${dir}/${name}.json`,json(data[name]));
 await writeFile(`${dir}/relatorio.md`,data.relatorio_markdown);
-const manifest={etapa:'S2.5',modo:'offline_anotacoes_sinteticas',chamadas_reais:0,requisicoes_simuladas:calls,
+await exportarXlsx(data,`${dir}/processos.xlsx`);
+const manifest={etapa:'S2.6',modo:'offline_anotacoes_sinteticas',chamadas_reais:0,requisicoes_simuladas:calls,
   entradas_sha256:Object.fromEntries(Object.entries(f.raw).map(([k,v])=>[k,hash(v)])),
   projeto_sha256:hash(await readFile('rivet/analise_sentencas.rivet-project')),plugin_sha256:hash(await readFile('rivet/plugins/enter-bounded-extraction/index.js')),
   mutacoes:['Data de citação removida do terceiro caso e das evidências correspondentes.','Subsídio do quarto caso removido.','JSON malformado no quinto caso; HTTP 503 no sexto.'],
   resumo:data.resumo,artefatos:[]};
-for(const name of ['entradas.json','processos.json','resumo.json','auditoria.json','relatorio.md'])manifest.artefatos.push({nome:name,sha256:hash(await readFile(`${dir}/${name}`))});
+for(const name of ['entradas.json','processos.json','resumo.json','auditoria.json','relatorio.md','processos.xlsx'])manifest.artefatos.push({nome:name,sha256:hash(await readFile(`${dir}/${name}`))});
 await writeFile(`${dir}/manifest.json`,json(manifest));
 console.log(JSON.stringify({diretorio:dir,resumo:data.resumo,chamadas_reais:0},null,2));

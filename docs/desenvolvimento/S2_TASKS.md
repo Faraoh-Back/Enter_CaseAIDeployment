@@ -1,6 +1,6 @@
 # S2 — desenvolvimento por tarefa
 
-Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.5 concluída no SDK**: 122 testes aprovados, com calendário, dinheiro e lote misto de sete identidades. Novo aceite visual ainda pendente. [Validação e reprodução](../validacao/S2_5_VALIDACAO.md).
+Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.6 implementada e aceita localmente**: 128 testes aprovados e JSON/XLSX/Markdown reconciliados. Aceite visual da versão atual pendente. [Validação e reprodução](../validacao/S2_6_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
@@ -9,7 +9,7 @@ Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.5 concluída n
 | S2.3 — aceitação das incertezas | Testes de dados ausentes/inválidos/futuros, divergências, duplicatas, JSON inválido, retentativas e falhas HTTP, distinguindo falhas globais de pendências individuais. | Concluída |
 | S2.4 — pendências e retentativas | Implementar contratos de S2.3 no Rivet e ajustar limites do executor; até três tentativas totais, diagnóstico auditável e estados terminais. | Concluída no SDK |
 | S2.5 — fronteiras e cobertura | Calendário e dinheiro nas fronteiras; pequeno lote misto, uma linha por identidade, totais parciais e exclusões explícitas. | Concluída no SDK |
-| S2.6 — integração e aceite | Reconciliar JSON/XLSX/Markdown, revisar responsabilidades e contratos, reunir suítes verdes e registrar aceite local/aplicativo. | Não iniciada |
+| S2.6 — integração e aceite | Reconciliar JSON/XLSX/Markdown, revisar responsabilidades e contratos, reunir suítes verdes e registrar aceite local/aplicativo. | Implementação e aceite local concluídos; aplicativo pendente |
 
 Cada tarefa começa verificando seu escopo e termina com resultado e sugestão de commit. Caso os testes revelem uma mudança necessária no contrato, documentá-la na tarefa correspondente antes da implementação. Processamento dos 100 casos e avaliação do conjunto reservado permanecem em S3.
 
@@ -101,3 +101,9 @@ O calendário civil é compartilhado com o validador e conferido em 14 fronteira
 A primeira rodada de 30 testes teve 11 aprovados e 19 falhas observadas. A implementação e os testes complementares resultaram em **122 aprovados** na suíte padrão, sem rede ou cobrança. `npm run s2:check` gera o exemplo offline de sete identidades. O plugin local foi ampliado com execução sequencial que interrompe na primeira falha global; atualizar sua cópia no aplicativo antes do aceite visual.
 
 [Detalhes, contratos e limites](../validacao/S2_5_VALIDACAO.md). [Evidência](../output/s2.5-validacao.json). Não foi executado o lote completo nem o extrator no conjunto reservado. Próxima tarefa: **S2.6**. Commit sugerido: `feat: cobre fronteiras e consolida lote misto na S2.5`.
+
+## S2.6 — resultado atual
+
+Seis testes novos reabrem e conciliam todos os artefatos do lote de desenvolvimento. O diagnóstico passa a exportar XLSX com o mesmo exportador da CLI individual. A auditoria identifica explicitamente `memoria` nula. Revisão de responsabilidades concluída, sem deslocar regras do Rivet para Node. Primeiro vermelho: 1 aprovado e 5 falhas; final: **128 testes aprovados**, sem skips ou chamadas reais.
+
+[Validação e roteiro de aceite](../validacao/S2_6_VALIDACAO.md); [evidência](../output/s2.6-validacao.json). Aceite local concluído e visual pendente, sem antecipar S3. Sugestão: `test: reconcilia artefatos e registra aceite local da S2.6`.
