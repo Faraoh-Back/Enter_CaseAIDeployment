@@ -1,0 +1,17 @@
+{
+  "registrado_em": "2026-10-12T00:57:30.629957+00:00",
+  "diretorio_temporario": "/tmp/enter-s0-repro-az2zvfkk",
+  "instalacao": "npm ci --ignore-scripts --no-audit --no-fund",
+  "resultado_instalacao": "aprovado, 430 pacotes",
+  "build": "aprovado; hash idêntico ao workspace",
+  "testes": {
+    "comando": "npm test",
+    "aprovados": 14,
+    "falhas": 0
+  },
+  "artefatos": "npm run s0:check aprovado; XLSX reaberto",
+  "projeto_sha256": "ae5e1ad0b1d134b032bc7f0a0b0614ee50948808a687f407862f7a9695e243f7",
+  "lockfile_sha256": "ddc305194f5bd359901aec3b73b7ad6f3e3ab93ec54f20751b2ff43a42063131",
+  "credenciais_copiadas": false,
+  "llm_executada_na_reproducao": false
+}

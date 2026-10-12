@@ -1,0 +1,524 @@
+[
+  {
+    "numero_processo": "9154816-75.2024.8.26.0004",
+    "sentenca": "Processo nº 9154816-75.2024.8.26.0004\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n4ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 9154816-75.2024.8.26.0004\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação indenizatória em que a parte autora alega negativação indevida do nome em cadastro de inadimplentes, pleiteando a reparação integral dos prejuízos.\n\nA prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\n\nAnte o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de novembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (07/02/2026), incidentes sobre o valor já corrigido.\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "cd5a062e0e395b99746292abef32813bd23fdad934a6c9ac6a956b5c5a358a72",
+    "extracao_esperada": {
+      "numero_processo": "9154816-75.2024.8.26.0004",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "procedencia",
+      "danos_materiais_centavos": 290000,
+      "danos_morais_centavos": 60000,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": "2025-11",
+      "data_citacao": "2026-02-07",
+      "tema": "negativação indevida do nome em cadastro de inadimplentes",
+      "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+      "evidencias": {
+        "identificacao": "Processo nº 9154816-75.2024.8.26.0004",
+        "resultado": "Ante o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de novembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (07/02/2026), incidentes sobre o valor já corrigido.",
+        "valores": "CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais.",
+        "mes_base_correcao": "correção monetária pela tabela prática a contar de novembro de 2025 (evento danoso)",
+        "data_citacao": "desde a citação (07/02/2026)",
+        "tema": "negativação indevida do nome em cadastro de inadimplentes",
+        "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 350000,
+      "status_subsidios": "completos",
+      "meses_completos": 3,
+      "principal_corrigido_centavos": 361804,
+      "juros_centavos": 10854,
+      "valor_atualizado_centavos": 372658,
+      "probabilidade_reversao_percentual": 80,
+      "custo_recurso_centavos": 320000,
+      "beneficio_esperado_centavos": -21874,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "beneficio_nao_positivo",
+      "memoria": {
+        "total_exato_numerador": "4027213634500",
+        "total_exato_denominador": "10806727",
+        "beneficio_exato_numerador": "-109368",
+        "beneficio_exato_denominador": "5"
+      }
+    }
+  },
+  {
+    "numero_processo": "7094431-69.2024.8.26.0001",
+    "sentenca": "Processo nº 7094431-69.2024.8.26.0001\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n4ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 7094431-69.2024.8.26.0001\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação indenizatória em que a parte autora alega acidente de trânsito com danos ao veículo, pleiteando a reparação integral dos prejuízos.\n\nA prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\n\nAnte o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2024 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (13/03/2025), incidentes sobre o valor já corrigido.\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "0f3939ebbe97bf1a83f8e974d619c0bc4a3a331a5257e0a56649664b92a9ae87",
+    "extracao_esperada": {
+      "numero_processo": "7094431-69.2024.8.26.0001",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "procedencia",
+      "danos_materiais_centavos": 420000,
+      "danos_morais_centavos": 110000,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": "2024-12",
+      "data_citacao": "2025-03-13",
+      "tema": "acidente de trânsito com danos ao veículo",
+      "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+      "evidencias": {
+        "identificacao": "Processo nº 7094431-69.2024.8.26.0001",
+        "resultado": "Ante o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2024 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (13/03/2025), incidentes sobre o valor já corrigido.",
+        "valores": "CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais.",
+        "mes_base_correcao": "correção monetária pela tabela prática a contar de dezembro de 2024 (evento danoso)",
+        "data_citacao": "desde a citação (13/03/2025)",
+        "tema": "acidente de trânsito com danos ao veículo",
+        "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 530000,
+      "status_subsidios": "essenciais",
+      "meses_completos": 14,
+      "principal_corrigido_centavos": 572666,
+      "juros_centavos": 80174,
+      "valor_atualizado_centavos": 652840,
+      "probabilidade_reversao_percentual": 50,
+      "custo_recurso_centavos": 320000,
+      "beneficio_esperado_centavos": 6420,
+      "decisao_recurso": "recorrer",
+      "motivo_decisao": "beneficio_positivo",
+      "memoria": {
+        "total_exato_numerador": "6749632393800",
+        "total_exato_denominador": "10338881",
+        "beneficio_exato_numerador": "6420",
+        "beneficio_exato_denominador": "1"
+      }
+    }
+  },
+  {
+    "numero_processo": "9734703-17.2024.8.26.0001",
+    "sentenca": "Processo nº 9734703-17.2024.8.26.0001\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n4ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 9734703-17.2024.8.26.0001\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação indenizatória em que a parte autora alega cobrança indevida em fatura, pleiteando a reparação integral dos prejuízos.\n\nA prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\n\nAnte o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de março de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (05/04/2025), incidentes sobre o valor já corrigido.\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "a9e0d67156ea6b6179d59e95816852223a9a69919e6f63344294f202c75a8545",
+    "extracao_esperada": {
+      "numero_processo": "9734703-17.2024.8.26.0001",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "procedencia",
+      "danos_materiais_centavos": 640000,
+      "danos_morais_centavos": 200000,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": "2025-03",
+      "data_citacao": "2025-04-05",
+      "tema": "cobrança indevida em fatura",
+      "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+      "evidencias": {
+        "identificacao": "Processo nº 9734703-17.2024.8.26.0001",
+        "resultado": "Ante o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de março de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (05/04/2025), incidentes sobre o valor já corrigido.",
+        "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais.",
+        "mes_base_correcao": "correção monetária pela tabela prática a contar de março de 2025 (evento danoso)",
+        "data_citacao": "desde a citação (05/04/2025)",
+        "tema": "cobrança indevida em fatura",
+        "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 840000,
+      "status_subsidios": "ausentes",
+      "meses_completos": 13,
+      "principal_corrigido_centavos": 889474,
+      "juros_centavos": 115632,
+      "valor_atualizado_centavos": 1005106,
+      "probabilidade_reversao_percentual": 10,
+      "custo_recurso_centavos": 320000,
+      "beneficio_esperado_centavos": -219489,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "beneficio_nao_positivo",
+      "memoria": {
+        "total_exato_numerador": "10603692598800",
+        "total_exato_denominador": "10549829",
+        "beneficio_exato_numerador": "-1097447",
+        "beneficio_exato_denominador": "5"
+      }
+    }
+  },
+  {
+    "numero_processo": "3320821-75.2025.8.26.0004",
+    "sentenca": "Processo nº 3320821-75.2025.8.26.0004\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n2ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 3320821-75.2025.8.26.0004\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação indenizatória em que a parte autora alega interrupção injustificada do fornecimento de energia, requerendo a reparação dos prejuízos sofridos.\n\nA documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\n\nAnte o exposto, JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de setembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (16/11/2025), incidentes sobre o valor já corrigido.\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "47a37adef62ae0cc60182b916a3a3544c770efbed76c08bdff90627548364eb2",
+    "extracao_esperada": {
+      "numero_processo": "3320821-75.2025.8.26.0004",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "parcial_procedencia",
+      "danos_materiais_centavos": 350000,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": "2025-09",
+      "data_citacao": "2025-11-16",
+      "tema": "interrupção injustificada do fornecimento de energia",
+      "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.",
+      "evidencias": {
+        "identificacao": "Processo nº 3320821-75.2025.8.26.0004",
+        "resultado": "Ante o exposto, JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de setembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (16/11/2025), incidentes sobre o valor já corrigido.",
+        "valores": "CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais.",
+        "mes_base_correcao": "correção monetária pela tabela prática a contar de setembro de 2025 (evento danoso)",
+        "data_citacao": "desde a citação (16/11/2025)",
+        "tema": "interrupção injustificada do fornecimento de energia",
+        "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 350000,
+      "status_subsidios": "completos",
+      "meses_completos": 6,
+      "principal_corrigido_centavos": 364087,
+      "juros_centavos": 21845,
+      "valor_atualizado_centavos": 385932,
+      "probabilidade_reversao_percentual": 80,
+      "custo_recurso_centavos": 320000,
+      "beneficio_esperado_centavos": -11254,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "beneficio_nao_positivo",
+      "memoria": {
+        "total_exato_numerador": "828902223800",
+        "total_exato_denominador": "2147793",
+        "beneficio_exato_numerador": "-56272",
+        "beneficio_exato_denominador": "5"
+      }
+    }
+  },
+  {
+    "numero_processo": "6022741-94.2024.8.26.0001",
+    "sentenca": "Processo nº 6022741-94.2024.8.26.0001\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n2ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 6022741-94.2024.8.26.0001\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação indenizatória em que a parte autora alega interrupção injustificada do fornecimento de energia, requerendo a reparação dos prejuízos sofridos.\n\nA documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\n\nAnte o exposto, JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de outubro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (21/01/2026), incidentes sobre o valor já corrigido.\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "aea5a91192ef6606dfaedc1cbc86a7094948c16d9ece0f434e49fb7664acdff2",
+    "extracao_esperada": {
+      "numero_processo": "6022741-94.2024.8.26.0001",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "parcial_procedencia",
+      "danos_materiais_centavos": 640000,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": "2025-10",
+      "data_citacao": "2026-01-21",
+      "tema": "interrupção injustificada do fornecimento de energia",
+      "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.",
+      "evidencias": {
+        "identificacao": "Processo nº 6022741-94.2024.8.26.0001",
+        "resultado": "Ante o exposto, JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de outubro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (21/01/2026), incidentes sobre o valor já corrigido.",
+        "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.",
+        "mes_base_correcao": "correção monetária pela tabela prática a contar de outubro de 2025 (evento danoso)",
+        "data_citacao": "desde a citação (21/01/2026)",
+        "tema": "interrupção injustificada do fornecimento de energia",
+        "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 640000,
+      "status_subsidios": "essenciais",
+      "meses_completos": 4,
+      "principal_corrigido_centavos": 663768,
+      "juros_centavos": 26550,
+      "valor_atualizado_centavos": 690318,
+      "probabilidade_reversao_percentual": 50,
+      "custo_recurso_centavos": 320000,
+      "beneficio_esperado_centavos": 25159,
+      "decisao_recurso": "recorrer",
+      "motivo_decisao": "beneficio_positivo",
+      "memoria": {
+        "total_exato_numerador": "3717771699200",
+        "total_exato_denominador": "5385591",
+        "beneficio_exato_numerador": "25159",
+        "beneficio_exato_denominador": "1"
+      }
+    }
+  },
+  {
+    "numero_processo": "3871230-78.2024.8.26.0002",
+    "sentenca": "Processo nº 3871230-78.2024.8.26.0002\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n2ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 3871230-78.2024.8.26.0002\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação indenizatória em que a parte autora alega cancelamento unilateral de plano de saúde, requerendo a reparação dos prejuízos sofridos.\n\nA documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\n\nAnte o exposto, JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (27/02/2026), incidentes sobre o valor já corrigido.\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "9cd04e7b79c1974dc95e87ae392f697118718c1ef795349bb131ca80edc11795",
+    "extracao_esperada": {
+      "numero_processo": "3871230-78.2024.8.26.0002",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "parcial_procedencia",
+      "danos_materiais_centavos": 600000,
+      "danos_morais_centavos": 30000,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": "2025-12",
+      "data_citacao": "2026-02-27",
+      "tema": "cancelamento unilateral de plano de saúde",
+      "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.",
+      "evidencias": {
+        "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+        "resultado": "Ante o exposto, JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (27/02/2026), incidentes sobre o valor já corrigido.",
+        "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+        "mes_base_correcao": "correção monetária pela tabela prática a contar de dezembro de 2025 (evento danoso)",
+        "data_citacao": "desde a citação (27/02/2026)",
+        "tema": "cancelamento unilateral de plano de saúde",
+        "fundamento_decisao": "A documentação dos autos comprova parcialmente os danos alegados. Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 630000,
+      "status_subsidios": "ausentes",
+      "meses_completos": 3,
+      "principal_corrigido_centavos": 647878,
+      "juros_centavos": 19436,
+      "valor_atualizado_centavos": 667314,
+      "probabilidade_reversao_percentual": 10,
+      "custo_recurso_centavos": 320000,
+      "beneficio_esperado_centavos": -253269,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "beneficio_nao_positivo",
+      "memoria": {
+        "total_exato_numerador": "172594870050",
+        "total_exato_denominador": "258641",
+        "beneficio_exato_numerador": "-1266343",
+        "beneficio_exato_denominador": "5"
+      }
+    }
+  },
+  {
+    "numero_processo": "1325366-90.2024.8.26.0001",
+    "sentenca": "Processo nº 1325366-90.2024.8.26.0001\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n3ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 1325366-90.2024.8.26.0001\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação em que a parte autora imputa à requerida atraso de voo superior a quatro horas.\n\nEncerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\n\nAnte o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "3be539a7e188a4bd412cfbed69d322ceb1d7386977e6eb0dd47824cd83fa1493",
+    "extracao_esperada": {
+      "numero_processo": "1325366-90.2024.8.26.0001",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "improcedencia",
+      "danos_materiais_centavos": 0,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": null,
+      "data_citacao": null,
+      "tema": "atraso de voo superior a quatro horas",
+      "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.",
+      "evidencias": {
+        "identificacao": "Processo nº 1325366-90.2024.8.26.0001",
+        "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+        "valores": null,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "atraso de voo superior a quatro horas",
+        "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 0,
+      "status_subsidios": "completos",
+      "meses_completos": null,
+      "principal_corrigido_centavos": 0,
+      "juros_centavos": 0,
+      "valor_atualizado_centavos": 0,
+      "probabilidade_reversao_percentual": 80,
+      "custo_recurso_centavos": null,
+      "beneficio_esperado_centavos": null,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "sem_condenacao",
+      "memoria": null
+    }
+  },
+  {
+    "numero_processo": "9107791-86.2024.8.26.0008",
+    "sentenca": "Processo nº 9107791-86.2024.8.26.0008\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n3ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 9107791-86.2024.8.26.0008\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação em que a parte autora imputa à requerida negativação indevida do nome em cadastro de inadimplentes.\n\nEncerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\n\nAnte o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "6b51a01f39f294abd5f41b885de3e1b390d9a7e16c5b98fddc4104cd0ebad3f5",
+    "extracao_esperada": {
+      "numero_processo": "9107791-86.2024.8.26.0008",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "improcedencia",
+      "danos_materiais_centavos": 0,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": null,
+      "data_citacao": null,
+      "tema": "negativação indevida do nome em cadastro de inadimplentes",
+      "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.",
+      "evidencias": {
+        "identificacao": "Processo nº 9107791-86.2024.8.26.0008",
+        "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+        "valores": null,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "negativação indevida do nome em cadastro de inadimplentes",
+        "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 0,
+      "status_subsidios": "completos",
+      "meses_completos": null,
+      "principal_corrigido_centavos": 0,
+      "juros_centavos": 0,
+      "valor_atualizado_centavos": 0,
+      "probabilidade_reversao_percentual": 80,
+      "custo_recurso_centavos": null,
+      "beneficio_esperado_centavos": null,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "sem_condenacao",
+      "memoria": null
+    }
+  },
+  {
+    "numero_processo": "8908327-78.2025.8.26.0001",
+    "sentenca": "Processo nº 8908327-78.2025.8.26.0001\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n3ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 8908327-78.2025.8.26.0001\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação em que a parte autora imputa à requerida negativação indevida do nome em cadastro de inadimplentes.\n\nEncerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\n\nAnte o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\n\nPublique-se. Registre-se. Intimem-se.",
+    "sentenca_sha256": "8064452418451f2bb5fe8900b248d71ac5d1fc476ef7be7f4fffced4b3fed28b",
+    "extracao_esperada": {
+      "numero_processo": "8908327-78.2025.8.26.0001",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "improcedencia",
+      "danos_materiais_centavos": 0,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": null,
+      "data_citacao": null,
+      "tema": "negativação indevida do nome em cadastro de inadimplentes",
+      "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.",
+      "evidencias": {
+        "identificacao": "Processo nº 8908327-78.2025.8.26.0001",
+        "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+        "valores": null,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "negativação indevida do nome em cadastro de inadimplentes",
+        "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 0,
+      "status_subsidios": "essenciais",
+      "meses_completos": null,
+      "principal_corrigido_centavos": 0,
+      "juros_centavos": 0,
+      "valor_atualizado_centavos": 0,
+      "probabilidade_reversao_percentual": 50,
+      "custo_recurso_centavos": null,
+      "beneficio_esperado_centavos": null,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "sem_condenacao",
+      "memoria": null
+    }
+  },
+  {
+    "numero_processo": "6304573-19.2024.8.26.0008",
+    "sentenca": "Processo nº 6304573-19.2024.8.26.0008\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\nJUIZADO ESPECIAL CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 6304573-19.2024.8.26.0008\nClasse: Procedimento do Juizado Especial Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação fundada em atraso de voo superior a quatro horas.\n\nA solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\n\nAnte o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.\n\nSem custas e honorários nesta fase (art. 55 da Lei 9.099/95). Intimem-se.",
+    "sentenca_sha256": "e5d0f45fa1ba0a6c9725028ef3db1ea02cc5f3b15e578188de898c9cf9346ee5",
+    "extracao_esperada": {
+      "numero_processo": "6304573-19.2024.8.26.0008",
+      "classe_processual": "Procedimento do Juizado Especial Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "extincao",
+      "danos_materiais_centavos": 0,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": null,
+      "data_citacao": null,
+      "tema": "atraso de voo superior a quatro horas",
+      "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).",
+      "evidencias": {
+        "identificacao": "Processo nº 6304573-19.2024.8.26.0008",
+        "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+        "valores": null,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "atraso de voo superior a quatro horas",
+        "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 0,
+      "status_subsidios": "completos",
+      "meses_completos": null,
+      "principal_corrigido_centavos": 0,
+      "juros_centavos": 0,
+      "valor_atualizado_centavos": 0,
+      "probabilidade_reversao_percentual": 80,
+      "custo_recurso_centavos": null,
+      "beneficio_esperado_centavos": null,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "sem_condenacao",
+      "memoria": null
+    }
+  },
+  {
+    "numero_processo": "3094235-58.2024.8.26.0009",
+    "sentenca": "Processo nº 3094235-58.2024.8.26.0009\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\nJUIZADO ESPECIAL CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 3094235-58.2024.8.26.0009\nClasse: Procedimento do Juizado Especial Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação fundada em cobrança de tarifas bancárias não contratadas.\n\nA solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\n\nAnte o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.\n\nSem custas e honorários nesta fase (art. 55 da Lei 9.099/95). Intimem-se.",
+    "sentenca_sha256": "6452f967d76d11e65aec5d7e521c0ce98be887d2a9dcb4b99b20bc3d31a3eac9",
+    "extracao_esperada": {
+      "numero_processo": "3094235-58.2024.8.26.0009",
+      "classe_processual": "Procedimento do Juizado Especial Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "extincao",
+      "danos_materiais_centavos": 0,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": null,
+      "data_citacao": null,
+      "tema": "cobrança de tarifas bancárias não contratadas",
+      "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).",
+      "evidencias": {
+        "identificacao": "Processo nº 3094235-58.2024.8.26.0009",
+        "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+        "valores": null,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "cobrança de tarifas bancárias não contratadas",
+        "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 0,
+      "status_subsidios": "essenciais",
+      "meses_completos": null,
+      "principal_corrigido_centavos": 0,
+      "juros_centavos": 0,
+      "valor_atualizado_centavos": 0,
+      "probabilidade_reversao_percentual": 50,
+      "custo_recurso_centavos": null,
+      "beneficio_esperado_centavos": null,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "sem_condenacao",
+      "memoria": null
+    }
+  },
+  {
+    "numero_processo": "5216026-96.2025.8.26.0001",
+    "sentenca": "Processo nº 5216026-96.2025.8.26.0001\nPODER JUDICIÁRIO DO ESTADO DE São Paulo\n1ª VARA CÍVEL DA COMARCA DE São Paulo\n\nProcesso nº 5216026-96.2025.8.26.0001\nClasse: Procedimento Comum Cível\nRequerente: ******* ***** *******\nRequerido: Empresa Requerida S.A.\n\nSENTENÇA\n\nVistos.\n\nTrata-se de ação fundada em interrupção injustificada do fornecimento de energia.\n\nIntimada pessoalmente a dar andamento ao feito em 48 horas, a parte autora permaneceu inerte, configurando abandono da causa.\n\nAnte o exposto, JULGO EXTINTO o processo SEM resolução de mérito (art. 485, III, do CPC).\n\nCustas pela autora. Publique-se. Intimem-se.",
+    "sentenca_sha256": "13cb4590b092266b18df5542b2c1211970d1284cb4aed934199b4ec3a4d416a0",
+    "extracao_esperada": {
+      "numero_processo": "5216026-96.2025.8.26.0001",
+      "classe_processual": "Procedimento Comum Cível",
+      "comarca": "São Paulo",
+      "resultado_sentenca": "extincao",
+      "danos_materiais_centavos": 0,
+      "danos_morais_centavos": 0,
+      "valor_total_explicito_centavos": null,
+      "mes_base_correcao": null,
+      "data_citacao": null,
+      "tema": "interrupção injustificada do fornecimento de energia",
+      "fundamento_decisao": "Intimada pessoalmente a dar andamento ao feito em 48 horas, a parte autora permaneceu inerte, configurando abandono da causa.",
+      "evidencias": {
+        "identificacao": "Processo nº 5216026-96.2025.8.26.0001",
+        "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito (art. 485, III, do CPC).",
+        "valores": null,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "interrupção injustificada do fornecimento de energia",
+        "fundamento_decisao": "Intimada pessoalmente a dar andamento ao feito em 48 horas, a parte autora permaneceu inerte, configurando abandono da causa."
+      }
+    },
+    "calculo_esperado": {
+      "valor_condenacao_centavos": 0,
+      "status_subsidios": "ausentes",
+      "meses_completos": null,
+      "principal_corrigido_centavos": 0,
+      "juros_centavos": 0,
+      "valor_atualizado_centavos": 0,
+      "probabilidade_reversao_percentual": 10,
+      "custo_recurso_centavos": null,
+      "beneficio_esperado_centavos": null,
+      "decisao_recurso": "nao_recorrer",
+      "motivo_decisao": "sem_condenacao",
+      "memoria": null
+    }
+  }
+]

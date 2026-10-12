@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** especificação anterior à implementação. O repositório contém os insumos originais, o projeto-base da Enter, a arquitetura, os contratos e os critérios de validação. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
+**Estado atual:** S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -33,9 +33,28 @@ Node.js é o ambiente de execução no servidor. A solução usa uma única apli
 | [Schema de extração](schemas/extracao.schema.json) | Contrato formal da resposta estruturada por sentença. |
 | [Plano de execução](docs/PLANO_DE_EXECUCAO.md) | Fatias completas, critérios de saída e calendário. |
 | [Matriz de validação](docs/MATRIZ_VALIDACAO.md) | Requisitos do case, testes previstos e referências conferidas do lote. |
+| [Validação S0](docs/S0_VALIDACAO.md) | Resultados medidos e reprodução no SDK e no aplicativo. |
+| [Outputs de validação](docs/output/README.md) | Evidências preservadas das execuções e conferências. |
+| [Gabaritos](tests/fixtures/README.md) | 12 casos de desenvolvimento e 12 reservados, método de seleção e conferência. |
 | [Guia de engenharia](guia_definitivo_de_engenharia_e_arquitetura.md) | Referência metodológica, adaptada a este case. |
 
-Os materiais recebidos estão em `case/`, inclusive o PDF do enunciado, `challenge_enter.rivet-project` e os cinco arquivos de `Input/`. Esses originais são preservados. A primeira fatia preparará uma cópia de trabalho em `rivet/` e entradas com caminhos portáveis.
+Os materiais recebidos estão em `case/`, inclusive o PDF do enunciado, `challenge_enter.rivet-project` e os cinco arquivos de `Input/`. Esses originais são preservados. A cópia de trabalho está em `rivet/analise_sentencas.rivet-project`; o projeto separado `rivet/s0_compatibilidade.rivet-project` contém as provas S0 com entradas padrão embutidas e sem caminhos absolutos.
+
+## Executar a S0
+
+Com Node **20.20.2** (fixado em `.nvmrc`), na raiz do repositório:
+
+```bash
+nvm use
+npm ci --ignore-scripts
+npm run s0:build
+npm test
+npm run s0:check
+```
+
+`s0:check` grava `outputs/s0/calculo.json`, `validacao.json` e `prova.xlsx`, reabrindo a planilha para conferir as células. São artefatos da prova de integração; a carteira completa será processada em S3.
+
+Para uma chamada real, configure `OPENAI_API_KEY` no `.env` local e rode `npm run s0:llm`. Sem `LLM_MODEL`, o comando usa `gpt-4.1-mini-2025-04-14`, validado na S0. Os demais comandos acima são offline. Consulte as [instruções para o aplicativo](docs/S0_VALIDACAO.md#como-reproduzir-a-conferência-no-rivet) para reproduzir a conferência já concluída.
 
 ## Como será utilizado
 
@@ -47,7 +66,7 @@ curl -X POST http://127.0.0.1:3000/execucoes -H 'Content-Type: application/json'
 
 A resposta `202 Accepted` conterá `execucao_id` e `status_url`. O cliente consultará `GET /execucoes/{execucao_id}` e obterá os links dos arquivos concluídos. Cada execução terá um diretório próprio, evitando sobrescrever resultados anteriores.
 
-Os comandos de instalação, teste e execução serão acrescentados quando existirem e tiverem sido verificados em uma instalação limpa. A versão do Node e as dependências serão fixadas após o teste de compatibilidade com a versão Rivet utilizada.
+Os comandos da API serão acrescentados em S4 após implementação e verificação. O executor e os comandos atuais validam somente a preparação S0.
 
 ## Configuração e credenciais
 

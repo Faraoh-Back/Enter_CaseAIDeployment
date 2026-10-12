@@ -1,0 +1,144 @@
+version: 4
+data:
+  attachedData:
+    trivet:
+      testSuites: []
+      version: 1
+  graphs:
+    Rg4kP2mN8qX7vZ1wY3jBs:
+      metadata:
+        description: Lê o texto de uma sentença judicial (.txt) e retorna um resumo
+          estruturado
+        id: Rg4kP2mN8qX7vZ1wY3jBs
+        name: resumo_sentenca
+      nodes:
+        '[bD4W9kV6rH1sN5oP2mQ7j]:readFile "Read File"':
+          data:
+            asBinary: false
+            errorOnMissingFile: false
+            path: ""
+            usePathInput: true
+          outgoingConnections:
+            - content->"Prompt" iN3kQ9xP2mTv6wB8cD1fE/sentenca
+          visualData: 450.846407312502/499.1425136846661/280/15//
+        '[iN3kQ9xP2mTv6wB8cD1fE]:prompt "Prompt"':
+          data:
+            enableFunctionCall: false
+            promptText: "## Tarefa: Resumo de Sentença Judicial\r
+
+              \r
+
+              Você é um assistente especializado em análise
+              jurídica. Abaixo você receberá o texto completo de uma sentença
+              judicial. Analise-a e produza um resumo estruturado.\r
+
+              \r
+
+              ### O que incluir:\r
+
+              \r
+
+              Uma lista dos processos e decisões com três
+              elementos\r
+
+              \r
+
+              1. **Número do processo** - número classificado logo
+              no início de cada seção no formato XXXXXXX-XX.XXXX.X.XX.XXXX\r
+
+              \r
+
+              2. **Resultado do processo** — classifique como uma
+              das quatro opções abaixo (escreva exatamente assim):\r
+
+              \   - PROCEDENTE\r
+
+              \   - PARCIALMENTE PROCEDENTE\r
+
+              \   - IMPROCEDENTE\r
+
+              \   - EXTINTO SEM RESOLUÇÃO DE MÉRITO\r
+
+              \r
+
+              3. **Valor da condenação** — o valor principal
+              fixado no dispositivo da sentença, em reais.\r
+
+              \r
+
+              ### Formato de saída (siga exatamente) lista de
+              processos no formato:\r
+
+              \r
+
+              Número do processo: [Número do processo]\r
+
+              Resultado: [RESULTADO]\r
+
+              Valor da condenação: [VALOR EM REAIS OU \"Não
+              aplicável\"]\r
+
+              \r
+
+              ---\r
+
+              \r
+
+              ### Sentença:\r
+
+              \r
+
+              {{sentenca}}"
+            type: user
+            useTypeInput: false
+          outgoingConnections:
+            - output->"Chat" oR5sT7uV3wX1yZ4aB6cDE/prompt
+          visualData: 810/500/300/3//
+        '[oR5sT7uV3wX1yZ4aB6cDE]:chat "Chat"':
+          data:
+            additionalParameters: []
+            cache: false
+            enableFunctionUse: false
+            headers: []
+            maxTokens: 20000
+            model: gpt-5-mini
+            parallelFunctionCalling: true
+            stop: ""
+            temperature: 0.2
+            top_p: 1
+            useAdditionalParametersInput: false
+            useAsGraphPartialOutput: true
+            useFrequencyPenaltyInput: false
+            useMaxTokensInput: false
+            useModelInput: false
+            usePresencePenaltyInput: false
+            useStop: false
+            useStopInput: false
+            useTemperatureInput: false
+            useTopP: false
+            useTopPInput: false
+            useUseTopPInput: false
+            useUserInput: false
+          outgoingConnections:
+            - response->"Graph Output" pF2gH8iJ4kL6mN0oP9qRS/value
+          visualData: 1160/500/230/4//
+        '[pF2gH8iJ4kL6mN0oP9qRS]:graphOutput "Graph Output"':
+          data:
+            dataType: string
+            id: resumo
+          visualData: 1452.8619807187235/497.42761955681954/280/18//
+        '[xK3mNpQvR8sT6wZ2zA9cY]:text "Text"':
+          data:
+            text: /home/dev/GitPessoal/Enter_CaseAIDeployment/case/[Enter] Case Programa de
+              Estágio - AI Deployment-20261011T185318Z-1-001/[Enter] Case
+              Programa de Estágio - AI Deployment/Input/processos.txt
+          outgoingConnections:
+            - output->"Read File" bD4W9kV6rH1sN5oP2mQ7j/path
+          visualData: 2.8396657074174776/499.14253331037145/380/21//
+  metadata:
+    description: ""
+    id: eA1bC2dE3fG4hI5jK6lMn
+    mainGraphId: Rg4kP2mN8qX7vZ1wY3jBs
+    title: Resumo de Sentença
+  plugins: []
+  references: []

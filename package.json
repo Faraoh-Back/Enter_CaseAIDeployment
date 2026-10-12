@@ -1,0 +1,23 @@
+{
+  "name": "enter-case-ai-deployment",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Preparação S0: execução Rivet, contratos e exportação verificável.",
+  "engines": { "node": "20.20.2" },
+  "scripts": {
+    "s0:build": "node scripts/build-s0.mjs",
+    "s0:check": "node scripts/check-s0.mjs",
+    "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
+    "test": "node tests/s0.test.mjs"
+  },
+  "dependencies": {
+    "@ironclad/rivet-node": "1.25.0",
+    "exceljs": "4.4.0"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "esbuild": "0.19.12"
+  }
+}

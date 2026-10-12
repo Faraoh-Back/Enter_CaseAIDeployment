@@ -1,0 +1,20 @@
+{
+  "origem": "Transcrição normalizada dos 100 itens colados pelo usuário; não é captura direta do aplicativo.",
+  "escopo": "Identidade, resultado e principal nominal agregado; não avalia o contrato completo nem a atualização financeira.",
+  "hash_insumo_sha256": "71f061fe84188544c663ac9150b2bc53903ed27d923f13de9882f31d961be943",
+  "hash_transcricao_sha256": "fdf7eca02cba83fe4bd201b5c276c1b210c3a2176a811fdaf71a5fc07b21c188",
+  "total_recebido": 100,
+  "identidades_unicas": 100,
+  "duplicados": [],
+  "faltantes": [],
+  "extras": [],
+  "distribuicao": {
+    "extincao": 22,
+    "improcedencia": 26,
+    "parcial_procedencia": 17,
+    "procedencia": 35
+  },
+  "casos_com_valor": 52,
+  "principal_nominal_total_centavos": 25420000,
+  "divergencias": []
+}

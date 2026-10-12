@@ -1,6 +1,6 @@
 # Matriz de validação e referências do lote
 
-**Estado em 11/10/2026:** inspeção dos insumos realizada; testes do pipeline, avaliação LLM e execução final ainda pendentes. Os resultados abaixo são referências independentes para confrontar a solução futura, não comprovam sua implementação.
+**Estado:** S0 concluída, com inspeção dos insumos, 14 testes offline aprovados, XLSX de prova conferido, gabaritos 12 + 12 e chamadas mínimas à LLM. Os outputs dos três grafos no aplicativo também foram enviados pelo candidato e conferidos; [evidências S0](S0_VALIDACAO.md). O fluxo completo, a avaliação do extrator e a execução final continuam pendentes. As referências de carteira abaixo não são resultados do pipeline.
 
 ## 1. Requisitos e evidências de aceite
 

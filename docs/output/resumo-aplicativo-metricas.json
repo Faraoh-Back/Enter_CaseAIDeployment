@@ -1,0 +1,30 @@
+{
+  "origem": "Campos copiados do output Chat fornecido pelo usuário na conversa; sem acesso ao request original.",
+  "modelo_efetivo": null,
+  "modelo_configurado_na_copia_local": "gpt-5-mini",
+  "duration_ms": 60815,
+  "requestTokens": 28177,
+  "responseTokens": 6770,
+  "__hidden_token_count": 34947,
+  "usage": {
+    "prompt_tokens": 28177,
+    "completion_tokens": 8898,
+    "total_tokens": 37075,
+    "prompt_tokens_details": {
+      "cached_tokens": 28032,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 4672,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_cost": -162.01775,
+    "completion_cost": 0.000017795999999999997,
+    "total_cost": -162.017732204
+  },
+  "cost_recebido": -162.017732204,
+  "custo_monetario_adotado": null,
+  "motivo": "Estimativa negativa inválida; modelo/snapshot e preço efetivos não verificados."
+}

@@ -1,0 +1,32 @@
+{
+  "versao": 1,
+  "finalidade": "Fixtures de teste e avaliação; não são resultados do pipeline.",
+  "data_referencia": "2026-05-31",
+  "metodo": "Pré-anotação por redação dos dispositivos; Fraction para cálculo de referência; revisão documental descrita no README.",
+  "selecao": "3 casos por resultado em cada conjunto; cobertura de subsídios existentes; proximidade ao limiar dentro de cada estrato; caso S1 fixo no desenvolvimento; desempate por SHA-256 do CNJ.",
+  "hashes_insumos": {
+    "custo_recurso_por_tribunal.csv": "6cd9c5075e73163c1a73f4fbac493913899b45c373ceab777d3a0ff6aa074ba7",
+    "processos.txt": "71f061fe84188544c663ac9150b2bc53903ed27d923f13de9882f31d961be943",
+    "status_subsidios.txt": "3a22e20c884d69703ee3acf30eee771f83a132ea824792de56e7f4a9f9dde6c1",
+    "subsidios_probabilidade_reversao.csv": "ad1d915821a6a7ec024225cb251096efc77d44ebbc422a57a03018eaaabefa77",
+    "tabela_indices.csv": "d5d647e87d97ca2f17d1af7445b8fec97611870672a6dfb12be402ed55a7a683"
+  },
+  "hashes_conjuntos": {
+    "desenvolvimento.json": "7de435f8a6e57b01603a074f417f28c981b57d7dcf94493bf3c3cdaa752b41d0",
+    "reservado.json": "499c14466cb441422365d0960e4ec96b8cf99c599a5368b968d3a7d80e93518e"
+  },
+  "temas_controlados": [
+    "acidente de trânsito com danos ao veículo",
+    "atraso de voo superior a quatro horas",
+    "cancelamento unilateral de plano de saúde",
+    "cobrança de tarifas bancárias não contratadas",
+    "cobrança indevida em fatura",
+    "falha na prestação de serviço contratado",
+    "interrupção injustificada do fornecimento de energia",
+    "negativação indevida do nome em cadastro de inadimplentes",
+    "produto entregue em desacordo com o anunciado",
+    "vício de produto não sanado no prazo legal"
+  ],
+  "estrato_inexistente": "improcedencia / ausentes",
+  "uso_reservado": "Não executar nem usar como exemplos de prompt antes da avaliação S3; a leitura para anotação não equivale a avaliação cega independente."
+}

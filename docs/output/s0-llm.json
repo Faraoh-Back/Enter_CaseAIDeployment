@@ -1,0 +1,31 @@
+{
+  "executado_em": "2026-10-12T00:50:32.014Z",
+  "tipo": "compatibilidade minima, nao avaliacao de extracao",
+  "node": "v20.20.2",
+  "sdk": "1.25.0",
+  "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+  "custo_monetario": null,
+  "projeto_sha256": "a449bbcf918092f4d58820ea0f19cf43e2bfcc32c578317934939ae925675b72",
+  "estado": "aprovado",
+  "resposta": {
+    "numero_processo": "3871230-78.2024.8.26.0002",
+    "resultado_sentenca": "parcial_procedencia"
+  },
+  "tokens": {
+    "entrada": 378,
+    "saida": 38,
+    "total": 416
+  },
+  "duracao_ms": 865,
+  "chamadas_reais": 1,
+  "http_status": 200,
+  "parametros_enviados": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "temperature": 0,
+    "max_tokens": 256,
+    "response_format": {
+      "type": "json_object"
+    },
+    "stream": true
+  }
+}

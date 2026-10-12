@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** planejamento; tarefas de implementação ainda não executadas.
+**Estado:** S0 concluída, com validação pelo SDK e outputs do aplicativo Rivet enviados pelo candidato e conferidos. [Evidências e reprodução](S0_VALIDACAO.md). S1–S5 ainda não executadas.
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -30,14 +30,18 @@ As datas são metas de organização e os esforços são estimativas, a revisar 
 
 ## S0 — compatibilidade e preparação mínima
 
-- [ ] Preparar cópia de trabalho do `.rivet-project`, preservando os originais em `case/`.
-- [ ] Fixar uma versão compatível do Node e das dependências em arquivo de versão e lockfile.
-- [ ] Configurar a credencial fora do Git; testar uma chamada mínima e registrar modelo e parâmetros efetivamente aceitos.
-- [ ] Rodar um Code Node com cálculo racional e serialização no aplicativo e no SDK; conferir que nenhuma biblioteca externa é exigida no grafo.
-- [ ] Confirmar o caminho de outputs Rivet até XLSX; o exportador apenas formata dados já analisados.
-- [ ] Validar o schema de extração e implementar validação equivalente no grafo, com os mesmos exemplos válidos/inválidos.
-- [ ] Selecionar 12 casos estratificados para desenvolvimento e 12 casos disjuntos reservados para avaliação. Incluir os quatro resultados, composição dos danos e níveis de subsídios; reservar também casos perto do limiar econômico quando existentes.
-- [ ] Anotar os gabaritos a partir dos documentos originais e registrar como foram conferidos. Não escolher apenas os primeiros processos do arquivo.
+- [x] Preparar cópia de trabalho do `.rivet-project`, preservando os originais em `case/`.
+- [x] Fixar uma versão compatível do Node e das dependências em arquivo de versão e lockfile.
+- [x] Configurar a credencial fora do Git; testar uma chamada mínima e registrar modelo e parâmetros efetivamente aceitos.
+- [x] Rodar um Code Node com cálculo racional e serialização no aplicativo e no SDK; conferir que nenhuma biblioteca externa é exigida no grafo.
+- [x] Confirmar o caminho de outputs Rivet até XLSX; o exportador apenas formata dados já analisados.
+- [x] Validar o schema de extração e implementar validação equivalente no grafo, com os mesmos exemplos válidos/inválidos.
+- [x] Selecionar 12 casos estratificados para desenvolvimento e 12 casos disjuntos reservados para avaliação. Incluir os quatro resultados, composição dos danos e níveis de subsídios; reservar também casos perto do limiar econômico quando existentes.
+- [x] Anotar os gabaritos a partir dos documentos originais e registrar como foram conferidos. Não escolher apenas os primeiros processos do arquivo.
+
+Os outputs de `s0_calculo`, `s0_validacao` e `s0_llm` no aplicativo foram enviados pelo candidato e conferem com os resultados esperados. A [evidência do aplicativo](output/s0-aplicativo.json) encerra a S0. A revisão dos gabaritos foi assistida por IA, com origem e limites declarados em [fixtures](../tests/fixtures/README.md).
+
+O candidato também enviou uma execução do **resumo-base** no aplicativo: os 100 identificadores/resultados e os 52 valores nominais conferiram. Essa saída tem seu próprio [registro de conferência](REVISAO_EXECUCAO_APLICATIVO.md); o fechamento da S0 usa os três grafos específicos acima.
 
 **Saída:** incertezas de integração resolvidas antes de construir a API; schema e exemplos revisáveis. Se a integração falhar, registrar a causa e ajustar o modo de execução mantendo as regras no grafo.
 
@@ -63,6 +67,8 @@ As datas são metas de organização e os esforços são estimativas, a revisar 
 **Saída:** todos os casos do conjunto de desenvolvimento e os testes determinísticos passam. Evidência textual é conferida no documento, além de validar a forma do JSON.
 
 ## S3 — carteira completa e comunicação ao cliente
+
+Registrar na avaliação que os 12 reservados já apareceram na execução preliminar do resumo-base enviada pelo candidato. O novo extrator ainda não foi executado nesse conjunto; não descrever sua avaliação futura como primeira exposição dos documentos à LLM.
 
 - [ ] Processar os 100 casos; reconciliar identidades e referências, sem limites fixos de 100 no código de produção.
 - [ ] Aplicar o conjunto reservado sem novos ajustes de prompt. Se houver falha, registrar o resultado; uma nova rodada deverá declarar que o conjunto já foi visto.
