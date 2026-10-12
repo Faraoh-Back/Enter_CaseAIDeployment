@@ -1,41 +1,7 @@
-// Todas as interpretações e associações das referências ocorrem neste Code Node.
-function fail(message) { throw new Error(`ENTRADA_INVALIDA: ${message}`); }
-function csv(value, delimiter, headers, key, allowEmpty = false) {
-  const text = value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
-  const rows = []; let row = [], cell = '', quoted = false, closed = false;
-  for (let i = 0; i < text.length; i++) {
-    const char = text[i];
-    if (quoted) {
-      if (char === '"' && text[i + 1] === '"') { cell += '"'; i++; }
-      else if (char === '"') { quoted = false; closed = true; }
-      else cell += char;
-    } else if (char === delimiter || char === '\n') {
-      row.push(cell); cell = ''; closed = false;
-      if (char === '\n') { if (row.some(v => v !== '')) rows.push(row); row = []; }
-    } else if (char === '"' && cell === '' && !closed) quoted = true;
-    else if (closed || char === '"') fail('CSV com aspas inválidas');
-    else cell += char;
-  }
-  if (quoted) fail('CSV com aspas abertas');
-  if (cell !== '' || row.length || closed) { row.push(cell); rows.push(row); }
-  if (JSON.stringify(rows.shift()) !== JSON.stringify(headers)) fail(`Cabeçalho esperado: ${headers.join(delimiter)}`);
-  const map = {};
-  for (const values of rows) {
-    if (values.length !== headers.length) fail('CSV com quantidade de colunas divergente');
-    const item = Object.fromEntries(headers.map((h, i) => [h, values[i].trim()]));
-    const id = item[key];
-    if (!id || Object.hasOwn(map, id) || ['__proto__', 'constructor', 'prototype'].includes(id)) fail(`Chave vazia ou duplicada: ${id}`);
-    map[id] = item;
-  }
-  if (!allowEmpty && !Object.keys(map).length) fail('Referência vazia');
-  return map;
-}
-const text = inputs.processos_texto.value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
-const pieces = text.split(/={20,}\nProcesso nº ([\d.\-]+)\n={20,}\n/);
-const blockIds = pieces.filter((_, i) => i % 2 === 1);
-if (new Set(blockIds).size !== blockIds.length) fail('Identidade duplicada entre blocos');
-if (pieces.length !== 3 || pieces[0].trim()) fail('S1 aceita exatamente uma sentença delimitada; nenhum lote será truncado');
-const numero = pieces[1], sentenca = pieces[2].trim();
+// Preparação individual, compartilhada pelo lote. Helpers são incorporados pelo build.
+const blocos=segmentarSentencas(inputs.processos_texto.value);
+if(blocos.length!==1) fail('S1 aceita exatamente uma sentença delimitada; nenhum lote será truncado');
+const {numero,sentenca}=blocos[0];
 if (!/^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/.test(numero)) fail('Formato CNJ inválido');
 const identities = [...sentenca.matchAll(/Processo nº ([\d.\-]+)/g)].map(m => m[1]);
 if (!identities.length || identities.some(id => id !== numero)) fail('Identidade interna divergente');

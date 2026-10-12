@@ -53,7 +53,7 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
     await mkdir(destino,{recursive:true});
     directory = path.resolve(destino,id);
     await mkdir(directory);
-    manifest = { versao_contrato:'s2.4-v1', execucao_id:id, estado:'executando', modo,
+    manifest = { versao_contrato:'s2.5-v1', execucao_id:id, estado:'executando', modo,
       iniciado_em:new Date().toISOString(), encerrado_em:null, duracao_ms:null,
       node:process.version, sdk:'1.25.0', grafo:'analisar_carteira', modelo_solicitado:modelo, parametros_enviados:null,
       plugin_sha256:hash(await readFile('rivet/plugins/enter-bounded-extraction/index.js')), projeto_sha256:hash(project), schemas_sha256:Object.fromEntries(Object.entries(schemas).map(([k,v])=>[k,hash(v)])),

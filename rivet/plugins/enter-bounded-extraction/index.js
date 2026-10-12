@@ -94,6 +94,26 @@ export default function initialize(rivet) {
         }
         return {response:string(resposta),usage:object(usage),controle:object({historico,limites})};
       },
-    }});},
+    }}); register(sequentialDefinition);},
   };
 }
+
+// Adaptador genérico de subgrafos: nenhuma classificação ou fórmula financeira.
+// Split Run sequencial nativo acumula erros e continua; aqui uma falha global encerra imediatamente.
+const sequentialDefinition={displayName:'Subgrafo sequencial com interrupção',impl:{
+  create:()=>({id:'sequential-subgraph',type:'enterSequentialSubgraph',title:'Subgrafo sequencial',visualData:{x:0,y:0,width:320},data:{graphId:'analisar_carteira'}}),
+  getInputDefinitions:()=>[{id:'tarefas',title:'Entradas tipadas por chamada',dataType:'object[]',required:true}],
+  getOutputDefinitions:()=>[{id:'resultados',title:'Resultados',dataType:'object[]'}],
+  getEditors:()=>[],getBody:data=>`Subgrafo: ${data.graphId}. Sequencial; falha global interrompe.`,
+  getUIData:()=>({contextMenuTitle:'Subgrafo sequencial',group:['Advanced'],infoBoxTitle:'Subgrafo sequencial',infoBoxBody:'Executa entradas tipadas em ordem e propaga falhas sem iniciar as restantes.'}),
+  async process(data,inputs,context) {
+    const resultados=[];
+    for(const tarefa of inputs.tarefas.value) {
+      context.signal.throwIfAborted();
+      const processor=context.createSubProcessor(data.graphId,{signal:context.signal});
+      const output=await processor.processGraph(context,tarefa,context.contextValues);
+      resultados.push(Object.fromEntries(Object.entries(output).map(([key,value])=>[key,value.value])));
+    }
+    return {resultados:{type:'object[]',value:resultados}};
+  },
+}};

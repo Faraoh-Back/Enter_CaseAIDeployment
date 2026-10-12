@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S2.4 implementada: pendências, retentativas com limite conjunto de três chamadas e auditoria por tentativa; 84 testes offline aprovados. Uma sentença por execução. O aplicativo agora requer o plugin local descrito na [validação S2.4](docs/validacao/S2_4_VALIDACAO.md); seu novo aceite visual está pendente. Carteira completa e API permanecem nas próximas tarefas.
+**Estado atual:** S2.5 implementada: fronteiras de calendário/dinheiro e lote misto com cobertura financeira e decisória; 122 testes offline aprovados. A CLI integrada continua individual; o grafo `analisar_lote` foi validado com sete casos. Atualize o plugin local antes do novo aceite visual, ainda pendente. [Validação e reprodução S2.5](docs/validacao/S2_5_VALIDACAO.md). Carteira completa e API ficam nas próximas tarefas.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -58,7 +58,7 @@ Para uma chamada real, configure `OPENAI_API_KEY` no `.env` local e rode `npm ru
 
 ## Como será utilizado
 
-A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 84 testes de S0, S1 e S2 até a S2.4; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/desenvolvimento/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
+A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 122 testes de S0, S1 e S2 até a S2.5; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/desenvolvimento/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
 
 Após a implementação e a inicialização do servidor, o contrato previsto é:
 
@@ -115,3 +115,10 @@ A [S2.1](docs/desenvolvimento/S2_TASKS.md) adiciona 13 cenários offline para os
 No painel Rivet, este grafo mostra resultados nos quatro nós Graph Output; ele não grava automaticamente JSON, Markdown ou XLSX no disco. Quem grava arquivos é o comando Node, cujo resultado informa o diretório criado em `outputs/s1.4/<execucao_id>/` (ou na raiz passada com `--destino`). `--replay` usa uma captura anterior, não importa a execução recém-feita no painel. `node --env-file=.env scripts/executar-s1.mjs --real` executa novamente o grafo (até três chamadas pagas) e salva seus resultados. Os registros selecionados para revisão ficam em `docs/output/`.
 
 A documentação está organizada por finalidade em [docs/README.md](docs/README.md). O [plano](docs/PLANO_DE_EXECUCAO.md) mantém IDs em todas as tarefas. `npm run test:s2:incertezas` executa os 20 contratos da S2.3, agora verdes e incluídos em `npm test`. Consulte [implementação, resultados e instalação do plugin](docs/validacao/S2_4_VALIDACAO.md).
+
+
+## Fronteiras e cobertura S2.5
+
+`npm run test:s2:fronteiras` executa 25 cenários de calendário e dinheiro. `npm run test:s2:cobertura` executa 13 cenários de lote, reconciliação e exclusões. Todos integram `npm test` (122 testes).
+
+`npm run s2:check` gera JSONs, relatório e manifesto de um lote misto de sete identidades em `outputs/s2.5/<execucao_id>/`, com transporte inteiramente simulado e sem cobrança. O grafo `analisar_lote` reutiliza a análise individual, sem omitir pendências. Veja [contratos, resultados e roteiro do aplicativo](docs/validacao/S2_5_VALIDACAO.md). A tarefa seguinte é S2.6; a CLI de produção da carteira e sua avaliação completa continuam pendentes.

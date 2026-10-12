@@ -45,7 +45,7 @@ Data-base fixa do case: `2026-05-31`. Datas são datas civis, sem horário ou co
 
 `meses = 12 × (ano_R − ano_C) + (mes_R − mes_C) − (dia_R < dia_C ? 1 : 0)`.
 
-Exemplos até 31/05/2026: 27/02/2026 → 3 meses; 31/03/2026 → 2; 30/04/2026 → 1; 31/05/2026 → 0. Não dividir dias corridos por 30. Citação posterior à referência, mês-base posterior à referência ou índice ausente geram pendência. Validar datas reais, inclusive anos bissextos.
+Exemplos até 31/05/2026: 27/02/2026 → 3 meses; 31/03/2026 → 2; 30/04/2026 → 1; 31/05/2026 → 0. Não dividir dias corridos por 30. Citação ou mês-base posterior à referência geram pendência. Índice necessário ausente é falha global de referência. Validar datas reais, inclusive anos bissextos.
 
 Representação e cálculo:
 
@@ -169,3 +169,14 @@ Internamente, a validação transmite `{ "sem_condenacao": true }` ao subgrafo f
 ## 11. Aceitação S2.3 — implementada na S2.4
 
 A [especificação testável das incertezas](../validacao/S2_3_VALIDACAO.md) distingue falhas individuais de referências globais, define os códigos de problema e o histórico de tentativas. O limite de três inclui transporte e extração, sem multiplicar retries do SDK pelos de validação. A S2.4 implementou os 20 cenários e os incorporou à suíte padrão. A auditoria `s2.4-v1` inclui histórico de todas as chamadas, resposta original, estado, problemas, uso e status HTTP. O plugin local controla transporte e chama a validação do grafo; o SDK e o aplicativo usam o mesmo código. Veja [limites efetivos, compatibilidade e instalação](../validacao/S2_4_VALIDACAO.md).
+
+
+## 12. Fronteiras e cobertura S2.5
+
+O resumo agora exige `processos_com_valor_atualizado`, `processos_sem_valor_atualizado`, `decisoes_concluidas`, `decisoes_pendentes` e `passivo_parcial`. Cada dupla de contagens soma `total_identificado`. `passivo_parcial` representa somente a incompletude financeira; pode ser falso mesmo com decisão pendente por subsídio não localizado. Vitória validada contribui com zero conhecido.
+
+`analisar_lote` é um novo grafo que reutiliza o fluxo individual, sequencialmente. A preparação confere todas as identidades e referências antes de chamar o extrator. Falhas individuais preservam a linha; falhas globais interrompem sem iniciar os próximos itens. A consolidação exige exatamente uma linha e uma auditoria para cada identidade de entrada, na mesma ordem.
+
+Passivo soma os valores finais por processo; custos e benefícios somam apenas recomendações. Todas as somas monetárias usam `BigInt` e só são convertidas para número seguro no final. Estouro individual gera `erro`/`VALOR_FORA_INTERVALO` e decisão pendente; estouro agregado impede a publicação com `TOTAL_INSEGURO`. Benefício positivo arredondado a zero tem justificativa explícita também no relatório do lote.
+
+A CLI individual continua `analisar_carteira`, com manifesto `s2.5-v1`. `npm run s2:check` é uma prova offline do lote pequeno, sem se apresentar como execução final dos 100 casos. Calendário mantém a fórmula civil da seção 3; os outros dias de referência são provas do helper, sem mudar a data-base do case. [Validação S2.5](../validacao/S2_5_VALIDACAO.md).

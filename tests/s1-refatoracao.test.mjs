@@ -26,6 +26,8 @@ test('S1.5: quatro outputs permanecem equivalentes à captura anterior à refato
   expected.auditoria[0].tokens = null;
   expected.auditoria[0].versao_extrator = 's2.4-v1';
   expected.auditoria[0].historico_tentativas=[{numero:1,estado:'aprovada',problemas:[],resposta_original:record.resposta_llm_original,uso:null,http_status:200}];
+  Object.assign(expected.resumo,{processos_com_valor_atualizado:1,processos_sem_valor_atualizado:0,decisoes_concluidas:1,decisoes_pendentes:0,passivo_parcial:false});
+  expected.relatorio_markdown+='\nCobertura financeira: 1/1 valores atualizados conhecidos; 0 excluídos. Cobertura decisória: 1/1 decisões concluídas; 0 pendentes.';
   for(const name of ['processos','resumo','auditoria']) {
     assert.deepEqual(JSON.parse(await readFile(path.join(diretorio,`${name}.json`))),expected[name]);
   }

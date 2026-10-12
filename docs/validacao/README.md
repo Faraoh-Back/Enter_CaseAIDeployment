@@ -9,5 +9,6 @@
 - [S2.2 — quatro resultados](S2_2_VALIDACAO.md).
 - [S2.3 — aceitação das incertezas](S2_3_VALIDACAO.md).
 - [S2.4 — pendências, retentativas e plugin local](S2_4_VALIDACAO.md).
+- [S2.5 — fronteiras e cobertura](S2_5_VALIDACAO.md).
 - [Revisão do resumo-base no aplicativo](REVISAO_EXECUCAO_APLICATIVO.md).
 - [Evidências preservadas](../output/README.md).

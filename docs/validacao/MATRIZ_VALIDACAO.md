@@ -99,3 +99,8 @@ Metas: identidade e integridade estrutural em 100% dos casos; zero divergência 
 Medir acurácia por campo, completude por processo, percentual de pendências, sucesso na primeira tentativa, total de chamadas, tempo e tokens disponíveis. Relatar tamanho e composição da amostra. Se houver correção humana, preservar a saída original, o valor corrigido, a evidência e o motivo; não contar a correção como acerto automático.
 
 O registro final deve distinguir: teste offline, avaliação LLM de desenvolvimento, avaliação reservada e execução final dos 100 casos. Uma amostra perfeita não prova perfeição na carteira inteira.
+
+
+## 5. Progresso de robustez até S2.5
+
+A [S2.5](S2_5_VALIDACAO.md) oferece evidência determinística para R02, R04, R05, R10 e R12: 122 testes verdes, incluindo fronteiras civis/monetárias, sete identidades reconciliadas e exclusões explícitas. R02 ainda exige 100/100 na carteira real; esta prova é 7/7 em desenvolvimento. O aceite final da matriz não foi antecipado: qualidade da LLM, conjunto reservado, carteira completa, aplicativo atualizado e entregáveis finais permanecem pendentes.

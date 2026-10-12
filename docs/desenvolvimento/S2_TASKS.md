@@ -1,6 +1,6 @@
 # S2 — desenvolvimento por tarefa
 
-Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.4 concluída no SDK**: 84 testes aprovados, incluindo os 20 contratos da S2.3. Aceite visual do novo plugin ainda pendente. [Implementação, validação e instalação](../validacao/S2_4_VALIDACAO.md).
+Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.5 concluída no SDK**: 122 testes aprovados, com calendário, dinheiro e lote misto de sete identidades. Novo aceite visual ainda pendente. [Validação e reprodução](../validacao/S2_5_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.4 concluída n
 | S2.2 — normalizar os quatro resultados | Fazer os testes de S2.1 passarem; representar vitórias sem simular recurso, preservar condenações, resumo e relatório; incorporar testes verdes à suíte padrão. | Concluída |
 | S2.3 — aceitação das incertezas | Testes de dados ausentes/inválidos/futuros, divergências, duplicatas, JSON inválido, retentativas e falhas HTTP, distinguindo falhas globais de pendências individuais. | Concluída |
 | S2.4 — pendências e retentativas | Implementar contratos de S2.3 no Rivet e ajustar limites do executor; até três tentativas totais, diagnóstico auditável e estados terminais. | Concluída no SDK |
-| S2.5 — fronteiras e cobertura | Calendário e dinheiro nas fronteiras; pequeno lote misto, uma linha por identidade, totais parciais e exclusões explícitas. | Não iniciada |
+| S2.5 — fronteiras e cobertura | Calendário e dinheiro nas fronteiras; pequeno lote misto, uma linha por identidade, totais parciais e exclusões explícitas. | Concluída no SDK |
 | S2.6 — integração e aceite | Reconciliar JSON/XLSX/Markdown, revisar responsabilidades e contratos, reunir suítes verdes e registrar aceite local/aplicativo. | Não iniciada |
 
 Cada tarefa começa verificando seu escopo e termina com resultado e sugestão de commit. Caso os testes revelem uma mudança necessária no contrato, documentá-la na tarefa correspondente antes da implementação. Processamento dos 100 casos e avaliação do conjunto reservado permanecem em S3.
@@ -92,3 +92,12 @@ Pendências e falhas técnicas preservam a identidade sem autorizar cálculos de
 Um plugin local controla transporte e chama o subgrafo validador. Não foram alteradas fórmulas nem dependências. O executor registra pendências, snapshots/hashes do plugin e arquivos válidos. Testes antigos de rejeição foram migrados, preservando a proteção contra recomendações indevidas. `npm test`: **84 aprovados**, sem skips ou chamadas reais. [Evidência](../output/s2.4-validacao.json).
 
 O aplicativo requer instalar o plugin conforme o [roteiro S2.4](../validacao/S2_4_VALIDACAO.md); esse aceite permanece pendente. Próxima tarefa: **S2.5**. Sugestão de commit: `feat: implementa pendências e retentativas auditáveis da S2.4`.
+
+
+## S2.5 — resultado atual
+
+O calendário civil é compartilhado com o validador e conferido em 14 fronteiras. Onze vetores independentes confirmam as fórmulas financeiras existentes, sem alterá-las. `analisar_lote` executa o fluxo individual sequencialmente e reconcilia as identidades antes de consolidar. Os totais somam centavos finais seguros; exclusões financeiras e decisórias têm contagens separadas obrigatórias no schema.
+
+A primeira rodada de 30 testes teve 11 aprovados e 19 falhas observadas. A implementação e os testes complementares resultaram em **122 aprovados** na suíte padrão, sem rede ou cobrança. `npm run s2:check` gera o exemplo offline de sete identidades. O plugin local foi ampliado com execução sequencial que interrompe na primeira falha global; atualizar sua cópia no aplicativo antes do aceite visual.
+
+[Detalhes, contratos e limites](../validacao/S2_5_VALIDACAO.md). [Evidência](../output/s2.5-validacao.json). Não foi executado o lote completo nem o extrator no conjunto reservado. Próxima tarefa: **S2.6**. Commit sugerido: `feat: cobre fronteiras e consolida lote misto na S2.5`.

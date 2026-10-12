@@ -30,10 +30,7 @@ for (const [field, kind] of [['danos_materiais_centavos','materiais'],['danos_mo
 if (extraction.valor_total_explicito_centavos !== null) throw new Error('ESCOPO_S1: total explícito exige revisão; componentes são somados pelo grafo');
 const index = referencias.indices[extraction.mes_base_correcao];
 if (!index) throw new Error('REFERENCIA_AUSENTE: índice-base');
-const [year, month, day] = extraction.data_citacao.split('-').map(Number);
-const [refYear, refMonth, refDay] = referencias.referencia.split('-').map(Number);
-const meses = 12 * (refYear - year) + refMonth - month - (refDay < day ? 1 : 0);
-if (meses < 0) throw new Error('EXTRACAO_INVALIDA: citação posterior à referência');
+const meses = mesesCompletos(extraction.data_citacao, referencias.referencia);
 const total = extraction.danos_materiais_centavos + extraction.danos_morais_centavos;
 if (!Number.isSafeInteger(total) || total <= 0) throw new Error('EXTRACAO_INVALIDA: condenação deve ser positiva e segura');
 Object.assign(base, { valor_condenacao_centavos: total, meses_completos: meses, custo_recurso_centavos: referencias.custo.centavos });

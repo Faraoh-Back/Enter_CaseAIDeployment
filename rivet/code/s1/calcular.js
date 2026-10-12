@@ -9,7 +9,14 @@ if (inputs.parametros.value.sem_condenacao === true) {
 if (inputs.parametros.value.pendente) return {resultado:{type:'object',value:{
   principal_corrigido_centavos:null,juros_centavos:null,valor_atualizado_centavos:null,
   beneficio_esperado_centavos:null,decisao_recurso:'pendente',memoria:null}}};
-const resultado=calcularCondenacao(inputs);
+let resultado;
+try {resultado=calcularCondenacao(inputs);}
+catch(error) {
+  if(error.message!=='Inteiro inseguro') throw error;
+  return {resultado:{type:'object',value:{principal_corrigido_centavos:null,juros_centavos:null,valor_atualizado_centavos:null,
+    beneficio_esperado_centavos:null,decisao_recurso:'pendente',memoria:null,
+    falha_calculo:{codigo:'VALOR_FORA_INTERVALO',mensagem:'Cálculo excede o intervalo seguro de centavos; revisar antes de decidir.'}}}};
+}
 if (inputs.parametros.value.sem_decisao) {
   resultado.resultado.value.beneficio_esperado_centavos=null;
   resultado.resultado.value.decisao_recurso='pendente';

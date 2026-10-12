@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "resumo.schema.json",
-  "title": "Resumo — contrato mínimo S1.2",
-  "description": "Contagens e valores do lote aceito. S1 rejeita dados incompletos antes de consolidar; cobertura parcial será formalizada em S2.",
+  "title": "Resumo — cobertura financeira e decisória S2.5",
+  "description": "Somas de valores conhecidos, contagens e exclusões explícitas; desconhecido nunca implica exposição zero.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -16,7 +16,12 @@
     "passivo_centavos",
     "recursos_recomendados",
     "custo_recursos_centavos",
-    "beneficio_esperado_recursos_centavos"
+    "beneficio_esperado_recursos_centavos",
+    "processos_com_valor_atualizado",
+    "processos_sem_valor_atualizado",
+    "decisoes_concluidas",
+    "decisoes_pendentes",
+    "passivo_parcial"
   ],
   "properties": {
     "data_referencia": {
@@ -72,6 +77,29 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 9007199254740991
+    },
+    "processos_com_valor_atualizado": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "processos_sem_valor_atualizado": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "decisoes_concluidas": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "decisoes_pendentes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "passivo_parcial": {
+      "type": "boolean"
     }
   }
 }

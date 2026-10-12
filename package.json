@@ -11,7 +11,7 @@
     "s0:build": "node scripts/build-s0.mjs",
     "s0:check": "node scripts/check-s0.mjs",
     "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
-    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte",
+    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte && npm run test:s2:fronteiras && npm run test:s2:cobertura",
     "test:s2:incertezas": "node tests/s2-incertezas.test.mjs",
     "test:s2": "node tests/s2-resultados.test.mjs",
     "test:s0": "node tests/s0.test.mjs",
@@ -23,7 +23,10 @@
     "s1:build": "node scripts/build-s1.mjs",
     "test:s1:grafo": "node tests/s1-grafo.test.mjs",
     "s1:avaliar": "node --env-file=.env scripts/avaliar-s1.mjs",
-    "test:s2:transporte": "node tests/s2-transporte.test.mjs"
+    "test:s2:transporte": "node tests/s2-transporte.test.mjs",
+    "test:s2:fronteiras": "node tests/s2-fronteiras.test.mjs",
+    "test:s2:cobertura": "node tests/s2-cobertura.test.mjs",
+    "s2:check": "node scripts/check-s2-5.mjs"
   },
   "dependencies": {
     "@ironclad/rivet-node": "1.25.0",

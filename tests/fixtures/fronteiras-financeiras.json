@@ -1,0 +1,258 @@
+{
+  "origem": "Oráculo Python fractions.Fraction; casos sintéticos, sem conjunto reservado.",
+  "casos": [
+    {
+      "nome": "principal abaixo de meio centavo",
+      "parametros": {
+        "condenacao_centavos": 1,
+        "indice_base": "10000",
+        "indice_final": "14999",
+        "meses": 0,
+        "probabilidade_percentual": 100,
+        "custo_centavos": 0
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 1,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 1,
+        "beneficio_esperado_centavos": 1,
+        "decisao_recurso": "recorrer"
+      },
+      "total_exato": {
+        "numerador": "14999",
+        "denominador": "10000"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "principal exatamente em meio centavo",
+      "parametros": {
+        "condenacao_centavos": 1,
+        "indice_base": "10000",
+        "indice_final": "15000",
+        "meses": 0,
+        "probabilidade_percentual": 100,
+        "custo_centavos": 0
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 2,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 2,
+        "beneficio_esperado_centavos": 2,
+        "decisao_recurso": "recorrer"
+      },
+      "total_exato": {
+        "numerador": "3",
+        "denominador": "2"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "principal acima de meio centavo",
+      "parametros": {
+        "condenacao_centavos": 1,
+        "indice_base": "10000",
+        "indice_final": "15001",
+        "meses": 0,
+        "probabilidade_percentual": 100,
+        "custo_centavos": 0
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 2,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 2,
+        "beneficio_esperado_centavos": 2,
+        "decisao_recurso": "recorrer"
+      },
+      "total_exato": {
+        "numerador": "15001",
+        "denominador": "10000"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "sem arredondamento intermediário",
+      "parametros": {
+        "condenacao_centavos": 1,
+        "indice_base": "10000",
+        "indice_final": "14900",
+        "meses": 1,
+        "probabilidade_percentual": 100,
+        "custo_centavos": 0
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 1,
+        "juros_centavos": 1,
+        "valor_atualizado_centavos": 2,
+        "beneficio_esperado_centavos": 2,
+        "decisao_recurso": "recorrer"
+      },
+      "total_exato": {
+        "numerador": "15049",
+        "denominador": "10000"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "benefício positivo residual",
+      "parametros": {
+        "condenacao_centavos": 11,
+        "indice_base": "1",
+        "indice_final": "1",
+        "meses": 0,
+        "probabilidade_percentual": 10,
+        "custo_centavos": 1
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 11,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 11,
+        "beneficio_esperado_centavos": 0,
+        "decisao_recurso": "recorrer"
+      },
+      "total_exato": {
+        "numerador": "11",
+        "denominador": "1"
+      },
+      "residual_positivo": true
+    },
+    {
+      "nome": "benefício negativo residual",
+      "parametros": {
+        "condenacao_centavos": 9,
+        "indice_base": "1",
+        "indice_final": "1",
+        "meses": 0,
+        "probabilidade_percentual": 10,
+        "custo_centavos": 1
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 9,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 9,
+        "beneficio_esperado_centavos": 0,
+        "decisao_recurso": "nao_recorrer"
+      },
+      "total_exato": {
+        "numerador": "9",
+        "denominador": "1"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "benefício exatamente zero",
+      "parametros": {
+        "condenacao_centavos": 10,
+        "indice_base": "1",
+        "indice_final": "1",
+        "meses": 0,
+        "probabilidade_percentual": 10,
+        "custo_centavos": 1
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 10,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 10,
+        "beneficio_esperado_centavos": 0,
+        "decisao_recurso": "nao_recorrer"
+      },
+      "total_exato": {
+        "numerador": "10",
+        "denominador": "1"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "benefício em meio centavo positivo",
+      "parametros": {
+        "condenacao_centavos": 1,
+        "indice_base": "1",
+        "indice_final": "1",
+        "meses": 0,
+        "probabilidade_percentual": 50,
+        "custo_centavos": 0
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 1,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 1,
+        "beneficio_esperado_centavos": 1,
+        "decisao_recurso": "recorrer"
+      },
+      "total_exato": {
+        "numerador": "1",
+        "denominador": "1"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "benefício em meio centavo negativo",
+      "parametros": {
+        "condenacao_centavos": 1,
+        "indice_base": "1",
+        "indice_final": "1",
+        "meses": 0,
+        "probabilidade_percentual": 50,
+        "custo_centavos": 1
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 1,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 1,
+        "beneficio_esperado_centavos": -1,
+        "decisao_recurso": "nao_recorrer"
+      },
+      "total_exato": {
+        "numerador": "1",
+        "denominador": "1"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "índices iguais e probabilidade zero",
+      "parametros": {
+        "condenacao_centavos": 630000,
+        "indice_base": "1",
+        "indice_final": "1",
+        "meses": 3,
+        "probabilidade_percentual": 0,
+        "custo_centavos": 320000
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 630000,
+        "juros_centavos": 18900,
+        "valor_atualizado_centavos": 648900,
+        "beneficio_esperado_centavos": -320000,
+        "decisao_recurso": "nao_recorrer"
+      },
+      "total_exato": {
+        "numerador": "648900",
+        "denominador": "1"
+      },
+      "residual_positivo": false
+    },
+    {
+      "nome": "limite superior inteiro seguro",
+      "parametros": {
+        "condenacao_centavos": 9007199254740991,
+        "indice_base": "1",
+        "indice_final": "1",
+        "meses": 0,
+        "probabilidade_percentual": 100,
+        "custo_centavos": 0
+      },
+      "esperado": {
+        "principal_corrigido_centavos": 9007199254740991,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 9007199254740991,
+        "beneficio_esperado_centavos": 9007199254740991,
+        "decisao_recurso": "recorrer"
+      },
+      "total_exato": {
+        "numerador": "9007199254740991",
+        "denominador": "1"
+      },
+      "residual_positivo": false
+    }
+  ]
+}

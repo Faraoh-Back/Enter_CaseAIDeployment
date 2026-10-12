@@ -4,6 +4,7 @@ import addFormats from 'ajv-formats';
 import standalone from 'ajv/dist/standalone/index.js';
 import { build } from 'esbuild';
 import { globalRivetNodeRegistry, loadProjectFromFile, serializeProject } from '../src/rivet-runtime.mjs';
+import { addS2Graphs } from './build-s2.mjs';
 import { entradasS1 } from './s1-fixture.mjs';
 
 const extractionSchema = JSON.parse(await readFile('schemas/extracao.schema.json', 'utf8'));
@@ -16,12 +17,16 @@ async function compile(schema, name) {
     bundle: true, write: false, platform: 'browser', format: 'iife', globalName: name, target: 'es2020' });
   return bundled.outputFiles[0].text;
 }
-const validation = await compile(extractionSchema, 'validateSchema')
+const calendar=await readFile('rivet/code/comum/calendario.js','utf8');
+const entryHelpers=await readFile('rivet/code/comum/entradas.js','utf8');
+const preparation=await readFile('rivet/code/s1/preparar.js','utf8');
+const validation = calendar + await compile(extractionSchema, 'validateSchema')
   + `\nfunction validarSemanticaS0(inputs) {\n${await readFile('rivet/code/validacao-s0.js', 'utf8')}\n}\n`
   + await readFile('rivet/code/s1/validar.js', 'utf8');
-const consolidation = await compile(JSON.parse(await readFile('schemas/processo.schema.json', 'utf8')), 'validateProcesso')
+const summary = await compile(JSON.parse(await readFile('schemas/processo.schema.json', 'utf8')), 'validateProcesso')
   + await compile(JSON.parse(await readFile('schemas/resumo.schema.json', 'utf8')), 'validateResumo')
-  + await readFile('rivet/code/s1/consolidar.js', 'utf8');
+  + await readFile('rivet/code/comum/resumo.js', 'utf8');
+const consolidation=summary+await readFile('rivet/code/s1/consolidar.js','utf8');
 // Schema de transporte derivado, com a estrutura estrita. Restrições completas são aplicadas pelo Ajv no grafo.
 function transportSchema(value) {
   if (Array.isArray(value)) return value.map(transportSchema);
@@ -39,7 +44,7 @@ const inputs = await entradasS1();
 const nodes = Object.entries(inputs).map(([id, defaultValue], index) => node('graphInput', id, { id, dataType: 'string', defaultValue }, 0, index * 180));
 const connections = [];
 function connect(from, outputId, to, inputId) { connections.push({ outputNodeId: from, outputId, inputNodeId: to, inputId }); }
-nodes.push(node('code', 's1_preparar', { inputNames: Object.keys(inputs), outputNames: ['preparado','sentenca'], code: await readFile('rivet/code/s1/preparar.js', 'utf8') }, 440, 300, '1. Conferir sentença e referências'));
+nodes.push(node('code', 's1_preparar', { inputNames: Object.keys(inputs), outputNames: ['preparado','sentenca'], code: entryHelpers+preparation }, 440, 300, '1. Conferir sentença e referências'));
 for (const id of Object.keys(inputs)) connect(id, 'data', 's1_preparar', id);
 nodes.push(node('prompt', 's1_prompt', { promptText: await readFile('rivet/prompts/extracao-s1.txt', 'utf8'), type: 'user' }, 840, 0, '2. Instruções de extração'));
 connect('s1_preparar', 'sentenca', 's1_prompt', 'sentenca');
@@ -128,7 +133,8 @@ project.graphs.s1_validacao.connections.push({outputNodeId:'s1_validar',outputId
 const modelInput = mainNodes.find(n=>n.id==='modelo');
 modelInput.visualData = {x:0,y:1080,width:320};
 project.graphs.analisar_carteira = { metadata: { id: 'analisar_carteira', name: 'analisar_carteira',
-  description: 'S2.4: uma sentença; até três chamadas totais, validação, pendências e auditoria. Requer plugin local enter-bounded-extraction. Lotes em S3.' }, nodes:mainNodes, connections:mainConnections };
+  description: 'S2.4: uma sentença; até três chamadas totais, validação, pendências e auditoria. Requer plugin local enter-bounded-extraction. Lote pequeno disponível em analisar_lote (S2.5); carteira completa em S3.' }, nodes:mainNodes, connections:mainConnections };
+await addS2Graphs({project,node,inputs,preparation,entryHelpers,calendar,summary});
 project.metadata.mainGraphId = 'analisar_carteira';
 await writeFile(file, serializeProject(project));
 console.log('Grafo S1 gerado com cinco subgrafos. Grafo-base preservado; nenhuma chamada à LLM durante o build.');

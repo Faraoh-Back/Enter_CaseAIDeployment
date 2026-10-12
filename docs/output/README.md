@@ -22,6 +22,8 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s2.2-validacao.json](s2.2-validacao.json) | 56 testes aprovados e exemplos de outputs para improcedência e extinção, com LLM simulada. |
 | [s2.3-vermelho.json](s2.3-vermelho.json) | 20 cenários de incerteza: 5 aprovados, 15 falhas e regressão anterior verde. |
 | [s2.4-validacao.json](s2.4-validacao.json) | 84 testes offline aprovados, hashes e exemplos reais do grafo com transporte simulado; aceite visual pendente. |
+| [s2.5-validacao.json](s2.5-validacao.json) | 122 testes, vermelho observado, hashes e lote misto de sete casos com transporte simulado. |
+| [s2.5-relatorio.md](s2.5-relatorio.md) | Relatório do lote misto, com exclusões financeiras e decisórias explícitas. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |
