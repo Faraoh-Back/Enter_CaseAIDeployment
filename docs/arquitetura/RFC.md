@@ -14,7 +14,7 @@ O cliente precisa conhecer o êxito da carteira, o impacto das condenações e o
 
 O enunciado exige que todo o fluxo de análise seja construído na Rivet. A API é uma facilidade para iniciar e acompanhar esse fluxo. A prioridade de entrega é: projeto Rivet funcional, dados corretos, relatório útil, reprodução e acabamento.
 
-A inspeção do lote identificou 100 processos únicos: 35 procedências, 17 procedências parciais, 26 improcedências e 22 extinções. Todos são do TJSP e da comarca de São Paulo. As 52 condenações têm mês-base e citação explícitos. As contagens e suas limitações estão na [matriz de validação](MATRIZ_VALIDACAO.md).
+A inspeção do lote identificou 100 processos únicos: 35 procedências, 17 procedências parciais, 26 improcedências e 22 extinções. Todos são do TJSP e da comarca de São Paulo. As 52 condenações têm mês-base e citação explícitos. As contagens e suas limitações estão na [matriz de validação](../validacao/MATRIZ_VALIDACAO.md).
 
 ### 1.2 Arquitetura e responsabilidades
 
@@ -76,7 +76,7 @@ Senso de urgência significa antecipar uma sentença completa funcionando. Deliv
 
 ### 2.1 Contratos e modelo de dados
 
-Os detalhes normativos ficam em [CONTRATOS.md](CONTRATOS.md) e no [schema de extração](../schemas/extracao.schema.json). Todo número de processo permanece string. Os enums são fechados e campos inesperados são rejeitados. `null` representa informação desconhecida ou não aplicável conforme o resultado; zero só representa ausência de condenação ou componente não concedido após validação.
+Os detalhes normativos ficam em [CONTRATOS.md](CONTRATOS.md) e no [schema de extração](../../schemas/extracao.schema.json). Todo número de processo permanece string. Os enums são fechados e campos inesperados são rejeitados. `null` representa informação desconhecida ou não aplicável conforme o resultado; zero só representa ausência de condenação ou componente não concedido após validação.
 
 ```mermaid
 erDiagram
@@ -168,6 +168,6 @@ Apresentar resultado geral, improcedência e extinção separadas, impacto finan
 
 Por execução, preservar hashes de insumos/projeto/schema, modelo e configuração efetiva, tentativas, tempos, tokens quando disponíveis, outputs e falhas. Uso de modelo fixado melhora rastreabilidade, mas não garante repetibilidade idêntica da extração. Reprocessar outputs capturados deve produzir cálculos e decisões idênticos.
 
-Os [critérios de aceite](MATRIZ_VALIDACAO.md) incluem cobertura, confronto com gabarito, integridade monetária, execução no aplicativo e pelo SDK, e reprodução do ZIP. Créditos da chave, acesso ao modelo e versões compatíveis ainda precisam ser verificados. Chamadas de teste não são evidência de execução dos 100 casos.
+Os [critérios de aceite](../validacao/MATRIZ_VALIDACAO.md) incluem cobertura, confronto com gabarito, integridade monetária, execução no aplicativo e pelo SDK, e reprodução do ZIP. Créditos da chave, acesso ao modelo e versões compatíveis ainda precisam ser verificados. Chamadas de teste não são evidência de execução dos 100 casos.
 
 API e arquivos locais destinam-se à avaliação em uma máquina. Distribuição, múltiplos usuários e infraestrutura de produção ficam para evolução. A meta interna é concluir os artefatos em 15/10; a entrega externa foi informada como 16/10/2026 às 23:59, sem fuso explícito.

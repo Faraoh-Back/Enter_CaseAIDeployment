@@ -21,7 +21,7 @@ O vocabulário controlado de temas contém as dez descrições encontradas nos i
 
 Até S3, não executar o novo extrator completo nos processos reservados nem usá-los como exemplos para ajustar prompts. A checagem de integridade das fixtures não mede a qualidade do extrator. A leitura necessária à anotação foi declarada; este conjunto é reservado para avaliação, sem alegação de estudo cego ou de revisão independente.
 
-**Exposição posterior à preparação:** o candidato executou o resumo-base nos 100 processos e compartilhou os resultados. Os 12 reservados estão incluídos, de modo que já houve exposição à LLM e conferência de identidade, resultado e principal. O extrator completo ainda não foi avaliado nesse conjunto. Preservar essa distinção na rodada S3, conforme o [registro da execução](../../docs/REVISAO_EXECUCAO_APLICATIVO.md), sem apresentar os casos como inéditos para a LLM. O manifesto original registra a intenção na preparação; este registro posterior declara o desvio observado.
+**Exposição posterior à preparação:** o candidato executou o resumo-base nos 100 processos e compartilhou os resultados. Os 12 reservados estão incluídos, de modo que já houve exposição à LLM e conferência de identidade, resultado e principal. O extrator completo ainda não foi avaliado nesse conjunto. Preservar essa distinção na rodada S3, conforme o [registro da execução](../../docs/validacao/REVISAO_EXECUCAO_APLICATIVO.md), sem apresentar os casos como inéditos para a LLM. O manifesto original registra a intenção na preparação; este registro posterior declara o desvio observado.
 
 As fixtures já estão versionáveis. Para regenerá-las deliberadamente, com Python 3 e sem dependências adicionais:
 

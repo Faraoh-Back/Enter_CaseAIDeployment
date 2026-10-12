@@ -1,6 +1,6 @@
 # S1.3 — exportação XLSX
 
-O adaptador [exportar-xlsx.mjs](../src/exportar-xlsx.mjs) materializa os outputs desempacotados do Rivet em quatro abas. A interface é `await exportarXlsx(analise, destino)`. O diretório deve existir e o destino não pode existir. O exportador não modifica a entrada nem calcula indicadores, juros ou decisões; converte centavos em reais apenas para apresentação.
+O adaptador [exportar-xlsx.mjs](../../src/exportar-xlsx.mjs) materializa os outputs desempacotados do Rivet em quatro abas. A interface é `await exportarXlsx(analise, destino)`. O diretório deve existir e o destino não pode existir. O exportador não modifica a entrada nem calcula indicadores, juros ou decisões; converte centavos em reais apenas para apresentação.
 
 ## Conteúdo
 
@@ -26,9 +26,9 @@ Primeiro foram adicionados sete testes, que falharam por ausência do módulo. D
 | `npm run test:s1` | 2/2 aprovados, incluindo o teste XLSX antes vermelho |
 | `npm run test:s1:xlsx` | 7/7 aprovados |
 
-Os testes [s1-xlsx.test.mjs](../tests/s1-xlsx.test.mjs) reabrem arquivos reais com ExcelJS e verificam centavos, benefício negativo, índices e evidências, imutabilidade, indicador de resumo deliberadamente diferente da linha (para detectar recálculo), nulo versus zero, pendências, textos semelhantes a fórmulas, precisão monetária, limite textual, preservação de arquivo existente e propagação de erro de escrita. Os diretórios temporários são removidos após cada teste.
+Os testes [s1-xlsx.test.mjs](../../tests/s1-xlsx.test.mjs) reabrem arquivos reais com ExcelJS e verificam centavos, benefício negativo, índices e evidências, imutabilidade, indicador de resumo deliberadamente diferente da linha (para detectar recálculo), nulo versus zero, pendências, textos semelhantes a fórmulas, precisão monetária, limite textual, preservação de arquivo existente e propagação de erro de escrita. Os diretórios temporários são removidos após cada teste.
 
-A [planilha revisável](output/s1.3-processos.xlsx) foi gerada da [captura real aprovada na S1.2](output/s1.2-llm-aprovada.json), sem nova chamada à OpenAI. A [evidência de reabertura](output/s1.3-xlsx.json) registra origem, hashes, abas e valores lidos: atualizado **R$ 6.673,14**, benefício **−R$ 2.532,69**. Conferência automatizada com ExcelJS; não foi realizada inspeção visual no Excel/LibreOffice.
+A [planilha revisável](../output/s1.3-processos.xlsx) foi gerada da [captura real aprovada na S1.2](../output/s1.2-llm-aprovada.json), sem nova chamada à OpenAI. A [evidência de reabertura](../output/s1.3-xlsx.json) registra origem, hashes, abas e valores lidos: atualizado **R$ 6.673,14**, benefício **−R$ 2.532,69**. Conferência automatizada com ExcelJS; não foi realizada inspeção visual no Excel/LibreOffice.
 
 ## Reprodução isolada
 

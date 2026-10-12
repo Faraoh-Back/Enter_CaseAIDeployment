@@ -1,6 +1,6 @@
 # S1 — desenvolvimento por tarefa
 
-Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi desenvolvida somente **S1.5**. A refatoração, a validação local e o aceite informado pelo candidato estão concluídos; [registro posterior](output/s1.5-aceite.json). Consulte [implementação e roteiro de aceite](S1_5_VALIDACAO.md).
+Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi desenvolvida somente **S1.5**. A refatoração, a validação local e o aceite informado pelo candidato estão concluídos; [registro posterior](../output/s1.5-aceite.json). Consulte [implementação e roteiro de aceite](../validacao/S1_5_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
@@ -12,7 +12,7 @@ Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assist
 
 ## S1.1: o que os testes exigem
 
-Arquivo: [tests/s1.test.mjs](../tests/s1.test.mjs). Caso único: `3871230-78.2024.8.26.0002`. O conjunto reservado não é usado.
+Arquivo: [tests/s1.test.mjs](../../tests/s1.test.mjs). Caso único: `3871230-78.2024.8.26.0002`. O conjunto reservado não é usado.
 
 **Teste do grafo:** chama o projeto real `rivet/analise_sentencas.rivet-project`, grafo público `analisar_carteira`. Envia uma sentença recortada dos originais, a linha correspondente de subsídios, os três CSVs de referência e `data_referencia=2026-05-31`. O recorte só prepara a entrada do teste; a interpretação e os cálculos devem acontecer no grafo.
 
@@ -33,7 +33,7 @@ O arquivo é gerado em diretório temporário exclusivo, reaberto com ExcelJS e 
 
 ## Contrato mínimo observável definido nesta tarefa
 
-Os Graph Outputs mantêm os nomes dos [contratos gerais](CONTRATOS.md): `processos` (lista), `resumo` (objeto), `auditoria` (lista) e `relatorio_markdown` (string).
+Os Graph Outputs mantêm os nomes dos [contratos gerais](../arquitetura/CONTRATOS.md): `processos` (lista), `resumo` (objeto), `auditoria` (lista) e `relatorio_markdown` (string).
 
 O teste exige os campos de processo já definidos na seção 5 dos contratos. Para tornar o resumo verificável, os nomes mínimos desta fatia são:
 
@@ -78,14 +78,14 @@ O comando S1 termina com erro de verdade; não há `skip`, `todo` ou inversão p
 
 Na S1.1, os asserts posteriores aos pontos ausentes ainda não haviam sido exercitados contra uma implementação. As falhas observadas comprovam o estágio vermelho, não que o fluxo esteja pronto. As pré-condições do primeiro teste conferiram o exemplo contra o schema, os trechos originais e o gabarito financeiro independente antes da falha por grafo ausente.
 
-Resultado registrado em [s1.1-vermelho.json](output/s1.1-vermelho.json). Sugestão de commit para esta tarefa: `test: define aceitação da S1 para uma condenação`.
+Resultado registrado em [s1.1-vermelho.json](../output/s1.1-vermelho.json). Sugestão de commit para esta tarefa: `test: define aceitação da S1 para uma condenação`.
 
 ## Estado após S1.2
 
 - `npm test`: 14/14 aprovados (S0).
 - `npm run test:s1:grafo`: 11/11 aprovados (schemas, cruzamentos e rejeições, incluindo resposta real não literal).
 - `npm run test:s1`: teste do grafo aprovado; teste XLSX ainda falha por módulo ausente, aguardando S1.3. Saída 1 intencionalmente preservada.
-- Avaliação real: uma resposta rejeitada e, após ajuste do prompt, uma aprovada; detalhes e limites em [S1_2_VALIDACAO.md](S1_2_VALIDACAO.md).
+- Avaliação real: uma resposta rejeitada e, após ajuste do prompt, uma aprovada; detalhes e limites em [S1_2_VALIDACAO.md](../validacao/S1_2_VALIDACAO.md).
 
 Nenhum commit foi feito pelo assistente. Sugestão: `feat: implementa grafo S1 de uma condenação com validação auditável`.
 
@@ -93,20 +93,20 @@ Nenhum commit foi feito pelo assistente. Sugestão: `feat: implementa grafo S1 d
 
 O exportador está em `src/exportar-xlsx.mjs`, sem cálculos de negócio. `npm run test:s1` agora passa os dois testes; `npm run test:s1:xlsx` passa sete cenários de exportação. S0 e testes do grafo continuam verdes (14 e 11). Foram gerados um XLSX revisável e evidência de reabertura em `docs/output/` a partir da captura aprovada da S1.2, sem novas chamadas ao modelo.
 
-Detalhes, limitações e reprodução: [S1_3_VALIDACAO.md](S1_3_VALIDACAO.md). A S1.4 ainda conectará grafo e exportador na mesma execução; o aceite atual verifica cada parte separadamente. Nenhum commit foi feito pelo assistente. Sugestão: `feat: exporta análise Rivet em XLSX com trilha de auditoria`.
+Detalhes, limitações e reprodução: [S1_3_VALIDACAO.md](../validacao/S1_3_VALIDACAO.md). A S1.4 ainda conectará grafo e exportador na mesma execução; o aceite atual verifica cada parte separadamente. Nenhum commit foi feito pelo assistente. Sugestão: `feat: exporta análise Rivet em XLSX com trilha de auditoria`.
 
 ## Estado após S1.4
 
-`npm run s1:executar -- --replay` executa grafo e exportador juntos e foi conferido com sucesso. Os sete testes de integração passaram, além dos 34 testes anteriores. O manifesto distingue replay de chamada real e registra artefatos concluídos, hashes e falhas. Detalhes em [S1_4_VALIDACAO.md](S1_4_VALIDACAO.md).
+`npm run s1:executar -- --replay` executa grafo e exportador juntos e foi conferido com sucesso. Os sete testes de integração passaram, além dos 34 testes anteriores. O manifesto distingue replay de chamada real e registra artefatos concluídos, hashes e falhas. Detalhes em [S1_4_VALIDACAO.md](../validacao/S1_4_VALIDACAO.md).
 
 Nenhum commit foi feito pelo assistente. Sugestão: `feat: integra execução local Rivet e geração de artefatos auditáveis`.
 
 ## Estado após a implementação local da S1.5
 
-O principal delega a cinco subgrafos. `npm test` reúne os 43 testes, todos aprovados, incluindo comparação dos quatro outputs com a captura anterior à refatoração. O replay integrado foi executado novamente e o XLSX reaberto. O aceite no aplicativo permanece pendente, conforme [roteiro](S1_5_VALIDACAO.md); a S1.5 ainda não está integralmente encerrada.
+O principal delega a cinco subgrafos. `npm test` reúne os 43 testes, todos aprovados, incluindo comparação dos quatro outputs com a captura anterior à refatoração. O replay integrado foi executado novamente e o XLSX reaberto. O aceite no aplicativo permanece pendente, conforme [roteiro](../validacao/S1_5_VALIDACAO.md); a S1.5 ainda não está integralmente encerrada.
 
 Sugestão de commit: `refactor: organiza pipeline S1 em subgrafos e unifica testes`. Nenhum commit foi feito pelo assistente.
 
 ## Fechamento posterior da S1.5
 
-O candidato confirmou a conferência visual pelo roteiro. Os artefatos locais de replay foram reconferidos, incluindo hashes e XLSX. [Aceite registrado com origem explícita](output/s1.5-aceite.json); nenhuma nova captura do aplicativo foi localizada. S1.5 concluída.
+O candidato confirmou a conferência visual pelo roteiro. Os artefatos locais de replay foram reconferidos, incluindo hashes e XLSX. [Aceite registrado com origem explícita](../output/s1.5-aceite.json); nenhuma nova captura do aplicativo foi localizada. S1.5 concluída.

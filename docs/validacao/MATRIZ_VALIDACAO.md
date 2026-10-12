@@ -76,9 +76,9 @@ Processo `3871230-78.2024.8.26.0002`, parcial procedência. A sentença concede 
 | Benefício líquido esperado, exibido | −R$ 2.532,69 |
 | Decisão | Não recorrer |
 
-Conferência independente com aritmética decimal de alta precisão: `6300 × 1117.1189 / 1086.2922 × 1.03 = 6673.144244338677...`. Total arredondado para R$ 6.673,14; benefício usa o total final: `0.10 × 6673.14 − 3200 = −2532.686`. Essa conta valida a convenção descrita no [contrato](CONTRATOS.md), sem afirmar que o pipeline já a executou.
+Conferência independente com aritmética decimal de alta precisão: `6300 × 1117.1189 / 1086.2922 × 1.03 = 6673.144244338677...`. Total arredondado para R$ 6.673,14; benefício usa o total final: `0.10 × 6673.14 − 3200 = −2532.686`. Essa conta valida a convenção descrita no [contrato](../arquitetura/CONTRATOS.md), sem afirmar que o pipeline já a executou.
 
-O [exemplo de extração](../schemas/extracao.exemplo.json) registra os valores e trechos dessa sentença. Ele é um gabarito anotado para desenvolvimento, não saída capturada de uma LLM.
+O [exemplo de extração](../../schemas/extracao.exemplo.json) registra os valores e trechos dessa sentença. Ele é um gabarito anotado para desenvolvimento, não saída capturada de uma LLM.
 
 ## 4. Casos a automatizar e medidas de qualidade
 

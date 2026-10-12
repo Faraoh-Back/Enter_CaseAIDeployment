@@ -1,6 +1,6 @@
 # S1.5 — subgrafos, regressão e aceite
 
-S1.5 concluída. O candidato confirmou nesta conversa a execução visual e a conferência pelo roteiro abaixo. Os arquivos locais foram reconferidos; [registro do aceite](output/s1.5-aceite.json). Não foi localizada uma nova exportação do aplicativo: o aceite visual é informado pelo candidato, e os arquivos examinados são do replay local. Nenhuma nova chamada paga foi feita nesta tarefa.
+S1.5 concluída. O candidato confirmou nesta conversa a execução visual e a conferência pelo roteiro abaixo. Os arquivos locais foram reconferidos; [registro do aceite](../output/s1.5-aceite.json). Não foi localizada uma nova exportação do aplicativo: o aceite visual é informado pelo candidato, e os arquivos examinados são do replay local. Nenhuma nova chamada paga foi feita nesta tarefa.
 
 ## Organização do projeto
 
@@ -26,7 +26,7 @@ flowchart LR
 | `s1_financeiro` | `parametros`: object | `resultado`: object |
 | `s1_consolidacao` | `base`, `extracao`, `calculo`, `preparado`, `uso`: objects; `resposta`, `modelo`: strings | `processos`, `auditoria`: object[]; `resumo`: object; `relatorio_markdown`: string |
 
-O [build](../scripts/build-s1.mjs) encapsula os nós existentes e transforma as conexões de fronteira em portas tipadas. Regras financeiras, prompt, schemas e validação semântica permanecem nos mesmos fontes. IDs dos nós internos foram mantidos, preservando a captura de resposta e consumo no executor. Os subgrafos propagam erros ao principal (`useErrorOutput: false`), evitando continuar com dados inválidos.
+O [build](../../scripts/build-s1.mjs) encapsula os nós existentes e transforma as conexões de fronteira em portas tipadas. Regras financeiras, prompt, schemas e validação semântica permanecem nos mesmos fontes. IDs dos nós internos foram mantidos, preservando a captura de resposta e consumo no executor. Os subgrafos propagam erros ao principal (`useErrorOutput: false`), evitando continuar com dados inválidos.
 
 Os subgrafos recebem dados pelas portas; a execução completa deve começar por `analisar_carteira`, cujas entradas padrão continuam disponíveis. A geração preserva os demais grafos já existentes no projeto. Repetir `npm run s1:build` produziu o mesmo hash.
 
@@ -52,7 +52,7 @@ Também foi executado:
 npm run s1:executar -- --replay --destino outputs/s1.5
 ```
 
-A execução passou pelos subgrafos e pelo exportador; os hashes dos artefatos foram conferidos e o XLSX foi reaberto, mantendo o valor atualizado de R$ 6.673,14. A [evidência local](output/s1.5-validacao.json) registra o manifesto, resultados dos testes, hash do projeto e o aceite do aplicativo como pendente à época; o registro posterior de aceite está vinculado acima. Replay não avalia novamente a qualidade do modelo.
+A execução passou pelos subgrafos e pelo exportador; os hashes dos artefatos foram conferidos e o XLSX foi reaberto, mantendo o valor atualizado de R$ 6.673,14. A [evidência local](../output/s1.5-validacao.json) registra o manifesto, resultados dos testes, hash do projeto e o aceite do aplicativo como pendente à época; o registro posterior de aceite está vinculado acima. Replay não avalia novamente a qualidade do modelo.
 
 ## Roteiro de conferência no aplicativo — confirmado pelo candidato
 

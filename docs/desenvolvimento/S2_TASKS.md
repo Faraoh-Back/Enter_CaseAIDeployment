@@ -1,12 +1,12 @@
 # S2 — desenvolvimento por tarefa
 
-Uma tarefa por rodada, com revisão e commit pelo candidato. Nesta rodada foi concluída **S2.2: normalização dos quatro resultados**. Os 13 testes S2 passaram e entraram na suíte padrão (56 testes). A S1.5 também recebeu [aceite informado pelo candidato](output/s1.5-aceite.json).
+Uma tarefa por rodada, com revisão e commit pelo candidato. Nesta rodada foi concluída **S2.3: aceitação das incertezas**. São 20 cenários, 5 aprovados e 15 falhas observadas, em comando separado. A produção permanece na S2.2, com 56 testes aprovados. [Detalhes e contratos](../validacao/S2_3_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
 | S2.1 — aceitação dos resultados | Exercitar os 12 gabaritos de desenvolvimento e um pedido sintético maior; registrar as falhas das vitórias antes de implementar. | Concluída |
 | S2.2 — normalizar os quatro resultados | Fazer os testes de S2.1 passarem; representar vitórias sem simular recurso, preservar condenações, resumo e relatório; incorporar testes verdes à suíte padrão. | Concluída |
-| S2.3 — aceitação das incertezas | Testes de dados ausentes/inválidos/futuros, divergências, duplicatas, JSON inválido, retentativas e falhas HTTP, distinguindo falhas globais de pendências individuais. | Não iniciada |
+| S2.3 — aceitação das incertezas | Testes de dados ausentes/inválidos/futuros, divergências, duplicatas, JSON inválido, retentativas e falhas HTTP, distinguindo falhas globais de pendências individuais. | Concluída |
 | S2.4 — pendências e retentativas | Implementar contratos de S2.3 no Rivet e ajustar limites do executor; até três tentativas totais, diagnóstico auditável e estados terminais. | Não iniciada |
 | S2.5 — fronteiras e cobertura | Calendário e dinheiro nas fronteiras; pequeno lote misto, uma linha por identidade, totais parciais e exclusões explícitas. | Não iniciada |
 | S2.6 — integração e aceite | Reconciliar JSON/XLSX/Markdown, revisar responsabilidades e contratos, reunir suítes verdes e registrar aceite local/aplicativo. | Não iniciada |
@@ -15,9 +15,9 @@ Cada tarefa começa verificando seu escopo e termina com resultado e sugestão d
 
 ## S2.1 — origem e isolamento
 
-[tests/s2-resultados.test.mjs](../tests/s2-resultados.test.mjs) executa o projeto real e o grafo público `analisar_carteira`. São 12 execuções individuais, não uma execução de carteira. Cada entrada recorta o bloco original e a linha correspondente de subsídios; índices, custos e probabilidades vêm dos CSVs originais.
+[tests/s2-resultados.test.mjs](../../tests/s2-resultados.test.mjs) executa o projeto real e o grafo público `analisar_carteira`. São 12 execuções individuais, não uma execução de carteira. Cada entrada recorta o bloco original e a linha correspondente de subsídios; índices, custos e probabilidades vêm dos CSVs originais.
 
-Usa somente [golden/desenvolvimento.json](../tests/fixtures/golden/desenvolvimento.json): três exemplos de cada resultado, condenações com danos materiais isolados e combinados, três níveis de subsídios, decisões econômicas positivas e negativas. Os gabaritos financeiros foram preparados com `fractions.Fraction`, independentemente dos Code Nodes BigInt.
+Usa somente [golden/desenvolvimento.json](../../tests/fixtures/golden/desenvolvimento.json): três exemplos de cada resultado, condenações com danos materiais isolados e combinados, três níveis de subsídios, decisões econômicas positivas e negativas. Os gabaritos financeiros foram preparados com `fractions.Fraction`, independentemente dos Code Nodes BigInt.
 
 Antes de executar cada caso, o teste verifica o texto contra o original, seu hash, o schema da extração e a literalidade das evidências. Somente `fetch` é simulado, retornando o gabarito anotado como resposta estruturada da LLM. O teste exige uma chamada, endpoint esperado e schema estrito; não usa `.env` nem rede. Uma falha no transporte simulado é propagada, sem permitir que seja confundida com uma funcionalidade ausente.
 
@@ -58,7 +58,7 @@ npm run test:s2
 
 O teste vermelho exige sucesso no tratamento das vitórias; não espera uma exceção como resultado correto. Não há `skip`, `todo` ou inversão das falhas. A suíte fica fora de `npm test` temporariamente, como aconteceu na S1.1, permitindo um commit isolado do contrato; o verde padrão não significa aceite da S2. A S2.2 deverá incluir essa suíte no comando padrão quando estiver verde.
 
-Os asserts posteriores à restrição de escopo ainda não foram exercitados para as seis vitórias. Fazer o grafo aceitar esses resultados poderá revelar outras lacunas na normalização/consolidação. A [evidência da rodada](output/s2.1-vermelho.json) registra contagens, falhas, hashes e limites. O conjunto reservado não foi usado nos novos testes; a suíte anterior conserva suas verificações de integridade, sem executar nele o novo extrator.
+Os asserts posteriores à restrição de escopo ainda não foram exercitados para as seis vitórias. Fazer o grafo aceitar esses resultados poderá revelar outras lacunas na normalização/consolidação. A [evidência da rodada](../output/s2.1-vermelho.json) registra contagens, falhas, hashes e limites. O conjunto reservado não foi usado nos novos testes; a suíte anterior conserva suas verificações de integridade, sem executar nele o novo extrator.
 
 ## Commit da S2.1
 
@@ -74,6 +74,12 @@ O próximo trabalho é somente S2.2. Na S2.4, testes S1 que hoje exigem falha te
 
 A validação normaliza improcedência/extinção sem exigir datas de atualização. O financeiro retorna valores não aplicáveis sem executar as fórmulas de condenação. Auditoria e relatório distinguem ausência de condenação de pendência; o resumo conta as vitórias segundo a convenção do case. Condenações mantêm os outputs anteriores.
 
-`npm run test:s2`: 13/13 aprovados. `npm test`: 56/56 aprovados, incluindo a suíte S2. Nenhum teste foi removido ou marcado como ignorado. Veja [S2_2_VALIDACAO.md](S2_2_VALIDACAO.md) e [outputs exemplificativos](output/s2.2-validacao.json).
+`npm run test:s2`: 13/13 aprovados. `npm test`: 56/56 aprovados, incluindo a suíte S2. Nenhum teste foi removido ou marcado como ignorado. Veja [S2_2_VALIDACAO.md](../validacao/S2_2_VALIDACAO.md) e [outputs exemplificativos](../output/s2.2-validacao.json).
 
 Próxima tarefa: **S2.3**, somente os contratos/testes das incertezas. Sugestão de commit desta implementação: `feat: normaliza os quatro resultados de sentença no Rivet`.
+
+## S2.3 — resultado atual
+
+`npm run test:s2:incertezas` executa 20 cenários de dados incompletos, reparo, transporte, quota e falhas globais. Resultado: 5 aprovados, 15 falhas; saída 1. `npm test` permanece verde com os 56 anteriores. Não houve mudança no grafo nem no executor. [Contrato, método e limites](../validacao/S2_3_VALIDACAO.md).
+
+Próxima tarefa: **S2.4**, implementar pendências e orçamento compartilhado de tentativas, migrando as expectativas anteriores de falha terminal sem perder cobertura. Sugestão: `test: define pendências e limite de retentativas da S2`.

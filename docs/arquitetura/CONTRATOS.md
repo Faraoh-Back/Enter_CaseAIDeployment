@@ -1,6 +1,6 @@
 # Contratos — versão 0.2
 
-Especificação a implementar no projeto Rivet e em sua interface de execução. O [schema de extração](../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../schemas/processo.schema.json) e [resumo](../schemas/resumo.schema.json); a implementação S2.2 cobre uma sentença válida por execução, nos quatro resultados. Estados de pendência continuam previstos nas próximas tarefas S2.
+Especificação a implementar no projeto Rivet e em sua interface de execução. O [schema de extração](../../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../../schemas/processo.schema.json) e [resumo](../../schemas/resumo.schema.json); a implementação S2.2 cobre uma sentença válida por execução, nos quatro resultados. Estados de pendência continuam previstos nas próximas tarefas S2.
 
 ## 1. Insumos e identidade
 
@@ -22,7 +22,7 @@ O grafo não fixa 100 como tamanho de entrada. Para o dataset entregue, a valida
 
 ## 2. Extração por sentença
 
-Usar [extracao.schema.json](../schemas/extracao.schema.json), versão 0.2, com todos os campos presentes e `additionalProperties: false`. A saída tem identificação, classe, comarca, resultado, componentes monetários, eventual total explicitado, mês-base, citação, tema, fundamento e evidências.
+Usar [extracao.schema.json](../../schemas/extracao.schema.json), versão 0.2, com todos os campos presentes e `additionalProperties: false`. A saída tem identificação, classe, comarca, resultado, componentes monetários, eventual total explicitado, mês-base, citação, tema, fundamento e evidências.
 
 Regras de interpretação:
 
@@ -150,7 +150,7 @@ GET de estado retorna identificador, estado, contagens disponíveis, problemas d
 
 ## 8. Artefatos do cliente
 
-A planilha possui abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`. Processo fica como texto; dinheiro, como célula numérica formatada; datas e nulos têm apresentação consistente. Na aba principal, manter a leitura simples; a memória de cálculo detalhada fica em Auditoria. O valor monetário exibido deve reproduzir o centavo do JSON ao ser reaberto. Textos de entrada são gravados como texto, sem interpretação como fórmula. Na S1.3, datas são textos ISO, nulos são células vazias e zero permanece numérico. O resumo preserva os nomes dos campos e indica a unidade `R$` para os valores convertidos de centavos. Textos acima de 32.767 caracteres e valores monetários sem precisão suficiente no Excel são rejeitados antes da gravação. O destino deve ser novo e seu diretório deve existir. Veja [validação S1.3](S1_3_VALIDACAO.md).
+A planilha possui abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`. Processo fica como texto; dinheiro, como célula numérica formatada; datas e nulos têm apresentação consistente. Na aba principal, manter a leitura simples; a memória de cálculo detalhada fica em Auditoria. O valor monetário exibido deve reproduzir o centavo do JSON ao ser reaberto. Textos de entrada são gravados como texto, sem interpretação como fórmula. Na S1.3, datas são textos ISO, nulos são células vazias e zero permanece numérico. O resumo preserva os nomes dos campos e indica a unidade `R$` para os valores convertidos de centavos. Textos acima de 32.767 caracteres e valores monetários sem precisão suficiente no Excel são rejeitados antes da gravação. O destino deve ser novo e seu diretório deve existir. Veja [validação S1.3](../validacao/S1_3_VALIDACAO.md).
 
 O relatório começa pelo resultado e pelas ações recomendadas, apresenta a data-base e informa cobertura e limitações. Usa as contagens fornecidas pelos outputs, sem recomputar indicadores no exportador. A taxa de êxito segue a definição do case, com extinções e improcedências discriminadas; não inferir encerramento definitivo de toda exposição a partir de extinção.
 
@@ -158,10 +158,14 @@ O racional final é um documento separado, escrito/revisado pelo candidato, de a
 
 ## 9. Organização interna da S1.5
 
-O contrato público de `analisar_carteira` permanece inalterado. Preparação, extração, validação, cálculo e consolidação agora são subgrafos, com [portas documentadas](S1_5_VALIDACAO.md). Erros propagam ao principal; uma saída de erro não é convertida em dados válidos. A revisão não alterou schemas, fórmulas, decisão ou unidades. A equivalência dos quatro outputs é verificada por teste de regressão; aceite S1.5 informado pelo candidato, com [origem registrada](output/s1.5-aceite.json).
+O contrato público de `analisar_carteira` permanece inalterado. Preparação, extração, validação, cálculo e consolidação agora são subgrafos, com [portas documentadas](../validacao/S1_5_VALIDACAO.md). Erros propagam ao principal; uma saída de erro não é convertida em dados válidos. A revisão não alterou schemas, fórmulas, decisão ou unidades. A equivalência dos quatro outputs é verificada por teste de regressão; aceite S1.5 informado pelo candidato, com [origem registrada](../output/s1.5-aceite.json).
 
 ## 10. Normalização S2.2
 
 Vitórias válidas preservam subsídios e probabilidade do CSV como referência; não usam a probabilidade para simular recurso. Componentes e total são zero; datas, meses, custo, benefício, índices de atualização e memória são `null`. Principal corrigido, juros e atualizado ficam zero. Decisão `nao_recorrer`, motivo `sem_condenacao`; um caso válido conta em `processos_aptos` mesmo sem cálculo financeiro aplicável.
 
 Internamente, a validação transmite `{ "sem_condenacao": true }` ao subgrafo financeiro para evitar executar fórmulas de condenação. Essa sinalização não altera o contrato público nem dispensa validação semântica. O relatório de extinção esclarece que a ausência de resolução do mérito não demonstra encerramento definitivo de toda exposição. Os schemas existentes já comportam esses valores e não foram flexibilizados.
+
+## 11. Aceitação S2.3 — ainda não implementada
+
+A [especificação testável das incertezas](../validacao/S2_3_VALIDACAO.md) distingue falhas individuais de referências globais, define os códigos de problema e o histórico de tentativas. O limite de três inclui transporte e extração, sem multiplicar retries do SDK pelos de validação. Esta seção é alvo da S2.4: o código atual permanece na S2.2 e a suíte correspondente está em vermelho.

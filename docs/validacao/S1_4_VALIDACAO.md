@@ -1,6 +1,6 @@
 # S1.4 — execução local integrada
 
-O comando local conecta o projeto Rivet ao exportador XLSX e grava uma execução isolada. [src/executar-s1.mjs](../src/executar-s1.mjs) faz transporte, snapshots, manifesto e arquivos; o grafo continua responsável por extração, validação, cálculos, decisão, consolidação e texto do relatório. [scripts/executar-s1.mjs](../scripts/executar-s1.mjs) interpreta argumentos e fornece código de saída 0 no sucesso ou 1 na falha.
+O comando local conecta o projeto Rivet ao exportador XLSX e grava uma execução isolada. [src/executar-s1.mjs](../../src/executar-s1.mjs) faz transporte, snapshots, manifesto e arquivos; o grafo continua responsável por extração, validação, cálculos, decisão, consolidação e texto do relatório. [scripts/executar-s1.mjs](../../scripts/executar-s1.mjs) interpreta argumentos e fornece código de saída 0 no sucesso ou 1 na falha.
 
 ## Comando reproduzível
 
@@ -47,7 +47,7 @@ JSON/Markdown e manifesto usam arquivo temporário e renomeação no mesmo diret
 
 ## Testes e evidências
 
-Os cinco testes iniciais falharam antes da implementação. A validação final está em [tests/s1-execucao.test.mjs](../tests/s1-execucao.test.mjs):
+Os cinco testes iniciais falharam antes da implementação. A validação final está em [tests/s1-execucao.test.mjs](../../tests/s1-execucao.test.mjs):
 
 - CLI em subprocesso: duas execuções em diretórios distintos, cinco artefatos com hashes corretos, XLSX reaberto e reconciliado com JSON e Markdown.
 - Resposta real historicamente rejeitada: nova rejeição pelo grafo, manifesto `falhou`, resposta preservada e nenhum artefato de análise anunciado.
@@ -64,7 +64,7 @@ Os cinco testes iniciais falharam antes da implementação. A validação final 
 | `npm run test:s1:xlsx` | 7/7 aprovados |
 | `npm run test:s1:execucao` | 7/7 aprovados |
 
-A [evidência integrada](output/s1.4-execucao.json) identifica o comando, manifesto e hashes da execução conferida. A [planilha](output/s1.4-processos.xlsx) e o [relatório](output/s1.4-relatorio.md) foram copiados dessa execução para revisão. A conferência é automatizada; não substitui o aceite visual no aplicativo da S1.5.
+A [evidência integrada](../output/s1.4-execucao.json) identifica o comando, manifesto e hashes da execução conferida. A [planilha](../output/s1.4-processos.xlsx) e o [relatório](../output/s1.4-relatorio.md) foram copiados dessa execução para revisão. A conferência é automatizada; não substitui o aceite visual no aplicativo da S1.5.
 
 ## Limites desta tarefa
 

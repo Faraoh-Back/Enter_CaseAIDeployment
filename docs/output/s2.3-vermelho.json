@@ -1,0 +1,158 @@
+{
+  "executado_em": "2026-10-12T15:11:43.601Z",
+  "tarefa": "S2.3",
+  "metodo": "Grafo real via SDK; todas as respostas HTTP e exceções de transporte simuladas, sem rede.",
+  "comando": "npm run test:s2:incertezas",
+  "exit_code": 1,
+  "testes": 20,
+  "aprovados": 5,
+  "falhas": 15,
+  "cenarios": [
+    {
+      "nome": "S2.3: repara JSON incompleto na segunda tentativa",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: repara data inválida na segunda tentativa",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: JSON inválido persistente vira pendência após três tentativas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: citação ausente vira pendência após três tentativas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: data impossível vira pendência após três tentativas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: data futura vira pendência após três tentativas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: CNJ divergente vira pendência após três tentativas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: componente desconhecido vira pendência após três tentativas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: evidência inventada vira pendência após três tentativas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: subsídio não localizado preserva cálculo, sem supor ausentes",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 0,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: HTTP transitório seguido de extração inválida compartilha limite total de três",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 2,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: HTTP 503 persistente vira erro após três chamadas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 4,
+      "abortado": true
+    },
+    {
+      "nome": "S2.3: timeout de transporte persistente vira erro após três chamadas",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: credencial inválida interrompe sem retentar",
+      "resultado": "aprovado",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: quota esgotada interrompe sem retentar",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 4,
+      "abortado": true
+    },
+    {
+      "nome": "S2.3: falha global por índice duplicado",
+      "resultado": "aprovado",
+      "requisicoes_interceptadas": 0,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: falha global por custo ausente",
+      "resultado": "aprovado",
+      "requisicoes_interceptadas": 0,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: falha global por índice final ausente",
+      "resultado": "aprovado",
+      "requisicoes_interceptadas": 0,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: falha global por índice-base ausente",
+      "resultado": "aprovado",
+      "requisicoes_interceptadas": 1,
+      "abortado": false
+    },
+    {
+      "nome": "S2.3: falha global por identidade duplicada entre blocos",
+      "resultado": "falhou",
+      "requisicoes_interceptadas": 0,
+      "abortado": false
+    }
+  ],
+  "regressao": {
+    "comando": "npm test",
+    "exit_code": 0,
+    "aprovados": 56,
+    "falhas": 0,
+    "por_suite": [
+      14,
+      2,
+      11,
+      7,
+      7,
+      2,
+      13
+    ]
+  },
+  "projeto_sha256": "0c9f0d712bc84f1a3d69ae67e0896785706ee55775b0d2fdee36084a82ba9433",
+  "testes_sha256": "2c773ea9348f6d4aad4e8bf6627b77f96945d06e954051f85928dd2acd1e5fa8",
+  "producao_alterada": false,
+  "chamadas_reais": 0,
+  "limites": [
+    "Aceitação futura; falhas são reais e não são invertidas em sucesso.",
+    "Guarda do teste interrompe o quarto acesso interceptado; limite esperado de produção é três no total.",
+    "Timeout é exceção de transporte simulada, não espera real por uma conexão paralisada.",
+    "Asserts posteriores a falhas precoces ainda não exercitados.",
+    "Implementação pertence à S2.4."
+  ]
+}
