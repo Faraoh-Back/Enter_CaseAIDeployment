@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "resumo.schema.json",
+  "title": "Resumo — contrato mínimo S1.2",
+  "description": "Contagens e valores do lote aceito. S1 rejeita dados incompletos antes de consolidar; cobertura parcial será formalizada em S2.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "data_referencia",
+    "total_identificado",
+    "vitorias_confirmadas",
+    "resultados_desconhecidos",
+    "condenacoes",
+    "processos_aptos",
+    "pendencias",
+    "passivo_centavos",
+    "recursos_recomendados",
+    "custo_recursos_centavos",
+    "beneficio_esperado_recursos_centavos"
+  ],
+  "properties": {
+    "data_referencia": {
+      "type": "string",
+      "format": "date"
+    },
+    "total_identificado": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "vitorias_confirmadas": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "resultados_desconhecidos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "condenacoes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "processos_aptos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "pendencias": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "passivo_centavos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "recursos_recomendados": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "custo_recursos_centavos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "beneficio_esperado_recursos_centavos": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    }
+  }
+}

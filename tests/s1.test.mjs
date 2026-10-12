@@ -132,7 +132,8 @@ test('S1: sentença e CSVs viram processo, resumo, auditoria e relatório pelo g
     outputs = await runGraphInFile(projectPath, { graph: graphName, inputs,
       openAiKey: 'credencial-ficticia-de-teste', openAiOrganization: '',
       openAiEndpoint: 'https://api.openai.com/v1/chat/completions',
-      abortSignal: controller.signal, chatNodeTimeout: 5000 });
+      abortSignal: controller.signal, chatNodeTimeout: 5000,
+      onNodeError: ({ error }) => t.diagnostic(String(error)) });
   } catch (error) { throw transportFailure ?? error; }
   assert.equal(requests, 1, 'O grafo precisa passar pelo extrator, sem devolver o exemplo fixo');
   for (const name of ['processos', 'resumo', 'auditoria', 'relatorio_markdown']) assert.ok(outputs[name], `Graph Output ausente: ${name}`);

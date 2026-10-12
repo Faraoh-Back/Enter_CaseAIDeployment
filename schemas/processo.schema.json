@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "processo.schema.json",
+  "title": "Processo normalizado — contrato S1.2",
+  "description": "Estrutura de saída. Consistência financeira e aptidão também são verificadas nos Code Nodes.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "numero_processo",
+    "classe_processual",
+    "comarca",
+    "resultado_sentenca",
+    "danos_materiais_centavos",
+    "danos_morais_centavos",
+    "mes_base_correcao",
+    "data_citacao",
+    "tema",
+    "fundamento_decisao",
+    "evidencias",
+    "tribunal",
+    "status_processamento",
+    "problemas",
+    "valor_condenacao_centavos",
+    "principal_corrigido_centavos",
+    "juros_centavos",
+    "valor_atualizado_centavos",
+    "custo_recurso_centavos",
+    "meses_completos",
+    "status_subsidios",
+    "probabilidade_reversao_percentual",
+    "beneficio_esperado_centavos",
+    "decisao_recurso",
+    "motivo_decisao"
+  ],
+  "properties": {
+    "numero_processo": {
+      "$ref": "extracao.schema.json#/properties/numero_processo"
+    },
+    "classe_processual": {
+      "$ref": "extracao.schema.json#/properties/classe_processual"
+    },
+    "comarca": {
+      "$ref": "extracao.schema.json#/properties/comarca"
+    },
+    "resultado_sentenca": {
+      "$ref": "extracao.schema.json#/properties/resultado_sentenca"
+    },
+    "danos_materiais_centavos": {
+      "$ref": "extracao.schema.json#/properties/danos_materiais_centavos"
+    },
+    "danos_morais_centavos": {
+      "$ref": "extracao.schema.json#/properties/danos_morais_centavos"
+    },
+    "mes_base_correcao": {
+      "$ref": "extracao.schema.json#/properties/mes_base_correcao"
+    },
+    "data_citacao": {
+      "$ref": "extracao.schema.json#/properties/data_citacao"
+    },
+    "tema": {
+      "$ref": "extracao.schema.json#/properties/tema"
+    },
+    "fundamento_decisao": {
+      "$ref": "extracao.schema.json#/properties/fundamento_decisao"
+    },
+    "evidencias": {
+      "$ref": "extracao.schema.json#/properties/evidencias"
+    },
+    "tribunal": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "status_processamento": {
+      "enum": [
+        "ok",
+        "pendente_revisao",
+        "erro"
+      ]
+    },
+    "problemas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "codigo",
+          "mensagem"
+        ],
+        "properties": {
+          "codigo": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mensagem": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "valor_condenacao_centavos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "principal_corrigido_centavos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "juros_centavos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "valor_atualizado_centavos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "custo_recurso_centavos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "meses_completos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "status_subsidios": {
+      "enum": [
+        "completos",
+        "essenciais",
+        "ausentes",
+        null
+      ]
+    },
+    "probabilidade_reversao_percentual": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "beneficio_esperado_centavos": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": -9007199254740991,
+      "maximum": 9007199254740991
+    },
+    "decisao_recurso": {
+      "enum": [
+        "recorrer",
+        "nao_recorrer",
+        "pendente"
+      ]
+    },
+    "motivo_decisao": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # Contratos — versão 0.2
 
-Especificação a implementar no projeto Rivet e em sua interface de execução. O [schema de extração](../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença.
+Especificação a implementar no projeto Rivet e em sua interface de execução. O [schema de extração](../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../schemas/processo.schema.json) e [resumo](../schemas/resumo.schema.json); a implementação atual cobre somente uma condenação válida. Estados de pendência e os demais resultados continuam previstos para S2.
 
 ## 1. Insumos e identidade
 

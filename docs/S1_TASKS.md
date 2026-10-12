@@ -1,11 +1,11 @@
 # S1 — desenvolvimento por tarefa
 
-Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi executada somente **S1.1**. Não houve alteração dos grafos, criação do exportador definitivo ou chamada à OpenAI.
+Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi executada somente **S1.2**. O grafo de uma condenação está implementado e avaliado; exportador, execução integrada e aceite no aplicativo continuam nas tarefas seguintes. Consulte [implementação e evidências](S1_2_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
-| S1.1 — aceitação em vermelho | Testes externos do caso de referência e da planilha; observar a falha antes da implementação. | Concluída nesta rodada |
-| S1.2 — grafo de uma condenação | Formalizar schemas de processo/resumo antes de implementar; texto e CSVs entram, extração é validada, cálculo e outputs são produzidos no Rivet. Fazer o primeiro teste passar e avaliar a extração completa em chamada real separada. | Não iniciada |
+| S1.1 — aceitação em vermelho | Testes externos do caso de referência e da planilha; observar a falha antes da implementação. | Concluída |
+| S1.2 — grafo de uma condenação | Formalizar schemas de processo/resumo antes de implementar; texto e CSVs entram, extração é validada, cálculo e outputs são produzidos no Rivet. Fazer o primeiro teste passar e avaliar a extração completa em chamada real separada. | Concluída |
 | S1.3 — XLSX | Implementar o adaptador de apresentação e fazer o segundo teste passar, reabrindo o arquivo. | Não iniciada |
 | S1.4 — execução local integrada | Executar o grafo e o exportador juntos, gravar JSON/Markdown/XLSX em diretório de execução e registrar o comando reproduzível. | Não iniciada |
 | S1.5 — refatoração e aceite | Separar responsabilidades em subgrafos, revisar contratos e conferir o fluxo integrado no aplicativo e pelo comando local. | Não iniciada |
@@ -53,7 +53,7 @@ O teste exige os campos de processo já definidos na seção 5 dos contratos. Pa
 
 Os dois últimos campos somam somente os recursos recomendados. O benefício negativo do processo permanece na linha individual; não é somado como benefício de um recurso que não foi recomendado.
 
-Cada item de `auditoria` exige `numero_processo`, `extracao` (schema completo), `indice_base` e `indice_final` como textos decimais, `tentativas`, `versao_extrator` não vazia e `memoria` com as frações no formato usado na S0. Os testes aceitam campos adicionais de processo/resumo/auditoria; a estrutura completa será formalizada em schemas na S1.2, antes do código de produção.
+Cada item de `auditoria` exige `numero_processo`, `extracao` (schema completo), `indice_base` e `indice_final` como textos decimais, `tentativas`, `versao_extrator` não vazia e `memoria` com as frações no formato usado na S0. Os testes aceitam campos adicionais de processo/resumo/auditoria; os schemas de processo/resumo foram formalizados na S1.2, antes do código de produção. A auditoria mantém o contrato observável descrito acima.
 
 Contrato de apresentação inicial da planilha:
 
@@ -64,7 +64,7 @@ Contrato de apresentação inicial da planilha:
 
 Esse é o mínimo de aceitação desta tarefa; os testes não afirmam cobrir ainda todos os campos e cenários do case. A consolidação e o acabamento das quatro abas continuam previstos em S3.
 
-## Como revisar e reproduzir o vermelho
+## Registro histórico do vermelho da S1.1
 
 ```bash
 npm test
@@ -76,6 +76,15 @@ npm run test:s1
 
 O comando S1 termina com erro de verdade; não há `skip`, `todo` ou inversão para transformar falha em sucesso. Está separado da suíte existente para permitir revisar o contrato vermelho em um commit próprio. Enquanto essa separação existir, `npm test` sozinho não representa a aceitação da S1. Ao concluir a implementação, incorporar os testes verdes à suíte padrão.
 
-Os asserts posteriores aos pontos ausentes ainda não foram exercitados contra uma implementação. As falhas observadas comprovam o estágio vermelho, não que o fluxo esteja pronto. As pré-condições do primeiro teste conferiram o exemplo contra o schema, os trechos originais e o gabarito financeiro independente antes da falha por grafo ausente.
+Na S1.1, os asserts posteriores aos pontos ausentes ainda não haviam sido exercitados contra uma implementação. As falhas observadas comprovam o estágio vermelho, não que o fluxo esteja pronto. As pré-condições do primeiro teste conferiram o exemplo contra o schema, os trechos originais e o gabarito financeiro independente antes da falha por grafo ausente.
 
 Resultado registrado em [s1.1-vermelho.json](output/s1.1-vermelho.json). Sugestão de commit para esta tarefa: `test: define aceitação da S1 para uma condenação`.
+
+## Estado após S1.2
+
+- `npm test`: 14/14 aprovados (S0).
+- `npm run test:s1:grafo`: 11/11 aprovados (schemas, cruzamentos e rejeições, incluindo resposta real não literal).
+- `npm run test:s1`: teste do grafo aprovado; teste XLSX ainda falha por módulo ausente, aguardando S1.3. Saída 1 intencionalmente preservada.
+- Avaliação real: uma resposta rejeitada e, após ajuste do prompt, uma aprovada; detalhes e limites em [S1_2_VALIDACAO.md](S1_2_VALIDACAO.md).
+
+Nenhum commit foi feito pelo assistente. Sugestão: `feat: implementa grafo S1 de uma condenação com validação auditável`.

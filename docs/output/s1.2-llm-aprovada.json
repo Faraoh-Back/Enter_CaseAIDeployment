@@ -1,0 +1,201 @@
+{
+  "executado_em": "2026-10-12T05:53:20.878Z",
+  "escopo": "S1.2: avaliação de uma sentença de desenvolvimento",
+  "node": "v20.20.2",
+  "sdk": "1.25.0",
+  "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+  "custo_monetario": null,
+  "projeto_sha256": "092637350f1108ea8f145ec4e2e9ce5640d35cb5e59caaa454a38f121bc4c27e",
+  "entradas_sha256": {
+    "processos_texto": "2fd1ffe7e364fadd7bdf89fcd4ef20abcb514f2640bf91ffbd636beb093d9dad",
+    "subsidios_texto": "38f17c3376bc7324c255304aa1c06bf00b29c0bd1226d4843725b61e6b706177",
+    "indices_texto": "d5d647e87d97ca2f17d1af7445b8fec97611870672a6dfb12be402ed55a7a683",
+    "custos_texto": "6cd9c5075e73163c1a73f4fbac493913899b45c373ceab777d3a0ff6aa074ba7",
+    "probabilidades_texto": "ad1d915821a6a7ec024225cb251096efc77d44ebbc422a57a03018eaaabefa77",
+    "data_referencia": "96b951df9bacc4611285f7cebe34c5cdaa57098b72af7e6101a0b6d0632abc1e"
+  },
+  "schema_sha256": "185099e8f8d671033c0b6d0dc0fe7a76e4fdfcb6998d51951f8714a444b521dc",
+  "erros_nos": [],
+  "parametros_enviados": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "temperature": 0,
+    "max_tokens": 2500,
+    "response_format": "json_schema",
+    "strict": true
+  },
+  "http_status": 200,
+  "resposta_llm_original": "{\"numero_processo\":\"3871230-78.2024.8.26.0002\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":600000,\"danos_morais_centavos\":30000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-12\",\"data_citacao\":\"2026-02-27\",\"tema\":\"cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\",\"evidencias\":{\"identificacao\":\"Processo nº 3871230-78.2024.8.26.0002\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\"valores\":\"R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais\",\"mes_base_correcao\":\"dezembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (27/02/2026)\",\"tema\":\"ação indenizatória em que a parte autora alega cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"}}",
+  "tokens": {
+    "entrada": 1116,
+    "saida": 351,
+    "total": 1467
+  },
+  "outputs": {
+    "processos": [
+      {
+        "numero_processo": "3871230-78.2024.8.26.0002",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "parcial_procedencia",
+        "danos_materiais_centavos": 600000,
+        "danos_morais_centavos": 30000,
+        "mes_base_correcao": "2025-12",
+        "data_citacao": "2026-02-27",
+        "tema": "cancelamento unilateral de plano de saúde",
+        "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.",
+        "evidencias": {
+          "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+          "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+          "valores": "R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais",
+          "mes_base_correcao": "dezembro de 2025 (evento danoso)",
+          "data_citacao": "citação (27/02/2026)",
+          "tema": "ação indenizatória em que a parte autora alega cancelamento unilateral de plano de saúde",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "valor_condenacao_centavos": 630000,
+        "meses_completos": 3,
+        "status_subsidios": "ausentes",
+        "probabilidade_reversao_percentual": 10,
+        "custo_recurso_centavos": 320000,
+        "principal_corrigido_centavos": 647878,
+        "juros_centavos": 19436,
+        "valor_atualizado_centavos": 667314,
+        "beneficio_esperado_centavos": -253269,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "beneficio_nao_positivo"
+      }
+    ],
+    "resumo": {
+      "data_referencia": "2026-05-31",
+      "total_identificado": 1,
+      "vitorias_confirmadas": 0,
+      "resultados_desconhecidos": 0,
+      "condenacoes": 1,
+      "processos_aptos": 1,
+      "pendencias": 0,
+      "passivo_centavos": 667314,
+      "recursos_recomendados": 0,
+      "custo_recursos_centavos": 0,
+      "beneficio_esperado_recursos_centavos": 0
+    },
+    "auditoria": [
+      {
+        "numero_processo": "3871230-78.2024.8.26.0002",
+        "extracao": {
+          "numero_processo": "3871230-78.2024.8.26.0002",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "parcial_procedencia",
+          "danos_materiais_centavos": 600000,
+          "danos_morais_centavos": 30000,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": "2025-12",
+          "data_citacao": "2026-02-27",
+          "tema": "cancelamento unilateral de plano de saúde",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.",
+          "evidencias": {
+            "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+            "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+            "valores": "R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais",
+            "mes_base_correcao": "dezembro de 2025 (evento danoso)",
+            "data_citacao": "citação (27/02/2026)",
+            "tema": "ação indenizatória em que a parte autora alega cancelamento unilateral de plano de saúde",
+            "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"3871230-78.2024.8.26.0002\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":600000,\"danos_morais_centavos\":30000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-12\",\"data_citacao\":\"2026-02-27\",\"tema\":\"cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\",\"evidencias\":{\"identificacao\":\"Processo nº 3871230-78.2024.8.26.0002\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\"valores\":\"R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais\",\"mes_base_correcao\":\"dezembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (27/02/2026)\",\"tema\":\"ação indenizatória em que a parte autora alega cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"}}",
+        "indice_base": "1086.2922",
+        "indice_final": "1117.1189",
+        "tentativas": 1,
+        "versao_extrator": "s1.2-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1116,
+          "saida": 351,
+          "total": 1467
+        },
+        "custo_monetario": null,
+        "memoria": {
+          "principal_numerador": "7037849070000",
+          "principal_denominador": "10862922",
+          "juros_numerador": "21113547210000",
+          "juros_denominador": "1086292200",
+          "total_numerador": "724898454210000",
+          "total_denominador": "1086292200",
+          "beneficio_numerador": "-25326860",
+          "beneficio_denominador": "100",
+          "beneficio_residual_positivo": false
+        }
+      }
+    ],
+    "relatorio_markdown": "# Análise de uma sentença — S1\n\nData-base: 2026-05-31. Processo: 3871230-78.2024.8.26.0002.\n\nRecomendação econômica: **não recorrer**. Benefício líquido esperado: **-R$ 2.532,69**.\n\nResultado: parcial_procedencia. Condenação original: R$ 6.300,00.\nPrincipal corrigido: R$ 6.478,78; juros simples (3 meses completos): R$ 194,36.\nPassivo atualizado: **R$ 6.673,14**.\n\nSubsídios: ausentes; probabilidade de reversão: 10%; custo do recurso: R$ 3.200,00.\nRecursos recomendados: 0; custo dos recomendados: R$ 0,00; benefício esperado dos recomendados: R$ 0,00.\n\nCobertura: 1/1 processo apto; 0 pendências. Êxito: 0/1; resultados desconhecidos: 0.\n\nPremissas: reversão integral da condenação; probabilidades e custos fornecidos no case. Benefício esperado é uma estimativa, sem garantia de economia realizada. Prazos, admissibilidade e reforma parcial não são avaliados.\nEscopo: uma sentença; estes números não representam a carteira completa."
+  },
+  "campos_extraidos": [
+    {
+      "campo": "numero_processo",
+      "esperado": "3871230-78.2024.8.26.0002",
+      "recebido": "3871230-78.2024.8.26.0002",
+      "correto": true
+    },
+    {
+      "campo": "classe_processual",
+      "esperado": "Procedimento Comum Cível",
+      "recebido": "Procedimento Comum Cível",
+      "correto": true
+    },
+    {
+      "campo": "comarca",
+      "esperado": "São Paulo",
+      "recebido": "São Paulo",
+      "correto": true
+    },
+    {
+      "campo": "resultado_sentenca",
+      "esperado": "parcial_procedencia",
+      "recebido": "parcial_procedencia",
+      "correto": true
+    },
+    {
+      "campo": "danos_materiais_centavos",
+      "esperado": 600000,
+      "recebido": 600000,
+      "correto": true
+    },
+    {
+      "campo": "danos_morais_centavos",
+      "esperado": 30000,
+      "recebido": 30000,
+      "correto": true
+    },
+    {
+      "campo": "valor_total_explicito_centavos",
+      "esperado": null,
+      "recebido": null,
+      "correto": true
+    },
+    {
+      "campo": "mes_base_correcao",
+      "esperado": "2025-12",
+      "recebido": "2025-12",
+      "correto": true
+    },
+    {
+      "campo": "data_citacao",
+      "esperado": "2026-02-27",
+      "recebido": "2026-02-27",
+      "correto": true
+    },
+    {
+      "campo": "tema",
+      "esperado": "cancelamento unilateral de plano de saúde",
+      "recebido": "cancelamento unilateral de plano de saúde",
+      "correto": true
+    }
+  ],
+  "estado": "aprovado",
+  "duracao_ms": 3025,
+  "chamadas_reais": 1
+}
