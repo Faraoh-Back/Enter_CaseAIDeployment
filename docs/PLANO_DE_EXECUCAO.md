@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0 concluída. S1.1–S1.4 concluídas: execução local integra grafo e XLSX, com manifesto e testes; refatoração e aceite final da S1.5 ainda pendentes. [Tarefas e evidências S1](S1_TASKS.md). S2–S5 ainda não executadas.
+**Estado:** S0 concluída. S1.1–S1.4 concluídas: execução local integra grafo e XLSX, com manifesto e testes; refatoração S1.5 validada localmente com 43 testes; somente aceite no aplicativo pendente. [Tarefas e evidências S1](S1_TASKS.md). S2–S5 ainda não executadas.
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -53,7 +53,7 @@ Execução em tarefas separadas, com revisão e commits feitos pelo candidato. [
 - [x] **S1.2 — Verde:** formalizar schemas de processo/resumo; ler as referências no grafo, extrair a sentença, validar dados, calcular em Code Nodes, decidir e produzir resumo e Markdown. Avaliar a extração completa em chamada real separada.
 - [x] **S1.3 — XLSX:** exportar uma planilha real `.xlsx`, reabri-la e comparar as células com os outputs; adicionar trilha de cálculo e justificativa.
 - [x] **S1.4 — Execução local:** expor comando que execute o projeto e grave o diretório de execução; conferir grafo e exportação integrados. Registrar comando real no README após verificação.
-- [ ] **S1.5 — Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas; incorporar os testes S1 verdes à suíte padrão.
+- [ ] **S1.5 — Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas; incorporar os testes S1 verdes à suíte padrão. **Refatoração, contratos e suíte local concluídos; falta conferência no aplicativo**, conforme [S1_5_VALIDACAO.md](S1_5_VALIDACAO.md).
 
 **Saída:** uma condenação produz os artefatos de ponta a ponta. Não basta entregar um JSON de extração.
 

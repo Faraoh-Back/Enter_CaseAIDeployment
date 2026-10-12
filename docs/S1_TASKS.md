@@ -1,6 +1,6 @@
 # S1 — desenvolvimento por tarefa
 
-Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi executada somente **S1.4**. O comando local integra grafo e exportação, com testes e evidências de replay; refatoração e aceite no aplicativo continuam na S1.5. Consulte [implementação e evidências](S1_4_VALIDACAO.md).
+Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi desenvolvida somente **S1.5**. A refatoração em subgrafos e a validação local estão concluídas; falta o aceite no aplicativo. Consulte [implementação e roteiro de aceite](S1_5_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assist
 | S1.2 — grafo de uma condenação | Formalizar schemas de processo/resumo antes de implementar; texto e CSVs entram, extração é validada, cálculo e outputs são produzidos no Rivet. Fazer o primeiro teste passar e avaliar a extração completa em chamada real separada. | Concluída |
 | S1.3 — XLSX | Implementar o adaptador de apresentação e fazer o segundo teste passar, reabrindo o arquivo. | Concluída |
 | S1.4 — execução local integrada | Executar o grafo e o exportador juntos, gravar JSON/Markdown/XLSX em diretório de execução e registrar o comando reproduzível. | Concluída |
-| S1.5 — refatoração e aceite | Separar responsabilidades em subgrafos, revisar contratos e conferir o fluxo integrado no aplicativo e pelo comando local. | Não iniciada |
+| S1.5 — refatoração e aceite | Separar responsabilidades em subgrafos, revisar contratos e conferir o fluxo integrado no aplicativo e pelo comando local. | Local concluído; aplicativo pendente |
 
 ## S1.1: o que os testes exigem
 
@@ -100,3 +100,9 @@ Detalhes, limitações e reprodução: [S1_3_VALIDACAO.md](S1_3_VALIDACAO.md). A
 `npm run s1:executar -- --replay` executa grafo e exportador juntos e foi conferido com sucesso. Os sete testes de integração passaram, além dos 34 testes anteriores. O manifesto distingue replay de chamada real e registra artefatos concluídos, hashes e falhas. Detalhes em [S1_4_VALIDACAO.md](S1_4_VALIDACAO.md).
 
 Nenhum commit foi feito pelo assistente. Sugestão: `feat: integra execução local Rivet e geração de artefatos auditáveis`.
+
+## Estado após a implementação local da S1.5
+
+O principal delega a cinco subgrafos. `npm test` reúne os 43 testes, todos aprovados, incluindo comparação dos quatro outputs com a captura anterior à refatoração. O replay integrado foi executado novamente e o XLSX reaberto. O aceite no aplicativo permanece pendente, conforme [roteiro](S1_5_VALIDACAO.md); a S1.5 ainda não está integralmente encerrada.
+
+Sugestão de commit: `refactor: organiza pipeline S1 em subgrafos e unifica testes`. Nenhum commit foi feito pelo assistente.

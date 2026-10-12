@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S1.4 concluída: comando local integra grafo e exportação com manifesto por execução, validado por replay offline. S1.3 concluída: exportador XLSX com quatro abas, validado por reabertura e sete testes específicos. S1.2 concluída: grafo de uma condenação com schemas, validações, cálculo e relatório, avaliado com uma extração real aprovada. S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
+**Estado atual:** S1.5 refatorada e validada localmente: cinco subgrafos e 43 testes na suíte padrão; aceite no aplicativo pendente. S1.4 concluída: comando local integra grafo e exportação com manifesto por execução, validado por replay offline. S1.3 concluída: exportador XLSX com quatro abas, validado por reabertura e sete testes específicos. S1.2 concluída: grafo de uma condenação com schemas, validações, cálculo e relatório, avaliado com uma extração real aprovada. S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -58,7 +58,7 @@ Para uma chamada real, configure `OPENAI_API_KEY` no `.env` local e rode `npm ru
 
 ## Como será utilizado
 
-A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` continua executando os 14 testes da S0. Consulte [S1_TASKS.md](docs/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
+A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 43 testes de S0 e S1; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
 
 Após a implementação e a inicialização do servidor, o contrato previsto é:
 
@@ -103,3 +103,5 @@ npm run test:s1:execucao
 ```
 
 O primeiro comando executa o grafo com a resposta real capturada na S1.2, sem rede, e gera JSONs, relatório e XLSX em `outputs/s1.4/<execucao_id>/`. O manifesto registra o modo de reprodução e os hashes. O segundo verifica sete cenários de integração. Para uma nova chamada paga, use `node --env-file=.env scripts/executar-s1.mjs --real`. Escopo atual: uma sentença de desenvolvimento. Consulte [S1_4_VALIDACAO.md](docs/S1_4_VALIDACAO.md) para parâmetros, arquivos, evidências e limites.
+
+A [revisão S1.5](docs/S1_5_VALIDACAO.md) descreve os cinco subgrafos e o roteiro de aceite no aplicativo. Para validar todo o desenvolvimento local, execute `npm test`.

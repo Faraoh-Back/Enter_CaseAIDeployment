@@ -1,0 +1,108 @@
+{
+  "executado_em": "2026-10-12T06:41:18.048Z",
+  "estado": "validacao_local_aprovada_aceite_aplicativo_pendente",
+  "testes": {
+    "comando": "npm test",
+    "aprovados": 43,
+    "falhas": 0,
+    "por_suite": [
+      14,
+      2,
+      11,
+      7,
+      7,
+      2
+    ],
+    "comparacao_quatro_outputs": "aprovada"
+  },
+  "refatoracao": {
+    "subgrafos": 5,
+    "grafo_base_preservado": true,
+    "build_reproduzivel": true
+  },
+  "execucao": {
+    "comando": "npm run s1:executar -- --replay --destino outputs/s1.5",
+    "manifesto": {
+      "versao_contrato": "s1.4-v1",
+      "execucao_id": "2026-10-12T06-39-29-760Z-1fd03db3-b814-4cbe-accb-28cf4d809470",
+      "estado": "concluida",
+      "modo": "replay",
+      "iniciado_em": "2026-10-12T06:39:29.761Z",
+      "encerrado_em": "2026-10-12T06:39:30.002Z",
+      "duracao_ms": 250,
+      "node": "v20.20.2",
+      "sdk": "1.25.0",
+      "grafo": "analisar_carteira",
+      "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+      "parametros_enviados": {
+        "model": "gpt-4.1-mini-2025-04-14",
+        "temperature": 0,
+        "max_tokens": 2500,
+        "response_format": "json_schema",
+        "strict": true
+      },
+      "projeto_sha256": "f01a145edbc3c84fe61640cfff0c706b0129b9da64ac448646228ff208ad69a2",
+      "schemas_sha256": {
+        "extracao": "185099e8f8d671033c0b6d0dc0fe7a76e4fdfcb6998d51951f8714a444b521dc",
+        "processo": "2bdb28bd202b38002f45f8e61f5370eb0e81d6fb4ba67b32de9f545536b02bb0",
+        "resumo": "fac197732622e5ca2211190d57bf1bf83f3f5cb94198e85de153cff4e7dcf0a1"
+      },
+      "entradas_sha256": {
+        "processos_texto": "2fd1ffe7e364fadd7bdf89fcd4ef20abcb514f2640bf91ffbd636beb093d9dad",
+        "subsidios_texto": "38f17c3376bc7324c255304aa1c06bf00b29c0bd1226d4843725b61e6b706177",
+        "indices_texto": "d5d647e87d97ca2f17d1af7445b8fec97611870672a6dfb12be402ed55a7a683",
+        "custos_texto": "6cd9c5075e73163c1a73f4fbac493913899b45c373ceab777d3a0ff6aa074ba7",
+        "probabilidades_texto": "ad1d915821a6a7ec024225cb251096efc77d44ebbc422a57a03018eaaabefa77",
+        "data_referencia": "96b951df9bacc4611285f7cebe34c5cdaa57098b72af7e6101a0b6d0632abc1e"
+      },
+      "captura_sha256": "68b588b235ad2c2b70e35d5082eb54e942de2a37feae4938bbeacbd856e46103",
+      "requisicoes_extrator": 1,
+      "chamadas_reais": 0,
+      "tokens": null,
+      "custo_monetario": null,
+      "resumo": {
+        "data_referencia": "2026-05-31",
+        "total_identificado": 1,
+        "vitorias_confirmadas": 0,
+        "resultados_desconhecidos": 0,
+        "condenacoes": 1,
+        "processos_aptos": 1,
+        "pendencias": 0,
+        "passivo_centavos": 667314,
+        "recursos_recomendados": 0,
+        "custo_recursos_centavos": 0,
+        "beneficio_esperado_recursos_centavos": 0
+      },
+      "erros": [],
+      "artefatos": [
+        {
+          "nome": "processos.json",
+          "sha256": "536bca2316e5ed9213503c414c021de9e39b53522743d44b5768298ce06304b5"
+        },
+        {
+          "nome": "resumo.json",
+          "sha256": "77f2c7c9813732bbc01720dba47bdcccbc8532d09efcca075f706bd566fb6d6e"
+        },
+        {
+          "nome": "auditoria.json",
+          "sha256": "024b4c21a64bed1fbb174bd356dce5c06de4dfcafd0202e8be5698125e5f11e0"
+        },
+        {
+          "nome": "relatorio.md",
+          "sha256": "d7f999dac861053b9ec5b209b328dd832de9f14cccc5b4321bbcc6a0abce0ee6"
+        },
+        {
+          "nome": "processos.xlsx",
+          "sha256": "3cebcbaea7c97e0addac9afec2ec2afe29adab46bd39b9dbb473358f0d0c7d8f"
+        }
+      ],
+      "extracao_resposta_sha256": "ecef14ba619b88df3e4c238688348d4f7c694e0d0852bfecded76248eebddf68"
+    },
+    "xlsx_reaberto": true,
+    "valor_atualizado_centavos": 667314
+  },
+  "aplicativo": {
+    "estado": "pendente",
+    "motivo": "Sem ferramenta de inspeção visual nesta sessão; roteiro entregue ao candidato em docs/S1_5_VALIDACAO.md."
+  }
+}

@@ -155,3 +155,7 @@ A planilha possui abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`. Proces
 O relatório começa pelo resultado e pelas ações recomendadas, apresenta a data-base e informa cobertura e limitações. Usa as contagens fornecidas pelos outputs, sem recomputar indicadores no exportador. A taxa de êxito segue a definição do case, com extinções e improcedências discriminadas; não inferir encerramento definitivo de toda exposição a partir de extinção.
 
 O racional final é um documento separado, escrito/revisado pelo candidato, de até duas páginas em Markdown ou PDF. Deve refletir a implementação real, os resultados medidos e como a IA foi usada no desenvolvimento. A RFC extensa não o substitui.
+
+## 9. Organização interna da S1.5
+
+O contrato público de `analisar_carteira` permanece inalterado. Preparação, extração, validação, cálculo e consolidação agora são subgrafos, com [portas documentadas](S1_5_VALIDACAO.md). Erros propagam ao principal; uma saída de erro não é convertida em dados válidos. A revisão não alterou schemas, fórmulas, decisão ou unidades. A equivalência dos quatro outputs é verificada por teste de regressão; aceite no aplicativo ainda pendente.

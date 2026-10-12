@@ -16,6 +16,7 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s1.4-execucao.json](s1.4-execucao.json) | Manifesto e conferência da execução integrada em replay, com hashes. |
 | [s1.4-processos.xlsx](s1.4-processos.xlsx) | Planilha produzida pelo grafo e exportador na mesma execução. |
 | [s1.4-relatorio.md](s1.4-relatorio.md) | Relatório produzido pelo grafo nessa execução. |
+| [s1.5-validacao.json](s1.5-validacao.json) | Refatoração, suíte completa, replay integrado e status pendente do aceite visual. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |

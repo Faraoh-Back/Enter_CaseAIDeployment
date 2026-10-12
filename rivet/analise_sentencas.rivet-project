@@ -131,7 +131,7 @@ data:
           visualData: 2.8396657074174776/499.14253331037145/380/21//
     analisar_carteira:
       metadata:
-        description: "S1.2: uma sentença condenatória por execução. Defaults do caso de
+        description: "S1.5: uma condenação, cinco subgrafos. Defaults do caso de
           desenvolvimento. Run faz uma chamada à OpenAI. Lotes e pendências
           serão tratados em S2/S3."
         id: analisar_carteira
@@ -203,7 +203,7 @@ data:
             id: custos_texto
             useDefaultValueInput: false
           outgoingConnections:
-            - data->"1. Conferir sentença e referências" s1_preparar/custos_texto
+            - data->"1. Preparar entradas" s1_preparacao/custos_texto
           visualData: 0/540/320/null//
         '[data_referencia]:graphInput "data_referencia"':
           data:
@@ -212,8 +212,7 @@ data:
             id: data_referencia
             useDefaultValueInput: false
           outgoingConnections:
-            - data->"1. Conferir sentença e referências"
-              s1_preparar/data_referencia
+            - data->"1. Preparar entradas" s1_preparacao/data_referencia
           visualData: 0/900/320/null//
         '[indices_texto]:graphInput "indices_texto"':
           data:
@@ -276,8 +275,7 @@ data:
             id: indices_texto
             useDefaultValueInput: false
           outgoingConnections:
-            - data->"1. Conferir sentença e referências"
-              s1_preparar/indices_texto
+            - data->"1. Preparar entradas" s1_preparacao/indices_texto
           visualData: 0/360/320/null//
         '[modelo]:graphInput "Modelo da extração"':
           data:
@@ -286,9 +284,9 @@ data:
             id: modelo
             useDefaultValueInput: false
           outgoingConnections:
-            - data->"3. Extrair sentença (OpenAI)" s1_extrair/model
-            - data->"6. Consolidar e redigir relatório" s1_consolidar/modelo
-          visualData: 840/800/320/null//
+            - data->"2. Extrair sentença" s1_extracao/model
+            - data->"5. Consolidar outputs" s1_consolidacao/modelo
+          visualData: 0/1080/320/null//
         '[probabilidades_texto]:graphInput "probabilidades_texto"':
           data:
             dataType: string
@@ -302,8 +300,7 @@ data:
             id: probabilidades_texto
             useDefaultValueInput: false
           outgoingConnections:
-            - data->"1. Conferir sentença e referências"
-              s1_preparar/probabilidades_texto
+            - data->"1. Preparar entradas" s1_preparacao/probabilidades_texto
           visualData: 0/720/320/null//
         '[processos]:graphOutput "processos"':
           data:
@@ -342,8 +339,7 @@ data:
             id: processos_texto
             useDefaultValueInput: false
           outgoingConnections:
-            - data->"1. Conferir sentença e referências"
-              s1_preparar/processos_texto
+            - data->"1. Preparar entradas" s1_preparacao/processos_texto
           visualData: 0/0/320/null//
         '[relatorio_markdown]:graphOutput "relatorio_markdown"':
           data:
@@ -355,76 +351,148 @@ data:
             dataType: object
             id: resumo
           visualData: 2860/240/320/null//
-        '[s1_calcular]:code "5. Calcular e decidir (BigInt)"':
+        '[s1_consolidacao]:subGraph "5. Consolidar outputs"':
           data:
-            allowConsole: false
-            allowFetch: false
-            allowProcess: false
-            allowRequire: false
-            allowRivet: false
-            code: >
-              // Executado dentro do Code Node; índices já escalados por 10.000.
-
-              const p = inputs.parametros.value;
-
-              for (const field of ['condenacao_centavos', 'meses',
-              'probabilidade_percentual', 'custo_centavos']) {
-                if (!Number.isSafeInteger(p[field]) || p[field] < 0) throw new Error(`Parametro invalido: ${field}`);
-              }
-
-              if (p.probabilidade_percentual > 100) throw new
-              Error('Probabilidade maior que 100');
-
-              for (const field of ['indice_base', 'indice_final']) {
-                if (typeof p[field] !== 'string' || !/^[1-9][0-9]*$/.test(p[field])) throw new Error(`Indice invalido: ${field}`);
-              }
-
-              function rounded(n, d) {
-                const sign = n < 0n ? -1n : 1n;
-                const abs = n < 0n ? -n : n;
-                const value = sign * (abs / d + (2n * (abs % d) >= d ? 1n : 0n));
-                if (value > BigInt(Number.MAX_SAFE_INTEGER) || value < BigInt(Number.MIN_SAFE_INTEGER)) throw new Error('Inteiro inseguro');
-                return Number(value);
-              }
-
-              const principalN = BigInt(p.condenacao_centavos) *
-              BigInt(p.indice_final);
-
-              const principalD = BigInt(p.indice_base);
-
-              const totalN = principalN * (100n + BigInt(p.meses));
-
-              const totalD = principalD * 100n;
-
-              const principal = rounded(principalN, principalD);
-
-              const total = rounded(totalN, totalD);
-
-              const beneficioN = BigInt(p.probabilidade_percentual) *
-              BigInt(total) - 100n * BigInt(p.custo_centavos);
-
-              return { resultado: { type: 'object', value: {
-                principal_corrigido_centavos: principal,
-                juros_centavos: total - principal,
-                valor_atualizado_centavos: total,
-                beneficio_esperado_centavos: rounded(beneficioN, 100n),
-                decisao_recurso: beneficioN > 0n ? 'recorrer' : 'nao_recorrer',
-                memoria: {
-                  principal_numerador: principalN.toString(), principal_denominador: principalD.toString(),
-                  juros_numerador: (principalN * BigInt(p.meses)).toString(), juros_denominador: totalD.toString(),
-                  total_numerador: totalN.toString(), total_denominador: totalD.toString(),
-                  beneficio_numerador: beneficioN.toString(), beneficio_denominador: '100',
-                  beneficio_residual_positivo: beneficioN > 0n && rounded(beneficioN, 100n) === 0,
-                },
-              } } };
-            inputNames:
-              - parametros
-            outputNames:
-              - resultado
+            graphId: s1_consolidacao
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
           outgoingConnections:
-            - resultado->"6. Consolidar e redigir relatório"
-              s1_consolidar/calculo
-          visualData: 2040/0/320/null//
+            - auditoria->"auditoria" auditoria/value
+            - processos->"processos" processos/value
+            - relatorio_markdown->"relatorio_markdown" relatorio_markdown/value
+            - resumo->"resumo" resumo/value
+          visualData: 2200/300/320/null//
+        '[s1_extracao]:subGraph "2. Extrair sentença"':
+          data:
+            graphId: s1_extracao
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
+          outgoingConnections:
+            - response->"3. Validar extração" s1_validacao/resposta
+            - response->"5. Consolidar outputs" s1_consolidacao/resposta
+            - usage->"5. Consolidar outputs" s1_consolidacao/uso
+          visualData: 880/300/320/null//
+        '[s1_financeiro]:subGraph "4. Calcular e decidir"':
+          data:
+            graphId: s1_financeiro
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
+          outgoingConnections:
+            - resultado->"5. Consolidar outputs" s1_consolidacao/calculo
+          visualData: 1760/300/320/null//
+        '[s1_preparacao]:subGraph "1. Preparar entradas"':
+          data:
+            graphId: s1_preparacao
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
+          outgoingConnections:
+            - preparado->"3. Validar extração" s1_validacao/preparado
+            - preparado->"5. Consolidar outputs" s1_consolidacao/preparado
+            - sentenca->"2. Extrair sentença" s1_extracao/sentenca
+          visualData: 440/300/320/null//
+        '[s1_validacao]:subGraph "3. Validar extração"':
+          data:
+            graphId: s1_validacao
+            useAsGraphPartialOutput: false
+            useErrorOutput: false
+          outgoingConnections:
+            - base->"5. Consolidar outputs" s1_consolidacao/base
+            - extracao->"5. Consolidar outputs" s1_consolidacao/extracao
+            - parametros->"4. Calcular e decidir" s1_financeiro/parametros
+          visualData: 1320/300/320/null//
+        '[subsidios_texto]:graphInput "subsidios_texto"':
+          data:
+            dataType: string
+            defaultValue: |
+              numero_processo,status_subsidios
+              3871230-78.2024.8.26.0002,ausentes
+            id: subsidios_texto
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"1. Preparar entradas" s1_preparacao/subsidios_texto
+          visualData: 0/180/320/null//
+    s1_consolidacao:
+      metadata:
+        description: 5. Consolidar outputs
+        id: s1_consolidacao
+        name: s1_consolidacao
+      nodes:
+        '[s1_consolidacao_in_base]:graphInput "base"':
+          data:
+            dataType: object
+            id: base
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/base
+          visualData: 0/0/320/null//
+        '[s1_consolidacao_in_calculo]:graphInput "calculo"':
+          data:
+            dataType: object
+            id: calculo
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/calculo
+          visualData: 0/360/320/null//
+        '[s1_consolidacao_in_extracao]:graphInput "extracao"':
+          data:
+            dataType: object
+            id: extracao
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/extracao
+          visualData: 0/180/320/null//
+        '[s1_consolidacao_in_modelo]:graphInput "modelo"':
+          data:
+            dataType: string
+            id: modelo
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/modelo
+          visualData: 0/1080/320/null//
+        '[s1_consolidacao_in_preparado]:graphInput "preparado"':
+          data:
+            dataType: object
+            id: preparado
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/preparado
+          visualData: 0/540/320/null//
+        '[s1_consolidacao_in_resposta]:graphInput "resposta"':
+          data:
+            dataType: string
+            id: resposta
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/resposta
+          visualData: 0/720/320/null//
+        '[s1_consolidacao_in_uso]:graphInput "uso"':
+          data:
+            dataType: object
+            id: uso
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"6. Consolidar e redigir relatório" s1_consolidar/uso
+          visualData: 0/900/320/null//
+        '[s1_consolidacao_out_auditoria]:graphOutput "auditoria"':
+          data:
+            dataType: object[]
+            id: auditoria
+          visualData: 880/360/320/null//
+        '[s1_consolidacao_out_processos]:graphOutput "processos"':
+          data:
+            dataType: object[]
+            id: processos
+          visualData: 880/0/320/null//
+        '[s1_consolidacao_out_relatorio_markdown]:graphOutput "relatorio_markdown"':
+          data:
+            dataType: string
+            id: relatorio_markdown
+          visualData: 880/540/320/null//
+        '[s1_consolidacao_out_resumo]:graphOutput "resumo"':
+          data:
+            dataType: object
+            id: resumo
+          visualData: 880/180/320/null//
         '[s1_consolidar]:code "6. Consolidar e redigir relatório"':
           data:
             allowConsole: false
@@ -2679,11 +2747,44 @@ data:
               - auditoria
               - relatorio_markdown
           outgoingConnections:
-            - auditoria->"auditoria" auditoria/value
-            - processos->"processos" processos/value
-            - relatorio_markdown->"relatorio_markdown" relatorio_markdown/value
-            - resumo->"resumo" resumo/value
-          visualData: 2440/300/320/null//
+            - auditoria->"auditoria" s1_consolidacao_out_auditoria/value
+            - processos->"processos" s1_consolidacao_out_processos/value
+            - relatorio_markdown->"relatorio_markdown"
+              s1_consolidacao_out_relatorio_markdown/value
+            - resumo->"resumo" s1_consolidacao_out_resumo/value
+          visualData: 440/300/320/null//
+    s1_extracao:
+      metadata:
+        description: 2. Extrair sentença
+        id: s1_extracao
+        name: s1_extracao
+      nodes:
+        '[s1_extracao_in_model]:graphInput "model"':
+          data:
+            dataType: string
+            id: model
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"3. Extrair sentença (OpenAI)" s1_extrair/model
+          visualData: 0/180/320/null//
+        '[s1_extracao_in_sentenca]:graphInput "sentenca"':
+          data:
+            dataType: string
+            id: sentenca
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"2. Instruções de extração" s1_prompt/sentenca
+          visualData: 0/0/320/null//
+        '[s1_extracao_out_response]:graphOutput "response"':
+          data:
+            dataType: string
+            id: response
+          visualData: 1280/0/320/null//
+        '[s1_extracao_out_usage]:graphOutput "usage"':
+          data:
+            dataType: object
+            id: usage
+          visualData: 1280/180/320/null//
         '[s1_extrair]:chat "3. Extrair sentença (OpenAI)"':
           data:
             additionalParameters: []
@@ -2718,110 +2819,9 @@ data:
             useUseTopPInput: false
             useUserInput: false
           outgoingConnections:
-            - response->"4. Validar evidências e preparar cálculo"
-              s1_validar/resposta
-            - response->"6. Consolidar e redigir relatório"
-              s1_consolidar/resposta
-            - usage->"6. Consolidar e redigir relatório" s1_consolidar/uso
-          visualData: 1240/0/320/null//
-        '[s1_preparar]:code "1. Conferir sentença e referências"':
-          data:
-            allowConsole: false
-            allowFetch: false
-            allowProcess: false
-            allowRequire: false
-            allowRivet: false
-            code: |
-              // Todas as interpretações e associações das referências ocorrem neste Code Node.
-              function fail(message) { throw new Error(`ENTRADA_INVALIDA: ${message}`); }
-              function csv(value, delimiter, headers, key) {
-                const text = value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
-                const rows = []; let row = [], cell = '', quoted = false, closed = false;
-                for (let i = 0; i < text.length; i++) {
-                  const char = text[i];
-                  if (quoted) {
-                    if (char === '"' && text[i + 1] === '"') { cell += '"'; i++; }
-                    else if (char === '"') { quoted = false; closed = true; }
-                    else cell += char;
-                  } else if (char === delimiter || char === '\n') {
-                    row.push(cell); cell = ''; closed = false;
-                    if (char === '\n') { if (row.some(v => v !== '')) rows.push(row); row = []; }
-                  } else if (char === '"' && cell === '' && !closed) quoted = true;
-                  else if (closed || char === '"') fail('CSV com aspas inválidas');
-                  else cell += char;
-                }
-                if (quoted) fail('CSV com aspas abertas');
-                if (cell !== '' || row.length || closed) { row.push(cell); rows.push(row); }
-                if (JSON.stringify(rows.shift()) !== JSON.stringify(headers)) fail(`Cabeçalho esperado: ${headers.join(delimiter)}`);
-                const map = {};
-                for (const values of rows) {
-                  if (values.length !== headers.length) fail('CSV com quantidade de colunas divergente');
-                  const item = Object.fromEntries(headers.map((h, i) => [h, values[i].trim()]));
-                  const id = item[key];
-                  if (!id || Object.hasOwn(map, id) || ['__proto__', 'constructor', 'prototype'].includes(id)) fail(`Chave vazia ou duplicada: ${id}`);
-                  map[id] = item;
-                }
-                if (!Object.keys(map).length) fail('Referência vazia');
-                return map;
-              }
-              const text = inputs.processos_texto.value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
-              const pieces = text.split(/={20,}\nProcesso nº ([\d.\-]+)\n={20,}\n/);
-              if (pieces.length !== 3 || pieces[0].trim()) fail('S1 aceita exatamente uma sentença delimitada; nenhum lote será truncado');
-              const numero = pieces[1], sentenca = pieces[2].trim();
-              if (!/^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/.test(numero)) fail('Formato CNJ inválido');
-              const identities = [...sentenca.matchAll(/Processo nº ([\d.\-]+)/g)].map(m => m[1]);
-              if (!identities.length || identities.some(id => id !== numero)) fail('Identidade interna divergente');
-              const referencia = inputs.data_referencia.value;
-              if (referencia !== '2026-05-31') fail('Data de referência do case deve ser 2026-05-31');
-              const indices = csv(inputs.indices_texto.value, ',', ['mes_referencia', 'numero_indice'], 'mes_referencia');
-              for (const [month, row] of Object.entries(indices)) {
-                if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month) || !/^\d+\.\d{4}$/.test(row.numero_indice)) fail('Índice ou mês inválido');
-                if (BigInt(row.numero_indice.replace('.', '')) <= 0n) fail('Índice não positivo');
-              }
-              if (!indices[referencia.slice(0, 7)]) fail('Índice final ausente');
-              const custos = csv(inputs.custos_texto.value, ';', ['tribunal','uf','tr_cnj','codigo_cnj_j_tr','media_custos_totais'], 'codigo_cnj_j_tr');
-              for (const row of Object.values(custos)) {
-                if (!/^\d\.\d{2}$/.test(row.codigo_cnj_j_tr) || !row.tribunal || !row.uf || !/^\d+$/.test(row.tr_cnj) || Number(row.codigo_cnj_j_tr.split('.')[1]) !== Number(row.tr_cnj)) fail('Identificação de tribunal inválida');
-                if (!/^\d+(?:\.\d{1,2})?$/.test(row.media_custos_totais)) fail('Custo inválido');
-                const [whole, fraction = ''] = row.media_custos_totais.split('.');
-                const cents = BigInt(whole) * 100n + BigInt(fraction.padEnd(2, '0'));
-                if (cents > BigInt(Number.MAX_SAFE_INTEGER)) fail('Custo fora do intervalo seguro');
-                row.centavos = Number(cents);
-              }
-              const probabilidades = csv(inputs.probabilidades_texto.value, ';', ['status_subsidios','probabilidade_reversao'], 'status_subsidios');
-              for (const [status, row] of Object.entries(probabilidades)) {
-                if (!['completos','essenciais','ausentes'].includes(status) || !/^\d{1,3}%$/.test(row.probabilidade_reversao)) fail('Probabilidade inválida');
-                row.percentual = Number(row.probabilidade_reversao.slice(0, -1));
-                if (row.percentual > 100) fail('Probabilidade acima de 100%');
-              }
-              const subsidios = csv(inputs.subsidios_texto.value, ',', ['numero_processo','status_subsidios'], 'numero_processo');
-              if (Object.keys(subsidios).length !== 1 || !subsidios[numero]) fail('Subsídios devem corresponder exatamente à sentença recebida');
-              const status = subsidios[numero].status_subsidios;
-              if (!probabilidades[status]) fail('Subsídio ou probabilidade desconhecidos');
-              const tribunal = numero.split('.').slice(2, 4).join('.');
-              if (!custos[tribunal]) fail('Custo do tribunal ausente');
-              return {
-                sentenca: { type: 'string', value: sentenca },
-                preparado: { type: 'object', value: { numero, sentenca, referencia, indices, custo: custos[tribunal],
-                  status_subsidios: status, probabilidade: probabilidades[status].percentual } },
-              };
-            inputNames:
-              - processos_texto
-              - subsidios_texto
-              - indices_texto
-              - custos_texto
-              - probabilidades_texto
-              - data_referencia
-            outputNames:
-              - preparado
-              - sentenca
-          outgoingConnections:
-            - preparado->"4. Validar evidências e preparar cálculo"
-              s1_validar/preparado
-            - preparado->"6. Consolidar e redigir relatório"
-              s1_consolidar/preparado
-            - sentenca->"2. Instruções de extração" s1_prompt/sentenca
-          visualData: 440/300/320/null//
+            - response->"response" s1_extracao_out_response/value
+            - usage->"usage" s1_extracao_out_usage/value
+          visualData: 840/0/320/null//
         '[s1_prompt]:prompt "2. Instruções de extração"':
           data:
             enableFunctionCall: false
@@ -2886,7 +2886,7 @@ data:
             useTypeInput: false
           outgoingConnections:
             - output->"3. Extrair sentença (OpenAI)" s1_extrair/prompt
-          visualData: 840/0/320/null//
+          visualData: 440/0/320/null//
         '[s1_schema]:object "Schema da resposta"':
           data:
             jsonTemplate: |-
@@ -3011,7 +3011,298 @@ data:
               }
           outgoingConnections:
             - output->"3. Extrair sentença (OpenAI)" s1_extrair/responseSchema
-          visualData: 840/500/320/null//
+          visualData: 440/500/320/null//
+    s1_financeiro:
+      metadata:
+        description: 4. Calcular e decidir
+        id: s1_financeiro
+        name: s1_financeiro
+      nodes:
+        '[s1_calcular]:code "5. Calcular e decidir (BigInt)"':
+          data:
+            allowConsole: false
+            allowFetch: false
+            allowProcess: false
+            allowRequire: false
+            allowRivet: false
+            code: >
+              // Executado dentro do Code Node; índices já escalados por 10.000.
+
+              const p = inputs.parametros.value;
+
+              for (const field of ['condenacao_centavos', 'meses',
+              'probabilidade_percentual', 'custo_centavos']) {
+                if (!Number.isSafeInteger(p[field]) || p[field] < 0) throw new Error(`Parametro invalido: ${field}`);
+              }
+
+              if (p.probabilidade_percentual > 100) throw new
+              Error('Probabilidade maior que 100');
+
+              for (const field of ['indice_base', 'indice_final']) {
+                if (typeof p[field] !== 'string' || !/^[1-9][0-9]*$/.test(p[field])) throw new Error(`Indice invalido: ${field}`);
+              }
+
+              function rounded(n, d) {
+                const sign = n < 0n ? -1n : 1n;
+                const abs = n < 0n ? -n : n;
+                const value = sign * (abs / d + (2n * (abs % d) >= d ? 1n : 0n));
+                if (value > BigInt(Number.MAX_SAFE_INTEGER) || value < BigInt(Number.MIN_SAFE_INTEGER)) throw new Error('Inteiro inseguro');
+                return Number(value);
+              }
+
+              const principalN = BigInt(p.condenacao_centavos) *
+              BigInt(p.indice_final);
+
+              const principalD = BigInt(p.indice_base);
+
+              const totalN = principalN * (100n + BigInt(p.meses));
+
+              const totalD = principalD * 100n;
+
+              const principal = rounded(principalN, principalD);
+
+              const total = rounded(totalN, totalD);
+
+              const beneficioN = BigInt(p.probabilidade_percentual) *
+              BigInt(total) - 100n * BigInt(p.custo_centavos);
+
+              return { resultado: { type: 'object', value: {
+                principal_corrigido_centavos: principal,
+                juros_centavos: total - principal,
+                valor_atualizado_centavos: total,
+                beneficio_esperado_centavos: rounded(beneficioN, 100n),
+                decisao_recurso: beneficioN > 0n ? 'recorrer' : 'nao_recorrer',
+                memoria: {
+                  principal_numerador: principalN.toString(), principal_denominador: principalD.toString(),
+                  juros_numerador: (principalN * BigInt(p.meses)).toString(), juros_denominador: totalD.toString(),
+                  total_numerador: totalN.toString(), total_denominador: totalD.toString(),
+                  beneficio_numerador: beneficioN.toString(), beneficio_denominador: '100',
+                  beneficio_residual_positivo: beneficioN > 0n && rounded(beneficioN, 100n) === 0,
+                },
+              } } };
+            inputNames:
+              - parametros
+            outputNames:
+              - resultado
+          outgoingConnections:
+            - resultado->"resultado" s1_financeiro_out_resultado/value
+          visualData: 440/0/320/null//
+        '[s1_financeiro_in_parametros]:graphInput "parametros"':
+          data:
+            dataType: object
+            id: parametros
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"5. Calcular e decidir (BigInt)" s1_calcular/parametros
+          visualData: 0/0/320/null//
+        '[s1_financeiro_out_resultado]:graphOutput "resultado"':
+          data:
+            dataType: object
+            id: resultado
+          visualData: 880/0/320/null//
+    s1_preparacao:
+      metadata:
+        description: 1. Preparar entradas
+        id: s1_preparacao
+        name: s1_preparacao
+      nodes:
+        '[s1_preparacao_in_custos_texto]:graphInput "custos_texto"':
+          data:
+            dataType: string
+            id: custos_texto
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"1. Conferir sentença e referências" s1_preparar/custos_texto
+          visualData: 0/540/320/null//
+        '[s1_preparacao_in_data_referencia]:graphInput "data_referencia"':
+          data:
+            dataType: string
+            id: data_referencia
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"1. Conferir sentença e referências"
+              s1_preparar/data_referencia
+          visualData: 0/900/320/null//
+        '[s1_preparacao_in_indices_texto]:graphInput "indices_texto"':
+          data:
+            dataType: string
+            id: indices_texto
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"1. Conferir sentença e referências"
+              s1_preparar/indices_texto
+          visualData: 0/360/320/null//
+        '[s1_preparacao_in_probabilidades_texto]:graphInput "probabilidades_texto"':
+          data:
+            dataType: string
+            id: probabilidades_texto
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"1. Conferir sentença e referências"
+              s1_preparar/probabilidades_texto
+          visualData: 0/720/320/null//
+        '[s1_preparacao_in_processos_texto]:graphInput "processos_texto"':
+          data:
+            dataType: string
+            id: processos_texto
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"1. Conferir sentença e referências"
+              s1_preparar/processos_texto
+          visualData: 0/0/320/null//
+        '[s1_preparacao_in_subsidios_texto]:graphInput "subsidios_texto"':
+          data:
+            dataType: string
+            id: subsidios_texto
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"1. Conferir sentença e referências"
+              s1_preparar/subsidios_texto
+          visualData: 0/180/320/null//
+        '[s1_preparacao_out_preparado]:graphOutput "preparado"':
+          data:
+            dataType: object
+            id: preparado
+          visualData: 880/180/320/null//
+        '[s1_preparacao_out_sentenca]:graphOutput "sentenca"':
+          data:
+            dataType: string
+            id: sentenca
+          visualData: 880/0/320/null//
+        '[s1_preparar]:code "1. Conferir sentença e referências"':
+          data:
+            allowConsole: false
+            allowFetch: false
+            allowProcess: false
+            allowRequire: false
+            allowRivet: false
+            code: |
+              // Todas as interpretações e associações das referências ocorrem neste Code Node.
+              function fail(message) { throw new Error(`ENTRADA_INVALIDA: ${message}`); }
+              function csv(value, delimiter, headers, key) {
+                const text = value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
+                const rows = []; let row = [], cell = '', quoted = false, closed = false;
+                for (let i = 0; i < text.length; i++) {
+                  const char = text[i];
+                  if (quoted) {
+                    if (char === '"' && text[i + 1] === '"') { cell += '"'; i++; }
+                    else if (char === '"') { quoted = false; closed = true; }
+                    else cell += char;
+                  } else if (char === delimiter || char === '\n') {
+                    row.push(cell); cell = ''; closed = false;
+                    if (char === '\n') { if (row.some(v => v !== '')) rows.push(row); row = []; }
+                  } else if (char === '"' && cell === '' && !closed) quoted = true;
+                  else if (closed || char === '"') fail('CSV com aspas inválidas');
+                  else cell += char;
+                }
+                if (quoted) fail('CSV com aspas abertas');
+                if (cell !== '' || row.length || closed) { row.push(cell); rows.push(row); }
+                if (JSON.stringify(rows.shift()) !== JSON.stringify(headers)) fail(`Cabeçalho esperado: ${headers.join(delimiter)}`);
+                const map = {};
+                for (const values of rows) {
+                  if (values.length !== headers.length) fail('CSV com quantidade de colunas divergente');
+                  const item = Object.fromEntries(headers.map((h, i) => [h, values[i].trim()]));
+                  const id = item[key];
+                  if (!id || Object.hasOwn(map, id) || ['__proto__', 'constructor', 'prototype'].includes(id)) fail(`Chave vazia ou duplicada: ${id}`);
+                  map[id] = item;
+                }
+                if (!Object.keys(map).length) fail('Referência vazia');
+                return map;
+              }
+              const text = inputs.processos_texto.value.replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n');
+              const pieces = text.split(/={20,}\nProcesso nº ([\d.\-]+)\n={20,}\n/);
+              if (pieces.length !== 3 || pieces[0].trim()) fail('S1 aceita exatamente uma sentença delimitada; nenhum lote será truncado');
+              const numero = pieces[1], sentenca = pieces[2].trim();
+              if (!/^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/.test(numero)) fail('Formato CNJ inválido');
+              const identities = [...sentenca.matchAll(/Processo nº ([\d.\-]+)/g)].map(m => m[1]);
+              if (!identities.length || identities.some(id => id !== numero)) fail('Identidade interna divergente');
+              const referencia = inputs.data_referencia.value;
+              if (referencia !== '2026-05-31') fail('Data de referência do case deve ser 2026-05-31');
+              const indices = csv(inputs.indices_texto.value, ',', ['mes_referencia', 'numero_indice'], 'mes_referencia');
+              for (const [month, row] of Object.entries(indices)) {
+                if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month) || !/^\d+\.\d{4}$/.test(row.numero_indice)) fail('Índice ou mês inválido');
+                if (BigInt(row.numero_indice.replace('.', '')) <= 0n) fail('Índice não positivo');
+              }
+              if (!indices[referencia.slice(0, 7)]) fail('Índice final ausente');
+              const custos = csv(inputs.custos_texto.value, ';', ['tribunal','uf','tr_cnj','codigo_cnj_j_tr','media_custos_totais'], 'codigo_cnj_j_tr');
+              for (const row of Object.values(custos)) {
+                if (!/^\d\.\d{2}$/.test(row.codigo_cnj_j_tr) || !row.tribunal || !row.uf || !/^\d+$/.test(row.tr_cnj) || Number(row.codigo_cnj_j_tr.split('.')[1]) !== Number(row.tr_cnj)) fail('Identificação de tribunal inválida');
+                if (!/^\d+(?:\.\d{1,2})?$/.test(row.media_custos_totais)) fail('Custo inválido');
+                const [whole, fraction = ''] = row.media_custos_totais.split('.');
+                const cents = BigInt(whole) * 100n + BigInt(fraction.padEnd(2, '0'));
+                if (cents > BigInt(Number.MAX_SAFE_INTEGER)) fail('Custo fora do intervalo seguro');
+                row.centavos = Number(cents);
+              }
+              const probabilidades = csv(inputs.probabilidades_texto.value, ';', ['status_subsidios','probabilidade_reversao'], 'status_subsidios');
+              for (const [status, row] of Object.entries(probabilidades)) {
+                if (!['completos','essenciais','ausentes'].includes(status) || !/^\d{1,3}%$/.test(row.probabilidade_reversao)) fail('Probabilidade inválida');
+                row.percentual = Number(row.probabilidade_reversao.slice(0, -1));
+                if (row.percentual > 100) fail('Probabilidade acima de 100%');
+              }
+              const subsidios = csv(inputs.subsidios_texto.value, ',', ['numero_processo','status_subsidios'], 'numero_processo');
+              if (Object.keys(subsidios).length !== 1 || !subsidios[numero]) fail('Subsídios devem corresponder exatamente à sentença recebida');
+              const status = subsidios[numero].status_subsidios;
+              if (!probabilidades[status]) fail('Subsídio ou probabilidade desconhecidos');
+              const tribunal = numero.split('.').slice(2, 4).join('.');
+              if (!custos[tribunal]) fail('Custo do tribunal ausente');
+              return {
+                sentenca: { type: 'string', value: sentenca },
+                preparado: { type: 'object', value: { numero, sentenca, referencia, indices, custo: custos[tribunal],
+                  status_subsidios: status, probabilidade: probabilidades[status].percentual } },
+              };
+            inputNames:
+              - processos_texto
+              - subsidios_texto
+              - indices_texto
+              - custos_texto
+              - probabilidades_texto
+              - data_referencia
+            outputNames:
+              - preparado
+              - sentenca
+          outgoingConnections:
+            - preparado->"preparado" s1_preparacao_out_preparado/value
+            - sentenca->"sentenca" s1_preparacao_out_sentenca/value
+          visualData: 440/300/320/null//
+    s1_validacao:
+      metadata:
+        description: 3. Validar extração
+        id: s1_validacao
+        name: s1_validacao
+      nodes:
+        '[s1_validacao_in_preparado]:graphInput "preparado"':
+          data:
+            dataType: object
+            id: preparado
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"4. Validar evidências e preparar cálculo"
+              s1_validar/preparado
+          visualData: 0/0/320/null//
+        '[s1_validacao_in_resposta]:graphInput "resposta"':
+          data:
+            dataType: string
+            id: resposta
+            useDefaultValueInput: false
+          outgoingConnections:
+            - data->"4. Validar evidências e preparar cálculo"
+              s1_validar/resposta
+          visualData: 0/180/320/null//
+        '[s1_validacao_out_base]:graphOutput "base"':
+          data:
+            dataType: object
+            id: base
+          visualData: 880/180/320/null//
+        '[s1_validacao_out_extracao]:graphOutput "extracao"':
+          data:
+            dataType: object
+            id: extracao
+          visualData: 880/360/320/null//
+        '[s1_validacao_out_parametros]:graphOutput "parametros"':
+          data:
+            dataType: object
+            id: parametros
+          visualData: 880/0/320/null//
         '[s1_validar]:code "4. Validar evidências e preparar cálculo"':
           data:
             allowConsole: false
@@ -4046,23 +4337,10 @@ data:
               - extracao
               - parametros
           outgoingConnections:
-            - base->"6. Consolidar e redigir relatório" s1_consolidar/base
-            - extracao->"6. Consolidar e redigir relatório"
-              s1_consolidar/extracao
-            - parametros->"5. Calcular e decidir (BigInt)" s1_calcular/parametros
-          visualData: 1640/300/320/null//
-        '[subsidios_texto]:graphInput "subsidios_texto"':
-          data:
-            dataType: string
-            defaultValue: |
-              numero_processo,status_subsidios
-              3871230-78.2024.8.26.0002,ausentes
-            id: subsidios_texto
-            useDefaultValueInput: false
-          outgoingConnections:
-            - data->"1. Conferir sentença e referências"
-              s1_preparar/subsidios_texto
-          visualData: 0/180/320/null//
+            - base->"base" s1_validacao_out_base/value
+            - extracao->"extracao" s1_validacao_out_extracao/value
+            - parametros->"parametros" s1_validacao_out_parametros/value
+          visualData: 440/300/320/null//
   metadata:
     description: ""
     id: eA1bC2dE3fG4hI5jK6lMn

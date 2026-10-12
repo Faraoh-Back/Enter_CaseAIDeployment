@@ -70,8 +70,59 @@ for (const [index, [id, dataType]] of Object.entries({ processos: 'object[]', re
 }
 const file = 'rivet/analise_sentencas.rivet-project';
 const project = await loadProjectFromFile(file);
+// Encapsula os nós existentes sem duplicar suas regras. Portas de fronteira
+// tornam-se Graph Inputs/Outputs tipados; erros continuam propagados ao principal.
+let mainNodes = nodes;
+let mainConnections = connections;
+const portTypes = { ...Object.fromEntries(Object.keys(inputs).map(k => [k,'string'])),
+  sentenca:'string', model:'string', response:'string', resposta:'string', modelo:'string',
+  preparado:'object', base:'object', extracao:'object', parametros:'object', resultado:'object',
+  calculo:'object', usage:'object', uso:'object', processos:'object[]', resumo:'object',
+  auditoria:'object[]', relatorio_markdown:'string' };
+const stages = [
+  ['s1_preparacao', '1. Preparar entradas', ['s1_preparar']],
+  ['s1_extracao', '2. Extrair sentença', ['s1_prompt','s1_schema','s1_extrair']],
+  ['s1_validacao', '3. Validar extração', ['s1_validar']],
+  ['s1_financeiro', '4. Calcular e decidir', ['s1_calcular']],
+  ['s1_consolidacao', '5. Consolidar outputs', ['s1_consolidar']],
+];
+for (const [stageIndex, [id,title,memberIds]] of stages.entries()) {
+  const members = new Set(memberIds);
+  const inner = mainNodes.filter(n => members.has(n.id));
+  const internal = mainConnections.filter(c => members.has(c.outputNodeId) && members.has(c.inputNodeId));
+  const incoming = mainConnections.filter(c => !members.has(c.outputNodeId) && members.has(c.inputNodeId));
+  const outgoing = mainConnections.filter(c => members.has(c.outputNodeId) && !members.has(c.inputNodeId));
+  const inPorts = [...new Set(incoming.map(c => c.inputId))];
+  const outPorts = [...new Set(outgoing.map(c => c.outputId))];
+  const minX = Math.min(...inner.map(n=>n.visualData.x));
+  for (const n of inner) n.visualData.x = n.visualData.x - minX + 440;
+  const right = Math.max(...inner.map(n=>n.visualData.x)) + 440;
+  const interfaces = [];
+  for (const [direction,ports,x] of [['in',inPorts,0],['out',outPorts,right]]) {
+    ports.forEach((port,i) => {
+      if (!portTypes[port]) throw new Error(`Tipo de porta ausente: ${id}.${port}`);
+      interfaces.push(node(direction === 'in' ? 'graphInput' : 'graphOutput', `${id}_${direction}_${port}`,
+        {id:port,dataType:portTypes[port]},x,i*180,port));
+    });
+  }
+  for (const c of incoming) internal.push({...c,outputNodeId:`${id}_in_${c.inputId}`,outputId:'data'});
+  // Uma saída pode alimentar mais de um consumidor, mas possui um único Graph Output.
+  for (const port of outPorts) {
+    const producers = outgoing.filter(c=>c.outputId===port);
+    if (new Set(producers.map(c=>c.outputNodeId)).size !== 1) throw new Error(`Saída ambígua: ${id}.${port}`);
+    internal.push({...producers[0],inputNodeId:`${id}_out_${port}`,inputId:'value'});
+  }
+  project.graphs[id] = {metadata:{id,name:id,description:title},nodes:[...interfaces,...inner],connections:internal};
+  mainNodes = mainNodes.filter(n=>!members.has(n.id));
+  mainNodes.push(node('subGraph',id,{graphId:id,useErrorOutput:false},440+stageIndex*440,300,title));
+  mainConnections = mainConnections.filter(c=>!(members.has(c.outputNodeId)&&members.has(c.inputNodeId)))
+    .map(c=>({...c,outputNodeId:members.has(c.outputNodeId)?id:c.outputNodeId,
+      inputNodeId:members.has(c.inputNodeId)?id:c.inputNodeId}));
+}
+const modelInput = mainNodes.find(n=>n.id==='modelo');
+modelInput.visualData = {x:0,y:1080,width:320};
 project.graphs.analisar_carteira = { metadata: { id: 'analisar_carteira', name: 'analisar_carteira',
-  description: 'S1.2: uma sentença condenatória por execução. Defaults do caso de desenvolvimento. Run faz uma chamada à OpenAI. Lotes e pendências serão tratados em S2/S3.' }, nodes, connections };
+  description: 'S1.5: uma condenação, cinco subgrafos. Defaults do caso de desenvolvimento. Run faz uma chamada à OpenAI. Lotes e pendências serão tratados em S2/S3.' }, nodes:mainNodes, connections:mainConnections };
 project.metadata.mainGraphId = 'analisar_carteira';
 await writeFile(file, serializeProject(project));
-console.log('Grafo S1 gerado. Grafo-base preservado; nenhuma chamada à LLM durante o build.');
+console.log('Grafo S1 gerado com cinco subgrafos. Grafo-base preservado; nenhuma chamada à LLM durante o build.');

@@ -1,0 +1,31 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFile, mkdtemp, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { loadProjectFromFile } from '@ironclad/rivet-node';
+import { executarS1 } from '../src/executar-s1.mjs';
+
+test('S1.5: orquestrador delega às cinco responsabilidades em subgrafos', async () => {
+  const project = await loadProjectFromFile('rivet/analise_sentencas.rivet-project');
+  const main = project.graphs.analisar_carteira;
+  const calls = main.nodes.filter(n => n.type === 'subGraph');
+  assert.equal(calls.length,5);
+  assert.ok(!main.nodes.some(n => ['code','chat'].includes(n.type)));
+  for (const call of calls) assert.ok(project.graphs[call.data.graphId]);
+  assert.deepEqual(main.nodes.filter(n=>n.type==='graphOutput').map(n=>n.data.id).sort(),
+    ['auditoria','processos','relatorio_markdown','resumo']);
+});
+test('S1.5: quatro outputs permanecem equivalentes à captura anterior à refatoração', async t => {
+  const root = await mkdtemp(path.join(tmpdir(),'enter-refatoracao-'));
+  t.after(()=>rm(root,{recursive:true,force:true}));
+  const {diretorio} = await executarS1({modo:'replay',destino:root});
+  const record = JSON.parse(await readFile('docs/output/s1.2-llm-aprovada.json','utf8'));
+  const expected = structuredClone(record.outputs);
+  // Replay não reporta consumo da chamada histórica como consumo atual.
+  expected.auditoria[0].tokens = null;
+  for(const name of ['processos','resumo','auditoria']) {
+    assert.deepEqual(JSON.parse(await readFile(path.join(diretorio,`${name}.json`))),expected[name]);
+  }
+  assert.equal(await readFile(path.join(diretorio,'relatorio.md'),'utf8'),expected.relatorio_markdown);
+});
