@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0 concluída. S1.1–S1.4 concluídas: execução local integra grafo e XLSX, com manifesto e testes; refatoração S1.5 validada localmente com 43 testes; somente aceite no aplicativo pendente. [Tarefas e evidências S1](S1_TASKS.md). S2–S5 ainda não executadas.
+**Estado:** S0 concluída. S1.1–S1.4 concluídas: execução local integra grafo e XLSX, com manifesto e testes; refatoração S1.5 validada localmente com 43 testes; somente aceite no aplicativo pendente. [Tarefas e evidências S1](S1_TASKS.md). S2.1 concluída com aceitação em vermelho; S2.2–S2.6 e S3–S5 não executadas.
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -59,7 +59,9 @@ Execução em tarefas separadas, com revisão e commits feitos pelo candidato. [
 
 ## S2 — resultados diferentes e tratamento de incerteza
 
-- [ ] **Vermelho:** casos de procedência, parcial procedência, improcedência e extinção, danos materiais isolados e combinados, valores de pedidos usados como distração em fixtures sintéticas.
+Execução por tarefas, conforme [S2_TASKS.md](S2_TASKS.md). Nesta rodada, somente S2.1: 13 cenários, 7 aprovados e 6 falhas observadas; nenhuma implementação de produção.
+
+- [x] **S2.1 — Vermelho:** casos de procedência, parcial procedência, improcedência e extinção, danos materiais isolados e combinados, valores de pedidos usados como distração em fixtures sintéticas.
 - [ ] **Vermelho:** datas ausentes/inválidas/futuras, índice ausente, CNJ divergente, subsídio desconhecido, saída malformada e duplicação de processos.
 - [ ] **Verde:** normalização, retentativas limitadas e estados de pendência/erro; impedir recomendações baseadas em valores incompletos.
 - [ ] Cobrir meses completos, fronteiras de arredondamento e benefício positivo, negativo e exatamente zero.

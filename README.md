@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S1.5 refatorada e validada localmente: cinco subgrafos e 43 testes na suíte padrão; aceite no aplicativo pendente. S1.4 concluída: comando local integra grafo e exportação com manifesto por execução, validado por replay offline. S1.3 concluída: exportador XLSX com quatro abas, validado por reabertura e sete testes específicos. S1.2 concluída: grafo de uma condenação com schemas, validações, cálculo e relatório, avaliado com uma extração real aprovada. S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
+**Estado atual:** S2.1 concluída: testes de aceitação dos quatro resultados, com seis falhas esperadas aguardando S2.2. S1.5 refatorada e validada localmente: cinco subgrafos e 43 testes na suíte padrão; aceite no aplicativo pendente. S1.4 concluída: comando local integra grafo e exportação com manifesto por execução, validado por replay offline. S1.3 concluída: exportador XLSX com quatro abas, validado por reabertura e sete testes específicos. S1.2 concluída: grafo de uma condenação com schemas, validações, cálculo e relatório, avaliado com uma extração real aprovada. S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -105,3 +105,7 @@ npm run test:s1:execucao
 O primeiro comando executa o grafo com a resposta real capturada na S1.2, sem rede, e gera JSONs, relatório e XLSX em `outputs/s1.4/<execucao_id>/`. O manifesto registra o modo de reprodução e os hashes. O segundo verifica sete cenários de integração. Para uma nova chamada paga, use `node --env-file=.env scripts/executar-s1.mjs --real`. Escopo atual: uma sentença de desenvolvimento. Consulte [S1_4_VALIDACAO.md](docs/S1_4_VALIDACAO.md) para parâmetros, arquivos, evidências e limites.
 
 A [revisão S1.5](docs/S1_5_VALIDACAO.md) descreve os cinco subgrafos e o roteiro de aceite no aplicativo. Para validar todo o desenvolvimento local, execute `npm test`.
+
+## S2 por tarefa
+
+A [S2.1](docs/S2_TASKS.md) adiciona 13 cenários offline para os quatro resultados e um pedido sintético maior. `npm run test:s2` retorna **saída 1: 7 aprovados, 6 falhas** por falta de tratamento das vitórias. Essa suíte permanece separada até a S2.2; `npm test` continua verde com os 43 testes S0/S1. Não houve alteração de produção nesta tarefa.

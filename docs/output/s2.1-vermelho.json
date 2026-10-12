@@ -1,0 +1,69 @@
+{
+  "executado_em": "2026-10-12T06:46:33.976Z",
+  "tarefa": "S2.1",
+  "node": "v20.20.2",
+  "metodo": "SDK executa o grafo real uma sentença por vez, com resposta LLM simulada a partir de gabaritos de desenvolvimento; cenário sintético adiciona pedido maior antes do dispositivo.",
+  "escopo": {
+    "casos_reais_de_desenvolvimento": 12,
+    "cenarios_sinteticos": 1,
+    "chamadas_reais": 0,
+    "conjunto_reservado_nos_testes_novos": false,
+    "producao_alterada": false
+  },
+  "comando": "npm run test:s2",
+  "exit_code": 1,
+  "testes": 13,
+  "aprovados": 7,
+  "falhas": 6,
+  "falhas_observadas": [
+    {
+      "teste": "S2.1: improcedencia — 1325366-90.2024.8.26.0001",
+      "causa": "ESCOPO_S1: apenas condenações nesta fatia"
+    },
+    {
+      "teste": "S2.1: improcedencia — 9107791-86.2024.8.26.0008",
+      "causa": "ESCOPO_S1: apenas condenações nesta fatia"
+    },
+    {
+      "teste": "S2.1: improcedencia — 8908327-78.2025.8.26.0001",
+      "causa": "ESCOPO_S1: apenas condenações nesta fatia"
+    },
+    {
+      "teste": "S2.1: extincao — 6304573-19.2024.8.26.0008",
+      "causa": "ESCOPO_S1: apenas condenações nesta fatia"
+    },
+    {
+      "teste": "S2.1: extincao — 3094235-58.2024.8.26.0009",
+      "causa": "ESCOPO_S1: apenas condenações nesta fatia"
+    },
+    {
+      "teste": "S2.1: extincao — 5216026-96.2025.8.26.0001",
+      "causa": "ESCOPO_S1: apenas condenações nesta fatia"
+    }
+  ],
+  "regressao": {
+    "comando": "npm test",
+    "exit_code": 0,
+    "aprovados": 43,
+    "falhas": 0,
+    "por_suite": [
+      14,
+      2,
+      11,
+      7,
+      7,
+      2
+    ]
+  },
+  "hashes": {
+    "rivet/analise_sentencas.rivet-project": "f01a145edbc3c84fe61640cfff0c706b0129b9da64ac448646228ff208ad69a2",
+    "tests/s2-resultados.test.mjs": "037f93cd5e742fded17b63c8a7de4a22d6fbc2c9985e6da7f1e51a840b9ded0f",
+    "tests/fixtures/golden/desenvolvimento.json": "7de435f8a6e57b01603a074f417f28c981b57d7dcf94493bf3c3cdaa752b41d0"
+  },
+  "limites": [
+    "Não mede acurácia da LLM.",
+    "Asserts posteriores à restrição de escopo ainda não foram exercitados para as seis vitórias.",
+    "S2.2 implementará os resultados faltantes; pendências e retentativas têm tarefas próprias.",
+    "Aceite visual S1.5 continua pendente."
+  ]
+}
