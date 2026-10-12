@@ -1,0 +1,109 @@
+{
+  "executado_em": "2026-10-12T06:35:08.763Z",
+  "comando": "npm run s1:executar -- --replay",
+  "metodo": "SDK executou o grafo, reproduzindo somente resposta textual capturada; exportador gerou XLSX e reabertura conferiu o centavo. Sem chamada externa nesta tarefa.",
+  "executor_sha256": "37e8419c5dd5ce267dd3b9095cc3f87828fbe98d973f17d8a36acd850d384653",
+  "manifesto": {
+    "versao_contrato": "s1.4-v1",
+    "execucao_id": "2026-10-12T06-33-42-103Z-faf381cd-1a15-4569-92d0-88f510c6ffa6",
+    "estado": "concluida",
+    "modo": "replay",
+    "iniciado_em": "2026-10-12T06:33:42.104Z",
+    "encerrado_em": "2026-10-12T06:33:42.314Z",
+    "duracao_ms": 218,
+    "node": "v20.20.2",
+    "sdk": "1.25.0",
+    "grafo": "analisar_carteira",
+    "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+    "parametros_enviados": {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "temperature": 0,
+      "max_tokens": 2500,
+      "response_format": "json_schema",
+      "strict": true
+    },
+    "projeto_sha256": "092637350f1108ea8f145ec4e2e9ce5640d35cb5e59caaa454a38f121bc4c27e",
+    "schemas_sha256": {
+      "extracao": "185099e8f8d671033c0b6d0dc0fe7a76e4fdfcb6998d51951f8714a444b521dc",
+      "processo": "2bdb28bd202b38002f45f8e61f5370eb0e81d6fb4ba67b32de9f545536b02bb0",
+      "resumo": "fac197732622e5ca2211190d57bf1bf83f3f5cb94198e85de153cff4e7dcf0a1"
+    },
+    "entradas_sha256": {
+      "processos_texto": "2fd1ffe7e364fadd7bdf89fcd4ef20abcb514f2640bf91ffbd636beb093d9dad",
+      "subsidios_texto": "38f17c3376bc7324c255304aa1c06bf00b29c0bd1226d4843725b61e6b706177",
+      "indices_texto": "d5d647e87d97ca2f17d1af7445b8fec97611870672a6dfb12be402ed55a7a683",
+      "custos_texto": "6cd9c5075e73163c1a73f4fbac493913899b45c373ceab777d3a0ff6aa074ba7",
+      "probabilidades_texto": "ad1d915821a6a7ec024225cb251096efc77d44ebbc422a57a03018eaaabefa77",
+      "data_referencia": "96b951df9bacc4611285f7cebe34c5cdaa57098b72af7e6101a0b6d0632abc1e"
+    },
+    "captura_sha256": "68b588b235ad2c2b70e35d5082eb54e942de2a37feae4938bbeacbd856e46103",
+    "requisicoes_extrator": 1,
+    "chamadas_reais": 0,
+    "tokens": null,
+    "custo_monetario": null,
+    "resumo": {
+      "data_referencia": "2026-05-31",
+      "total_identificado": 1,
+      "vitorias_confirmadas": 0,
+      "resultados_desconhecidos": 0,
+      "condenacoes": 1,
+      "processos_aptos": 1,
+      "pendencias": 0,
+      "passivo_centavos": 667314,
+      "recursos_recomendados": 0,
+      "custo_recursos_centavos": 0,
+      "beneficio_esperado_recursos_centavos": 0
+    },
+    "erros": [],
+    "artefatos": [
+      {
+        "nome": "processos.json",
+        "sha256": "536bca2316e5ed9213503c414c021de9e39b53522743d44b5768298ce06304b5"
+      },
+      {
+        "nome": "resumo.json",
+        "sha256": "77f2c7c9813732bbc01720dba47bdcccbc8532d09efcca075f706bd566fb6d6e"
+      },
+      {
+        "nome": "auditoria.json",
+        "sha256": "024b4c21a64bed1fbb174bd356dce5c06de4dfcafd0202e8be5698125e5f11e0"
+      },
+      {
+        "nome": "relatorio.md",
+        "sha256": "d7f999dac861053b9ec5b209b328dd832de9f14cccc5b4321bbcc6a0abce0ee6"
+      },
+      {
+        "nome": "processos.xlsx",
+        "sha256": "e080e62b9230e5bea6deb7c417c89b2c96eaf48e9902885e08cc948e13e993e9"
+      }
+    ],
+    "extracao_resposta_sha256": "ecef14ba619b88df3e4c238688348d4f7c694e0d0852bfecded76248eebddf68"
+  },
+  "testes": {
+    "s0": {
+      "aprovados": 14,
+      "falhas": 0
+    },
+    "grafo": {
+      "aprovados": 11,
+      "falhas": 0
+    },
+    "aceitacao": {
+      "aprovados": 2,
+      "falhas": 0
+    },
+    "xlsx": {
+      "aprovados": 7,
+      "falhas": 0
+    },
+    "execucao": {
+      "aprovados": 7,
+      "falhas": 0
+    }
+  },
+  "verificacao": {
+    "hashes_artefatos": "aprovados",
+    "xlsx_reaberto": "aprovado",
+    "valor_atualizado_centavos": 667314
+  }
+}

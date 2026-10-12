@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S1.3 concluída: exportador XLSX com quatro abas, validado por reabertura e sete testes específicos. S1.2 concluída: grafo de uma condenação com schemas, validações, cálculo e relatório, avaliado com uma extração real aprovada. S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
+**Estado atual:** S1.4 concluída: comando local integra grafo e exportação com manifesto por execução, validado por replay offline. S1.3 concluída: exportador XLSX com quatro abas, validado por reabertura e sete testes específicos. S1.2 concluída: grafo de uma condenação com schemas, validações, cálculo e relatório, avaliado com uma extração real aprovada. S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -93,4 +93,13 @@ As referências de 100 processos, 48 vitórias e 52 condenações vêm da inspe�
 
 Para revisar a S1.2, veja [validação e execução](docs/S1_2_VALIDACAO.md). `npm run s1:build` recompõe o grafo a partir dos fontes; `npm run s1:avaliar` faz uma chamada real paga para um único caso e grava a evidência em `outputs/s1.2/`. Os registros revisados ficam em `docs/output/`.
 
-A [validação S1.3](docs/S1_3_VALIDACAO.md) inclui a planilha de exemplo e a reprodução offline. Grafo e exportador ainda serão conectados na execução integrada da S1.4.
+A [validação S1.3](docs/S1_3_VALIDACAO.md) inclui a planilha de exemplo e a reprodução offline. Grafo e exportador estão conectados pela S1.4.
+
+## Executar a S1 integrada
+
+```bash
+npm run s1:executar -- --replay
+npm run test:s1:execucao
+```
+
+O primeiro comando executa o grafo com a resposta real capturada na S1.2, sem rede, e gera JSONs, relatório e XLSX em `outputs/s1.4/<execucao_id>/`. O manifesto registra o modo de reprodução e os hashes. O segundo verifica sete cenários de integração. Para uma nova chamada paga, use `node --env-file=.env scripts/executar-s1.mjs --real`. Escopo atual: uma sentença de desenvolvimento. Consulte [S1_4_VALIDACAO.md](docs/S1_4_VALIDACAO.md) para parâmetros, arquivos, evidências e limites.

@@ -1,13 +1,13 @@
 # S1 — desenvolvimento por tarefa
 
-Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi executada somente **S1.3**. O exportador XLSX está implementado e validado por reabertura; execução integrada e aceite no aplicativo continuam nas tarefas seguintes. Consulte [implementação e evidências](S1_3_VALIDACAO.md).
+Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi executada somente **S1.4**. O comando local integra grafo e exportação, com testes e evidências de replay; refatoração e aceite no aplicativo continuam na S1.5. Consulte [implementação e evidências](S1_4_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
 | S1.1 — aceitação em vermelho | Testes externos do caso de referência e da planilha; observar a falha antes da implementação. | Concluída |
 | S1.2 — grafo de uma condenação | Formalizar schemas de processo/resumo antes de implementar; texto e CSVs entram, extração é validada, cálculo e outputs são produzidos no Rivet. Fazer o primeiro teste passar e avaliar a extração completa em chamada real separada. | Concluída |
 | S1.3 — XLSX | Implementar o adaptador de apresentação e fazer o segundo teste passar, reabrindo o arquivo. | Concluída |
-| S1.4 — execução local integrada | Executar o grafo e o exportador juntos, gravar JSON/Markdown/XLSX em diretório de execução e registrar o comando reproduzível. | Não iniciada |
+| S1.4 — execução local integrada | Executar o grafo e o exportador juntos, gravar JSON/Markdown/XLSX em diretório de execução e registrar o comando reproduzível. | Concluída |
 | S1.5 — refatoração e aceite | Separar responsabilidades em subgrafos, revisar contratos e conferir o fluxo integrado no aplicativo e pelo comando local. | Não iniciada |
 
 ## S1.1: o que os testes exigem
@@ -94,3 +94,9 @@ Nenhum commit foi feito pelo assistente. Sugestão: `feat: implementa grafo S1 d
 O exportador está em `src/exportar-xlsx.mjs`, sem cálculos de negócio. `npm run test:s1` agora passa os dois testes; `npm run test:s1:xlsx` passa sete cenários de exportação. S0 e testes do grafo continuam verdes (14 e 11). Foram gerados um XLSX revisável e evidência de reabertura em `docs/output/` a partir da captura aprovada da S1.2, sem novas chamadas ao modelo.
 
 Detalhes, limitações e reprodução: [S1_3_VALIDACAO.md](S1_3_VALIDACAO.md). A S1.4 ainda conectará grafo e exportador na mesma execução; o aceite atual verifica cada parte separadamente. Nenhum commit foi feito pelo assistente. Sugestão: `feat: exporta análise Rivet em XLSX com trilha de auditoria`.
+
+## Estado após S1.4
+
+`npm run s1:executar -- --replay` executa grafo e exportador juntos e foi conferido com sucesso. Os sete testes de integração passaram, além dos 34 testes anteriores. O manifesto distingue replay de chamada real e registra artefatos concluídos, hashes e falhas. Detalhes em [S1_4_VALIDACAO.md](S1_4_VALIDACAO.md).
+
+Nenhum commit foi feito pelo assistente. Sugestão: `feat: integra execução local Rivet e geração de artefatos auditáveis`.

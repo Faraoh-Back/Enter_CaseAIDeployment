@@ -13,10 +13,13 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s1.2-llm-aprovada.json](s1.2-llm-aprovada.json) | Extração real aprovada após ajuste do prompt, quatro outputs, consumo e hashes. |
 | [s1.3-processos.xlsx](s1.3-processos.xlsx) | Planilha gerada dos outputs reais capturados na S1.2, sem nova chamada ao modelo. |
 | [s1.3-xlsx.json](s1.3-xlsx.json) | Reabertura da planilha, valores conferidos, origem e hashes. |
+| [s1.4-execucao.json](s1.4-execucao.json) | Manifesto e conferência da execução integrada em replay, com hashes. |
+| [s1.4-processos.xlsx](s1.4-processos.xlsx) | Planilha produzida pelo grafo e exportador na mesma execução. |
+| [s1.4-relatorio.md](s1.4-relatorio.md) | Relatório produzido pelo grafo nessa execução. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |
 
 Os registros anteriores são históricos: por exemplo, `s0-offline.json` ainda informa que aguardava a conferência no desktop quando foi produzido. A confirmação posterior está em `s0-aplicativo.json` e em [S0_VALIDACAO.md](../S0_VALIDACAO.md).
 
-Execuções dos comandos locais continuam gerando arquivos em `outputs/s0/` e `outputs/s1.2/`, fora do Git. `docs/output/` guarda as evidências selecionadas para revisão, com sua origem declarada; esses arquivos não são sobrescritos pelos comandos locais. A avaliação S1.2 e seus limites estão em [S1_2_VALIDACAO.md](../S1_2_VALIDACAO.md).
+Execuções dos comandos locais continuam gerando arquivos em `outputs/s0/`, `outputs/s1.2/` e `outputs/s1.4/`, fora do Git. `docs/output/` guarda as evidências selecionadas para revisão, com sua origem declarada; esses arquivos não são sobrescritos pelos comandos locais. A avaliação S1.2 e seus limites estão em [S1_2_VALIDACAO.md](../S1_2_VALIDACAO.md).
