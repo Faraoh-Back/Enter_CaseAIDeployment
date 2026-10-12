@@ -11,6 +11,8 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s1.1-vermelho.json](s1.1-vermelho.json) | Falhas observadas nos testes de aceitação S1 antes da implementação; regressão S0 aprovada. |
 | [s1.2-llm-rejeitada.json](s1.2-llm-rejeitada.json) | Resposta real rejeitada por citações não literais, preservada como regressão. |
 | [s1.2-llm-aprovada.json](s1.2-llm-aprovada.json) | Extração real aprovada após ajuste do prompt, quatro outputs, consumo e hashes. |
+| [s1.3-processos.xlsx](s1.3-processos.xlsx) | Planilha gerada dos outputs reais capturados na S1.2, sem nova chamada ao modelo. |
+| [s1.3-xlsx.json](s1.3-xlsx.json) | Reabertura da planilha, valores conferidos, origem e hashes. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |

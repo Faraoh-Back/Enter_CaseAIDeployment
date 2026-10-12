@@ -11,6 +11,7 @@
     "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
     "test": "node tests/s0.test.mjs",
     "test:s1": "node tests/s1.test.mjs",
+    "test:s1:xlsx": "node tests/s1-xlsx.test.mjs",
     "s1:build": "node scripts/build-s1.mjs",
     "test:s1:grafo": "node tests/s1-grafo.test.mjs",
     "s1:avaliar": "node --env-file=.env scripts/avaliar-s1.mjs"

@@ -101,7 +101,7 @@ O grafo principal publica:
 - `auditoria`: evidências, falhas, rastreabilidade das referências e memórias de cálculo.
 - `relatorio_markdown`: texto executivo produzido por template no grafo, utilizando o próprio `resumo`.
 
-O executor recebe os valores tipados da Rivet e os desempacota; isso é adaptação de transporte. Os contratos formais de processo normalizado e resumo deverão ser adicionados em S1 antes de suas implementações, a partir desta tabela e dos exemplos aceitos.
+O executor recebe os valores tipados da Rivet e os desempacota; isso é adaptação de transporte. Os contratos formais de processo normalizado e resumo foram adicionados na S1.2, a partir desta tabela e dos exemplos aceitos.
 
 Para taxas gerais, publicar numerador e denominador: `vitorias_confirmadas / total_identificado`, acompanhado de `resultados_desconhecidos`. Não apresentar uma carteira parcial como completa. Totais monetários incompletos são rotulados como parciais. Correlação por subsídios usa apenas resultados conhecidos, com exclusões e tamanho de cada grupo expostos.
 
@@ -150,7 +150,7 @@ GET de estado retorna identificador, estado, contagens disponíveis, problemas d
 
 ## 8. Artefatos do cliente
 
-A planilha possui abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`. Processo fica como texto; dinheiro, como célula numérica formatada; datas e nulos têm apresentação consistente. Na aba principal, manter a leitura simples; a memória de cálculo detalhada fica em Auditoria. O valor monetário exibido deve reproduzir o centavo do JSON ao ser reaberto. Textos de entrada são gravados como texto, sem interpretação como fórmula.
+A planilha possui abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`. Processo fica como texto; dinheiro, como célula numérica formatada; datas e nulos têm apresentação consistente. Na aba principal, manter a leitura simples; a memória de cálculo detalhada fica em Auditoria. O valor monetário exibido deve reproduzir o centavo do JSON ao ser reaberto. Textos de entrada são gravados como texto, sem interpretação como fórmula. Na S1.3, datas são textos ISO, nulos são células vazias e zero permanece numérico. O resumo preserva os nomes dos campos e indica a unidade `R$` para os valores convertidos de centavos. Textos acima de 32.767 caracteres e valores monetários sem precisão suficiente no Excel são rejeitados antes da gravação. O destino deve ser novo e seu diretório deve existir. Veja [validação S1.3](S1_3_VALIDACAO.md).
 
 O relatório começa pelo resultado e pelas ações recomendadas, apresenta a data-base e informa cobertura e limitações. Usa as contagens fornecidas pelos outputs, sem recomputar indicadores no exportador. A taxa de êxito segue a definição do case, com extinções e improcedências discriminadas; não inferir encerramento definitivo de toda exposição a partir de extinção.
 

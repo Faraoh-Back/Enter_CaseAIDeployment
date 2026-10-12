@@ -1,12 +1,12 @@
 # S1 — desenvolvimento por tarefa
 
-Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi executada somente **S1.2**. O grafo de uma condenação está implementado e avaliado; exportador, execução integrada e aceite no aplicativo continuam nas tarefas seguintes. Consulte [implementação e evidências](S1_2_VALIDACAO.md).
+Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi executada somente **S1.3**. O exportador XLSX está implementado e validado por reabertura; execução integrada e aceite no aplicativo continuam nas tarefas seguintes. Consulte [implementação e evidências](S1_3_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
 | S1.1 — aceitação em vermelho | Testes externos do caso de referência e da planilha; observar a falha antes da implementação. | Concluída |
 | S1.2 — grafo de uma condenação | Formalizar schemas de processo/resumo antes de implementar; texto e CSVs entram, extração é validada, cálculo e outputs são produzidos no Rivet. Fazer o primeiro teste passar e avaliar a extração completa em chamada real separada. | Concluída |
-| S1.3 — XLSX | Implementar o adaptador de apresentação e fazer o segundo teste passar, reabrindo o arquivo. | Não iniciada |
+| S1.3 — XLSX | Implementar o adaptador de apresentação e fazer o segundo teste passar, reabrindo o arquivo. | Concluída |
 | S1.4 — execução local integrada | Executar o grafo e o exportador juntos, gravar JSON/Markdown/XLSX em diretório de execução e registrar o comando reproduzível. | Não iniciada |
 | S1.5 — refatoração e aceite | Separar responsabilidades em subgrafos, revisar contratos e conferir o fluxo integrado no aplicativo e pelo comando local. | Não iniciada |
 
@@ -27,7 +27,7 @@ Verificações após a execução do grafo:
 - Extração e evidências preservadas na auditoria, índices, tentativas, versão do extrator e frações exatas serializáveis.
 - Resumo com denominadores explícitos e Markdown identificando processo, data-base, valor atualizado, recomendação e premissa de reversão integral.
 
-**Teste do artefato:** chama a interface futura `exportarXlsx(analise, destino)`, exportada por `src/exportar-xlsx.mjs`. `analise` recebe os quatro outputs já desempacotados (`processos`, `resumo`, `auditoria`, `relatorio_markdown`). Neste teste isolado do adaptador, os outputs são dados fixos de referência, não uma execução do grafo. A S1.4 verificará a conexão das duas partes.
+**Teste do artefato:** chama a interface `exportarXlsx(analise, destino)`, exportada por `src/exportar-xlsx.mjs`. `analise` recebe os quatro outputs já desempacotados (`processos`, `resumo`, `auditoria`, `relatorio_markdown`). Neste teste isolado do adaptador, os outputs são dados fixos de referência, não uma execução do grafo. A S1.4 verificará a conexão das duas partes.
 
 O arquivo é gerado em diretório temporário exclusivo, reaberto com ExcelJS e removido ao final. O teste exige uma linha de processo, valores numéricos com apresentação monetária e o mesmo centavo dos outputs, decisão, motivo, data-base e memória de cálculo. Também verifica que o exportador não modifica o objeto recebido.
 
@@ -88,3 +88,9 @@ Resultado registrado em [s1.1-vermelho.json](output/s1.1-vermelho.json). Sugest�
 - Avaliação real: uma resposta rejeitada e, após ajuste do prompt, uma aprovada; detalhes e limites em [S1_2_VALIDACAO.md](S1_2_VALIDACAO.md).
 
 Nenhum commit foi feito pelo assistente. Sugestão: `feat: implementa grafo S1 de uma condenação com validação auditável`.
+
+## Estado após S1.3
+
+O exportador está em `src/exportar-xlsx.mjs`, sem cálculos de negócio. `npm run test:s1` agora passa os dois testes; `npm run test:s1:xlsx` passa sete cenários de exportação. S0 e testes do grafo continuam verdes (14 e 11). Foram gerados um XLSX revisável e evidência de reabertura em `docs/output/` a partir da captura aprovada da S1.2, sem novas chamadas ao modelo.
+
+Detalhes, limitações e reprodução: [S1_3_VALIDACAO.md](S1_3_VALIDACAO.md). A S1.4 ainda conectará grafo e exportador na mesma execução; o aceite atual verifica cada parte separadamente. Nenhum commit foi feito pelo assistente. Sugestão: `feat: exporta análise Rivet em XLSX com trilha de auditoria`.

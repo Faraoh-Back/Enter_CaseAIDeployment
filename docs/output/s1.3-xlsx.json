@@ -1,0 +1,39 @@
+{
+  "executado_em": "2026-10-12T06:06:03.978Z",
+  "tarefa": "S1.3",
+  "origem": "docs/output/s1.2-llm-aprovada.json",
+  "origem_sha256": "68b588b235ad2c2b70e35d5082eb54e942de2a37feae4938bbeacbd856e46103",
+  "metodo": "Exportação isolada dos outputs capturados na S1.2; XLSX reaberto com ExcelJS. Nenhuma chamada à LLM ou execução integrada nesta tarefa.",
+  "exportador_sha256": "ca10cfee9c3da254cbe686ed254b5388703abc5dacdd538a830d2463bf2547a9",
+  "arquivo": "docs/output/s1.3-processos.xlsx",
+  "arquivo_sha256": "89d70e7b256727a818445a6dfcd3742bfd5d76b816aef6661d059f568a2b7628",
+  "node": "v20.20.2",
+  "exceljs": "4.4.0",
+  "abas": [
+    {
+      "nome": "Processos",
+      "linhas": 2
+    },
+    {
+      "nome": "Resumo",
+      "linhas": 12
+    },
+    {
+      "nome": "Auditoria",
+      "linhas": 38
+    },
+    {
+      "nome": "Pendencias",
+      "linhas": 1
+    }
+  ],
+  "valores_reabertos": {
+    "Condenação (R$)": 6300,
+    "Principal corrigido (R$)": 6478.78,
+    "Juros (R$)": 194.36,
+    "Valor atualizado (R$)": 6673.14,
+    "Custo do recurso (R$)": 3200,
+    "Benefício esperado (R$)": -2532.69
+  },
+  "resultado": "aprovado"
+}
