@@ -1,0 +1,208 @@
+{
+  "executado_em": "2026-10-12T14:30:07.292Z",
+  "metodo": "Grafo real via SDK, resposta LLM simulada pelos gabaritos de desenvolvimento. Nenhuma chamada paga.",
+  "projeto_sha256": "0c9f0d712bc84f1a3d69ae67e0896785706ee55775b0d2fdee36084a82ba9433",
+  "testes": {
+    "comando": "npm test",
+    "aprovados": 56,
+    "falhas": 0,
+    "por_suite": [
+      14,
+      2,
+      11,
+      7,
+      7,
+      2,
+      13
+    ]
+  },
+  "chamadas_reais": 0,
+  "exemplos": [
+    {
+      "numero_processo": "1325366-90.2024.8.26.0001",
+      "resultado": "improcedencia",
+      "outputs": {
+        "processos": [
+          {
+            "numero_processo": "1325366-90.2024.8.26.0001",
+            "classe_processual": "Procedimento Comum Cível",
+            "comarca": "São Paulo",
+            "resultado_sentenca": "improcedencia",
+            "danos_materiais_centavos": 0,
+            "danos_morais_centavos": 0,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "atraso de voo superior a quatro horas",
+            "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.",
+            "evidencias": {
+              "identificacao": "Processo nº 1325366-90.2024.8.26.0001",
+              "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+              "valores": null,
+              "mes_base_correcao": null,
+              "data_citacao": null,
+              "tema": "atraso de voo superior a quatro horas",
+              "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+            },
+            "tribunal": "TJSP",
+            "status_processamento": "ok",
+            "problemas": [],
+            "status_subsidios": "completos",
+            "probabilidade_reversao_percentual": 80,
+            "valor_condenacao_centavos": 0,
+            "meses_completos": null,
+            "custo_recurso_centavos": null,
+            "principal_corrigido_centavos": 0,
+            "juros_centavos": 0,
+            "valor_atualizado_centavos": 0,
+            "beneficio_esperado_centavos": null,
+            "decisao_recurso": "nao_recorrer",
+            "motivo_decisao": "sem_condenacao"
+          }
+        ],
+        "resumo": {
+          "data_referencia": "2026-05-31",
+          "total_identificado": 1,
+          "vitorias_confirmadas": 1,
+          "resultados_desconhecidos": 0,
+          "condenacoes": 0,
+          "processos_aptos": 1,
+          "pendencias": 0,
+          "passivo_centavos": 0,
+          "recursos_recomendados": 0,
+          "custo_recursos_centavos": 0,
+          "beneficio_esperado_recursos_centavos": 0
+        },
+        "auditoria": [
+          {
+            "numero_processo": "1325366-90.2024.8.26.0001",
+            "extracao": {
+              "numero_processo": "1325366-90.2024.8.26.0001",
+              "classe_processual": "Procedimento Comum Cível",
+              "comarca": "São Paulo",
+              "resultado_sentenca": "improcedencia",
+              "danos_materiais_centavos": 0,
+              "danos_morais_centavos": 0,
+              "valor_total_explicito_centavos": null,
+              "mes_base_correcao": null,
+              "data_citacao": null,
+              "tema": "atraso de voo superior a quatro horas",
+              "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.",
+              "evidencias": {
+                "identificacao": "Processo nº 1325366-90.2024.8.26.0001",
+                "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+                "valores": null,
+                "mes_base_correcao": null,
+                "data_citacao": null,
+                "tema": "atraso de voo superior a quatro horas",
+                "fundamento_decisao": "Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+              }
+            },
+            "resposta_original": "{\"numero_processo\":\"1325366-90.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\",\"evidencias\":{\"identificacao\":\"Processo nº 1325366-90.2024.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"Encerrada a instrução, a parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\"}}",
+            "indice_base": null,
+            "indice_final": null,
+            "tentativas": 1,
+            "versao_extrator": "s1.2-v1",
+            "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+            "tokens": null,
+            "custo_monetario": null,
+            "memoria": null
+          }
+        ],
+        "relatorio_markdown": "# Análise de uma sentença — S2\n\nData-base: 2026-05-31. Processo: 1325366-90.2024.8.26.0001.\n\nResultado: improcedencia. **Sem condenação** nesta sentença.\nRecomendação econômica segundo o case: **não recorrer**; motivo: sem condenação.\nCusto e benefício de recurso: não aplicáveis. Não foi simulado recurso nem calculada atualização monetária.\nSubsídios: completos. A probabilidade da tabela é apenas referência, sem aplicação nesta decisão.\nPassivo desta sentença: **R$ 0,00**. Recursos recomendados: 0.\nCobertura: 1/1 processo apto; 0 pendências. Êxito pela definição do case: 1/1; resultados desconhecidos: 0.\nEscopo: uma sentença; estes números não representam a carteira completa. Prazos e admissibilidade de recurso não foram avaliados."
+      }
+    },
+    {
+      "numero_processo": "6304573-19.2024.8.26.0008",
+      "resultado": "extincao",
+      "outputs": {
+        "processos": [
+          {
+            "numero_processo": "6304573-19.2024.8.26.0008",
+            "classe_processual": "Procedimento do Juizado Especial Cível",
+            "comarca": "São Paulo",
+            "resultado_sentenca": "extincao",
+            "danos_materiais_centavos": 0,
+            "danos_morais_centavos": 0,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "atraso de voo superior a quatro horas",
+            "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).",
+            "evidencias": {
+              "identificacao": "Processo nº 6304573-19.2024.8.26.0008",
+              "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+              "valores": null,
+              "mes_base_correcao": null,
+              "data_citacao": null,
+              "tema": "atraso de voo superior a quatro horas",
+              "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+            },
+            "tribunal": "TJSP",
+            "status_processamento": "ok",
+            "problemas": [],
+            "status_subsidios": "completos",
+            "probabilidade_reversao_percentual": 80,
+            "valor_condenacao_centavos": 0,
+            "meses_completos": null,
+            "custo_recurso_centavos": null,
+            "principal_corrigido_centavos": 0,
+            "juros_centavos": 0,
+            "valor_atualizado_centavos": 0,
+            "beneficio_esperado_centavos": null,
+            "decisao_recurso": "nao_recorrer",
+            "motivo_decisao": "sem_condenacao"
+          }
+        ],
+        "resumo": {
+          "data_referencia": "2026-05-31",
+          "total_identificado": 1,
+          "vitorias_confirmadas": 1,
+          "resultados_desconhecidos": 0,
+          "condenacoes": 0,
+          "processos_aptos": 1,
+          "pendencias": 0,
+          "passivo_centavos": 0,
+          "recursos_recomendados": 0,
+          "custo_recursos_centavos": 0,
+          "beneficio_esperado_recursos_centavos": 0
+        },
+        "auditoria": [
+          {
+            "numero_processo": "6304573-19.2024.8.26.0008",
+            "extracao": {
+              "numero_processo": "6304573-19.2024.8.26.0008",
+              "classe_processual": "Procedimento do Juizado Especial Cível",
+              "comarca": "São Paulo",
+              "resultado_sentenca": "extincao",
+              "danos_materiais_centavos": 0,
+              "danos_morais_centavos": 0,
+              "valor_total_explicito_centavos": null,
+              "mes_base_correcao": null,
+              "data_citacao": null,
+              "tema": "atraso de voo superior a quatro horas",
+              "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).",
+              "evidencias": {
+                "identificacao": "Processo nº 6304573-19.2024.8.26.0008",
+                "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+                "valores": null,
+                "mes_base_correcao": null,
+                "data_citacao": null,
+                "tema": "atraso de voo superior a quatro horas",
+                "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+              }
+            },
+            "resposta_original": "{\"numero_processo\":\"6304573-19.2024.8.26.0008\",\"classe_processual\":\"Procedimento do Juizado Especial Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\",\"evidencias\":{\"identificacao\":\"Processo nº 6304573-19.2024.8.26.0008\",\"resultado\":\"Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\"}}",
+            "indice_base": null,
+            "indice_final": null,
+            "tentativas": 1,
+            "versao_extrator": "s1.2-v1",
+            "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+            "tokens": null,
+            "custo_monetario": null,
+            "memoria": null
+          }
+        ],
+        "relatorio_markdown": "# Análise de uma sentença — S2\n\nData-base: 2026-05-31. Processo: 6304573-19.2024.8.26.0008.\n\nResultado: extincao. **Sem condenação** nesta sentença.\nRecomendação econômica segundo o case: **não recorrer**; motivo: sem condenação.\nCusto e benefício de recurso: não aplicáveis. Não foi simulado recurso nem calculada atualização monetária.\nSubsídios: completos. A probabilidade da tabela é apenas referência, sem aplicação nesta decisão.\nPassivo desta sentença: **R$ 0,00**. Recursos recomendados: 0.\nCobertura: 1/1 processo apto; 0 pendências. Êxito pela definição do case: 1/1; resultados desconhecidos: 0.\nExtinção sem resolução de mérito não comprova encerramento definitivo de toda exposição.\nEscopo: uma sentença; estes números não representam a carteira completa. Prazos e admissibilidade de recurso não foram avaliados."
+      }
+    }
+  ]
+}

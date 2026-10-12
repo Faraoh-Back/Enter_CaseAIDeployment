@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0 concluída. S1.1–S1.4 concluídas: execução local integra grafo e XLSX, com manifesto e testes; refatoração S1.5 validada localmente com 43 testes; somente aceite no aplicativo pendente. [Tarefas e evidências S1](S1_TASKS.md). S2.1 concluída com aceitação em vermelho; S2.2–S2.6 e S3–S5 não executadas.
+**Estado:** S0 e S1 concluídas, incluindo aceite visual S1.5 informado pelo candidato e arquivos locais reconferidos. S2.1 e S2.2 concluídas: quatro resultados normalizados, 56 testes aprovados. S2.3–S2.6 e S3–S5 não executadas. [Tarefas S2](S2_TASKS.md).
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -53,16 +53,17 @@ Execução em tarefas separadas, com revisão e commits feitos pelo candidato. [
 - [x] **S1.2 — Verde:** formalizar schemas de processo/resumo; ler as referências no grafo, extrair a sentença, validar dados, calcular em Code Nodes, decidir e produzir resumo e Markdown. Avaliar a extração completa em chamada real separada.
 - [x] **S1.3 — XLSX:** exportar uma planilha real `.xlsx`, reabri-la e comparar as células com os outputs; adicionar trilha de cálculo e justificativa.
 - [x] **S1.4 — Execução local:** expor comando que execute o projeto e grave o diretório de execução; conferir grafo e exportação integrados. Registrar comando real no README após verificação.
-- [ ] **S1.5 — Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas; incorporar os testes S1 verdes à suíte padrão. **Refatoração, contratos e suíte local concluídos; falta conferência no aplicativo**, conforme [S1_5_VALIDACAO.md](S1_5_VALIDACAO.md).
+- [x] **S1.5 — Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas; incorporar os testes S1 verdes à suíte padrão. **Refatoração e suíte local concluídas; aceite visual informado pelo candidato e arquivos locais reconferidos**, conforme [S1_5_VALIDACAO.md](S1_5_VALIDACAO.md).
 
 **Saída:** uma condenação produz os artefatos de ponta a ponta. Não basta entregar um JSON de extração.
 
 ## S2 — resultados diferentes e tratamento de incerteza
 
-Execução por tarefas, conforme [S2_TASKS.md](S2_TASKS.md). Nesta rodada, somente S2.1: 13 cenários, 7 aprovados e 6 falhas observadas; nenhuma implementação de produção.
+Execução por tarefas, conforme [S2_TASKS.md](S2_TASKS.md). S2.1 registrou o vermelho. A S2.2 normalizou os quatro resultados: 13/13 cenários S2 aprovados e incorporados à suíte padrão, agora com 56 testes. Pendências e retentativas ainda não implementadas.
 
 - [x] **S2.1 — Vermelho:** casos de procedência, parcial procedência, improcedência e extinção, danos materiais isolados e combinados, valores de pedidos usados como distração em fixtures sintéticas.
-- [ ] **Vermelho:** datas ausentes/inválidas/futuras, índice ausente, CNJ divergente, subsídio desconhecido, saída malformada e duplicação de processos.
+- [x] **S2.2 — Verde:** normalizar os quatro resultados, tratar vitórias sem simular recurso e incorporar a aceitação à suíte padrão.
+- [ ] **S2.3 — Vermelho:** datas ausentes/inválidas/futuras, índice ausente, CNJ divergente, subsídio desconhecido, saída malformada e duplicação de processos.
 - [ ] **Verde:** normalização, retentativas limitadas e estados de pendência/erro; impedir recomendações baseadas em valores incompletos.
 - [ ] Cobrir meses completos, fronteiras de arredondamento e benefício positivo, negativo e exatamente zero.
 - [ ] Manter uma linha por processo inclusive nas falhas; totais e cobertura devem mostrar exclusões.

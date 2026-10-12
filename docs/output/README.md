@@ -18,6 +18,8 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s1.4-relatorio.md](s1.4-relatorio.md) | Relatório produzido pelo grafo nessa execução. |
 | [s1.5-validacao.json](s1.5-validacao.json) | Refatoração, suíte completa, replay integrado e status pendente do aceite visual. |
 | [s2.1-vermelho.json](s2.1-vermelho.json) | Aceitação dos quatro resultados: 7 aprovados, 6 falhas observadas e regressão S0/S1. |
+| [s1.5-aceite.json](s1.5-aceite.json) | Aceite visual informado pelo candidato e reconferência dos arquivos locais de replay. |
+| [s2.2-validacao.json](s2.2-validacao.json) | 56 testes aprovados e exemplos de outputs para improcedência e extinção, com LLM simulada. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |

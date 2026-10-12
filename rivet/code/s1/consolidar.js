@@ -2,12 +2,13 @@
 const { memoria, ...financeiro } = inputs.calculo.value;
 const referencias = inputs.preparado.value;
 const extraction = inputs.extracao.value;
+const vitoria = ['improcedencia','extincao'].includes(extraction.resultado_sentenca);
 const processo = { ...inputs.base.value, ...financeiro,
-  motivo_decisao: financeiro.decisao_recurso === 'recorrer' ? 'beneficio_positivo' : 'beneficio_nao_positivo' };
+  motivo_decisao: vitoria ? 'sem_condenacao' : financeiro.decisao_recurso === 'recorrer' ? 'beneficio_positivo' : 'beneficio_nao_positivo' };
 if (!validateProcesso(processo)) throw new Error(`SAIDA_INVALIDA: processo: ${JSON.stringify(validateProcesso.errors)}`);
 const recomendar = processo.decisao_recurso === 'recorrer';
-const resumo = { data_referencia: referencias.referencia, total_identificado: 1, vitorias_confirmadas: 0,
-  resultados_desconhecidos: 0, condenacoes: 1, processos_aptos: 1, pendencias: 0,
+const resumo = { data_referencia: referencias.referencia, total_identificado: 1, vitorias_confirmadas: vitoria ? 1 : 0,
+  resultados_desconhecidos: 0, condenacoes: vitoria ? 0 : 1, processos_aptos: 1, pendencias: 0,
   passivo_centavos: processo.valor_atualizado_centavos, recursos_recomendados: recomendar ? 1 : 0,
   custo_recursos_centavos: recomendar ? processo.custo_recurso_centavos : 0,
   beneficio_esperado_recursos_centavos: recomendar ? processo.beneficio_esperado_centavos : 0 };
@@ -18,8 +19,8 @@ const tokens = usage && Number.isSafeInteger(usage.total_tokens) ? {
   entrada: usage.prompt_tokens, saida: usage.completion_tokens, total: usage.total_tokens,
 } : null;
 const auditoria = [{ numero_processo: processo.numero_processo, extracao: extraction,
-  resposta_original: inputs.resposta.value, indice_base: referencias.indices[extraction.mes_base_correcao].numero_indice,
-  indice_final: referencias.indices[referencias.referencia.slice(0, 7)].numero_indice,
+  resposta_original: inputs.resposta.value, indice_base: vitoria ? null : referencias.indices[extraction.mes_base_correcao].numero_indice,
+  indice_final: vitoria ? null : referencias.indices[referencias.referencia.slice(0, 7)].numero_indice,
   tentativas: 1, versao_extrator: 's1.2-v1', modelo_solicitado: inputs.modelo.value,
   tokens, custo_monetario: null, memoria }];
 function reais(cents) {
@@ -27,7 +28,18 @@ function reais(cents) {
   const whole = (abs / 100n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   return `${cents < 0 ? '-' : ''}R$ ${whole},${(abs % 100n).toString().padStart(2, '0')}`;
 }
-const report = [
+const report = vitoria ? [
+  '# Análise de uma sentença — S2', '',
+  `Data-base: ${resumo.data_referencia}. Processo: ${processo.numero_processo}.`, '',
+  `Resultado: ${processo.resultado_sentenca}. **Sem condenação** nesta sentença.`,
+  'Recomendação econômica segundo o case: **não recorrer**; motivo: sem condenação.',
+  'Custo e benefício de recurso: não aplicáveis. Não foi simulado recurso nem calculada atualização monetária.',
+  `Subsídios: ${processo.status_subsidios}. A probabilidade da tabela é apenas referência, sem aplicação nesta decisão.`,
+  `Passivo desta sentença: **${reais(resumo.passivo_centavos)}**. Recursos recomendados: ${resumo.recursos_recomendados}.`,
+  `Cobertura: ${resumo.processos_aptos}/${resumo.total_identificado} processo apto; ${resumo.pendencias} pendências. Êxito pela definição do case: ${resumo.vitorias_confirmadas}/${resumo.total_identificado}; resultados desconhecidos: ${resumo.resultados_desconhecidos}.`,
+  ...(extraction.resultado_sentenca === 'extincao' ? ['Extinção sem resolução de mérito não comprova encerramento definitivo de toda exposição.'] : []),
+  'Escopo: uma sentença; estes números não representam a carteira completa. Prazos e admissibilidade de recurso não foram avaliados.',
+].join('\n') : [
   '# Análise de uma sentença — S1', '',
   `Data-base: ${resumo.data_referencia}. Processo: ${processo.numero_processo}.`, '',
   `Recomendação econômica: **${recomendar ? 'recorrer' : 'não recorrer'}**. Benefício líquido esperado: **${reais(processo.beneficio_esperado_centavos)}**.`, '',

@@ -1,11 +1,11 @@
 # S2 — desenvolvimento por tarefa
 
-Uma tarefa por rodada, com revisão e commit pelo candidato. Nesta rodada foi concluída somente **S2.1: contratos de aceitação dos quatro resultados**. Nenhum grafo, prompt, schema ou código de produção foi alterado. A conferência visual da S1.5 permanece pendente; o início da S2 não é evidência desse aceite.
+Uma tarefa por rodada, com revisão e commit pelo candidato. Nesta rodada foi concluída **S2.2: normalização dos quatro resultados**. Os 13 testes S2 passaram e entraram na suíte padrão (56 testes). A S1.5 também recebeu [aceite informado pelo candidato](output/s1.5-aceite.json).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
 | S2.1 — aceitação dos resultados | Exercitar os 12 gabaritos de desenvolvimento e um pedido sintético maior; registrar as falhas das vitórias antes de implementar. | Concluída |
-| S2.2 — normalizar os quatro resultados | Fazer os testes de S2.1 passarem; representar vitórias sem simular recurso, preservar condenações, resumo e relatório; incorporar testes verdes à suíte padrão. | Não iniciada |
+| S2.2 — normalizar os quatro resultados | Fazer os testes de S2.1 passarem; representar vitórias sem simular recurso, preservar condenações, resumo e relatório; incorporar testes verdes à suíte padrão. | Concluída |
 | S2.3 — aceitação das incertezas | Testes de dados ausentes/inválidos/futuros, divergências, duplicatas, JSON inválido, retentativas e falhas HTTP, distinguindo falhas globais de pendências individuais. | Não iniciada |
 | S2.4 — pendências e retentativas | Implementar contratos de S2.3 no Rivet e ajustar limites do executor; até três tentativas totais, diagnóstico auditável e estados terminais. | Não iniciada |
 | S2.5 — fronteiras e cobertura | Calendário e dinheiro nas fronteiras; pequeno lote misto, uma linha por identidade, totais parciais e exclusões explícitas. | Não iniciada |
@@ -46,7 +46,7 @@ Um processo válido e completamente tratado, inclusive uma vitória, conta em `p
 
 Esses testes não afirmam encerramento definitivo de exposição após extinção nem analisam cabimento jurídico de recurso. Usam a convenção econômica do case. As regras de dados desconhecidos serão detalhadas na S2.3.
 
-## Resultado observado e reprodução
+## Registro histórico da S2.1: vermelho observado
 
 ```bash
 npm test
@@ -60,7 +60,7 @@ O teste vermelho exige sucesso no tratamento das vitórias; não espera uma exce
 
 Os asserts posteriores à restrição de escopo ainda não foram exercitados para as seis vitórias. Fazer o grafo aceitar esses resultados poderá revelar outras lacunas na normalização/consolidação. A [evidência da rodada](output/s2.1-vermelho.json) registra contagens, falhas, hashes e limites. O conjunto reservado não foi usado nos novos testes; a suíte anterior conserva suas verificações de integridade, sem executar nele o novo extrator.
 
-## Próximo commit
+## Commit da S2.1
 
 Sugestão para esta tarefa:
 
@@ -69,3 +69,11 @@ test: define aceitação S2 para os quatro resultados de sentença
 ```
 
 O próximo trabalho é somente S2.2. Na S2.4, testes S1 que hoje exigem falha terminal por dados individuais inválidos precisarão ser migrados para o contrato de pendência, preservando sua intenção: impedir cálculo e recomendação indevidos. Não manter expectativas contraditórias nem simplesmente remover cobertura.
+
+## S2.2 — resultado atual
+
+A validação normaliza improcedência/extinção sem exigir datas de atualização. O financeiro retorna valores não aplicáveis sem executar as fórmulas de condenação. Auditoria e relatório distinguem ausência de condenação de pendência; o resumo conta as vitórias segundo a convenção do case. Condenações mantêm os outputs anteriores.
+
+`npm run test:s2`: 13/13 aprovados. `npm test`: 56/56 aprovados, incluindo a suíte S2. Nenhum teste foi removido ou marcado como ignorado. Veja [S2_2_VALIDACAO.md](S2_2_VALIDACAO.md) e [outputs exemplificativos](output/s2.2-validacao.json).
+
+Próxima tarefa: **S2.3**, somente os contratos/testes das incertezas. Sugestão de commit desta implementação: `feat: normaliza os quatro resultados de sentença no Rivet`.

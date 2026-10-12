@@ -1,6 +1,6 @@
 # Contratos — versão 0.2
 
-Especificação a implementar no projeto Rivet e em sua interface de execução. O [schema de extração](../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../schemas/processo.schema.json) e [resumo](../schemas/resumo.schema.json); a implementação atual cobre somente uma condenação válida. Estados de pendência e os demais resultados continuam previstos para S2.
+Especificação a implementar no projeto Rivet e em sua interface de execução. O [schema de extração](../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../schemas/processo.schema.json) e [resumo](../schemas/resumo.schema.json); a implementação S2.2 cobre uma sentença válida por execução, nos quatro resultados. Estados de pendência continuam previstos nas próximas tarefas S2.
 
 ## 1. Insumos e identidade
 
@@ -158,4 +158,10 @@ O racional final é um documento separado, escrito/revisado pelo candidato, de a
 
 ## 9. Organização interna da S1.5
 
-O contrato público de `analisar_carteira` permanece inalterado. Preparação, extração, validação, cálculo e consolidação agora são subgrafos, com [portas documentadas](S1_5_VALIDACAO.md). Erros propagam ao principal; uma saída de erro não é convertida em dados válidos. A revisão não alterou schemas, fórmulas, decisão ou unidades. A equivalência dos quatro outputs é verificada por teste de regressão; aceite no aplicativo ainda pendente.
+O contrato público de `analisar_carteira` permanece inalterado. Preparação, extração, validação, cálculo e consolidação agora são subgrafos, com [portas documentadas](S1_5_VALIDACAO.md). Erros propagam ao principal; uma saída de erro não é convertida em dados válidos. A revisão não alterou schemas, fórmulas, decisão ou unidades. A equivalência dos quatro outputs é verificada por teste de regressão; aceite S1.5 informado pelo candidato, com [origem registrada](output/s1.5-aceite.json).
+
+## 10. Normalização S2.2
+
+Vitórias válidas preservam subsídios e probabilidade do CSV como referência; não usam a probabilidade para simular recurso. Componentes e total são zero; datas, meses, custo, benefício, índices de atualização e memória são `null`. Principal corrigido, juros e atualizado ficam zero. Decisão `nao_recorrer`, motivo `sem_condenacao`; um caso válido conta em `processos_aptos` mesmo sem cálculo financeiro aplicável.
+
+Internamente, a validação transmite `{ "sem_condenacao": true }` ao subgrafo financeiro para evitar executar fórmulas de condenação. Essa sinalização não altera o contrato público nem dispensa validação semântica. O relatório de extinção esclarece que a ausência de resolução do mérito não demonstra encerramento definitivo de toda exposição. Os schemas existentes já comportam esses valores e não foram flexibilizados.

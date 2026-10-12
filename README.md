@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S2.1 concluída: testes de aceitação dos quatro resultados, com seis falhas esperadas aguardando S2.2. S1.5 refatorada e validada localmente: cinco subgrafos e 43 testes na suíte padrão; aceite no aplicativo pendente. S1.4 concluída: comando local integra grafo e exportação com manifesto por execução, validado por replay offline. S1.3 concluída: exportador XLSX com quatro abas, validado por reabertura e sete testes específicos. S1.2 concluída: grafo de uma condenação com schemas, validações, cálculo e relatório, avaliado com uma extração real aprovada. S0 concluída: três grafos de prova, 14 testes aprovados, exportação XLSX conferida e chamada real à OpenAI pelo SDK. O candidato também executou os três grafos no aplicativo Rivet e os outputs enviados foram conferidos. A API, o fluxo completo e os documentos finais ainda serão construídos; os exemplos HTTP abaixo são contratos planejados.
+**Estado atual:** S0 e S1 concluídas. Aceite visual S1.5 informado pelo candidato e arquivos locais reconferidos. S2.2 concluída: quatro resultados de sentença normalizados, com 56 testes na suíte padrão. Ainda processamos uma sentença por execução; pendências, retentativas, carteira completa e API permanecem nas próximas tarefas.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -58,7 +58,7 @@ Para uma chamada real, configure `OPENAI_API_KEY` no `.env` local e rode `npm ru
 
 ## Como será utilizado
 
-A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 43 testes de S0 e S1; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
+A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 56 testes de S0, S1 e S2.2; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
 
 Após a implementação e a inicialização do servidor, o contrato previsto é:
 
@@ -108,4 +108,8 @@ A [revisão S1.5](docs/S1_5_VALIDACAO.md) descreve os cinco subgrafos e o roteir
 
 ## S2 por tarefa
 
-A [S2.1](docs/S2_TASKS.md) adiciona 13 cenários offline para os quatro resultados e um pedido sintético maior. `npm run test:s2` retorna **saída 1: 7 aprovados, 6 falhas** por falta de tratamento das vitórias. Essa suíte permanece separada até a S2.2; `npm test` continua verde com os 43 testes S0/S1. Não houve alteração de produção nesta tarefa.
+A [S2.1](docs/S2_TASKS.md) adiciona 13 cenários offline para os quatro resultados e um pedido sintético maior. Na S2.1, seis cenários ficaram em vermelho. A [S2.2](docs/S2_2_VALIDACAO.md) implementou as vitórias: `npm run test:s2` passa os 13 cenários e `npm test` passa todos os 56 testes.
+
+## Onde ficam os outputs
+
+No painel Rivet, este grafo mostra resultados nos quatro nós Graph Output; ele não grava automaticamente JSON, Markdown ou XLSX no disco. Quem grava arquivos é o comando Node, cujo resultado informa o diretório criado em `outputs/s1.4/<execucao_id>/` (ou na raiz passada com `--destino`). `--replay` usa uma captura anterior, não importa a execução recém-feita no painel. `node --env-file=.env scripts/executar-s1.mjs --real` executa uma nova chamada paga e salva seus resultados. Os registros selecionados para revisão ficam em `docs/output/`.

@@ -1,6 +1,6 @@
 # S1.5 — subgrafos, regressão e aceite
 
-A refatoração e a validação local estão concluídas. O aceite visual no aplicativo ainda está pendente; por isso a S1.5 não está marcada como integralmente concluída no plano. Nenhuma nova chamada paga foi feita nesta tarefa.
+S1.5 concluída. O candidato confirmou nesta conversa a execução visual e a conferência pelo roteiro abaixo. Os arquivos locais foram reconferidos; [registro do aceite](output/s1.5-aceite.json). Não foi localizada uma nova exportação do aplicativo: o aceite visual é informado pelo candidato, e os arquivos examinados são do replay local. Nenhuma nova chamada paga foi feita nesta tarefa.
 
 ## Organização do projeto
 
@@ -52,11 +52,11 @@ Também foi executado:
 npm run s1:executar -- --replay --destino outputs/s1.5
 ```
 
-A execução passou pelos subgrafos e pelo exportador; os hashes dos artefatos foram conferidos e o XLSX foi reaberto, mantendo o valor atualizado de R$ 6.673,14. A [evidência local](output/s1.5-validacao.json) registra o manifesto, resultados dos testes, hash do projeto e o aceite do aplicativo como pendente. Replay não avalia novamente a qualidade do modelo.
+A execução passou pelos subgrafos e pelo exportador; os hashes dos artefatos foram conferidos e o XLSX foi reaberto, mantendo o valor atualizado de R$ 6.673,14. A [evidência local](output/s1.5-validacao.json) registra o manifesto, resultados dos testes, hash do projeto e o aceite do aplicativo como pendente à época; o registro posterior de aceite está vinculado acima. Replay não avalia novamente a qualidade do modelo.
 
-## Conferência no aplicativo — pendente
+## Roteiro de conferência no aplicativo — confirmado pelo candidato
 
-Não há ferramenta de controle/inspeção visual do Rivet disponível nesta sessão. A presença do aplicativo instalado não comprova que o projeto refatorado foi aberto ou executado nele. O candidato deve fazer esta última conferência:
+Não há ferramenta de controle/inspeção visual do Rivet disponível nesta sessão. A presença do aplicativo instalado não comprova que o projeto refatorado foi aberto ou executado nele. O candidato informou ter seguido esta conferência:
 
 1. Reabra `rivet/analise_sentencas.rivet-project` atualizado. Evite salvar sobre ele uma versão antiga que tenha ficado aberta.
 2. Selecione `analisar_carteira`. Confira os cinco nós de subgrafo e abra cada subgrafo para verificar seus nós e portas.
@@ -68,6 +68,6 @@ Não há ferramenta de controle/inspeção visual do Rivet disponível nesta ses
 
 O aplicativo produz os quatro Graph Outputs; a gravação do XLSX e dos arquivos de execução continua sendo responsabilidade do comando Node. Se uma nova resposta real for rejeitada pelo validador, a S1.5 deve continuar pendente até a ocorrência ser examinada; não se deve desabilitar a validação para obter aceite.
 
-Após a conferência, registrar a evidência do aplicativo em `docs/output/` e concluir a marcação da S1.5 no plano. Os estados de erro e o limite de uma sentença continuam os da S1; S2 e processamento da carteira não foram iniciados.
+O aceite informado foi registrado em `docs/output/s1.5-aceite.json` e a S1.5 foi concluída no plano. Essa confirmação refere-se à versão S1.5, não à posterior S2.2. Os estados de erro e o limite de uma sentença continuam os da S1; S2 e processamento da carteira não haviam sido iniciados naquela rodada.
 
 Commit sugerido para a refatoração local validada: `refactor: organiza pipeline S1 em subgrafos e unifica testes`.

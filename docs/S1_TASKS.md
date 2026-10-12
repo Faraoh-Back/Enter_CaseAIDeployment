@@ -1,6 +1,6 @@
 # S1 — desenvolvimento por tarefa
 
-Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi desenvolvida somente **S1.5**. A refatoração em subgrafos e a validação local estão concluídas; falta o aceite no aplicativo. Consulte [implementação e roteiro de aceite](S1_5_VALIDACAO.md).
+Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assistente para ao concluir a tarefa solicitada. Nesta rodada foi desenvolvida somente **S1.5**. A refatoração, a validação local e o aceite informado pelo candidato estão concluídos; [registro posterior](output/s1.5-aceite.json). Consulte [implementação e roteiro de aceite](S1_5_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ Uma tarefa por rodada de trabalho. O candidato revisa e faz os commits; o assist
 | S1.2 — grafo de uma condenação | Formalizar schemas de processo/resumo antes de implementar; texto e CSVs entram, extração é validada, cálculo e outputs são produzidos no Rivet. Fazer o primeiro teste passar e avaliar a extração completa em chamada real separada. | Concluída |
 | S1.3 — XLSX | Implementar o adaptador de apresentação e fazer o segundo teste passar, reabrindo o arquivo. | Concluída |
 | S1.4 — execução local integrada | Executar o grafo e o exportador juntos, gravar JSON/Markdown/XLSX em diretório de execução e registrar o comando reproduzível. | Concluída |
-| S1.5 — refatoração e aceite | Separar responsabilidades em subgrafos, revisar contratos e conferir o fluxo integrado no aplicativo e pelo comando local. | Local concluído; aplicativo pendente |
+| S1.5 — refatoração e aceite | Separar responsabilidades em subgrafos, revisar contratos e conferir o fluxo integrado no aplicativo e pelo comando local. | Concluída; aceite visual informado pelo candidato |
 
 ## S1.1: o que os testes exigem
 
@@ -106,3 +106,7 @@ Nenhum commit foi feito pelo assistente. Sugestão: `feat: integra execução lo
 O principal delega a cinco subgrafos. `npm test` reúne os 43 testes, todos aprovados, incluindo comparação dos quatro outputs com a captura anterior à refatoração. O replay integrado foi executado novamente e o XLSX reaberto. O aceite no aplicativo permanece pendente, conforme [roteiro](S1_5_VALIDACAO.md); a S1.5 ainda não está integralmente encerrada.
 
 Sugestão de commit: `refactor: organiza pipeline S1 em subgrafos e unifica testes`. Nenhum commit foi feito pelo assistente.
+
+## Fechamento posterior da S1.5
+
+O candidato confirmou a conferência visual pelo roteiro. Os artefatos locais de replay foram reconferidos, incluindo hashes e XLSX. [Aceite registrado com origem explícita](output/s1.5-aceite.json); nenhuma nova captura do aplicativo foi localizada. S1.5 concluída.

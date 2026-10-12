@@ -1,0 +1,43 @@
+{
+  "registrado_em": "2026-10-12T06:56:46.301Z",
+  "estado": "aceito",
+  "aplicativo": {
+    "origem": "Confirmação textual do candidato nesta conversa",
+    "relato": "Validei de maneira visual no Rivet, fiz todos os passos e conferi tudo com o S1_5_VALIDACAO.md; aparentemente deu bom.",
+    "exportacao_nova_do_aplicativo_localizada": false,
+    "inspecao_visual_pelo_assistente": false
+  },
+  "arquivos_conferidos": {
+    "origem": "outputs/s1.5/2026-10-12T06-39-29-760Z-1fd03db3-b814-4cbe-accb-28cf4d809470",
+    "modo": "replay",
+    "projeto_sha256": "f01a145edbc3c84fe61640cfff0c706b0129b9da64ac448646228ff208ad69a2",
+    "artefatos": [
+      {
+        "nome": "processos.json",
+        "sha256": "536bca2316e5ed9213503c414c021de9e39b53522743d44b5768298ce06304b5"
+      },
+      {
+        "nome": "resumo.json",
+        "sha256": "77f2c7c9813732bbc01720dba47bdcccbc8532d09efcca075f706bd566fb6d6e"
+      },
+      {
+        "nome": "auditoria.json",
+        "sha256": "024b4c21a64bed1fbb174bd356dce5c06de4dfcafd0202e8be5698125e5f11e0"
+      },
+      {
+        "nome": "relatorio.md",
+        "sha256": "d7f999dac861053b9ec5b209b328dd832de9f14cccc5b4321bbcc6a0abce0ee6"
+      },
+      {
+        "nome": "processos.xlsx",
+        "sha256": "3cebcbaea7c97e0addac9afec2ec2afe29adab46bd39b9dbb473358f0d0c7d8f"
+      }
+    ],
+    "hashes_conferidos": true,
+    "xlsx_reaberto": true,
+    "valor_atualizado_centavos": 667314,
+    "beneficio_esperado_centavos": -253269,
+    "decisao_recurso": "nao_recorrer"
+  },
+  "limite": "Aceite visual informado pelo candidato; arquivos conferidos pertencem ao replay local S1.5. Não são uma nova captura do aplicativo nem aceite da posterior S2.2."
+}

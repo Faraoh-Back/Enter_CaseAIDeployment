@@ -9,7 +9,7 @@
     "s0:build": "node scripts/build-s0.mjs",
     "s0:check": "node scripts/check-s0.mjs",
     "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
-    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao",
+    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2",
     "test:s2": "node tests/s2-resultados.test.mjs",
     "test:s0": "node tests/s0.test.mjs",
     "test:s1:refatoracao": "node tests/s1-refatoracao.test.mjs",

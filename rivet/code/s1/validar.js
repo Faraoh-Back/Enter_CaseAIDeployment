@@ -6,7 +6,15 @@ catch { throw new Error('EXTRACAO_INVALIDA: resposta não é JSON completo'); }
 const validation = validarSemanticaS0({ extracao: { value: extraction }, sentenca: { value: referencias.sentenca } }).validacao.value;
 if (!validation.apto_calculo) throw new Error(`EXTRACAO_INVALIDA: ${validation.problemas.join('; ')}`);
 if (extraction.numero_processo !== referencias.numero) throw new Error('EXTRACAO_INVALIDA: CNJ divergente da entrada');
-if (!['procedencia','parcial_procedencia'].includes(extraction.resultado_sentenca)) throw new Error('ESCOPO_S1: apenas condenações nesta fatia');
+const vitoria = ['improcedencia','extincao'].includes(extraction.resultado_sentenca);
+const { valor_total_explicito_centavos, ...base } = extraction;
+Object.assign(base, { tribunal: referencias.custo.tribunal, status_processamento: 'ok', problemas: [],
+  status_subsidios: referencias.status_subsidios, probabilidade_reversao_percentual: referencias.probabilidade });
+if (vitoria) {
+  Object.assign(base, { valor_condenacao_centavos: 0, meses_completos: null, custo_recurso_centavos: null });
+  return { base: { type: 'object', value: base }, extracao: { type: 'object', value: extraction },
+    parametros: { type: 'object', value: { sem_condenacao: true } } };
+}
 const dispositivo = referencias.sentenca.split(/Ante o exposto,/i)[1];
 if (!dispositivo) throw new Error('EXTRACAO_INVALIDA: dispositivo não localizado');
 // Conferência independente no dispositivo inteiro impede aceitar evidência recortada que omita um dano.
@@ -26,10 +34,7 @@ const meses = 12 * (refYear - year) + refMonth - month - (refDay < day ? 1 : 0);
 if (meses < 0) throw new Error('EXTRACAO_INVALIDA: citação posterior à referência');
 const total = extraction.danos_materiais_centavos + extraction.danos_morais_centavos;
 if (!Number.isSafeInteger(total) || total <= 0) throw new Error('EXTRACAO_INVALIDA: condenação deve ser positiva e segura');
-const { valor_total_explicito_centavos, ...base } = extraction;
-Object.assign(base, { tribunal: referencias.custo.tribunal, status_processamento: 'ok', problemas: [],
-  valor_condenacao_centavos: total, meses_completos: meses, status_subsidios: referencias.status_subsidios,
-  probabilidade_reversao_percentual: referencias.probabilidade, custo_recurso_centavos: referencias.custo.centavos });
+Object.assign(base, { valor_condenacao_centavos: total, meses_completos: meses, custo_recurso_centavos: referencias.custo.centavos });
 return {
   base: { type: 'object', value: base },
   extracao: { type: 'object', value: extraction },

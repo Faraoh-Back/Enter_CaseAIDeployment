@@ -54,7 +54,7 @@ connect('s1_prompt', 'output', 's1_extrair', 'prompt');
 nodes.push(node('code', 's1_validar', { inputNames: ['preparado','resposta'], outputNames: ['base','extracao','parametros'], code: validation }, 1640, 300, '4. Validar evidências e preparar cálculo'));
 connect('s1_preparar', 'preparado', 's1_validar', 'preparado');
 connect('s1_extrair', 'response', 's1_validar', 'resposta');
-nodes.push(node('code', 's1_calcular', { inputNames: ['parametros'], outputNames: ['resultado'], code: await readFile('rivet/code/calculo-s0.js', 'utf8') }, 2040, 0, '5. Calcular e decidir (BigInt)'));
+nodes.push(node('code', 's1_calcular', { inputNames: ['parametros'], outputNames: ['resultado'], code: `function calcularCondenacao(inputs) {\n${await readFile('rivet/code/calculo-s0.js', 'utf8')}\n}\n${await readFile('rivet/code/s1/calcular.js', 'utf8')}` }, 2040, 0, '5. Calcular e decidir (BigInt)'));
 connect('s1_validar', 'parametros', 's1_calcular', 'parametros');
 nodes.push(node('code', 's1_consolidar', { inputNames: ['base','extracao','calculo','preparado','resposta','uso','modelo'],
   outputNames: ['processos','resumo','auditoria','relatorio_markdown'], code: consolidation }, 2440, 300, '6. Consolidar e redigir relatório'));
@@ -122,7 +122,7 @@ for (const [stageIndex, [id,title,memberIds]] of stages.entries()) {
 const modelInput = mainNodes.find(n=>n.id==='modelo');
 modelInput.visualData = {x:0,y:1080,width:320};
 project.graphs.analisar_carteira = { metadata: { id: 'analisar_carteira', name: 'analisar_carteira',
-  description: 'S1.5: uma condenação, cinco subgrafos. Defaults do caso de desenvolvimento. Run faz uma chamada à OpenAI. Lotes e pendências serão tratados em S2/S3.' }, nodes:mainNodes, connections:mainConnections };
+  description: 'S2.2: uma sentença, quatro resultados e cinco subgrafos. Defaults do caso de desenvolvimento. Run faz uma chamada à OpenAI. Lotes e pendências serão tratados em S2/S3.' }, nodes:mainNodes, connections:mainConnections };
 project.metadata.mainGraphId = 'analisar_carteira';
 await writeFile(file, serializeProject(project));
 console.log('Grafo S1 gerado com cinco subgrafos. Grafo-base preservado; nenhuma chamada à LLM durante o build.');
