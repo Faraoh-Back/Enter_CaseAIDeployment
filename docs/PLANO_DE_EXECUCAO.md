@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0–S3 implementadas e validadas localmente, com 150 testes aprovados. Execução real: 100 aptos, 48 vitórias e 52 condenações; auditoria sem divergências. Aceite visual dos novos artefatos S3 pendente; S4/S5 ainda não executadas. [Validação S3](validacao/S3_VALIDACAO.md).
+**Estado:** S0–S3 implementadas e validadas localmente, com 150 testes aprovados. Execução real: 100 aptos, 48 vitórias e 52 condenações; auditoria sem divergências. Aceite visual S3 V0 confirmado pelo candidato. S4.1 em desenvolvimento; S5 pendente. [Validação S3](validacao/S3_VALIDACAO.md).
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -92,7 +92,9 @@ Registrar na avaliação que os 12 reservados já apareceram na execução preli
 
 ## S4 — interface HTTP mínima
 
-- [ ] **S4.1** — **Vermelho:** testes HTTP reais para POST, consulta de estado, download e erros previstos no contrato.
+Desenvolvimento por tarefa, com testes de contrato primeiro e commits separados, conforme [S4_TASKS.md](desenvolvimento/S4_TASKS.md).
+
+- [x] **S4.1** — **Vermelho:** dez testes de contrato HTTP para POST, consulta de estado, download, concorrência, falhas e reinício. Vermelho observado por módulo ausente; asserções HTTP aguardam implementação.
 - [ ] **S4.2** — **Verde:** uma aplicação Node e um executor compartilhado com o comando local; uma execução ativa por vez.
 - [ ] **S4.3** — Gravar manifesto antes do `202`; publicar apenas arquivos completos. Testar interrupção e estado após reinício.
 - [ ] **S4.4** — Conferir que a API não contém fórmulas financeiras, classificação de sentenças ou cálculo de indicadores.
@@ -112,6 +114,8 @@ Registrar na avaliação que os 12 reservados já apareceram na execução preli
 - [ ] **S5.7** — Abrir o projeto no aplicativo Rivet e demonstrar onde acontecem extração, cálculo, decisão e consolidação.
 - [ ] **S5.8** — Ensaiar a defesa com um caso individual e a visão da carteira; explicar meses completos, arredondamento, probabilidades e hipóteses.
 - [ ] **S5.9** — Conferir horário/fuso do envio e enviar com margem. O envio é uma ação do candidato; este plano não o automatiza.
+
+- [ ] **S5.10 — Relatório executivo em PDF:** adaptar a apresentação ao modelo que o candidato selecionar, preservar os dados e cálculos vindos do Rivet, gerar PDF e conferir reconciliação, legibilidade e paginação. Concluir antes da revisão S5.3 e do ZIP S5.4. Markdown permanece fonte auditável.
 
 **Saída:** arquivo final reproduzível, entregáveis revisados e racional compreendido pelo candidato.
 

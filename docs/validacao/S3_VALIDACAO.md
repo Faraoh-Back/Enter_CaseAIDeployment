@@ -1,6 +1,6 @@
 # S3 — carteira completa, avaliação e entregáveis
 
-Implementação e validação local das sete tarefas concluídas. **150 testes determinísticos aprovados; execução real dos 100 processos concluída, sem pendências.** Aceite visual dos novos entregáveis ainda pendente.
+Implementação e validação local das sete tarefas concluídas. **150 testes determinísticos aprovados; execução real dos 100 processos concluída, sem pendências.** Aceite visual V0 confirmado pelo candidato; refinamento do relatório em PDF reservado à S5.10.
 
 ## Resultados da carteira real
 
@@ -89,11 +89,11 @@ npm run s3:finalizar -- --execucao outputs/s3/<execucao_id>
 
 Auditoria, métricas e finalização não chamam a API. Avaliação reservada real explícita: `node --env-file=.env scripts/avaliar-reservado.mjs --real --reavaliacao`; essa opção declara conjunto já visto. Replay de carteira requer arquivo com `respostas` por identidade, modelo e hashes de todas as entradas; não é avaliação real.
 
-## Aceite visual ao final — pendente
+## Aceite visual V0 — confirmado pelo candidato
 
 1. Abra [processos.xlsx](../output/s3/processos.xlsx) no Calc: 100 linhas de processos, quatro abas, moeda legível, filtros, identidade e data-base. Confira 48 vitórias, 52 condenações e os três totais da tabela inicial. A aba Pendencias deve conter somente cabeçalho.
 2. Abra a prévia de [relatorio.md](../output/s3/relatorio.md): síntese compreensível, 17 recomendações, tabelas legíveis, distinção entre associação e causalidade e entre benefício esperado e economia realizada.
 3. Abra [aceite-consolidacao.rivet-project](../output/s3/aceite-consolidacao.rivet-project) no Rivet, com o plugin local atualizado. Execute `s2_consolidacao_lote` sem editar inputs e sem API. Confira 100 processos/auditorias, resumo igual ao JSON e relatório igual ao exemplo. Não execute `analisar_lote` nessa conferência offline.
 4. Informe versão do aplicativo e resultado dessas verificações para registrar o aceite visual. Plugin, calendário e dois cenários reais individuais já foram aceitos na S2; isso não substitui a leitura dos novos artefatos da carteira.
 
-API e pacote final pertencem à S4/S5. Esta etapa conclui a implementação e a validação local da S3; não declara antecipadamente o aceite visual ou a reprodução do ZIP final.
+O candidato confirmou abertura/aprovação das quatro abas, conteúdo do relatório adequado à V0 e execução visual com dados correspondentes no Rivet. [Registro de origem](../output/s3-aceite-visual.json). A apresentação do relatório em PDF será desenvolvida na S5.10 a partir do modelo que ele escolher. API e reprodução do ZIP final continuam pertencendo à S4/S5.

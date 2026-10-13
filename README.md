@@ -2,7 +2,7 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S3 implementada: 150 testes offline aprovados e carteira real com 100 processos aptos, 48 vitórias e 52 condenações. Auditoria financeira/documental sem divergências. Passivo atualizado R$ 309.174,54; 17 recursos com benefício líquido esperado de R$ 24.676,16. [Resultados, reprodução e aceite visual pendente](docs/validacao/S3_VALIDACAO.md). API e pacote final ficam em S4/S5.
+**Estado atual:** S3 implementada: 150 testes offline aprovados e carteira real com 100 processos aptos, 48 vitórias e 52 condenações. Auditoria financeira/documental sem divergências. Passivo atualizado R$ 309.174,54; 17 recursos com benefício líquido esperado de R$ 24.676,16. [Resultados, reprodução e aceite visual V0 confirmado](docs/validacao/S3_VALIDACAO.md). API e pacote final ficam em S4/S5.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
@@ -133,3 +133,5 @@ node --env-file=.env scripts/executar-carteira.mjs --real
 ```
 
 O segundo comando é uma nova execução paga, com até três tentativas por sentença. O diretório informado contém manifesto, snapshots, checkpoint, JSONs, Markdown e XLSX. Auditoria e métricas são comandos separados documentados na validação S3. O corpus reservado reprovou inicialmente; a correção e a reavaliação de conjunto já visto foram preservadas. Não interpretar a prova como estudo cego ou validação da API futura.
+
+O candidato aprovou visualmente os artefatos S3 como V0. A tarefa S5.10 adaptará o relatório ao modelo executivo escolhido e produzirá PDF, preservando a fonte Markdown e os números do Rivet.

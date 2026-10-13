@@ -111,4 +111,4 @@ A [S2.6](S2_6_VALIDACAO.md) amplia a evidência de integridade dos artefatos: 12
 
 ## 7. Carteira e avaliação S3
 
-A [S3](S3_VALIDACAO.md) concluiu execução real 100/100, com 52 condenações auditadas e zero divergências nos controles estruturais, financeiros e decisórios. A avaliação reservada inicial reprovou; correção testada em desenvolvimento e reavaliação de conjunto já visto passaram em 12/12. Os dois resultados estão preservados, sem alegação de estudo cego. Suíte: 150 testes determinísticos aprovados. Aceite visual dos novos arquivos, API e reprodução do ZIP permanecem pendentes.
+A [S3](S3_VALIDACAO.md) concluiu execução real 100/100, com 52 condenações auditadas e zero divergências nos controles estruturais, financeiros e decisórios. A avaliação reservada inicial reprovou; correção testada em desenvolvimento e reavaliação de conjunto já visto passaram em 12/12. Os dois resultados estão preservados, sem alegação de estudo cego. Suíte: 150 testes determinísticos aprovados. Aceite visual V0 dos novos arquivos confirmado pelo candidato; PDF, API e reprodução do ZIP permanecem pendentes.

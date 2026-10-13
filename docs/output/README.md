@@ -33,6 +33,8 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s3.2-reservado-inicial.json](s3.2-reservado-inicial.json) | Primeira avaliação real reservada reprovada, preservada com hashes e outputs. |
 | [s3.2-desenvolvimento-correcao.json](s3.2-desenvolvimento-correcao.json) | Correção de orientação validada nos 12 casos de desenvolvimento. |
 | [s3.2-reservado-reavaliacao.json](s3.2-reservado-reavaliacao.json) | Reavaliação explicitamente de conjunto já visto: 12/12 aptos/críticos. |
+| [s4.1-vermelho.json](s4.1-vermelho.json) | Dez testes deliberadamente vermelhos para a API ainda não implementada; asserções HTTP não exercitadas nesta rodada. |
+| [s3-aceite-visual.json](s3-aceite-visual.json) | Aceite visual V0 da planilha, conteúdo do relatório e consolidação Rivet informado pelo candidato; PDF fica na S5.10. |
 | [s3/manifest.json](s3/manifest.json) | Artefatos finais reconsolidados sem LLM, vinculados à execução real. |
 | [s3/processos.xlsx](s3/processos.xlsx) | Carteira de 100 linhas com quatro abas e identificação da execução. |
 | [s3/relatorio.md](s3/relatorio.md) | Relatório executivo final gerado no grafo. |

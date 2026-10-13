@@ -1,0 +1,19 @@
+{
+  "etapa": "S3",
+  "estado": "aceite_visual_v0_confirmado_pelo_candidato",
+  "origem": "Confirmação textual do candidato nesta conversa; não houve inspeção direta do aplicativo pelo assistente.",
+  "planilha": {
+    "arquivo": "s3/processos.xlsx",
+    "resultado": "Candidato abriu, conferiu as quatro abas e aprovou a apresentação."
+  },
+  "relatorio": {
+    "arquivo": "s3/relatorio.md",
+    "resultado": "Conteúdo e dados importantes aprovados para V0; apresentação Markdown será substituída por PDF em S5.",
+    "aceite_pdf": "pendente"
+  },
+  "rivet": {
+    "arquivo": "s3/aceite-consolidacao.rivet-project",
+    "resultado": "Candidato executou visualmente e confirmou correspondência dos dados e resumo."
+  },
+  "pendencia_s5": "Adaptar relatório ao modelo executivo escolhido pelo candidato, gerar PDF e validar conteúdo, números e paginação."
+}
