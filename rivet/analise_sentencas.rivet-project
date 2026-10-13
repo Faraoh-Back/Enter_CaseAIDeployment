@@ -12017,7 +12017,7 @@ data:
                'As proporções por subsídio são descritivas. Não demonstram que a documentação causou o resultado; tema, composição dos casos e seleção podem explicar diferenças. Resultados desconhecidos são excluídos do denominador condicional e exibidos separadamente.','',
                '### Temas','',tabela(resumo.distribuicoes.temas),'',
                '### Comarcas','',tabela(resumo.distribuicoes.comarcas),'',
-               ...(resumo.distribuicoes.comarcas.length===1?['Há uma única comarca identificada neste lote; não existe contraste entre comarcas para sustentar comparação.','']:[]),
+               ...(resumo.distribuicoes.comarcas.filter(g=>g.grupo!=='não identificado').length===1?['Há uma única comarca identificada neste lote; não existe contraste entre comarcas para sustentar comparação.','']:[]),
                '### Tribunais','',tabela(resumo.distribuicoes.tribunais),'',
                '## Estratégia econômica de recursos','',
                'Probabilidades são cenários fornecidos: completos 80%, essenciais 50%, ausentes 10%; não são probabilidades calibradas por esta carteira. Benefício esperado = probabilidade × valor atualizado − custo. O sinal exato determina a recomendação, inclusive no empate; o valor apresentado é arredondado.','',

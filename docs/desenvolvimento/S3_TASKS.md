@@ -9,7 +9,7 @@ Todas as sete tarefas autorizadas nesta rodada, com um commit por tarefa. A aval
 | S3.3 | Auditor implementado e testado contra oráculo Fraction; execução sobre a carteira real prevista na consolidação final. |
 | S3.4 | Implementada identificação por execução/data-base nas quatro abas, com dois testes novos e sete regressões do exportador verdes. |
 | S3.5 | Implementado relatório executivo no grafo, com distribuições no resumo e três testes verdes. |
-| S3.6 | Pendente: conferir denominadores, associações, premissas e benefício esperado. |
+| S3.6 | Revisão concluída e três testes aprovados: ausência de contraste, denominador zero e premissas econômicas. |
 | S3.7 | Pendente: métricas reais e evidências finais, roteiro visual. |
 
 ## S3.1 — execução e interrupções
@@ -62,3 +62,7 @@ A reavaliação passou em 12/12 completos e campos críticos, sem alteração du
 O grafo produz síntese, distribuição por resultado/subsídio/tema/comarca/tribunal, estratégia de recursos, maiores exposições, exclusões e premissas. As distribuições são publicadas em `resumo.distribuicoes`, propriedade opcional para preservar a análise individual. O exportador apenas materializa as folhas desses dados na aba Resumo. Três testes verificam fechamento de grupos, dinheiro e apresentação.
 
 A associação de subsídio usa resultados conhecidos como denominador; resultados desconhecidos aparecem separadamente. Não interpreta diferenças como efeitos causais. Probabilidades do CSV são cenários, não estimativas calibradas; benefício é esperado sob reversão integral, não economia realizada.
+
+## S3.6 — interpretação e denominadores
+
+Três testes novos confirmam: uma única comarca identificada não vira comparação mesmo quando há dados ausentes; resultados totalmente desconhecidos não produzem taxa falsa; premissas e associação descritiva são explícitas. Não se apresentam probabilidades do CSV como calibradas nem benefício esperado como economia realizada. Grupos sempre informam n e desconhecidos; a revisão visual deve avaliar legibilidade, além da consistência numérica já automatizada.
