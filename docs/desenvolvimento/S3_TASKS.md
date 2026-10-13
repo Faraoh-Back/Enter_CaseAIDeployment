@@ -5,7 +5,7 @@ Todas as sete tarefas autorizadas nesta rodada, com um commit por tarefa. A aval
 | Tarefa | Estado e entrega |
 | --- | --- |
 | S3.1 | Executor implementado; 100 identidades e 52 condenações reconciliadas em replay de anotações. Execução real prevista após a avaliação reservada. |
-| S3.2 | Pendente: avaliação real de 12 reservados, métricas por campo e hashes. |
+| S3.2 | Primeira avaliação real preservada: 4/12 aptos, 6/12 com campos críticos corretos; reprovada. Prompt/gabaritos permaneceram congelados. |
 | S3.3 | Pendente: auditoria independente da classificação, datas, dinheiro e decisões dos 100 casos. |
 | S3.4 | Pendente: planilha identificada por execução e data-base, reabertura e reconciliação. |
 | S3.5 | Pendente: relatório executivo com distribuições, recursos e limites. |
@@ -26,3 +26,9 @@ node --env-file=.env scripts/executar-carteira.mjs --real
 ```
 
 Replay requer captura com respostas por identidade e hashes de todas as entradas. O modo real utiliza a credencial local e pode consumir até três chamadas por sentença. O manifesto só anuncia arquivos completos. Custo não medido permanece `null`.
+
+## S3.2 — primeira avaliação reservada
+
+Três testes do avaliador aprovados. A primeira rodada real processou os 12 reservados sem ajustes de prompt: 27 chamadas, 41.928 tokens informados, quatro aptos e oito pendências. Identidade e resultado corretos em 12/12; componentes corretos em 6/12, datas aplicáveis em 6/6. O reservado já havia participado do resumo-base preliminar; não é avaliação cega.
+
+A meta não foi atingida. [Rodada inicial preservada](../output/s3.2-reservado-inicial.json). Mudanças posteriores serão testadas em desenvolvimento e qualquer repetição será rotulada como conjunto já visto, sem substituir silenciosamente a rodada original. Custo não medido permanece null.
