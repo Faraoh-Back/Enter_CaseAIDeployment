@@ -14,7 +14,7 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
   exportador = exportarXlsx } = {}) {
   if (!['real','replay'].includes(modo)) throw new Error('Escolha --real ou --replay');
   if (modo === 'real' && !apiKey?.trim()) throw new Error('Configure OPENAI_API_KEY antes de executar --real');
-  // O SDK usa fetch global; impedir interferência entre transportes na mesma instância.
+  // O plugin compartilha o adaptador de transporte; impedir execuções simultâneas na instância.
   const liberarExecucao = reservarExecucaoRivet();
   let restaurarTransporte = () => {};
   const nativeFetch = globalThis.fetch, warn = console.warn, errorLog = console.error;

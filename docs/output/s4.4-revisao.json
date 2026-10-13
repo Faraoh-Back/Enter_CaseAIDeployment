@@ -1,0 +1,21 @@
+{
+  "etapa": "S4.4",
+  "estado": "revisao_assistida_concluida",
+  "metodo": "Inspeção das responsabilidades e prova de equivalência API/CLI; não é segunda revisão humana independente.",
+  "regras_no_rivet": true,
+  "integracao_api_cli": {
+    "testes": 3,
+    "aprovados": 3,
+    "chamadas_reais_llm": 0
+  },
+  "sha256": {
+    "src/api.mjs": "7b66dfc3c5f7a07141faeb26a8389f5749914b3d012dc29e8478b909ce550484",
+    "src/armazenamento-api.mjs": "b320cc446853dca710bcbb7bd3daf3dc6f9cb3a728d15c910bee82e2d502a85d",
+    "src/rivet-runtime.mjs": "2cb591a301eae1d39808ef5677d8eec39f15651f50d3d8a952c312fea1379abf",
+    "src/executar-carteira.mjs": "9033cb05a2d8ef9343127580129dc10fbf815b2a6d057f50b110b8976597a21c",
+    "src/exportar-xlsx.mjs": "774f6de03abeb36ae9e89be85087638e0479c8cce331d7405b41a3016a825cbb",
+    "rivet/plugins/enter-bounded-extraction/index.js": "1c142903272cc1113b0fe2cca74be2d1a336b2490d16328999c7555d06e7755f",
+    "scripts/servidor.mjs": "32850bbda9edd148483d7ead318e71db75c4983513087c6929e3167acf069358",
+    "tests/s4-integracao.test.mjs": "68660dfe71f419837b0c2ca3f9049339e00e6a672b13906bfe943e5a77c75787"
+  }
+}

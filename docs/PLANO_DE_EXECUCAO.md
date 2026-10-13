@@ -97,7 +97,7 @@ Desenvolvimento por tarefa, com testes de contrato primeiro e commits separados,
 - [x] **S4.1** — **Vermelho:** dez testes de contrato HTTP para POST, consulta de estado, download, concorrência, falhas e reinício. Vermelho observado por módulo ausente; asserções HTTP aguardam implementação.
 - [x] **S4.2** — **Verde:** uma aplicação Node e um executor compartilhado com o comando local; uma execução ativa por vez.
 - [x] **S4.3** — Gravar manifesto antes do `202`; publicar apenas arquivos completos. Testar interrupção e estado após reinício.
-- [ ] **S4.4** — Conferir que a API não contém fórmulas financeiras, classificação de sentenças ou cálculo de indicadores.
+- [x] **S4.4** — Conferir que a API não contém fórmulas financeiras, classificação de sentenças ou cálculo de indicadores.
 - [ ] **S4.5** — Documentar comandos reais e uma sequência `curl` executada com sucesso. Testar tratamento de configuração ausente sem expor credenciais.
 
 
