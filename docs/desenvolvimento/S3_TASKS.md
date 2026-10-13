@@ -42,3 +42,9 @@ Dois testes aprovados, incluindo adulteração de data, centavo, decisão e fra�
 ```bash
 npm run s3:auditar -- --execucao outputs/s3/<execucao_id>
 ```
+
+### Correção após a primeira avaliação
+
+A orientação passou a explicitar zero nas vitórias, null somente nos campos não aplicáveis, preservação de pontuação/quebras e escolha de trechos contínuos sem anexar frases de rejeição. A descrição do tema também passou a pedir a causa completa. Nenhuma fórmula, referência ou schema foi flexibilizado.
+
+A avaliação real de desenvolvimento passou em 12/12 completos e críticos, com 16 chamadas. [Evidência](../output/s3.2-desenvolvimento-correcao.json). A próxima rodada reservada será uma reavaliação de conjunto já visto, identificada por `--reavaliacao`.

@@ -3,16 +3,18 @@ import {parseArgs} from 'node:util';
 import {randomUUID} from 'node:crypto';
 import {executarCarteira,entradasCarteira,hash} from '../src/executar-carteira.mjs';
 import {avaliarExtracao} from './avaliacao.mjs';
-const {values:v}=parseArgs({options:{real:{type:'boolean'},replay:{type:'boolean'},captura:{type:'string'},destino:{type:'string'}},strict:true});
+const {values:v}=parseArgs({options:{real:{type:'boolean'},replay:{type:'boolean'},captura:{type:'string'},destino:{type:'string'},reavaliacao:{type:'boolean'},conjunto:{type:'string',default:'reservado'}},strict:true});
 if(Boolean(v.real)===Boolean(v.replay))throw new Error('Escolha --real ou --replay');
-const records=JSON.parse(await readFile('tests/fixtures/golden/reservado.json','utf8'));
+if(!['reservado','desenvolvimento'].includes(v.conjunto))throw new Error('Conjunto inválido');
+const goldenFile=`tests/fixtures/golden/${v.conjunto}.json`;
+const records=JSON.parse(await readFile(goldenFile,'utf8'));
 const raw=await entradasCarteira();
 raw.processos_texto=records.map(r=>`${'='.repeat(30)}\nProcesso nº ${r.numero_processo}\n${'='.repeat(30)}\n${r.sentenca}\n`).join('');
 raw.subsidios_texto='numero_processo,status_subsidios\n'+records.map(r=>`${r.numero_processo},${r.calculo_esperado.status_subsidios}\n`).join('');
-const hashes=async()=>Object.fromEntries(await Promise.all(['rivet/prompts/extracao-s1.txt','schemas/extracao.schema.json','tests/fixtures/golden/reservado.json'].map(async p=>[p,hash(await readFile(p))])));
-const before=await hashes(),dir=v.destino??`outputs/s3-reservado/${randomUUID()}`;await mkdir(dir,{recursive:true});
-const evidence={etapa:'S3.2',iniciado_em:new Date().toISOString(),modo:v.real?'real':'replay',hashes_congelados:before,
- exposicao_previa:'Os 12 reservados participaram do resumo-base preliminar nos 100; não é avaliação cega ou primeira exposição à LLM.',ajustes_de_prompt_nesta_rodada:0,custo_monetario:null};
+const hashes=async()=>Object.fromEntries(await Promise.all(['rivet/prompts/extracao-s1.txt','schemas/extracao.schema.json',goldenFile].map(async p=>[p,hash(await readFile(p))])));
+const before=await hashes(),dir=v.destino??`outputs/s3-${v.conjunto}/${randomUUID()}`;await mkdir(dir,{recursive:true});
+const evidence={etapa:'S3.2',conjunto:v.conjunto,iniciado_em:new Date().toISOString(),modo:v.real?'real':'replay',hashes_congelados:before,
+ exposicao_previa:'Os 12 reservados participaram do resumo-base preliminar nos 100; não é avaliação cega ou primeira exposição à LLM.',ajustes_de_prompt_nesta_rodada:0,reavaliacao_conjunto_ja_visto:Boolean(v.reavaliacao),custo_monetario:null};
 try {
  const result=await executarCarteira({modo:evidence.modo,destino:dir,entradas:raw,captura:v.captura});
  evidence.execucao=result;

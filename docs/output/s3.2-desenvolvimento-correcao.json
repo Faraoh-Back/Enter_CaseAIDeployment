@@ -1,0 +1,2325 @@
+{
+  "etapa": "S3.2",
+  "conjunto": "desenvolvimento",
+  "iniciado_em": "2026-10-13T03:59:17.244Z",
+  "modo": "real",
+  "hashes_congelados": {
+    "rivet/prompts/extracao-s1.txt": "8a6201d2c62fe7c5fa79752deaab3b70d03864d9e2c7a8b960526680384e6752",
+    "schemas/extracao.schema.json": "185099e8f8d671033c0b6d0dc0fe7a76e4fdfcb6998d51951f8714a444b521dc",
+    "tests/fixtures/golden/desenvolvimento.json": "7de435f8a6e57b01603a074f417f28c981b57d7dcf94493bf3c3cdaa752b41d0"
+  },
+  "exposicao_previa": "Os 12 reservados participaram do resumo-base preliminar nos 100; não é avaliação cega ou primeira exposição à LLM.",
+  "ajustes_de_prompt_nesta_rodada": 0,
+  "reavaliacao_conjunto_ja_visto": false,
+  "custo_monetario": null,
+  "execucao": {
+    "estado": "concluida",
+    "execucao_id": "2026-10-13T03-59-17-249Z-82e0f746-4fbf-499c-8668-0bb9d0d33ff5",
+    "diretorio": "/home/dev/GitPessoal/Enter_CaseAIDeployment/outputs/s3-desenvolvimento/f1e816ec-0c8d-43dc-b09b-aa7452caa6d2/2026-10-13T03-59-17-249Z-82e0f746-4fbf-499c-8668-0bb9d0d33ff5"
+  },
+  "avaliacao": {
+    "total_avaliado": 12,
+    "completos": 12,
+    "criticos_corretos": 12,
+    "aprovacao_critica": true,
+    "extras": [],
+    "campos": {
+      "numero_processo": {
+        "corretos": 12,
+        "total": 12,
+        "nao_aplicaveis": 0
+      },
+      "resultado_sentenca": {
+        "corretos": 12,
+        "total": 12,
+        "nao_aplicaveis": 0
+      },
+      "danos_materiais_centavos": {
+        "corretos": 12,
+        "total": 12,
+        "nao_aplicaveis": 0
+      },
+      "danos_morais_centavos": {
+        "corretos": 12,
+        "total": 12,
+        "nao_aplicaveis": 0
+      },
+      "mes_base_correcao": {
+        "corretos": 6,
+        "total": 6,
+        "nao_aplicaveis": 6
+      },
+      "data_citacao": {
+        "corretos": 6,
+        "total": 6,
+        "nao_aplicaveis": 6
+      },
+      "classe_processual": {
+        "corretos": 12,
+        "total": 12,
+        "nao_aplicaveis": 0
+      },
+      "comarca": {
+        "corretos": 12,
+        "total": 12,
+        "nao_aplicaveis": 0
+      },
+      "tema": {
+        "corretos": 12,
+        "total": 12,
+        "nao_aplicaveis": 0
+      }
+    },
+    "casos": [
+      {
+        "numero_processo": "9154816-75.2024.8.26.0004",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "9154816-75.2024.8.26.0004",
+            "recebido": "9154816-75.2024.8.26.0004",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "procedencia",
+            "recebido": "procedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 290000,
+            "recebido": 290000,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 60000,
+            "recebido": 60000,
+            "correto": true
+          },
+          {
+            "campo": "mes_base_correcao",
+            "esperado": "2025-11",
+            "recebido": "2025-11",
+            "correto": true
+          },
+          {
+            "campo": "data_citacao",
+            "esperado": "2026-02-07",
+            "recebido": "2026-02-07",
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "negativação indevida do nome em cadastro de inadimplentes",
+            "recebido": "negativação indevida do nome em cadastro de inadimplentes",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "7094431-69.2024.8.26.0001",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "7094431-69.2024.8.26.0001",
+            "recebido": "7094431-69.2024.8.26.0001",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "procedencia",
+            "recebido": "procedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 420000,
+            "recebido": 420000,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 110000,
+            "recebido": 110000,
+            "correto": true
+          },
+          {
+            "campo": "mes_base_correcao",
+            "esperado": "2024-12",
+            "recebido": "2024-12",
+            "correto": true
+          },
+          {
+            "campo": "data_citacao",
+            "esperado": "2025-03-13",
+            "recebido": "2025-03-13",
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "acidente de trânsito com danos ao veículo",
+            "recebido": "acidente de trânsito com danos ao veículo",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "9734703-17.2024.8.26.0001",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "9734703-17.2024.8.26.0001",
+            "recebido": "9734703-17.2024.8.26.0001",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "procedencia",
+            "recebido": "procedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 640000,
+            "recebido": 640000,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 200000,
+            "recebido": 200000,
+            "correto": true
+          },
+          {
+            "campo": "mes_base_correcao",
+            "esperado": "2025-03",
+            "recebido": "2025-03",
+            "correto": true
+          },
+          {
+            "campo": "data_citacao",
+            "esperado": "2025-04-05",
+            "recebido": "2025-04-05",
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "cobrança indevida em fatura",
+            "recebido": "cobrança indevida em fatura",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "3320821-75.2025.8.26.0004",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "3320821-75.2025.8.26.0004",
+            "recebido": "3320821-75.2025.8.26.0004",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "parcial_procedencia",
+            "recebido": "parcial_procedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 350000,
+            "recebido": 350000,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "mes_base_correcao",
+            "esperado": "2025-09",
+            "recebido": "2025-09",
+            "correto": true
+          },
+          {
+            "campo": "data_citacao",
+            "esperado": "2025-11-16",
+            "recebido": "2025-11-16",
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "interrupção injustificada do fornecimento de energia",
+            "recebido": "interrupção injustificada do fornecimento de energia",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "6022741-94.2024.8.26.0001",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "6022741-94.2024.8.26.0001",
+            "recebido": "6022741-94.2024.8.26.0001",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "parcial_procedencia",
+            "recebido": "parcial_procedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 640000,
+            "recebido": 640000,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "mes_base_correcao",
+            "esperado": "2025-10",
+            "recebido": "2025-10",
+            "correto": true
+          },
+          {
+            "campo": "data_citacao",
+            "esperado": "2026-01-21",
+            "recebido": "2026-01-21",
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "interrupção injustificada do fornecimento de energia",
+            "recebido": "interrupção injustificada do fornecimento de energia",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "3871230-78.2024.8.26.0002",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "3871230-78.2024.8.26.0002",
+            "recebido": "3871230-78.2024.8.26.0002",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "parcial_procedencia",
+            "recebido": "parcial_procedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 600000,
+            "recebido": 600000,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 30000,
+            "recebido": 30000,
+            "correto": true
+          },
+          {
+            "campo": "mes_base_correcao",
+            "esperado": "2025-12",
+            "recebido": "2025-12",
+            "correto": true
+          },
+          {
+            "campo": "data_citacao",
+            "esperado": "2026-02-27",
+            "recebido": "2026-02-27",
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "cancelamento unilateral de plano de saúde",
+            "recebido": "cancelamento unilateral de plano de saúde",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "1325366-90.2024.8.26.0001",
+        "estado": "ok",
+        "tentativas": 2,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "1325366-90.2024.8.26.0001",
+            "recebido": "1325366-90.2024.8.26.0001",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "improcedencia",
+            "recebido": "improcedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "atraso de voo superior a quatro horas",
+            "recebido": "atraso de voo superior a quatro horas",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "9107791-86.2024.8.26.0008",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "9107791-86.2024.8.26.0008",
+            "recebido": "9107791-86.2024.8.26.0008",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "improcedencia",
+            "recebido": "improcedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "negativação indevida do nome em cadastro de inadimplentes",
+            "recebido": "negativação indevida do nome em cadastro de inadimplentes",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "8908327-78.2025.8.26.0001",
+        "estado": "ok",
+        "tentativas": 3,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "8908327-78.2025.8.26.0001",
+            "recebido": "8908327-78.2025.8.26.0001",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "improcedencia",
+            "recebido": "improcedencia",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "negativação indevida do nome em cadastro de inadimplentes",
+            "recebido": "negativação indevida do nome em cadastro de inadimplentes",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "6304573-19.2024.8.26.0008",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "6304573-19.2024.8.26.0008",
+            "recebido": "6304573-19.2024.8.26.0008",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "extincao",
+            "recebido": "extincao",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento do Juizado Especial Cível",
+            "recebido": "Procedimento do Juizado Especial Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "atraso de voo superior a quatro horas",
+            "recebido": "atraso de voo superior a quatro horas",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "3094235-58.2024.8.26.0009",
+        "estado": "ok",
+        "tentativas": 1,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "3094235-58.2024.8.26.0009",
+            "recebido": "3094235-58.2024.8.26.0009",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "extincao",
+            "recebido": "extincao",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento do Juizado Especial Cível",
+            "recebido": "Procedimento do Juizado Especial Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "cobrança de tarifas bancárias não contratadas",
+            "recebido": "cobrança de tarifas bancárias não contratadas",
+            "correto": true
+          }
+        ]
+      },
+      {
+        "numero_processo": "5216026-96.2025.8.26.0001",
+        "estado": "ok",
+        "tentativas": 2,
+        "completo": true,
+        "criticos_corretos": true,
+        "comparacoes": [
+          {
+            "campo": "numero_processo",
+            "esperado": "5216026-96.2025.8.26.0001",
+            "recebido": "5216026-96.2025.8.26.0001",
+            "correto": true
+          },
+          {
+            "campo": "resultado_sentenca",
+            "esperado": "extincao",
+            "recebido": "extincao",
+            "correto": true
+          },
+          {
+            "campo": "danos_materiais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "danos_morais_centavos",
+            "esperado": 0,
+            "recebido": 0,
+            "correto": true
+          },
+          {
+            "campo": "classe_processual",
+            "esperado": "Procedimento Comum Cível",
+            "recebido": "Procedimento Comum Cível",
+            "correto": true
+          },
+          {
+            "campo": "comarca",
+            "esperado": "São Paulo",
+            "recebido": "São Paulo",
+            "correto": true
+          },
+          {
+            "campo": "tema",
+            "esperado": "interrupção injustificada do fornecimento de energia",
+            "recebido": "interrupção injustificada do fornecimento de energia",
+            "correto": true
+          }
+        ]
+      }
+    ],
+    "limite_fundamento": "Fundamentos podem ser sintetizados: revisão semântica humana necessária; igualdade textual não é métrica de qualidade semântica."
+  },
+  "manifest": {
+    "versao_contrato": "s3-v1",
+    "execucao_id": "2026-10-13T03-59-17-249Z-82e0f746-4fbf-499c-8668-0bb9d0d33ff5",
+    "estado": "concluida",
+    "modo": "real",
+    "grafo": "analisar_lote",
+    "iniciado_em": "2026-10-13T03:59:17.250Z",
+    "encerrado_em": "2026-10-13T03:59:56.679Z",
+    "duracao_ms": 39433,
+    "node": "v20.20.2",
+    "sdk": "1.25.0",
+    "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+    "timeout_global_ms": 1800000,
+    "parametros_enviados": {
+      "model": "gpt-4.1-mini-2025-04-14",
+      "temperature": 0,
+      "max_tokens": 2500,
+      "response_format": "json_schema",
+      "strict": true
+    },
+    "entradas_sha256": {
+      "processos_texto": "a99764677cc73b91d73a62f50cf17a0882378786a5e6353e53c015c029367178",
+      "subsidios_texto": "abb19e8bd91daeece61085a4bf137c8cdaf53a170c68f3115b6fbdd56e8dde9f",
+      "indices_texto": "d5d647e87d97ca2f17d1af7445b8fec97611870672a6dfb12be402ed55a7a683",
+      "custos_texto": "6cd9c5075e73163c1a73f4fbac493913899b45c373ceab777d3a0ff6aa074ba7",
+      "probabilidades_texto": "ad1d915821a6a7ec024225cb251096efc77d44ebbc422a57a03018eaaabefa77",
+      "data_referencia": "96b951df9bacc4611285f7cebe34c5cdaa57098b72af7e6101a0b6d0632abc1e"
+    },
+    "projeto_sha256": "eddc368219375eec3a0ac8595d9d466ad916e58bb84c54fcdaf6226bcef1f23e",
+    "prompt_sha256": "8a6201d2c62fe7c5fa79752deaab3b70d03864d9e2c7a8b960526680384e6752",
+    "plugin_sha256": "86610a526e9f3cb55acd07f8c6261e35e9ad227425b5453c838adb98cd9bdb75",
+    "schemas_sha256": {
+      "extracao": "185099e8f8d671033c0b6d0dc0fe7a76e4fdfcb6998d51951f8714a444b521dc",
+      "processo": "2bdb28bd202b38002f45f8e61f5370eb0e81d6fb4ba67b32de9f545536b02bb0",
+      "resumo": "42b11451badd2f50cc02acbcf1e7de2583cfa0c833a6ab4a1669f8daa915af69"
+    },
+    "captura_sha256": null,
+    "identidades": [
+      "9154816-75.2024.8.26.0004",
+      "7094431-69.2024.8.26.0001",
+      "9734703-17.2024.8.26.0001",
+      "3320821-75.2025.8.26.0004",
+      "6022741-94.2024.8.26.0001",
+      "3871230-78.2024.8.26.0002",
+      "1325366-90.2024.8.26.0001",
+      "9107791-86.2024.8.26.0008",
+      "8908327-78.2025.8.26.0001",
+      "6304573-19.2024.8.26.0008",
+      "3094235-58.2024.8.26.0009",
+      "5216026-96.2025.8.26.0001"
+    ],
+    "processados": 12,
+    "nao_processados": [],
+    "requisicoes_extrator": 16,
+    "chamadas_reais": 16,
+    "http_status": [
+      {
+        "numero_processo": "9154816-75.2024.8.26.0004",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "7094431-69.2024.8.26.0001",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "9734703-17.2024.8.26.0001",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "3320821-75.2025.8.26.0004",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "6022741-94.2024.8.26.0001",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "3871230-78.2024.8.26.0002",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "1325366-90.2024.8.26.0001",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "1325366-90.2024.8.26.0001",
+        "tentativa": 2,
+        "status": 200
+      },
+      {
+        "numero_processo": "9107791-86.2024.8.26.0008",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "8908327-78.2025.8.26.0001",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "8908327-78.2025.8.26.0001",
+        "tentativa": 2,
+        "status": 200
+      },
+      {
+        "numero_processo": "8908327-78.2025.8.26.0001",
+        "tentativa": 3,
+        "status": 200
+      },
+      {
+        "numero_processo": "6304573-19.2024.8.26.0008",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "3094235-58.2024.8.26.0009",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "5216026-96.2025.8.26.0001",
+        "tentativa": 1,
+        "status": 200
+      },
+      {
+        "numero_processo": "5216026-96.2025.8.26.0001",
+        "tentativa": 2,
+        "status": 200
+      }
+    ],
+    "tokens": {
+      "entrada": 21395,
+      "saida": 5184,
+      "total": 26579
+    },
+    "custo_monetario": null,
+    "resumo": {
+      "data_referencia": "2026-05-31",
+      "total_identificado": 12,
+      "vitorias_confirmadas": 6,
+      "resultados_desconhecidos": 0,
+      "condenacoes": 6,
+      "processos_aptos": 12,
+      "pendencias": 0,
+      "passivo_centavos": 3774168,
+      "recursos_recomendados": 2,
+      "custo_recursos_centavos": 640000,
+      "beneficio_esperado_recursos_centavos": 31579,
+      "processos_com_valor_atualizado": 12,
+      "processos_sem_valor_atualizado": 0,
+      "decisoes_concluidas": 12,
+      "decisoes_pendentes": 0,
+      "passivo_parcial": false
+    },
+    "erros": [],
+    "artefatos": [
+      {
+        "nome": "processos.json",
+        "sha256": "713d84d6377c26584ce55e41eca12a089807b79752d037c1d9214860e9b17c8a"
+      },
+      {
+        "nome": "resumo.json",
+        "sha256": "a60ad86e405c7e27d1632e158cc1f3fcd3a7d01e31274aced4c93a50340599a4"
+      },
+      {
+        "nome": "auditoria.json",
+        "sha256": "3d48aba152d249e26bbe2f2100e99463db26db4b78669b96a29cbe9f5b12da6f"
+      },
+      {
+        "nome": "relatorio.md",
+        "sha256": "5282f40af37b8cf3ef0d9e74cc57fb676431f2660741a5c1b81c43cb7d0ffea4"
+      },
+      {
+        "nome": "processos.xlsx",
+        "sha256": "647c73c29c44fc510c677936c394cf8cef45793d6f9006d4319206ac8481f87a"
+      }
+    ],
+    "requisicoes_por_identidade": {
+      "9154816-75.2024.8.26.0004": 1,
+      "7094431-69.2024.8.26.0001": 1,
+      "9734703-17.2024.8.26.0001": 1,
+      "3320821-75.2025.8.26.0004": 1,
+      "6022741-94.2024.8.26.0001": 1,
+      "3871230-78.2024.8.26.0002": 1,
+      "1325366-90.2024.8.26.0001": 2,
+      "9107791-86.2024.8.26.0008": 1,
+      "8908327-78.2025.8.26.0001": 3,
+      "6304573-19.2024.8.26.0008": 1,
+      "3094235-58.2024.8.26.0009": 1,
+      "5216026-96.2025.8.26.0001": 2
+    },
+    "tokens_parciais": 26579
+  },
+  "estado": "aprovado",
+  "hashes_depois": {
+    "rivet/prompts/extracao-s1.txt": "8a6201d2c62fe7c5fa79752deaab3b70d03864d9e2c7a8b960526680384e6752",
+    "schemas/extracao.schema.json": "185099e8f8d671033c0b6d0dc0fe7a76e4fdfcb6998d51951f8714a444b521dc",
+    "tests/fixtures/golden/desenvolvimento.json": "7de435f8a6e57b01603a074f417f28c981b57d7dcf94493bf3c3cdaa752b41d0"
+  },
+  "prompt_e_gabaritos_preservados": true,
+  "encerrado_em": "2026-10-13T03:59:56.688Z",
+  "outputs": {
+    "processos": [
+      {
+        "numero_processo": "9154816-75.2024.8.26.0004",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "procedencia",
+        "danos_materiais_centavos": 290000,
+        "danos_morais_centavos": 60000,
+        "mes_base_correcao": "2025-11",
+        "data_citacao": "2026-02-07",
+        "tema": "negativação indevida do nome em cadastro de inadimplentes",
+        "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+        "evidencias": {
+          "identificacao": "Processo nº 9154816-75.2024.8.26.0004",
+          "resultado": "JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de novembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (07/02/2026), incidentes sobre o valor já corrigido.",
+          "valores": "CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais.",
+          "mes_base_correcao": "novembro de 2025 (evento danoso)",
+          "data_citacao": "citação (07/02/2026)",
+          "tema": "negativação indevida do nome em cadastro de inadimplentes",
+          "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "completos",
+        "probabilidade_reversao_percentual": 80,
+        "valor_condenacao_centavos": 350000,
+        "meses_completos": 3,
+        "custo_recurso_centavos": 320000,
+        "principal_corrigido_centavos": 361804,
+        "juros_centavos": 10854,
+        "valor_atualizado_centavos": 372658,
+        "beneficio_esperado_centavos": -21874,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "beneficio_nao_positivo"
+      },
+      {
+        "numero_processo": "7094431-69.2024.8.26.0001",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "procedencia",
+        "danos_materiais_centavos": 420000,
+        "danos_morais_centavos": 110000,
+        "mes_base_correcao": "2024-12",
+        "data_citacao": "2025-03-13",
+        "tema": "acidente de trânsito com danos ao veículo",
+        "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+        "evidencias": {
+          "identificacao": "Processo nº 7094431-69.2024.8.26.0001",
+          "resultado": "Ante o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2024 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (13/03/2025), incidentes sobre o valor já corrigido.",
+          "valores": "CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais.",
+          "mes_base_correcao": "dezembro de 2024 (evento danoso)",
+          "data_citacao": "citação (13/03/2025)",
+          "tema": "acidente de trânsito com danos ao veículo",
+          "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "essenciais",
+        "probabilidade_reversao_percentual": 50,
+        "valor_condenacao_centavos": 530000,
+        "meses_completos": 14,
+        "custo_recurso_centavos": 320000,
+        "principal_corrigido_centavos": 572666,
+        "juros_centavos": 80174,
+        "valor_atualizado_centavos": 652840,
+        "beneficio_esperado_centavos": 6420,
+        "decisao_recurso": "recorrer",
+        "motivo_decisao": "beneficio_positivo"
+      },
+      {
+        "numero_processo": "9734703-17.2024.8.26.0001",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "procedencia",
+        "danos_materiais_centavos": 640000,
+        "danos_morais_centavos": 200000,
+        "mes_base_correcao": "2025-03",
+        "data_citacao": "2025-04-05",
+        "tema": "cobrança indevida em fatura",
+        "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+        "evidencias": {
+          "identificacao": "Processo nº 9734703-17.2024.8.26.0001",
+          "resultado": "JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de março de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (05/04/2025), incidentes sobre o valor já corrigido.",
+          "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais.",
+          "mes_base_correcao": "março de 2025 (evento danoso)",
+          "data_citacao": "citação (05/04/2025)",
+          "tema": "cobrança indevida em fatura",
+          "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "ausentes",
+        "probabilidade_reversao_percentual": 10,
+        "valor_condenacao_centavos": 840000,
+        "meses_completos": 13,
+        "custo_recurso_centavos": 320000,
+        "principal_corrigido_centavos": 889474,
+        "juros_centavos": 115632,
+        "valor_atualizado_centavos": 1005106,
+        "beneficio_esperado_centavos": -219489,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "beneficio_nao_positivo"
+      },
+      {
+        "numero_processo": "3320821-75.2025.8.26.0004",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "parcial_procedencia",
+        "danos_materiais_centavos": 350000,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": "2025-09",
+        "data_citacao": "2025-11-16",
+        "tema": "interrupção injustificada do fornecimento de energia",
+        "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.",
+        "evidencias": {
+          "identificacao": "Processo nº 3320821-75.2025.8.26.0004",
+          "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de setembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (16/11/2025), incidentes sobre o valor já corrigido.",
+          "valores": "CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais.",
+          "mes_base_correcao": "setembro de 2025 (evento danoso)",
+          "data_citacao": "citação (16/11/2025)",
+          "tema": "interrupção injustificada do fornecimento de energia",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "completos",
+        "probabilidade_reversao_percentual": 80,
+        "valor_condenacao_centavos": 350000,
+        "meses_completos": 6,
+        "custo_recurso_centavos": 320000,
+        "principal_corrigido_centavos": 364087,
+        "juros_centavos": 21845,
+        "valor_atualizado_centavos": 385932,
+        "beneficio_esperado_centavos": -11254,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "beneficio_nao_positivo"
+      },
+      {
+        "numero_processo": "6022741-94.2024.8.26.0001",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "parcial_procedencia",
+        "danos_materiais_centavos": 640000,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": "2025-10",
+        "data_citacao": "2026-01-21",
+        "tema": "interrupção injustificada do fornecimento de energia",
+        "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.",
+        "evidencias": {
+          "identificacao": "Processo nº 6022741-94.2024.8.26.0001",
+          "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.",
+          "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.",
+          "mes_base_correcao": "correção monetária pela tabela prática a contar de outubro de 2025 (evento danoso)",
+          "data_citacao": "juros de mora de 1% ao mês, de forma simples, desde a citação (21/01/2026)",
+          "tema": "interrupção injustificada do fornecimento de energia",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "essenciais",
+        "probabilidade_reversao_percentual": 50,
+        "valor_condenacao_centavos": 640000,
+        "meses_completos": 4,
+        "custo_recurso_centavos": 320000,
+        "principal_corrigido_centavos": 663768,
+        "juros_centavos": 26550,
+        "valor_atualizado_centavos": 690318,
+        "beneficio_esperado_centavos": 25159,
+        "decisao_recurso": "recorrer",
+        "motivo_decisao": "beneficio_positivo"
+      },
+      {
+        "numero_processo": "3871230-78.2024.8.26.0002",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "parcial_procedencia",
+        "danos_materiais_centavos": 600000,
+        "danos_morais_centavos": 30000,
+        "mes_base_correcao": "2025-12",
+        "data_citacao": "2026-02-27",
+        "tema": "cancelamento unilateral de plano de saúde",
+        "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.",
+        "evidencias": {
+          "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+          "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+          "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+          "mes_base_correcao": "dezembro de 2025 (evento danoso)",
+          "data_citacao": "citação (27/02/2026)",
+          "tema": "cancelamento unilateral de plano de saúde",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "ausentes",
+        "probabilidade_reversao_percentual": 10,
+        "valor_condenacao_centavos": 630000,
+        "meses_completos": 3,
+        "custo_recurso_centavos": 320000,
+        "principal_corrigido_centavos": 647878,
+        "juros_centavos": 19436,
+        "valor_atualizado_centavos": 667314,
+        "beneficio_esperado_centavos": -253269,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "beneficio_nao_positivo"
+      },
+      {
+        "numero_processo": "1325366-90.2024.8.26.0001",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "improcedencia",
+        "danos_materiais_centavos": 0,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "atraso de voo superior a quatro horas",
+        "fundamento_decisao": null,
+        "evidencias": {
+          "identificacao": "Processo nº 1325366-90.2024.8.26.0001",
+          "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+          "valores": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "atraso de voo superior a quatro horas",
+          "fundamento_decisao": null
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "completos",
+        "probabilidade_reversao_percentual": 80,
+        "valor_condenacao_centavos": 0,
+        "meses_completos": null,
+        "custo_recurso_centavos": null,
+        "principal_corrigido_centavos": 0,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 0,
+        "beneficio_esperado_centavos": null,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "sem_condenacao"
+      },
+      {
+        "numero_processo": "9107791-86.2024.8.26.0008",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "improcedencia",
+        "danos_materiais_centavos": 0,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "negativação indevida do nome em cadastro de inadimplentes",
+        "fundamento_decisao": "A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.",
+        "evidencias": {
+          "identificacao": "Processo nº 9107791-86.2024.8.26.0008",
+          "resultado": "JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+          "valores": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "negativação indevida do nome em cadastro de inadimplentes",
+          "fundamento_decisao": "A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "completos",
+        "probabilidade_reversao_percentual": 80,
+        "valor_condenacao_centavos": 0,
+        "meses_completos": null,
+        "custo_recurso_centavos": null,
+        "principal_corrigido_centavos": 0,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 0,
+        "beneficio_esperado_centavos": null,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "sem_condenacao"
+      },
+      {
+        "numero_processo": "8908327-78.2025.8.26.0001",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "improcedencia",
+        "danos_materiais_centavos": 0,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "negativação indevida do nome em cadastro de inadimplentes",
+        "fundamento_decisao": null,
+        "evidencias": {
+          "identificacao": "Processo nº 8908327-78.2025.8.26.0001",
+          "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+          "valores": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "negativação indevida do nome em cadastro de inadimplentes",
+          "fundamento_decisao": "A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "essenciais",
+        "probabilidade_reversao_percentual": 50,
+        "valor_condenacao_centavos": 0,
+        "meses_completos": null,
+        "custo_recurso_centavos": null,
+        "principal_corrigido_centavos": 0,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 0,
+        "beneficio_esperado_centavos": null,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "sem_condenacao"
+      },
+      {
+        "numero_processo": "6304573-19.2024.8.26.0008",
+        "classe_processual": "Procedimento do Juizado Especial Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "extincao",
+        "danos_materiais_centavos": 0,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "atraso de voo superior a quatro horas",
+        "fundamento_decisao": "Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).",
+        "evidencias": {
+          "identificacao": "Processo nº 6304573-19.2024.8.26.0008",
+          "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+          "valores": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "atraso de voo superior a quatro horas",
+          "fundamento_decisao": "Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "completos",
+        "probabilidade_reversao_percentual": 80,
+        "valor_condenacao_centavos": 0,
+        "meses_completos": null,
+        "custo_recurso_centavos": null,
+        "principal_corrigido_centavos": 0,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 0,
+        "beneficio_esperado_centavos": null,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "sem_condenacao"
+      },
+      {
+        "numero_processo": "3094235-58.2024.8.26.0009",
+        "classe_processual": "Procedimento do Juizado Especial Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "extincao",
+        "danos_materiais_centavos": 0,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "cobrança de tarifas bancárias não contratadas",
+        "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais, acolhendo a preliminar de incompetência do Juizado Especial para processar e julgar a demanda.",
+        "evidencias": {
+          "identificacao": "Processo nº 3094235-58.2024.8.26.0009",
+          "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+          "valores": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "Trata-se de ação fundada em cobrança de tarifas bancárias não contratadas.",
+          "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "essenciais",
+        "probabilidade_reversao_percentual": 50,
+        "valor_condenacao_centavos": 0,
+        "meses_completos": null,
+        "custo_recurso_centavos": null,
+        "principal_corrigido_centavos": 0,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 0,
+        "beneficio_esperado_centavos": null,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "sem_condenacao"
+      },
+      {
+        "numero_processo": "5216026-96.2025.8.26.0001",
+        "classe_processual": "Procedimento Comum Cível",
+        "comarca": "São Paulo",
+        "resultado_sentenca": "extincao",
+        "danos_materiais_centavos": 0,
+        "danos_morais_centavos": 0,
+        "mes_base_correcao": null,
+        "data_citacao": null,
+        "tema": "interrupção injustificada do fornecimento de energia",
+        "fundamento_decisao": null,
+        "evidencias": {
+          "identificacao": "Processo nº 5216026-96.2025.8.26.0001",
+          "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito (art. 485, III, do CPC).",
+          "valores": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "interrupção injustificada do fornecimento de energia",
+          "fundamento_decisao": null
+        },
+        "tribunal": "TJSP",
+        "status_processamento": "ok",
+        "problemas": [],
+        "status_subsidios": "ausentes",
+        "probabilidade_reversao_percentual": 10,
+        "valor_condenacao_centavos": 0,
+        "meses_completos": null,
+        "custo_recurso_centavos": null,
+        "principal_corrigido_centavos": 0,
+        "juros_centavos": 0,
+        "valor_atualizado_centavos": 0,
+        "beneficio_esperado_centavos": null,
+        "decisao_recurso": "nao_recorrer",
+        "motivo_decisao": "sem_condenacao"
+      }
+    ],
+    "auditoria": [
+      {
+        "numero_processo": "9154816-75.2024.8.26.0004",
+        "extracao": {
+          "numero_processo": "9154816-75.2024.8.26.0004",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "procedencia",
+          "danos_materiais_centavos": 290000,
+          "danos_morais_centavos": 60000,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": "2025-11",
+          "data_citacao": "2026-02-07",
+          "tema": "negativação indevida do nome em cadastro de inadimplentes",
+          "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+          "evidencias": {
+            "identificacao": "Processo nº 9154816-75.2024.8.26.0004",
+            "resultado": "JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de novembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (07/02/2026), incidentes sobre o valor já corrigido.",
+            "valores": "CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais.",
+            "mes_base_correcao": "novembro de 2025 (evento danoso)",
+            "data_citacao": "citação (07/02/2026)",
+            "tema": "negativação indevida do nome em cadastro de inadimplentes",
+            "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"9154816-75.2024.8.26.0004\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"procedencia\",\"danos_materiais_centavos\":290000,\"danos_morais_centavos\":60000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-11\",\"data_citacao\":\"2026-02-07\",\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\",\"evidencias\":{\"identificacao\":\"Processo nº 9154816-75.2024.8.26.0004\",\"resultado\":\"JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de novembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (07/02/2026), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais.\",\"mes_base_correcao\":\"novembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (07/02/2026)\",\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\"}}",
+        "indice_base": "1080.6727",
+        "indice_final": "1117.1189",
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"9154816-75.2024.8.26.0004\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"procedencia\",\"danos_materiais_centavos\":290000,\"danos_morais_centavos\":60000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-11\",\"data_citacao\":\"2026-02-07\",\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\",\"evidencias\":{\"identificacao\":\"Processo nº 9154816-75.2024.8.26.0004\",\"resultado\":\"JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de novembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (07/02/2026), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 2.900,00 a título de danos materiais e R$ 600,00 a título de danos morais.\",\"mes_base_correcao\":\"novembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (07/02/2026)\",\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\"}}",
+            "uso": {
+              "prompt_tokens": 1379,
+              "completion_tokens": 444,
+              "total_tokens": 1823,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1379,
+          "saida": 444,
+          "total": 1823
+        },
+        "custo_monetario": null,
+        "memoria": {
+          "principal_numerador": "3909916150000",
+          "principal_denominador": "10806727",
+          "juros_numerador": "11729748450000",
+          "juros_denominador": "1080672700",
+          "total_numerador": "402721363450000",
+          "total_denominador": "1080672700",
+          "beneficio_numerador": "-2187360",
+          "beneficio_denominador": "100",
+          "beneficio_residual_positivo": false
+        }
+      },
+      {
+        "numero_processo": "7094431-69.2024.8.26.0001",
+        "extracao": {
+          "numero_processo": "7094431-69.2024.8.26.0001",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "procedencia",
+          "danos_materiais_centavos": 420000,
+          "danos_morais_centavos": 110000,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": "2024-12",
+          "data_citacao": "2025-03-13",
+          "tema": "acidente de trânsito com danos ao veículo",
+          "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+          "evidencias": {
+            "identificacao": "Processo nº 7094431-69.2024.8.26.0001",
+            "resultado": "Ante o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2024 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (13/03/2025), incidentes sobre o valor já corrigido.",
+            "valores": "CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais.",
+            "mes_base_correcao": "dezembro de 2024 (evento danoso)",
+            "data_citacao": "citação (13/03/2025)",
+            "tema": "acidente de trânsito com danos ao veículo",
+            "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"7094431-69.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"procedencia\",\"danos_materiais_centavos\":420000,\"danos_morais_centavos\":110000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2024-12\",\"data_citacao\":\"2025-03-13\",\"tema\":\"acidente de trânsito com danos ao veículo\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\",\"evidencias\":{\"identificacao\":\"Processo nº 7094431-69.2024.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2024 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (13/03/2025), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais.\",\"mes_base_correcao\":\"dezembro de 2024 (evento danoso)\",\"data_citacao\":\"citação (13/03/2025)\",\"tema\":\"acidente de trânsito com danos ao veículo\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\"}}",
+        "indice_base": "1033.8881",
+        "indice_final": "1117.1189",
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"7094431-69.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"procedencia\",\"danos_materiais_centavos\":420000,\"danos_morais_centavos\":110000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2024-12\",\"data_citacao\":\"2025-03-13\",\"tema\":\"acidente de trânsito com danos ao veículo\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\",\"evidencias\":{\"identificacao\":\"Processo nº 7094431-69.2024.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de dezembro de 2024 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (13/03/2025), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 4.200,00 a título de danos materiais e R$ 1.100,00 a título de danos morais.\",\"mes_base_correcao\":\"dezembro de 2024 (evento danoso)\",\"data_citacao\":\"citação (13/03/2025)\",\"tema\":\"acidente de trânsito com danos ao veículo\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\"}}",
+            "uso": {
+              "prompt_tokens": 1376,
+              "completion_tokens": 442,
+              "total_tokens": 1818,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1376,
+          "saida": 442,
+          "total": 1818
+        },
+        "custo_monetario": null,
+        "memoria": {
+          "principal_numerador": "5920730170000",
+          "principal_denominador": "10338881",
+          "juros_numerador": "82890222380000",
+          "juros_denominador": "1033888100",
+          "total_numerador": "674963239380000",
+          "total_denominador": "1033888100",
+          "beneficio_numerador": "642000",
+          "beneficio_denominador": "100",
+          "beneficio_residual_positivo": false
+        }
+      },
+      {
+        "numero_processo": "9734703-17.2024.8.26.0001",
+        "extracao": {
+          "numero_processo": "9734703-17.2024.8.26.0001",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "procedencia",
+          "danos_materiais_centavos": 640000,
+          "danos_morais_centavos": 200000,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": "2025-03",
+          "data_citacao": "2025-04-05",
+          "tema": "cobrança indevida em fatura",
+          "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.",
+          "evidencias": {
+            "identificacao": "Processo nº 9734703-17.2024.8.26.0001",
+            "resultado": "JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de março de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (05/04/2025), incidentes sobre o valor já corrigido.",
+            "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais.",
+            "mes_base_correcao": "março de 2025 (evento danoso)",
+            "data_citacao": "citação (05/04/2025)",
+            "tema": "cobrança indevida em fatura",
+            "fundamento_decisao": "A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"9734703-17.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"procedencia\",\"danos_materiais_centavos\":640000,\"danos_morais_centavos\":200000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-03\",\"data_citacao\":\"2025-04-05\",\"tema\":\"cobrança indevida em fatura\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\",\"evidencias\":{\"identificacao\":\"Processo nº 9734703-17.2024.8.26.0001\",\"resultado\":\"JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de março de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (05/04/2025), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais.\",\"mes_base_correcao\":\"março de 2025 (evento danoso)\",\"data_citacao\":\"citação (05/04/2025)\",\"tema\":\"cobrança indevida em fatura\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\"}}",
+        "indice_base": "1054.9829",
+        "indice_final": "1117.1189",
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"9734703-17.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"procedencia\",\"danos_materiais_centavos\":640000,\"danos_morais_centavos\":200000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-03\",\"data_citacao\":\"2025-04-05\",\"tema\":\"cobrança indevida em fatura\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\",\"evidencias\":{\"identificacao\":\"Processo nº 9734703-17.2024.8.26.0001\",\"resultado\":\"JULGO PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de março de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (05/04/2025), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais e R$ 2.000,00 a título de danos morais.\",\"mes_base_correcao\":\"março de 2025 (evento danoso)\",\"data_citacao\":\"citação (05/04/2025)\",\"tema\":\"cobrança indevida em fatura\",\"fundamento_decisao\":\"A prova documental e oral produzida comprova de forma cabal a conduta ilícita da requerida e os danos dela decorrentes, impondo-se a integral procedência do pedido.\"}}",
+            "uso": {
+              "prompt_tokens": 1375,
+              "completion_tokens": 440,
+              "total_tokens": 1815,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1375,
+          "saida": 440,
+          "total": 1815
+        },
+        "custo_monetario": null,
+        "memoria": {
+          "principal_numerador": "9383798760000",
+          "principal_denominador": "10549829",
+          "juros_numerador": "121989383880000",
+          "juros_denominador": "1054982900",
+          "total_numerador": "1060369259880000",
+          "total_denominador": "1054982900",
+          "beneficio_numerador": "-21948940",
+          "beneficio_denominador": "100",
+          "beneficio_residual_positivo": false
+        }
+      },
+      {
+        "numero_processo": "3320821-75.2025.8.26.0004",
+        "extracao": {
+          "numero_processo": "3320821-75.2025.8.26.0004",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "parcial_procedencia",
+          "danos_materiais_centavos": 350000,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": "2025-09",
+          "data_citacao": "2025-11-16",
+          "tema": "interrupção injustificada do fornecimento de energia",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.",
+          "evidencias": {
+            "identificacao": "Processo nº 3320821-75.2025.8.26.0004",
+            "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de setembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (16/11/2025), incidentes sobre o valor já corrigido.",
+            "valores": "CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais.",
+            "mes_base_correcao": "setembro de 2025 (evento danoso)",
+            "data_citacao": "citação (16/11/2025)",
+            "tema": "interrupção injustificada do fornecimento de energia",
+            "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"3320821-75.2025.8.26.0004\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":350000,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-09\",\"data_citacao\":\"2025-11-16\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\",\"evidencias\":{\"identificacao\":\"Processo nº 3320821-75.2025.8.26.0004\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de setembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (16/11/2025), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais.\",\"mes_base_correcao\":\"setembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (16/11/2025)\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\"}}",
+        "indice_base": "1073.8965",
+        "indice_final": "1117.1189",
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"3320821-75.2025.8.26.0004\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":350000,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-09\",\"data_citacao\":\"2025-11-16\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\",\"evidencias\":{\"identificacao\":\"Processo nº 3320821-75.2025.8.26.0004\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais. Sobre a condenação incidirá correção monetária pela tabela prática a contar de setembro de 2025 (evento danoso) e juros de mora de 1% ao mês, de forma simples, desde a citação (16/11/2025), incidentes sobre o valor já corrigido.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 3.500,00 a título de danos materiais.\",\"mes_base_correcao\":\"setembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (16/11/2025)\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\"}}",
+            "uso": {
+              "prompt_tokens": 1387,
+              "completion_tokens": 433,
+              "total_tokens": 1820,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1387,
+          "saida": 433,
+          "total": 1820
+        },
+        "custo_monetario": null,
+        "memoria": {
+          "principal_numerador": "3909916150000",
+          "principal_denominador": "10738965",
+          "juros_numerador": "23459496900000",
+          "juros_denominador": "1073896500",
+          "total_numerador": "414451111900000",
+          "total_denominador": "1073896500",
+          "beneficio_numerador": "-1125440",
+          "beneficio_denominador": "100",
+          "beneficio_residual_positivo": false
+        }
+      },
+      {
+        "numero_processo": "6022741-94.2024.8.26.0001",
+        "extracao": {
+          "numero_processo": "6022741-94.2024.8.26.0001",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "parcial_procedencia",
+          "danos_materiais_centavos": 640000,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": "2025-10",
+          "data_citacao": "2026-01-21",
+          "tema": "interrupção injustificada do fornecimento de energia",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.",
+          "evidencias": {
+            "identificacao": "Processo nº 6022741-94.2024.8.26.0001",
+            "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.",
+            "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.",
+            "mes_base_correcao": "correção monetária pela tabela prática a contar de outubro de 2025 (evento danoso)",
+            "data_citacao": "juros de mora de 1% ao mês, de forma simples, desde a citação (21/01/2026)",
+            "tema": "interrupção injustificada do fornecimento de energia",
+            "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"6022741-94.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":640000,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-10\",\"data_citacao\":\"2026-01-21\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\",\"evidencias\":{\"identificacao\":\"Processo nº 6022741-94.2024.8.26.0001\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.\",\"mes_base_correcao\":\"correção monetária pela tabela prática a contar de outubro de 2025 (evento danoso)\",\"data_citacao\":\"juros de mora de 1% ao mês, de forma simples, desde a citação (21/01/2026)\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\"}}",
+        "indice_base": "1077.1182",
+        "indice_final": "1117.1189",
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"6022741-94.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":640000,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-10\",\"data_citacao\":\"2026-01-21\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\",\"evidencias\":{\"identificacao\":\"Processo nº 6022741-94.2024.8.26.0001\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 6.400,00 a título de danos materiais.\",\"mes_base_correcao\":\"correção monetária pela tabela prática a contar de outubro de 2025 (evento danoso)\",\"data_citacao\":\"juros de mora de 1% ao mês, de forma simples, desde a citação (21/01/2026)\",\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial. Rejeito o pedido de dano moral, por ausência de prova do abalo extrapatrimonial.\"}}",
+            "uso": {
+              "prompt_tokens": 1387,
+              "completion_tokens": 397,
+              "total_tokens": 1784,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1387,
+          "saida": 397,
+          "total": 1784
+        },
+        "custo_monetario": null,
+        "memoria": {
+          "principal_numerador": "7149560960000",
+          "principal_denominador": "10771182",
+          "juros_numerador": "28598243840000",
+          "juros_denominador": "1077118200",
+          "total_numerador": "743554339840000",
+          "total_denominador": "1077118200",
+          "beneficio_numerador": "2515900",
+          "beneficio_denominador": "100",
+          "beneficio_residual_positivo": false
+        }
+      },
+      {
+        "numero_processo": "3871230-78.2024.8.26.0002",
+        "extracao": {
+          "numero_processo": "3871230-78.2024.8.26.0002",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "parcial_procedencia",
+          "danos_materiais_centavos": 600000,
+          "danos_morais_centavos": 30000,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": "2025-12",
+          "data_citacao": "2026-02-27",
+          "tema": "cancelamento unilateral de plano de saúde",
+          "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.",
+          "evidencias": {
+            "identificacao": "Processo nº 3871230-78.2024.8.26.0002",
+            "resultado": "JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+            "valores": "CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.",
+            "mes_base_correcao": "dezembro de 2025 (evento danoso)",
+            "data_citacao": "citação (27/02/2026)",
+            "tema": "cancelamento unilateral de plano de saúde",
+            "fundamento_decisao": "Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"3871230-78.2024.8.26.0002\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":600000,\"danos_morais_centavos\":30000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-12\",\"data_citacao\":\"2026-02-27\",\"tema\":\"cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\",\"evidencias\":{\"identificacao\":\"Processo nº 3871230-78.2024.8.26.0002\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\"mes_base_correcao\":\"dezembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (27/02/2026)\",\"tema\":\"cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"}}",
+        "indice_base": "1086.2922",
+        "indice_final": "1117.1189",
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"3871230-78.2024.8.26.0002\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"parcial_procedencia\",\"danos_materiais_centavos\":600000,\"danos_morais_centavos\":30000,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":\"2025-12\",\"data_citacao\":\"2026-02-27\",\"tema\":\"cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\",\"evidencias\":{\"identificacao\":\"Processo nº 3871230-78.2024.8.26.0002\",\"resultado\":\"JULGO PARCIALMENTE PROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC), para CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\"valores\":\"CONDENAR a parte requerida ao pagamento de R$ 6.000,00 a título de danos materiais e R$ 300,00 a título de danos morais.\",\"mes_base_correcao\":\"dezembro de 2025 (evento danoso)\",\"data_citacao\":\"citação (27/02/2026)\",\"tema\":\"cancelamento unilateral de plano de saúde\",\"fundamento_decisao\":\"Reconheço o prejuízo material demonstrado, mas reputo excessivo o montante pretendido na inicial.\"}}",
+            "uso": {
+              "prompt_tokens": 1377,
+              "completion_tokens": 349,
+              "total_tokens": 1726,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1377,
+          "saida": 349,
+          "total": 1726
+        },
+        "custo_monetario": null,
+        "memoria": {
+          "principal_numerador": "7037849070000",
+          "principal_denominador": "10862922",
+          "juros_numerador": "21113547210000",
+          "juros_denominador": "1086292200",
+          "total_numerador": "724898454210000",
+          "total_denominador": "1086292200",
+          "beneficio_numerador": "-25326860",
+          "beneficio_denominador": "100",
+          "beneficio_residual_positivo": false
+        }
+      },
+      {
+        "numero_processo": "1325366-90.2024.8.26.0001",
+        "extracao": {
+          "numero_processo": "1325366-90.2024.8.26.0001",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "improcedencia",
+          "danos_materiais_centavos": 0,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "atraso de voo superior a quatro horas",
+          "fundamento_decisao": null,
+          "evidencias": {
+            "identificacao": "Processo nº 1325366-90.2024.8.26.0001",
+            "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+            "valores": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "atraso de voo superior a quatro horas",
+            "fundamento_decisao": null
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"1325366-90.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":null,\"evidencias\":{\"identificacao\":\"Processo nº 1325366-90.2024.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":null}}",
+        "indice_base": null,
+        "indice_final": null,
+        "tentativas": 2,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "extracao_invalida",
+            "problemas": [
+              {
+                "codigo": "DADO_AUSENTE",
+                "mensagem": "EXTRACAO_INVALIDA: Evidencia inexistente: fundamento_decisao"
+              }
+            ],
+            "resposta_original": "{\"numero_processo\":\"1325366-90.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"A parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito, não evidenciando conduta ilícita da requerida nem o dano alegado.\",\"evidencias\":{\"identificacao\":\"Processo nº 1325366-90.2024.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"A parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\"}}",
+            "uso": {
+              "prompt_tokens": 1285,
+              "completion_tokens": 299,
+              "total_tokens": 1584,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          },
+          {
+            "numero": 2,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"1325366-90.2024.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":null,\"evidencias\":{\"identificacao\":\"Processo nº 1325366-90.2024.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":null}}",
+            "uso": {
+              "prompt_tokens": 1340,
+              "completion_tokens": 210,
+              "total_tokens": 1550,
+              "prompt_tokens_details": {
+                "cached_tokens": 1152,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 2625,
+          "saida": 509,
+          "total": 3134
+        },
+        "custo_monetario": null,
+        "memoria": null
+      },
+      {
+        "numero_processo": "9107791-86.2024.8.26.0008",
+        "extracao": {
+          "numero_processo": "9107791-86.2024.8.26.0008",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "improcedencia",
+          "danos_materiais_centavos": 0,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "negativação indevida do nome em cadastro de inadimplentes",
+          "fundamento_decisao": "A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.",
+          "evidencias": {
+            "identificacao": "Processo nº 9107791-86.2024.8.26.0008",
+            "resultado": "JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+            "valores": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "negativação indevida do nome em cadastro de inadimplentes",
+            "fundamento_decisao": "A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"9107791-86.2024.8.26.0008\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\",\"evidencias\":{\"identificacao\":\"Processo nº 9107791-86.2024.8.26.0008\",\"resultado\":\"JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\"}}",
+        "indice_base": null,
+        "indice_final": null,
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"9107791-86.2024.8.26.0008\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\",\"evidencias\":{\"identificacao\":\"Processo nº 9107791-86.2024.8.26.0008\",\"resultado\":\"JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\"}}",
+            "uso": {
+              "prompt_tokens": 1290,
+              "completion_tokens": 247,
+              "total_tokens": 1537,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1290,
+          "saida": 247,
+          "total": 1537
+        },
+        "custo_monetario": null,
+        "memoria": null
+      },
+      {
+        "numero_processo": "8908327-78.2025.8.26.0001",
+        "extracao": {
+          "numero_processo": "8908327-78.2025.8.26.0001",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "improcedencia",
+          "danos_materiais_centavos": 0,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "negativação indevida do nome em cadastro de inadimplentes",
+          "fundamento_decisao": null,
+          "evidencias": {
+            "identificacao": "Processo nº 8908327-78.2025.8.26.0001",
+            "resultado": "Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).",
+            "valores": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "negativação indevida do nome em cadastro de inadimplentes",
+            "fundamento_decisao": "A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"8908327-78.2025.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":null,\"evidencias\":{\"identificacao\":\"Processo nº 8908327-78.2025.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\"}}",
+        "indice_base": null,
+        "indice_final": null,
+        "tentativas": 3,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "extracao_invalida",
+            "problemas": [
+              {
+                "codigo": "DADO_AUSENTE",
+                "mensagem": "EXTRACAO_INVALIDA: Evidencia inexistente: fundamento_decisao"
+              }
+            ],
+            "resposta_original": "{\"numero_processo\":\"8908327-78.2025.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A parte autora não comprovou os fatos constitutivos de seu direito, não evidenciando conduta ilícita da requerida nem o dano alegado.\",\"evidencias\":{\"identificacao\":\"Processo nº 8908327-78.2025.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A parte autora não se desincumbiu do ônus de comprovar os fatos constitutivos de seu direito (art. 373, I, do CPC). A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\"}}",
+            "uso": {
+              "prompt_tokens": 1290,
+              "completion_tokens": 298,
+              "total_tokens": 1588,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          },
+          {
+            "numero": 2,
+            "estado": "extracao_invalida",
+            "problemas": [
+              {
+                "codigo": "DADO_AUSENTE",
+                "mensagem": "EXTRACAO_INVALIDA: Afirmação sem evidencia: fundamento_decisao"
+              }
+            ],
+            "resposta_original": "{\"numero_processo\":\"8908327-78.2025.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A parte autora não comprovou os fatos constitutivos de seu direito, não evidenciando conduta ilícita da requerida nem o dano alegado.\",\"evidencias\":{\"identificacao\":\"Processo nº 8908327-78.2025.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":null}}",
+            "uso": {
+              "prompt_tokens": 1345,
+              "completion_tokens": 247,
+              "total_tokens": 1592,
+              "prompt_tokens_details": {
+                "cached_tokens": 1152,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          },
+          {
+            "numero": 3,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"8908327-78.2025.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"improcedencia\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":null,\"evidencias\":{\"identificacao\":\"Processo nº 8908327-78.2025.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO IMPROCEDENTE o pedido, com resolução de mérito (art. 487, I, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"negativação indevida do nome em cadastro de inadimplentes\",\"fundamento_decisao\":\"A prova produzida não evidencia conduta ilícita da requerida nem o dano alegado.\"}}",
+            "uso": {
+              "prompt_tokens": 1346,
+              "completion_tokens": 235,
+              "total_tokens": 1581,
+              "prompt_tokens_details": {
+                "cached_tokens": 1152,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 3981,
+          "saida": 780,
+          "total": 4761
+        },
+        "custo_monetario": null,
+        "memoria": null
+      },
+      {
+        "numero_processo": "6304573-19.2024.8.26.0008",
+        "extracao": {
+          "numero_processo": "6304573-19.2024.8.26.0008",
+          "classe_processual": "Procedimento do Juizado Especial Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "extincao",
+          "danos_materiais_centavos": 0,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "atraso de voo superior a quatro horas",
+          "fundamento_decisao": "Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).",
+          "evidencias": {
+            "identificacao": "Processo nº 6304573-19.2024.8.26.0008",
+            "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+            "valores": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "atraso de voo superior a quatro horas",
+            "fundamento_decisao": "Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"6304573-19.2024.8.26.0008\",\"classe_processual\":\"Procedimento do Juizado Especial Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\",\"evidencias\":{\"identificacao\":\"Processo nº 6304573-19.2024.8.26.0008\",\"resultado\":\"Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\"}}",
+        "indice_base": null,
+        "indice_final": null,
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"6304573-19.2024.8.26.0008\",\"classe_processual\":\"Procedimento do Juizado Especial Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\",\"evidencias\":{\"identificacao\":\"Processo nº 6304573-19.2024.8.26.0008\",\"resultado\":\"Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"atraso de voo superior a quatro horas\",\"fundamento_decisao\":\"Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\"}}",
+            "uso": {
+              "prompt_tokens": 1333,
+              "completion_tokens": 321,
+              "total_tokens": 1654,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1333,
+          "saida": 321,
+          "total": 1654
+        },
+        "custo_monetario": null,
+        "memoria": null
+      },
+      {
+        "numero_processo": "3094235-58.2024.8.26.0009",
+        "extracao": {
+          "numero_processo": "3094235-58.2024.8.26.0009",
+          "classe_processual": "Procedimento do Juizado Especial Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "extincao",
+          "danos_materiais_centavos": 0,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "cobrança de tarifas bancárias não contratadas",
+          "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais, acolhendo a preliminar de incompetência do Juizado Especial para processar e julgar a demanda.",
+          "evidencias": {
+            "identificacao": "Processo nº 3094235-58.2024.8.26.0009",
+            "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.",
+            "valores": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "Trata-se de ação fundada em cobrança de tarifas bancárias não contratadas.",
+            "fundamento_decisao": "A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95)."
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"3094235-58.2024.8.26.0009\",\"classe_processual\":\"Procedimento do Juizado Especial Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"cobrança de tarifas bancárias não contratadas\",\"fundamento_decisao\":\"A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais, acolhendo a preliminar de incompetência do Juizado Especial para processar e julgar a demanda.\",\"evidencias\":{\"identificacao\":\"Processo nº 3094235-58.2024.8.26.0009\",\"resultado\":\"Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"Trata-se de ação fundada em cobrança de tarifas bancárias não contratadas.\",\"fundamento_decisao\":\"A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\"}}",
+        "indice_base": null,
+        "indice_final": null,
+        "tentativas": 1,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"3094235-58.2024.8.26.0009\",\"classe_processual\":\"Procedimento do Juizado Especial Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"cobrança de tarifas bancárias não contratadas\",\"fundamento_decisao\":\"A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais, acolhendo a preliminar de incompetência do Juizado Especial para processar e julgar a demanda.\",\"evidencias\":{\"identificacao\":\"Processo nº 3094235-58.2024.8.26.0009\",\"resultado\":\"Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito, nos termos do art. 51, II, da Lei 9.099/95, facultado à parte autora o ajuizamento perante a Justiça Comum.\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"Trata-se de ação fundada em cobrança de tarifas bancárias não contratadas.\",\"fundamento_decisao\":\"A solução da controvérsia depende de prova pericial complexa, incompatível com o rito célere dos Juizados Especiais. Acolho a preliminar de incompetência do Juizado Especial para processar e julgar a demanda (art. 3º c/c art. 51, II, da Lei 9.099/95).\"}}",
+            "uso": {
+              "prompt_tokens": 1334,
+              "completion_tokens": 363,
+              "total_tokens": 1697,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 1334,
+          "saida": 363,
+          "total": 1697
+        },
+        "custo_monetario": null,
+        "memoria": null
+      },
+      {
+        "numero_processo": "5216026-96.2025.8.26.0001",
+        "extracao": {
+          "numero_processo": "5216026-96.2025.8.26.0001",
+          "classe_processual": "Procedimento Comum Cível",
+          "comarca": "São Paulo",
+          "resultado_sentenca": "extincao",
+          "danos_materiais_centavos": 0,
+          "danos_morais_centavos": 0,
+          "valor_total_explicito_centavos": null,
+          "mes_base_correcao": null,
+          "data_citacao": null,
+          "tema": "interrupção injustificada do fornecimento de energia",
+          "fundamento_decisao": null,
+          "evidencias": {
+            "identificacao": "Processo nº 5216026-96.2025.8.26.0001",
+            "resultado": "Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito (art. 485, III, do CPC).",
+            "valores": null,
+            "mes_base_correcao": null,
+            "data_citacao": null,
+            "tema": "interrupção injustificada do fornecimento de energia",
+            "fundamento_decisao": null
+          }
+        },
+        "resposta_original": "{\"numero_processo\":\"5216026-96.2025.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":null,\"evidencias\":{\"identificacao\":\"Processo nº 5216026-96.2025.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito (art. 485, III, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":null}}",
+        "indice_base": null,
+        "indice_final": null,
+        "tentativas": 2,
+        "historico_tentativas": [
+          {
+            "numero": 1,
+            "estado": "extracao_invalida",
+            "problemas": [
+              {
+                "codigo": "DADO_AUSENTE",
+                "mensagem": "EXTRACAO_INVALIDA: Evidencia inexistente: fundamento_decisao"
+              }
+            ],
+            "resposta_original": "{\"numero_processo\":\"5216026-96.2025.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"A parte autora permaneceu inerte após intimação para dar andamento ao feito, configurando abandono da causa.\",\"evidencias\":{\"identificacao\":\"Processo nº 5216026-96.2025.8.26.0001\",\"resultado\":\"JULGO EXTINTO o processo SEM resolução de mérito (art. 485, III, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":\"A parte autora permaneceu inerte após intimação para dar andamento ao feito, configurando abandono da causa.\"}}",
+            "uso": {
+              "prompt_tokens": 1248,
+              "completion_tokens": 249,
+              "total_tokens": 1497,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          },
+          {
+            "numero": 2,
+            "estado": "aprovada",
+            "problemas": [],
+            "resposta_original": "{\"numero_processo\":\"5216026-96.2025.8.26.0001\",\"classe_processual\":\"Procedimento Comum Cível\",\"comarca\":\"São Paulo\",\"resultado_sentenca\":\"extincao\",\"danos_materiais_centavos\":0,\"danos_morais_centavos\":0,\"valor_total_explicito_centavos\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":null,\"evidencias\":{\"identificacao\":\"Processo nº 5216026-96.2025.8.26.0001\",\"resultado\":\"Ante o exposto, JULGO EXTINTO o processo SEM resolução de mérito (art. 485, III, do CPC).\",\"valores\":null,\"mes_base_correcao\":null,\"data_citacao\":null,\"tema\":\"interrupção injustificada do fornecimento de energia\",\"fundamento_decisao\":null}}",
+            "uso": {
+              "prompt_tokens": 1303,
+              "completion_tokens": 210,
+              "total_tokens": 1513,
+              "prompt_tokens_details": {
+                "cached_tokens": 1024,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "http_status": 200
+          }
+        ],
+        "versao_extrator": "s2.4-v1",
+        "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+        "tokens": {
+          "entrada": 2551,
+          "saida": 459,
+          "total": 3010
+        },
+        "custo_monetario": null,
+        "memoria": null
+      }
+    ],
+    "resumo": {
+      "data_referencia": "2026-05-31",
+      "total_identificado": 12,
+      "vitorias_confirmadas": 6,
+      "resultados_desconhecidos": 0,
+      "condenacoes": 6,
+      "processos_aptos": 12,
+      "pendencias": 0,
+      "passivo_centavos": 3774168,
+      "recursos_recomendados": 2,
+      "custo_recursos_centavos": 640000,
+      "beneficio_esperado_recursos_centavos": 31579,
+      "processos_com_valor_atualizado": 12,
+      "processos_sem_valor_atualizado": 0,
+      "decisoes_concluidas": 12,
+      "decisoes_pendentes": 0,
+      "passivo_parcial": false
+    }
+  }
+}

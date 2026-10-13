@@ -3436,6 +3436,14 @@ data:
               - Dinheiro em centavos inteiros. Não calcule correção, juros,
               probabilidade ou recomendação.
 
+              - Para resultado improcedencia ou extincao,
+              danos_materiais_centavos e danos_morais_centavos devem ser 0 (não
+              null), pois não há condenação. Nesses casos
+              valor_total_explicito_centavos, mes_base_correcao, data_citacao,
+              evidencias.valores, evidencias.mes_base_correcao e
+              evidencias.data_citacao devem ser null. Nunca use strings vazias
+              ou texto explicativo em evidencias.
+
               - Separe danos materiais e morais. Zero significa componente não
               concedido conforme o dispositivo completo. Use null se não for
               possível determinar.
@@ -3448,16 +3456,26 @@ data:
               danoso). data_citacao: YYYY-MM-DD da citação, não de qualquer
               outra data.
 
-              - classe_processual e comarca: transcreva como aparecem. Tema:
-              descrição curta literal da causa da ação. fundamento_decisao:
-              síntese fiel do motivo expresso; não inferir ausência de
-              documentos a partir de subsídios.
+              - classe_processual e comarca: transcreva como aparecem. Tema: use
+              a descrição completa da causa da ação, sem prefixos como "ação
+              indenizatória por". Preserve a descrição literal entre "alega",
+              "fundada em" ou "imputa à requerida" e a próxima vírgula que
+              introduz o pedido. fundamento_decisao: síntese fiel do motivo
+              expresso; não inferir ausência de documentos a partir de
+              subsídios.
 
               - Cada evidência deve ser um trecho contínuo, literal e exato do
-              documento. Não acrescente reticências ou reformule. Inclua a
-              expressão que identifica a data: para citação, o trecho deve
-              incluir “citação (DD/MM/AAAA)”; para mês-base, inclua o mês/ano e
-              “(evento danoso)”.
+              documento. Preserve inclusive vírgulas, ponto e vírgula,
+              maiúsculas e quebras de linha. Para evidencias.valores copie
+              SOMENTE o trecho de CONDENAR até o fim dos valores concedidos; não
+              anexe a frase de rejeição de dano moral. Para evidencias.resultado
+              copie o dispositivo inteiro se isso ajudar a preservar o texto.
+              Para evidencias.fundamento_decisao copie o parágrafo imediatamente
+              anterior ao dispositivo, mesmo quando fundamento_decisao o resume.
+              Não acrescente reticências ou reformule. Inclua a expressão que
+              identifica a data: para citação, o trecho deve incluir “citação
+              (DD/MM/AAAA)”; para mês-base, inclua o mês/ano e “(evento
+              danoso)”.
 
               - evidencias.identificacao: copie somente a linha que contém o
               número do processo. Não junte classe, comarca ou outras linhas.
