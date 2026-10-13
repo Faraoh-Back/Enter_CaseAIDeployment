@@ -40,7 +40,8 @@
     "s3:metricas": "node scripts/medir-carteira.mjs",
     "test:s3:metricas": "node tests/s3-metricas.test.mjs",
     "s3:finalizar": "node scripts/finalizar-carteira.mjs",
-    "test:s3:finalizacao": "node tests/s3-finalizacao.test.mjs"
+    "test:s3:finalizacao": "node tests/s3-finalizacao.test.mjs",
+    "test:s4:http": "node tests/s4-http.test.mjs"
   },
   "dependencies": {
     "@ironclad/rivet-node": "1.25.0",

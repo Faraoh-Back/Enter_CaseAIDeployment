@@ -1,0 +1,19 @@
+{
+  "etapa": "S4.1",
+  "comando": "node tests/s4-http.test.mjs",
+  "estado": "vermelho_observado",
+  "testes": 10,
+  "aprovados": 0,
+  "falhas": 10,
+  "skips": 0,
+  "chamadas_reais_llm": 0,
+  "causa": "src/api.mjs ainda não existe; os dez testes falham ao importar a API.",
+  "limite": "As asserções HTTP ainda não foram exercitadas. A S4.2 poderá revelar outras falhas após implementar o módulo e abrir sockets reais.",
+  "fora_da_suite_padrao": true,
+  "regressao_anterior": {
+    "testes": 150,
+    "origem": "docs/output/s3/validacao-final.json; registro anterior, não nova execução nesta tarefa"
+  },
+  "log_sha256": "d6a40ba7502122f86eda94f9336553ada93bed434e8ff9e2285e006cb9d19b1c",
+  "teste_sha256": "14d1e870fa6e50fe5697fdf8023a75bd9405ab64abba9b8285714ec58bd4556b"
+}
