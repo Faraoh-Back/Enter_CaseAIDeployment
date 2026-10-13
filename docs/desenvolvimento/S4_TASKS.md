@@ -1,6 +1,7 @@
 # S4 — interface HTTP por tarefa
 
-S3 V0 aceita visualmente pelo candidato. S4.1 preserva o vermelho inicial. S4.2–S4.5 concluídas, com commits separados e 175 testes verdes.
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
+S3 V0 aceita visualmente por mim. S4.1 preserva o vermelho inicial. S4.2–S4.5 concluídas, com commits separados e 175 testes verdes.
 
 | Tarefa | Entrega | Estado |
 | --- | --- | --- |

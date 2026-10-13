@@ -1,6 +1,7 @@
 # S2.6 — integração e aceite local
 
-**Implementação e aceite local concluídos: 128 testes aprovados, sem chamadas reais. Aceite no aplicativo parcial: plugin e calendário confirmados pelo candidato; quatro outputs da consolidação recebidos e revisados.** A prova de sete processos agora produz JSON, XLSX e Markdown na mesma execução do grafo. [Evidência](../output/s2.6-validacao.json), [planilha](../output/s2.6-processos.xlsx) e [relatório](../output/s2.6-relatorio.md).
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
+**Implementação e aceite local concluídos: 128 testes aprovados, sem chamadas reais. Aceite no aplicativo parcial: plugin e calendário confirmados por mim; quatro outputs da consolidação recebidos e revisados.** A prova de sete processos agora produz JSON, XLSX e Markdown na mesma execução do grafo. [Evidência](../output/s2.6-validacao.json), [planilha](../output/s2.6-processos.xlsx) e [relatório](../output/s2.6-relatorio.md).
 
 ## Entrega e contrato
 
@@ -56,11 +57,11 @@ Os três comandos são offline, não carregam `.env` e não medem qualidade de e
 
 ## Aceite no aplicativo: parcial
 
-Durante o aceite, o candidato encontrou `Unknown node type enterBoundedExtraction`. A inspeção confirmou que a instalação local continha os arquivos corretos, mas o projeto estava serializado com `plugins: []`. O SDK registrava o plugin por código, ocultando essa lacuna. O gerador e o projeto agora declaram a dependência de pacote `enter-bounded-extraction`, tag `latest`. O teste de estrutura foi ampliado: falhou antes da correção e passou depois; as suítes de refatoração (2 testes) e integração (6 testes) foram reexecutadas e aprovadas sem rede. As evidências S2.6 anteriores permanecem históricas, com o hash do projeto daquela rodada.
+Durante o aceite, encontrei `Unknown node type enterBoundedExtraction`. A inspeção confirmou que a instalação local continha os arquivos corretos, mas o projeto estava serializado com `plugins: []`. O SDK registrava o plugin por código, ocultando essa lacuna. O gerador e o projeto agora declaram a dependência de pacote `enter-bounded-extraction`, tag `latest`. O teste de estrutura foi ampliado: falhou antes da correção e passou depois; as suítes de refatoração (2 testes) e integração (6 testes) foram reexecutadas e aprovadas sem rede. As evidências S2.6 anteriores permanecem históricas, com o hash do projeto daquela rodada.
 
-Feche a cópia antiga no aplicativo e reabra o arquivo atualizado do disco, evitando sobrescrevê-lo com a versão antiga ainda em memória. Não é necessário repetir `git init` ou copiar o plugin, se os arquivos já correspondem ao repositório. Após a reabertura, o candidato confirmou o nó disponível, suas quatro entradas e três saídas. Isso confirma o carregamento, mas ainda não a execução do extrator.
+Feche a cópia antiga no aplicativo e reabra o arquivo atualizado do disco, evitando sobrescrevê-lo com a versão antiga ainda em memória. Não é necessário repetir `git init` ou copiar o plugin, se os arquivos já correspondem ao repositório. Após a reabertura, confirmei o nó disponível, suas quatro entradas e três saídas. Isso confirma o carregamento, mas ainda não a execução do extrator.
 
-O aceite visual informado para S1.5 não atesta os nós adicionados em S2.4/S2.5. O aceite atual é informado pelo candidato; não houve acesso direto ao aplicativo. Os quatro outputs da consolidação foram posteriormente recebidos e revisados contra a referência; o resumo também foi comparado por código. A evidência distingue essa confirmação dos testes automatizados.
+O aceite visual informado para S1.5 não atesta os nós adicionados em S2.4/S2.5. Registrei minha conferência manual do aplicativo separadamente das verificações automatizadas. Os quatro outputs da consolidação foram posteriormente recebidos e revisados contra a referência; o resumo também foi comparado por código. A evidência distingue essa confirmação dos testes automatizados.
 
 Estado confirmado nesta conversa ([registro](../output/s2-aplicativo-aceite-parcial.json)):
 

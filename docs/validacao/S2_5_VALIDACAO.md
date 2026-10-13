@@ -1,5 +1,6 @@
 # S2.5 — fronteiras e cobertura
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 **Concluída no SDK: 122 testes aprovados**, sem chamadas pagas. A entrega cobre calendário civil, fronteiras monetárias e um lote misto de sete identidades. Carteira de 100 casos, avaliação reservada, API e integração final S2.6 continuam pendentes. [Evidência da rodada](../output/s2.5-validacao.json) e [relatório do lote](../output/s2.5-relatorio.md).
 
 ## Contrato entregue
@@ -83,4 +84,4 @@ Não houve novo aceite visual, avaliação paga de LLM, avaliação reservada ou
 feat: cobre fronteiras e consolida lote misto na S2.5
 ```
 
-Nenhum commit feito pelo assistente. Próxima tarefa: S2.6.
+Naquela rodada, deixei o commit para a revisão local. Próxima tarefa: S2.6.

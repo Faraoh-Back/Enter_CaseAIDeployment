@@ -1,5 +1,6 @@
 # S4.4 — revisão de responsabilidades
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 Revisão assistida de código concluída. A API não contém fórmula monetária, classificação de sentença ou consolidação de indicadores. Os arquivos revisados e hashes estão no [registro](../output/s4.4-revisao.json).
 
 | Componente | Responsabilidade observada |

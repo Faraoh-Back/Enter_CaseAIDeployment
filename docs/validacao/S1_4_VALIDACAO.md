@@ -1,5 +1,6 @@
 # S1.4 — execução local integrada
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 O comando local conecta o projeto Rivet ao exportador XLSX e grava uma execução isolada. [src/executar-s1.mjs](../../src/executar-s1.mjs) faz transporte, snapshots, manifesto e arquivos; o grafo continua responsável por extração, validação, cálculos, decisão, consolidação e texto do relatório. [scripts/executar-s1.mjs](../../scripts/executar-s1.mjs) interpreta argumentos e fornece código de saída 0 no sucesso ou 1 na falha.
 
 ## Comando reproduzível

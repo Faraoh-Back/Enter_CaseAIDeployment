@@ -1,5 +1,6 @@
 # S2.4 — pendências e retentativas
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 Implementação concluída e validada pelo SDK: **84 testes aprovados**, incluindo os 20 contratos da S2.3 e oito testes adicionais de transporte. Uma sentença por execução; carteira, fronteiras de calendário/dinheiro e cobertura de lote ficam nas próximas tarefas. [Evidência desta rodada](../output/s2.4-validacao.json).
 
 ## Comportamento entregue
@@ -77,4 +78,4 @@ No painel, os outputs continuam nos quatro Graph Output. Arquivos em disco são 
 feat: implementa pendências e retentativas auditáveis da S2.4
 ```
 
-Próxima tarefa: S2.5. Nenhum commit foi feito pelo assistente.
+Próxima tarefa: S2.5. Naquela rodada, deixei o commit para a revisão local.

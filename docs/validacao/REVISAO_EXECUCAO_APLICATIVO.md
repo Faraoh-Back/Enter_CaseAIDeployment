@@ -1,10 +1,11 @@
 # Revisão do resumo executado no aplicativo Rivet
 
-**Conclusão:** os 100 identificadores, as 100 classificações e os 52 valores nominais enviados pelo candidato conferem com os documentos originais. Esta revisão trata do grafo-base `resumo_sentenca`. Posteriormente, o candidato enviou os outputs dos três grafos específicos S0, também aprovados e registrados em [s0-aplicativo.json](../output/s0-aplicativo.json).
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
+**Conclusão:** os 100 identificadores, as 100 classificações e os 52 valores nominais enviados por mim conferem com os documentos originais. Esta revisão trata do grafo-base `resumo_sentenca`. Posteriormente, registrei os outputs dos três grafos específicos S0, também aprovados e registrados em [s0-aplicativo.json](../output/s0-aplicativo.json).
 
 ## Evidência e método
 
-O candidato colou na conversa os outputs do nó Chat e do Graph Output. Os dois trechos contêm a mesma lista; não foram tratados como duas execuções ou como validações independentes. O arquivo local `analise_sentencas.rivet-project` conecta diretamente a resposta do Chat ao output `resumo`, em formato string, e seu prompt solicita exatamente os três campos observados.
+Registrei na conversa os outputs do nó Chat e do Graph Output. Os dois trechos contêm a mesma lista; não foram tratados como duas execuções ou como validações independentes. O arquivo local `analise_sentencas.rivet-project` conecta diretamente a resposta do Chat ao output `resumo`, em formato string, e seu prompt solicita exatamente os três campos observados.
 
 Os 100 registros da mensagem foram transcritos em [CSV normalizado](../output/resumo-aplicativo-recebido.csv), preservando a ordem. Foram mapeados os quatro rótulos para os enums do contrato; valores em reais foram convertidos para centavos inteiros; `Não aplicável` foi mantido como célula vazia. Esta é uma transcrição da mensagem, não um arquivo exportado diretamente do Rivet.
 
@@ -35,7 +36,7 @@ A [telemetria transcrita](../output/resumo-aplicativo-metricas.json) informa dur
 
 A execução confirma uma leitura e um resumo funcionais pelo aplicativo, conforme a evidência enviada. Ainda faltam estrutura do schema completo, componentes separados, datas, evidências literais, cruzamentos com referências, atualização monetária e decisão econômica no fluxo final. O Graph Output apenas repassa a resposta do Chat.
 
-Na conferência posterior, o candidato abriu `rivet/s0_compatibilidade.rivet-project` e enviou os resultados esperados:
+Na conferência posterior, abri `rivet/s0_compatibilidade.rivet-project` e enviou os resultados esperados:
 
 - `s0_calculo`: `valor_atualizado_centavos=667314`, `beneficio_esperado_centavos=-253269`, `decisao_recurso=nao_recorrer`.
 - `s0_validacao`: `schema_valido=true`, `apto_calculo=true`, `problemas=[]`.

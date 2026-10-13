@@ -1,6 +1,8 @@
 # S2 — desenvolvimento por tarefa
 
-Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.6 implementada e aceita localmente**: 128 testes aprovados e JSON/XLSX/Markdown reconciliados. Aceite visual parcial: carregamento do plugin e três cenários de calendário confirmados pelo candidato; quatro outputs da consolidação recebidos e revisados; extração real de uma sentença e cenário sem subsídio validados. Resta a conferência visual dos arquivos exportados. [Validação e reprodução](../validacao/S2_6_VALIDACAO.md).
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
+
+Uma tarefa por rodada, com revisão e commit por mim. **S2.6 implementada e aceita localmente**: 128 testes aprovados e JSON/XLSX/Markdown reconciliados. Aceite visual parcial: carregamento do plugin e três cenários de calendário confirmados por mim; quatro outputs da consolidação recebidos e revisados; extração real de uma sentença e cenário sem subsídio validados. Resta a conferência visual dos arquivos exportados. [Validação e reprodução](../validacao/S2_6_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |

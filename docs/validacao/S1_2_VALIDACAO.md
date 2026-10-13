@@ -1,5 +1,6 @@
 # S1.2 — uma condenação pelo Rivet
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 O grafo `analisar_carteira` recebe uma sentença e referências CSV, extrai dados pela OpenAI, valida evidências e produz `processos`, `resumo`, `auditoria` e `relatorio_markdown`. Toda interpretação e cálculo acontece no Rivet. Esta tarefa termina nesses quatro outputs; XLSX pertence à S1.3 e o executor integrado à S1.4.
 
 ## Implementação revisável

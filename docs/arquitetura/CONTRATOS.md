@@ -1,6 +1,6 @@
 # Contratos — versão 0.2
 
-Contratos implementados no projeto Rivet e na interface HTTP até S4. O [schema de extração](../../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../../schemas/processo.schema.json) e [resumo](../../schemas/resumo.schema.json); a implementação S2.2 cobre uma sentença válida por execução, nos quatro resultados. Estados de pendência continuam previstos nas próximas tarefas S2.
+Implementei estes contratos no projeto Rivet e na interface HTTP. O [schema de extração](../../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../../schemas/processo.schema.json) e [resumo](../../schemas/resumo.schema.json); o fluxo individual cobre os quatro resultados e os estados de pendência, e `analisar_lote` reutiliza esse fluxo para a carteira.
 
 ## 1. Insumos e identidade
 
@@ -118,11 +118,11 @@ Por sentença, até três tentativas totais de extração, contando falhas de tr
 | Prazo global excedido | Interromper chamadas restantes; marcar execução `interrompida`, preservar resultados já recebidos. |
 | Exportação falha | Estado `falhou`; outputs de análise preservados, sem anunciar artefato final inexistente. |
 
-Timeout, concorrência de chamadas e limites de tentativas são configuração registrada. Proposta para a carteira: duas chamadas simultâneas, 120 segundos por tentativa e 30 minutos por execução; ainda não implementada. Na S2.4, uma sentença usa três tentativas, dez segundos por tentativa, quarenta segundos para extração e quarenta e cinco na CLI. Cada caso deve receber um estado terminal na consolidação normal. Interrupções globais registram também a quantidade de casos ainda não processados.
+Registrei os limites efetivos: execução sequencial, três tentativas totais por sentença, dez segundos por tentativa, quarenta segundos por extração e trinta minutos por carteira. A CLI individual mantém limite de quarenta e cinco segundos. Cada caso deve receber um estado terminal na consolidação normal. Interrupções globais registram também a quantidade de casos ainda não processados.
 
 ## 7. Manifesto, persistência e API
 
-`outputs/<execucao_id>/` conterá snapshots de entrada, `manifest.json`, `processos.json`, `resumo.json`, `auditoria.json`, planilha e relatório. Identificadores são gerados pela aplicação; nomes de download são restritos aos artefatos do manifesto.
+O diretório de cada execução contém snapshots de entrada, `manifest.json`, `processos.json`, `resumo.json`, `auditoria.json`, planilha e relatório. Identificadores são gerados pela aplicação; nomes de download são restritos aos artefatos do manifesto.
 
 O manifesto registra versão do contrato, hashes dos insumos/projeto/schema, modelo e parâmetros efetivos, estado, timestamps, contagens, duração, tentativas, tokens quando disponíveis e hashes dos artefatos concluídos. A configuração registrada exclui credenciais. Custo monetário não medido fica `null`, não zero.
 
@@ -154,11 +154,11 @@ A planilha possui abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`. Proces
 
 O relatório começa pelo resultado e pelas ações recomendadas, apresenta a data-base e informa cobertura e limitações. Usa as contagens fornecidas pelos outputs, sem recomputar indicadores no exportador. A taxa de êxito segue a definição do case, com extinções e improcedências discriminadas; não inferir encerramento definitivo de toda exposição a partir de extinção.
 
-O racional final é um documento separado, escrito/revisado pelo candidato, de até duas páginas em Markdown ou PDF. Deve refletir a implementação real, os resultados medidos e como a IA foi usada no desenvolvimento. A RFC extensa não o substitui.
+O racional final é um documento separado, escrito/revisado por mim, de até duas páginas em Markdown ou PDF. Deve refletir a implementação real, os resultados medidos e como a IA foi usada no desenvolvimento. A RFC extensa não o substitui.
 
 ## 9. Organização interna da S1.5
 
-O contrato público de `analisar_carteira` permanece inalterado. Preparação, extração, validação, cálculo e consolidação agora são subgrafos, com [portas documentadas](../validacao/S1_5_VALIDACAO.md). Erros propagam ao principal; uma saída de erro não é convertida em dados válidos. A revisão não alterou schemas, fórmulas, decisão ou unidades. A equivalência dos quatro outputs é verificada por teste de regressão; aceite S1.5 informado pelo candidato, com [origem registrada](../output/s1.5-aceite.json).
+O contrato público de `analisar_carteira` permanece inalterado. Preparação, extração, validação, cálculo e consolidação agora são subgrafos, com [portas documentadas](../validacao/S1_5_VALIDACAO.md). Erros propagam ao principal; uma saída de erro não é convertida em dados válidos. A revisão não alterou schemas, fórmulas, decisão ou unidades. A equivalência dos quatro outputs é verificada por teste de regressão; aceite S1.5 informado por mim, com [origem registrada](../output/s1.5-aceite.json).
 
 ## 10. Normalização S2.2
 
@@ -187,7 +187,7 @@ O diagnóstico offline exporta os mesmos outputs do lote em JSON, XLSX e Markdow
 
 ## 14. Carteira e entregáveis S3
 
-A CLI da carteira usa `analisar_lote`, com manifesto `s3-v1`, snapshots, checkpoint e timeout global de 30 minutos. Falha preserva checkpoint e não processados; não há retomada automática. `resumo.distribuicoes` é opcional no schema para preservar a análise individual, e obrigatório no output atual do lote: grupos de resultado, subsídio, tema, comarca e tribunal, com denominadores e passivo conhecido. O XLSX materializa suas folhas, sem consolidar regras fora do grafo.
+A CLI da carteira usa `analisar_lote`, com manifesto atual `s4-v1` (a origem S3 conserva `s3-v1`), snapshots, checkpoint e timeout global de 30 minutos. Falha preserva checkpoint e não processados; não há retomada automática. `resumo.distribuicoes` é opcional no schema para preservar a análise individual, e obrigatório no output atual do lote: grupos de resultado, subsídio, tema, comarca e tribunal, com denominadores e passivo conhecido. O XLSX materializa suas folhas, sem consolidar regras fora do grafo.
 
 O relatório final tem síntese, estratégia e associações descritivas; não duplica os 100 detalhes da planilha. A finalização `s3-final-v1` reconsolida processos/auditorias reais sem rede, verificando hashes e preservando histórico, consumo e dinheiro. Manifestos de extração e finalização são distintos; métricas reais referem-se à origem, não ao replay/consolidação. [Resultados e limites](../validacao/S3_VALIDACAO.md).
 
@@ -196,3 +196,9 @@ O relatório final tem síntese, estratégia e associações descritivas; não d
 HTTP nativo Node: POST estrito dataset=case, GET de estado e cinco downloads restritos ao manifesto/whitelist/hash. JSON inválido retorna 400, contrato inválido 422, corpo acima de 8192 bytes 413, execução ativa 409 e configuração/insumos ausentes 503. Manifesto é persistido antes do 202; executor HTTP usa o ID prealocado, e CLI gera seu próprio ID.
 
 Lock local por diretório precede recuperação de jobs e impede outra instância de alterar a execução ativa. Jobs antigos tornam-se interrompida; não há retomada automática. Configuração real e replay são escolhas do operador, sem caminhos arbitrários no POST. API/CLI compartilham executarCarteira; transporte específico do plugin preserva consultas HTTP concorrentes. [Validação e comandos](../validacao/S4_VALIDACAO.md).
+
+## 16. Apresentação PDF e pacote S5
+
+Acrescentei `--pdf` à CLI/API como opção do operador. Verifico Times New Roman e Chromium antes de iniciar a análise; o grafo continua responsável por valores, indicadores e texto executivo. O renderizador só formata Markdown e distribuições, com HTML escapado e fonte incorporada. PDF concluído entra no manifesto com hash; a API oferece `application/pdf`. Falha de renderização conserva artefatos anteriores e termina como falha, sem anunciar PDF completo.
+
+`npm run render` verifica o manifesto da reconsolidação S5 e grava PDF/HTML em outro diretório, sem alterar a execução real nem fazer chamadas à LLM. Uma prévia com fonte substituta precisa de opção explícita e fica marcada; o preparo da entrega recusa essa versão. A lista positiva exclui credenciais, dependências instaladas, arquivos temporários e symlinks. [Instruções finais](../entrega/REPRODUCAO.md).

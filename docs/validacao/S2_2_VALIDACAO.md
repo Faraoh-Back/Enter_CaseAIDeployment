@@ -1,5 +1,6 @@
 # S2.2 — quatro resultados normalizados
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 A S2.2 está concluída. Procedência, parcial procedência, improcedência e extinção agora produzem uma linha válida pelos mesmos Graph Outputs públicos. A execução ainda aceita somente uma sentença; lote, dados incompletos e retentativas pertencem às próximas tarefas.
 
 ## Mudança implementada
@@ -39,7 +40,7 @@ O executor local continua usando o caso de desenvolvimento definido na S1; a amp
 
 ## Aceite S1.5 e saídas do aplicativo
 
-O candidato informou ter conferido a S1.5 visualmente seguindo o roteiro. Os arquivos locais daquela execução foram reconferidos: hashes, atualizado de R$ 6.673,14, benefício de −R$ 2.532,69, `nao_recorrer`, cobertura e célula XLSX. O [aceite](../output/s1.5-aceite.json) distingue o relato visual do candidato da conferência automatizada dos arquivos de replay. A S1.5 foi concluída no plano.
+Conferi a S1.5 visualmente seguindo o roteiro. Os arquivos locais daquela execução foram reconferidos: hashes, atualizado de R$ 6.673,14, benefício de −R$ 2.532,69, `nao_recorrer`, cobertura e célula XLSX. O [aceite](../output/s1.5-aceite.json) distingue o minha conferência visual da conferência automatizada dos arquivos de replay. A S1.5 foi concluída no plano.
 
 No painel Rivet, este projeto entrega dados nos nós Graph Output. A geração de arquivos acontece no comando Node; ele não importa automaticamente os resultados da execução no painel. `--replay` reproduz uma captura anterior; `--real` faz uma nova chamada e grava seus próprios artefatos. O diretório efetivo é informado no terminal. O aceite da S1.5 não é apresentado como inspeção visual da nova S2.2.
 

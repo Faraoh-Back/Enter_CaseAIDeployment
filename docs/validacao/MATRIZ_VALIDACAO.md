@@ -1,25 +1,25 @@
 # Matriz de validação e referências do lote
 
-**Estado:** S0 concluída, com inspeção dos insumos, 14 testes offline aprovados, XLSX de prova conferido, gabaritos 12 + 12 e chamadas mínimas à LLM. Os outputs dos três grafos no aplicativo também foram enviados pelo candidato e conferidos; [evidências S0](S0_VALIDACAO.md). O fluxo completo, a avaliação do extrator e a execução final continuam pendentes. As referências de carteira abaixo não são resultados do pipeline.
+**Estado:** fluxo, carteira real e API implementados e verificados. Mantenho abaixo a relação entre cada requisito e sua evidência atual. A primeira avaliação reservada reprovou; a repetição passou em conjunto já visto. PDF final e pacote ainda dependem das conferências S5.
 
 ## 1. Requisitos e evidências de aceite
 
-| ID | Origem | Critério verificável | Evidência a produzir | Estado |
+| ID | Origem | Critério | Evidência atual | Estado |
 | --- | --- | --- | --- | --- |
-| R01 | Case 3 e 5.1 | Análise completa definida no projeto Rivet; abertura no aplicativo e execução pelo SDK. | Projeto, versão e registro de execução em ambos os caminhos. | Pendente |
-| R02 | Case 5.1 | Uma linha por identidade, sem casos omitidos ou duplicados. | Confronto entre lista de entrada e saída; 100/100 no lote fornecido. | Pendente |
-| R03 | Case 5.1 e 5.2 | Resultado, valores e datas correspondem ao documento. | Gabaritos, evidências e acurácia por campo; relatório de divergências. | Pendente |
-| R04 | Case 5.2 | Correção, meses completos e juros simples corretos. | Casos de referência independentes e fronteiras monetárias/calendário. | Pendente |
-| R05 | Case 5.3 | Decisão corresponde à regra econômica e às referências fornecidas. | Benefícios positivo/negativo/zero, vitórias e pendências. | Pendente |
-| R06 | Case 5.4 | Relatório adequado à diretoria, com síntese, êxito, impacto e pontos de atenção. | Revisão editorial e conciliação de todos os números com o output. | Pendente |
-| R07 | Case 5.5 | XLSX verdadeiro, com identificação, resultado, condenação, subsídios e recurso. | Reabertura da planilha e conferência de células e contagens. | Pendente |
-| R08 | Case 5.6 | Racional próprio em até duas páginas, fiel à implementação. | Markdown/PDF revisado pelo candidato. | Pendente |
-| R09 | Case 6 | ZIP inclui projeto, inputs, outputs e tudo que permite executar. | Reprodução em diretório limpo seguindo apenas o README entregue. | Pendente |
-| R10 | Case 7 | Auditabilidade: seguir um valor do relatório até a fonte. | Manifesto, hashes, evidências e memória de cálculo. | Pendente |
-| R11 | Facilidade de uso | POST inicia, GET acompanha e GET baixa os artefatos. | Testes HTTP reais e sequência curl documentada. | Pendente |
-| R12 | Robustez | Falhas não geram valores inventados, omissões silenciosas ou falso sucesso. | Testes de dados ausentes, retentativas, interrupção e exportação. | Pendente |
+| R01 | Case 3 e 5.1 | Análise inteira no Rivet | Projeto completo, SDK, aceite visual V0; demonstração final no ZIP em S5.7 | Implementado; prova final pendente |
+| R02 | Case 5.1 | Uma linha por identidade | Carteira real 100/100, sem omitidos ou duplicados | Verificado |
+| R03 | Case 5.1 e 5.2 | Extração fiel às sentenças | Gabaritos, avaliações preservadas e auditoria documental S3 | Verificado neste lote; limites declarados |
+| R04 | Case 5.2 | Índices, juros e meses completos | Oráculo independente, fronteiras e 52 condenações auditadas | Verificado |
+| R05 | Case 5.3 | Recomendação econômica explicável | Sinal exato, limiares, cenários e nulos nos testes | Verificado |
+| R06 | Case 5.4 | Relatório executivo adequado | Texto V0 aceito; PDF e fonte final em S5.10/S5.3 | Conteúdo verificado; apresentação final pendente |
+| R07 | Case 5.5 | XLSX real, uma linha por processo | Quatro abas, 100 linhas, conferência visual V0 e reabertura automatizada | Verificado |
+| R08 | Case 5.6 | Racional curto e fiel | [Racional](../entrega/racional.md), escolhas e IA declaradas | Escrito; conferência de extensão registrada na S5 |
+| R09 | Case 6 | ZIP completo e reproduzível | Lista positiva e roteiro; extração do ZIP em S5.6 | Pendente |
+| R10 | Case 7 | Rastreabilidade | Evidências, frações, tentativas e hashes nos manifestos | Verificado |
+| R11 | Extra | POST, consulta e download | Sockets reais, curl e equivalência API/CLI S4 | Verificado em replay |
+| R12 | Robustez | Falhas explícitas sem valores inventados | Retentativas, desconhecidos, interrupção, exportação e reinício | Verificado |
 
-Os critérios R01–R10 são o centro da entrega. A API e outros refinamentos não compensam falhas no fluxo ou nos documentos obrigatórios.
+Centralizei números e limites em [validação final](../entrega/validacao.md). Não uso a API para compensar ausência de um entregável obrigatório.
 
 ## 2. Referência da inspeção dos insumos
 
@@ -76,11 +76,11 @@ Processo `3871230-78.2024.8.26.0002`, parcial procedência. A sentença concede 
 | Benefício líquido esperado, exibido | −R$ 2.532,69 |
 | Decisão | Não recorrer |
 
-Conferência independente com aritmética decimal de alta precisão: `6300 × 1117.1189 / 1086.2922 × 1.03 = 6673.144244338677...`. Total arredondado para R$ 6.673,14; benefício usa o total final: `0.10 × 6673.14 − 3200 = −2532.686`. Essa conta valida a convenção descrita no [contrato](../arquitetura/CONTRATOS.md), sem afirmar que o pipeline já a executou.
+Conferência independente com aritmética decimal de alta precisão: `6300 × 1117.1189 / 1086.2922 × 1.03 = 6673.144244338677...`. Total arredondado para R$ 6.673,14; benefício usa o total final: `0.10 × 6673.14 − 3200 = −2532.686`. Essa conta valida a convenção descrita no [contrato](../arquitetura/CONTRATOS.md), com o mesmo resultado observado na execução real.
 
 O [exemplo de extração](../../schemas/extracao.exemplo.json) registra os valores e trechos dessa sentença. Ele é um gabarito anotado para desenvolvimento, não saída capturada de uma LLM.
 
-## 4. Casos a automatizar e medidas de qualidade
+## 4. Casos automatizados e medidas de qualidade
 
 | Grupo | Casos mínimos | Verificação |
 | --- | --- | --- |
@@ -101,18 +101,6 @@ Medir acurácia por campo, completude por processo, percentual de pendências, s
 O registro final deve distinguir: teste offline, avaliação LLM de desenvolvimento, avaliação reservada e execução final dos 100 casos. Uma amostra perfeita não prova perfeição na carteira inteira.
 
 
-## 5. Progresso de robustez até S2.5
+## 5. Histórico de evolução
 
-A [S2.5](S2_5_VALIDACAO.md) oferece evidência determinística para R02, R04, R05, R10 e R12: 122 testes verdes, incluindo fronteiras civis/monetárias, sete identidades reconciliadas e exclusões explícitas. R02 ainda exige 100/100 na carteira real; esta prova é 7/7 em desenvolvimento. O aceite final da matriz não foi antecipado: qualidade da LLM, conjunto reservado, carteira completa, aplicativo atualizado e entregáveis finais permanecem pendentes.
-
-## 6. Integração S2.6
-
-A [S2.6](S2_6_VALIDACAO.md) amplia a evidência de integridade dos artefatos: 128 testes aprovados, 7/7 identidades e reconciliação de células, totais, pendências, auditoria e relatório. O XLSX é gerado e reaberto no teste integrado. Aceite local concluído; desktop atualizado, qualidade da LLM e critérios da carteira completa permanecem pendentes.
-
-## 7. Carteira e avaliação S3
-
-A [S3](S3_VALIDACAO.md) concluiu execução real 100/100, com 52 condenações auditadas e zero divergências nos controles estruturais, financeiros e decisórios. A avaliação reservada inicial reprovou; correção testada em desenvolvimento e reavaliação de conjunto já visto passaram em 12/12. Os dois resultados estão preservados, sem alegação de estudo cego. Suíte: 150 testes determinísticos aprovados. Aceite visual V0 dos novos arquivos confirmado pelo candidato; PDF, API e reprodução do ZIP permanecem pendentes.
-
-## 8. API e reprodução S4
-
-[S4](S4_VALIDACAO.md): 175 testes verdes, HTTP por sockets reais e equivalência API/CLI no executor Rivet em replay. Cinco downloads íntegros; concorrência, falhas, limites, credenciais e crash/reinício verificados. Sequência curl com os 100 resultados capturados não fez chamadas pagas. Não foi feita nova execução paga por POST nem reprodução do ZIP; PDF e pacote continuam na S5.
+Registrei 122 testes na S2.5, 128 na S2.6, 150 na S3 e 175 na S4. Cada documento da etapa conserva o contexto de suas pendências; os estados atuais são os da tabela acima. A execução real, a auditoria e o aceite visual V0 foram concluídos na S3; a API em replay foi concluída na S4. ZIP e apresentação final ficam na S5.

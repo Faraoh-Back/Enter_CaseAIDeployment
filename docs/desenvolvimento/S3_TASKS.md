@@ -1,6 +1,7 @@
 # S3 — carteira e relatório por tarefa
 
-Todas as sete tarefas autorizadas nesta rodada, com um commit por tarefa. A avaliação reservada será executada antes da execução real dos 100 processos; o prompt permanece congelado. Aceite visual dos entregáveis fica para o final.
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
+Desenvolvi as sete tarefas com um commit por tarefa. A avaliação reservada será executada antes da execução real dos 100 processos; o prompt permanece congelado. Aceite visual dos entregáveis fica para o final.
 
 | Tarefa | Estado e entrega |
 | --- | --- |
@@ -71,4 +72,4 @@ Três testes novos confirmam: uma única comarca identificada não vira compara�
 
 Execução real: 100 aptos, sem pendências; passivo R$ 309.174,54; 17 recursos, custo R$ 54.400,00, benefício líquido esperado R$ 24.676,16. Métricas incluem tentativas rejeitadas, não convertem uso ausente em zero e deixam custo não verificado null. Dois testes de métricas e dois de finalização aprovados. Reconsolidação preserva processos/auditorias reais e atualiza o template sem API.
 
-**150 testes verdes.** [Validação completa e roteiro visual](../validacao/S3_VALIDACAO.md). Os sete trabalhos estão implementados e validados localmente; o aceite visual V0 foi confirmado pelo candidato; apresentação final em PDF fica na S5.10. Nenhum trabalho da API/S4 foi iniciado.
+**150 testes verdes.** [Validação completa e roteiro visual](../validacao/S3_VALIDACAO.md). Os sete trabalhos estão implementados e validados localmente; o aceite visual V0 foi confirmado por mim; apresentação final em PDF fica na S5.10. Nenhum trabalho da API/S4 foi iniciado.

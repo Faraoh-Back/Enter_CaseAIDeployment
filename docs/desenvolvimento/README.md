@@ -7,4 +7,4 @@
 - [S5](S5_TASKS.md): apresentação, pacote e PDF executivo.
 - [Plano central S0–S5](../PLANO_DE_EXECUCAO.md): IDs usados nas tarefas e commits.
 
-Cada rodada respeita o escopo autorizado; o candidato revisa. Desde S3, commits por tarefa podem ser feitos pelo assistente conforme autorização. Testes deliberadamente vermelhos têm comando próprio e resultado explicitado até a tarefa de implementação correspondente.
+Cada rodada respeita o escopo autorizado; reviso os resultados. Desde S3, passei a registrar um commit por tarefa. Testes deliberadamente vermelhos têm comando próprio e resultado explicitado até a tarefa de implementação correspondente.

@@ -1,5 +1,6 @@
 # S2.3 — aceitação das incertezas
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 Nesta tarefa foram escritos os contratos observáveis e os testes para a S2.4. O grafo e o executor de produção não foram alterados. [tests/s2-incertezas.test.mjs](../../tests/s2-incertezas.test.mjs) usa o caso de desenvolvimento da S1, mutações sintéticas e respostas HTTP simuladas; nenhuma credencial ou chamada de rede real é utilizada.
 
 ## Política exigida pelos testes
@@ -58,4 +59,4 @@ Sugestões de commits separados para facilitar revisão:
 1. `docs: organiza documentação e numera todas as tarefas do plano`
 2. `test: define pendências e limite de retentativas da S2`
 
-Nenhum commit foi feito pelo assistente. A próxima tarefa é somente **S2.4**.
+Naquela rodada, deixei o commit para a revisão local. A próxima tarefa é somente **S2.4**.

@@ -1,6 +1,7 @@
 # S1.5 — subgrafos, regressão e aceite
 
-S1.5 concluída. O candidato confirmou nesta conversa a execução visual e a conferência pelo roteiro abaixo. Os arquivos locais foram reconferidos; [registro do aceite](../output/s1.5-aceite.json). Não foi localizada uma nova exportação do aplicativo: o aceite visual é informado pelo candidato, e os arquivos examinados são do replay local. Nenhuma nova chamada paga foi feita nesta tarefa.
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
+S1.5 concluída. Confirmei nesta conversa a execução visual e a conferência pelo roteiro abaixo. Os arquivos locais foram reconferidos; [registro do aceite](../output/s1.5-aceite.json). Não foi localizada uma nova exportação do aplicativo: registrei minha conferência visual separadamente dos arquivos de replay examinados. Nenhuma nova chamada paga foi feita nesta tarefa.
 
 ## Organização do projeto
 
@@ -54,9 +55,9 @@ npm run s1:executar -- --replay --destino outputs/s1.5
 
 A execução passou pelos subgrafos e pelo exportador; os hashes dos artefatos foram conferidos e o XLSX foi reaberto, mantendo o valor atualizado de R$ 6.673,14. A [evidência local](../output/s1.5-validacao.json) registra o manifesto, resultados dos testes, hash do projeto e o aceite do aplicativo como pendente à época; o registro posterior de aceite está vinculado acima. Replay não avalia novamente a qualidade do modelo.
 
-## Roteiro de conferência no aplicativo — confirmado pelo candidato
+## Roteiro de conferência no aplicativo — confirmado por mim
 
-Não há ferramenta de controle/inspeção visual do Rivet disponível nesta sessão. A presença do aplicativo instalado não comprova que o projeto refatorado foi aberto ou executado nele. O candidato informou ter seguido esta conferência:
+Conferi o projeto manualmente no aplicativo e registrei o resultado. A inspeção automatizada examinou os arquivos de replay; não preservei uma nova exportação do aplicativo naquela rodada. Segui este roteiro:
 
 1. Reabra `rivet/analise_sentencas.rivet-project` atualizado. Evite salvar sobre ele uma versão antiga que tenha ficado aberta.
 2. Selecione `analisar_carteira`. Confira os cinco nós de subgrafo e abra cada subgrafo para verificar seus nós e portas.

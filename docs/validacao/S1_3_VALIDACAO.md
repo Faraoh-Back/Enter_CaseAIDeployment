@@ -1,5 +1,6 @@
 # S1.3 — exportação XLSX
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 O adaptador [exportar-xlsx.mjs](../../src/exportar-xlsx.mjs) materializa os outputs desempacotados do Rivet em quatro abas. A interface é `await exportarXlsx(analise, destino)`. O diretório deve existir e o destino não pode existir. O exportador não modifica a entrada nem calcula indicadores, juros ou decisões; converte centavos em reais apenas para apresentação.
 
 ## Conteúdo

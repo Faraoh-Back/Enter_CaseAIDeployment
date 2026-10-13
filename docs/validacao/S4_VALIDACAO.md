@@ -1,5 +1,6 @@
 # S4 — API HTTP, persistência e reprodução
 
+Registro da etapa indicada no título. Contagens de testes e pendências descrevem aquela rodada; mantenho o estado atual em [validação final](../entrega/validacao.md).
 **S4.1–S4.5 concluídas. 175 testes aprovados, sem skips; 25 testes novos de HTTP, integração, persistência e processos CLI.** Nenhuma chamada à OpenAI nesta etapa. [Evidência final](../output/s4/validacao-final.json) e [sequência curl executada](../output/s4/curl.json).
 
 ## Resultado verificável

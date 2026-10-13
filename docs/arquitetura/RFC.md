@@ -1,173 +1,58 @@
-# RFC — análise de sentenças na Rivet e entrega por API Node.js
+# Arquitetura — análise de sentenças com Rivet
 
-**Versão:** 0.2 — modelagem revisada em 11/10/2026.
+Implementei a solução com um projeto Rivet, um executor Node e exportadores de arquivos. A API local usa o mesmo executor da CLI. Escolhi arquivos por execução porque o lote cabe em memória e a entrega precisa ser reproduzível; um banco de dados não resolveria uma necessidade deste case.
 
-**Estado:** arquitetura implementada até S4; 175 testes aprovados, carteira real S3 e API HTTP em replay validadas. Pacote final/PDF ficam na S5.
-
-**Objetivo:** cumprir os entregáveis do case com execução reproduzível e recomendações auditáveis. A RFC é documentação interna; o racional final terá até duas páginas.
-
-## SEÇÃO 1: CONTEXTUALIZAÇÃO
-
-### 1.1 Problema, resultado esperado e prioridade
-
-O cliente precisa conhecer o êxito da carteira, o impacto das condenações e os casos em que o benefício econômico esperado de recorrer supera o custo. A referência financeira é **31/05/2026**, independentemente da data de execução do programa.
-
-O enunciado exige que todo o fluxo de análise seja construído na Rivet. A API é uma facilidade para iniciar e acompanhar esse fluxo. A prioridade de entrega é: projeto Rivet funcional, dados corretos, relatório útil, reprodução e acabamento.
-
-A inspeção do lote identificou 100 processos únicos: 35 procedências, 17 procedências parciais, 26 improcedências e 22 extinções. Todos são do TJSP e da comarca de São Paulo. As 52 condenações têm mês-base e citação explícitos. As contagens e suas limitações estão na [matriz de validação](../validacao/MATRIZ_VALIDACAO.md).
-
-### 1.2 Arquitetura e responsabilidades
+## Responsabilidades
 
 ```mermaid
-flowchart TD
-    HTTP["POST /execucoes"] --> API["API Node.js: execução e arquivos"]
-    CLI["Comando local de reprodução"] --> Runner["runGraphInFile"]
-    API --> Runner
-    Inputs["5 insumos originais"] --> Runner
-    Runner --> Entrada
-    subgraph Rivet["Projeto .rivet-project"]
-        Entrada["Entradas de texto / leitura de arquivos"] --> Parse["Separação de casos e leitura das referências"]
-        Parse --> Extrair["Subgrafo por sentença: LLM e evidências"]
-        Extrair --> Validar["Validação estrutural e semântica"]
-        Validar --> Calcular["Code Nodes: correção e juros"]
-        Calcular --> Decidir["Benefício esperado e recomendação"]
-        Decidir --> Consolidar["Totais, análises e relatório"]
-        Validar --> Pendencias["Pendências identificadas"]
-        Pendencias --> Consolidar
-    end
-    Consolidar --> Output["Graph Outputs: processos, resumo, auditoria e Markdown"]
-    Output --> Exportar["Exportador Node: XLSX, JSON, MD"]
-    Exportar --> Disco["outputs/execucao_id/"]
-    Disco --> Downloads["GET: estado e artefatos"]
+flowchart LR
+    Insumos[5 insumos originais] --> Executor[Executor Node]
+    CLI[CLI] --> Executor
+    API[API HTTP local] --> Executor
+    Executor --> Rivet[Preparar → extrair → validar → calcular → consolidar no Rivet]
+    Rivet --> Outputs[Processos, resumo, auditoria e texto executivo]
+    Outputs --> Exportar[Formatar e gravar JSON, XLSX e relatório]
+    Exportar --> Arquivos[Diretório por execução e manifesto]
+    Arquivos --> API
 ```
+
+No aplicativo, uso os Graph Inputs textuais do projeto completo, já preenchidos com os insumos da entrega. Não implementei um grafo separado de leitura de arquivos. Na CLI/API, Node lê os cinco arquivos e passa seus conteúdos para as mesmas entradas do grafo. Não deixei caminhos absolutos nos defaults.
 
 | Componente | Responsabilidade |
 | --- | --- |
-| API Node.js | Validar a solicitação, criar a execução, acionar o executor, persistir estado e servir os arquivos. |
-| Executor Node.js | Carregar o projeto, passar entradas e configuração, receber outputs e tratar término/erro. API e comando local compartilham esse executor. |
-| Grafo Rivet | Interpretar os insumos, extrair, validar, calcular, decidir e produzir dados consolidados e texto executivo. |
-| Exportador | Gravar os outputs e formatar células, abas e cabeçalhos; valores, totais e recomendações chegam calculados. |
-| Arquivos por execução | Preservar snapshots de entrada, manifesto, outputs e evidências. Escrita temporária seguida de renomeação para evitar arquivos finais incompletos. |
+| `analisar_lote` | Preparar e conferir referências, executar cada sentença e reconciliar a carteira. |
+| `analisar_carteira` | Analisar uma sentença; o nome foi mantido por compatibilidade com a S1. |
+| Subgrafos S1 | Preparação, extração, validação, cálculo financeiro e consolidação individual. |
+| Plugin local | Transporte limitado da extração e execução sequencial dos subgrafos. |
+| `s2_consolidacao_lote` | Conferir identidades, somar valores, produzir distribuições e texto executivo. |
+| Executor Node | Transporte, eventos, snapshots, checkpoint, timeout e gravação. |
+| Exportadores | Apresentar os resultados recebidos, sem calcular condenações ou recomendações. |
+| API | POST de início, GET de estado e download de artefatos íntegros. |
 
-O [SDK oficial](https://rivet.ironcladapp.com/docs/api-reference/node/runGraphInFile) executa o projeto em Node e retorna os Graph Outputs. Assim, uma única aplicação atende POSTs e GETs, sem frontend. Os [Code Nodes](https://rivet.ironcladapp.com/docs/node-reference/code) comportam a lógica determinística no grafo, mas não importam bibliotecas npm; a implementação deve respeitar esse limite.
+## Escolhas e alternativas
 
-O grafo principal terá entradas textuais explícitas para os cinco insumos. Um grafo de entrada para o aplicativo visual lerá arquivos configuráveis e chamará esse mesmo grafo principal. Evitar caminhos absolutos da máquina do autor e dependências de funções externas na análise. O exportador faz a conversão física dos outputs; ele acompanha a entrega e deve funcionar a partir de outputs exportados da Rivet.
+Preferi Node a FastAPI para executar diretamente o SDK Rivet, com um único runtime. Evitei frontend e banco: o cliente HTTP e os arquivos atendem à interface deste case. Mantive as regras financeiras em Code Nodes, com frações `BigInt`, porque preciso de centavos exatos e memória de cálculo. Não pedi aritmética à LLM.
 
-O item 5.4 permite gerar o relatório dentro ou a partir de um output Rivet. A separação entre análise no grafo e formatação externa é a interpretação adotada para a entrega e será explicada no racional. A primeira fatia deve demonstrar esse percurso completo.
+Extraio uma sentença por chamada para localizar omissões, limitar retentativas e preservar evidências por identidade. Um schema correto não basta: verifico também a consistência com o dispositivo. Desconhecido permanece nulo; zero conhecido exige suporte no documento. Falhas individuais conservam a linha; falhas globais impedem novas recomendações.
 
-### 1.3 Alternativas e trade-offs
+O lote é sequencial. Limitei a extração a três tentativas totais, dez segundos por chamada e quarenta segundos por sentença; a carteira tem timeout de trinta minutos. A auditoria registra cada tentativa, inclusive respostas rejeitadas. Esta escolha prioriza controle para o volume recebido, sem reivindicar escala de produção.
 
-| Alternativa descartada nesta versão | Descartada porque... | Ganharia se... |
-| --- | --- | --- |
-| FastAPI com executor Node separado | Acrescenta outro runtime à aplicação; o candidato também tem experiência em Node. | Houvesse infraestrutura Python existente que precisássemos integrar. |
-| SQLite ou PostgreSQL | O lote e as referências cabem em memória; arquivos por execução atendem à reprodução. | Precisássemos consultar muitas execuções ou compartilhar atualizações concorrentes. |
-| Motor financeiro externo ao grafo | Desloca parte central da análise para fora da ferramenta exigida. | O cliente permitisse explicitamente essa divisão em outro contexto. |
-| Aritmética feita pela LLM | A geração de texto não garante aplicação exata de fórmulas. | O objetivo fosse uma explicação qualitativa, sem cálculo contábil. |
-| Todo o arquivo em uma única chamada LLM | Dificulta localizar omissões, retentar um caso e controlar truncamento. | Um experimento comprovasse vantagem sem reduzir cobertura e rastreabilidade. |
-| Apenas o servidor HTTP nativo Rivet | Já oferece POST, mas o projeto também precisa acompanhar o lote e servir artefatos. | A entrega exigisse somente uma resposta JSON síncrona. |
+## Persistência e HTTP
 
-### 1.4 Aplicação do guia e dos valores apresentados
+O manifesto inicial é gravado antes do `202`. Publico arquivos completos, com escrita temporária, renomeação e hash SHA-256. Cada execução conserva sua identificação, entradas, projeto, schemas, plugin, checkpoint e outputs. A API atende uma execução ativa por instância e reserva o diretório com lock local.
 
-O guia orienta especificação antes do código, contratos explícitos, fatias completas e testes de caixa-preta. O modelo de banco do exemplo bancário é substituído por contratos de arquivos; os testes observam os outputs do grafo e, posteriormente, a API HTTP real. Testes determinísticos e avaliações reais de extração são separados.
+| Rota | Comportamento |
+| --- | --- |
+| `POST /execucoes` | Aceita somente `{"dataset":"case"}`. Retorna 202 e URL de consulta. |
+| `GET /execucoes/{id}` | Retorna estado, contagem disponível, resumo e links dos artefatos. |
+| `GET /execucoes/{id}/artefatos/{nome}` | Confere whitelist, manifesto, arquivo regular e hash antes de enviar. |
 
-Senso de urgência significa antecipar uma sentença completa funcionando. Deliver Wow será demonstrado por artefatos conciliados e úteis à diretoria. Immediate Candor exige falhas, hipóteses e métricas não medidas visíveis. United Front se traduz em reprodução por outra pessoa e decisões que o candidato consiga explicar.
+JSON malformado retorna 400; contrato inválido, 422; corpo acima de 8192 bytes, 413; execução concorrente, 409; configuração ausente, 503. GET não inicia nova análise. POST repetido após conclusão inicia outra execução: não implementei chave de idempotência.
 
-## SEÇÃO 2: IMPLEMENTAÇÃO
+Após crash/reinício, marco jobs deixados ativos como interrompidos e preservo seus checkpoints. Não retomo automaticamente nem coordeno múltiplos hosts. Uso `127.0.0.1` por padrão; autenticação, upload e operação pública ficam fora do escopo implementado.
 
-### 2.1 Contratos e modelo de dados
+## Verificação e entrega
 
-Os detalhes normativos ficam em [CONTRATOS.md](CONTRATOS.md) e no [schema de extração](../../schemas/extracao.schema.json). Todo número de processo permanece string. Os enums são fechados e campos inesperados são rejeitados. `null` representa informação desconhecida ou não aplicável conforme o resultado; zero só representa ausência de condenação ou componente não concedido após validação.
+Apliquei o guia por meio de contratos, fatias completas e testes de entrada/saída, preservando os vermelhos observados. A API é um extra; os requisitos centrais continuam sendo o projeto, os insumos, a planilha, o relatório executivo e o racional. A execução real e a avaliação da LLM têm registros separados dos testes offline e dos replays.
 
-```mermaid
-erDiagram
-    EXECUCAO ||--|{ INSUMO : registra
-    EXECUCAO ||--o{ PROCESSO : produz
-    PROCESSO ||--o{ EVIDENCIA : fundamenta
-    PROCESSO ||--o| CALCULO : possui
-    PROCESSO ||--o| RECOMENDACAO : recebe
-    EXECUCAO ||--o{ ARTEFATO : entrega
-    EXECUCAO {
-        string execucao_id PK
-        string estado
-        string projeto_sha256
-        string modelo
-        string schema_versao
-    }
-    INSUMO {
-        string nome
-        string sha256
-    }
-    PROCESSO {
-        string numero_processo PK "Unico dentro da execucao"
-        string resultado_sentenca
-        string status_processamento
-        string status_subsidios
-    }
-    EVIDENCIA {
-        string campo
-        string trecho_literal
-    }
-    CALCULO {
-        int valor_condenacao_centavos
-        int meses_completos
-        int valor_atualizado_centavos
-    }
-    RECOMENDACAO {
-        string decisao
-        int custo_recurso_centavos
-        int beneficio_esperado_centavos
-        string motivo
-    }
-    ARTEFATO {
-        string nome
-        string sha256
-    }
-```
-
-O diagrama representa relações lógicas em arquivos, sem DDL. Identidade, validade, unicidade e conciliação são verificadas pelo pipeline.
-
-### 2.2 API proposta
-
-| Método e rota | Entrada | Sucesso | Falhas e semântica |
-| --- | --- | --- | --- |
-| `POST /execucoes` | JSON estrito `{"dataset":"case"}` | `202`: identificador, estado e URL de consulta | `400` JSON inválido; `422` contrato inválido; `409` execução ativa; `503` configuração/insumos indisponíveis. |
-| `GET /execucoes/{id}` | Identificador retornado pelo POST | `200`: estado, contagens e artefatos prontos | `404` execução inexistente. |
-| `GET /execucoes/{id}/artefatos/{nome}` | Nome presente no manifesto | `200`: arquivo com tipo e nome de download | `404` execução/nome inexistente; `409` artefato conhecido ainda indisponível. |
-
-Inicialmente, uma instância local e uma execução ativa por vez. O POST cria uma nova execução a cada aceitação, não é idempotente e não tem repetição automática pelo cliente. GETs são consultas idempotentes. Uma futura chave de idempotência é um refinamento condicionado à necessidade, não um requisito do MVP.
-
-### 2.3 Fluxo feliz e falhas
-
-1. Validar configuração e existência dos cinco insumos; criar diretório e manifesto antes do `202`.
-2. Executar o grafo com conteúdo dos arquivos e parâmetros registrados. Dentro dele, conferir identidades, referências e separação dos casos.
-3. Extrair uma sentença por chamada, com saída estruturada e trechos de evidência. Validar schema e semântica antes dos cálculos.
-4. Retentar falhas recuperáveis com limite; casos ainda incompletos recebem `pendente_revisao`, sem valor ou decisão inventados. Falhas técnicas isoladas recebem `erro`.
-5. Aplicar correção, juros e regra econômica aos casos aptos. Processos favoráveis têm condenação zero, datas não aplicáveis e motivo explícito para não recorrer.
-6. Consolidar resultados, cobertura e pendências no grafo; produzir relatório por template determinístico para preservar os números.
-7. Gravar e reabrir os arquivos gerados para verificar integridade; publicar o manifesto final e os links.
-
-Erros globais de referência, insumos inconsistentes ou exportação impedem o estado `concluida`. Resultados parciais são preservados e identificados. Reinício com uma execução em andamento marca-a `interrompida`; a versão inicial exige nova execução, sem prometer retomada automática.
-
-### 2.4 Principal desafio: extração verificável e cálculo exato
-
-Texto plausível não basta: um resultado deve corresponder ao dispositivo, os valores devem corresponder aos danos concedidos, e as datas devem ter evidências localizáveis. O número do processo extraído deve coincidir com o identificado pelo separador. Tribunal é derivado do código CNJ e cruzado com a tabela fornecida; comarca é um campo diferente.
-
-Dinheiro trafega em centavos inteiros. Índices são lidos como decimais exatos de quatro casas e convertidos para inteiros escalados. Aritmética racional com `BigInt` dentro dos Code Nodes evita divisão em ponto flutuante; `BigInt` não atravessa JSON, sendo convertido para strings na trilha de cálculo e inteiros seguros nos valores finais. Compatibilidade com os dois executores será provada na primeira fatia.
-
-Correção e juros seguem o case. A política de meses completos, arredondamento e conciliação está no contrato. Citação ausente gera pendência, sem substituição pela data da sentença. Os índices e as probabilidades vêm dos arquivos; a inspeção encontrou índice final `1117.1189`, mas o código deve buscá-lo pela referência `2026-05`.
-
-### 2.5 Recomendação e comunicação executiva
-
-Para uma condenação apta: `benefício esperado = p × valor atualizado − custo`. Recomendar recurso quando o benefício exato for positivo. Empate resulta em não recorrer. Vitórias recebem não recorrer por ausência de condenação; pendências recebem decisão pendente.
-
-A regra pressupõe reversão integral e considera apenas os custos informados. As probabilidades são premissas fornecidas, não inferências do modelo. O resultado é benefício líquido esperado em reais, não ROI percentual nem conclusão sobre admissibilidade jurídica. O relatório diferencia estimativa de economia realizada.
-
-Apresentar resultado geral, improcedência e extinção separadas, impacto financeiro, recomendações, custo estimado dos recursos selecionados e benefício esperado. Explorar associações por subsídios e tema, com tamanho dos grupos e sem inferência causal. Informar que todos os casos são da mesma comarca; não construir comparação geográfica sem variação.
-
-### 2.6 Evidências, limites e conclusão da entrega
-
-Por execução, preservar hashes de insumos/projeto/schema, modelo e configuração efetiva, tentativas, tempos, tokens quando disponíveis, outputs e falhas. Uso de modelo fixado melhora rastreabilidade, mas não garante repetibilidade idêntica da extração. Reprocessar outputs capturados deve produzir cálculos e decisões idênticos.
-
-Os [critérios de aceite](../validacao/MATRIZ_VALIDACAO.md) incluem cobertura, confronto com gabarito, integridade monetária, execução no aplicativo e pelo SDK, e reprodução do ZIP. Créditos da chave, acesso ao modelo e versões compatíveis ainda precisam ser verificados. Chamadas de teste não são evidência de execução dos 100 casos.
-
-API e arquivos locais destinam-se à avaliação em uma máquina. Distribuição, múltiplos usuários e infraestrutura de produção ficam para evolução. A meta interna é concluir os artefatos em 15/10; a entrega externa foi informada como 16/10/2026 às 23:59, sem fuso explícito.
+Documentei detalhes normativos em [contratos](CONTRATOS.md), resultados em [validação final](../entrega/validacao.md) e estado das tarefas no [plano](../PLANO_DE_EXECUCAO.md). Conservo as falhas históricas e as limitações: a repetição reservada não é cega, a auditoria não tem segundo revisor humano e as probabilidades do CSV não foram calibradas neste lote.
