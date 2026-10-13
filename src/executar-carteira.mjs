@@ -83,11 +83,11 @@ export async function executarCarteira({modo, destino='outputs/s3', entradas, ca
       inputs:Object.fromEntries(Object.entries({...raw,modelo}).map(([k,value])=>[k,{type:'string',value}])),
       onNodeFinish:({node,outputs:r})=>{
         if(node.id==='preparar_lote') {manifest.identidades=[...r.identidades.value];enqueue(()=>atomic('manifest.json',json(manifest)));}
-        if(node.id==='s1_preparar') caseStarts.set(r.preparado.value.numero_processo,Date.now());
+        if(node.id==='s1_preparar') caseStarts.set(r.preparado.value.numero,Date.now());
         if(node.id==='s1_consolidar') {
           const p=r.processos.value[0],a=r.auditoria.value[0];
           if(checkpoints.some(c=>c.processos[0].numero_processo===p.numero_processo)) {controller.abort(new Error('CHECKPOINT_DUPLICADO'));return;}
-          checkpoints.push({processos:[p],auditoria:[a],duracao_ms:Date.now()-(caseStarts.get(p.numero_processo)??start)});
+          checkpoints.push({processos:[p],auditoria:[a],duracao_ms:caseStarts.has(p.numero_processo)?Date.now()-caseStarts.get(p.numero_processo):null});
           manifest.processados=checkpoints.length;
           enqueue(async()=>{await atomic('checkpoint.json',json(checkpoints));await atomic('manifest.json',json(manifest));});
         }

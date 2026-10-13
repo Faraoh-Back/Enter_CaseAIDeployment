@@ -1,0 +1,44 @@
+{
+  "etapa": "S3.7",
+  "suíte": {
+    "tests": 150,
+    "pass": 150,
+    "fail": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "log_sha256": "b8dfced9b45a70012091f6e105cb14517b2bf667b312f1eaa6d0c37f657a405c",
+  "xlsx": {
+    "processos": 100,
+    "campos_por_linha_conferidos": 13,
+    "abas": [
+      "Processos",
+      "Resumo",
+      "Auditoria",
+      "Pendencias"
+    ],
+    "pendencias": 0
+  },
+  "artefatos_hashes_conferidos": 9,
+  "aceite_visual": "pendente",
+  "sha256": {
+    "rivet/analise_sentencas.rivet-project": "ac08975975ca17dda7b87c674938e17fabde9cd9d73c67d6d5f1452b0ac3db7a",
+    "rivet/prompts/extracao-s1.txt": "8a6201d2c62fe7c5fa79752deaab3b70d03864d9e2c7a8b960526680384e6752",
+    "rivet/plugins/enter-bounded-extraction/index.js": "86610a526e9f3cb55acd07f8c6261e35e9ad227425b5453c838adb98cd9bdb75",
+    "rivet/code/s2/relatorio-carteira.js": "a9585215e7d2ca0759ada69733779e740b4ba97f0866b06dc95e7b428586f04e",
+    "src/executar-carteira.mjs": "5c2c1c07006fdca2c3137c68de169466664d839234b930201b239cca1cce0d71",
+    "src/exportar-xlsx.mjs": "774f6de03abeb36ae9e89be85087638e0479c8cce331d7405b41a3016a825cbb",
+    "schemas/resumo.schema.json": "36eb16c9375b1da4c115bedfa2aab969f4faa8672290bb29526523c041f988bb",
+    "tests/fixtures/carteira-referencia.json": "15ec8cb3926f3f6d616813e12ba65566254e058021337be64e87d1713a6c11fd",
+    "package.json": "d6d35248595c47443f84001c0334d3d9e0bd862298b4de4ec23266eeca7421a6",
+    "docs/output/s3/processos.json": "e05c6eda76798eb148df755088252a56a79880dd8eb0c119da8d8a966ea2dea1",
+    "docs/output/s3/resumo.json": "4c4ff248ea7775d168714092119736ba18ab27fd4aa4506e36642b91a04a0de8",
+    "docs/output/s3/auditoria.json": "bad8e38cd77fd16f775cef8a777e1aaba70fa19a78f5c26883243d02f8611495",
+    "docs/output/s3/relatorio.md": "a1488b932528db04023d1da2e4407ed502bad92e56272e05dd327535969c921a",
+    "docs/output/s3/processos.xlsx": "8f92deec76165b8af23133be33833fd87517ae9896042a17c3d1ae9d81296f85",
+    "docs/output/s3/projeto.rivet-project": "d68dd567bd73d2621a562e90b6fc157c36864ba2c033aab99ece8ddac2c39fd4",
+    "docs/output/s3/aceite-consolidacao.rivet-project": "70b4b7e61a0581785ebb6d0b0c25316c8d33d2e5be0c7582f6ab79ce830b9e3c",
+    "docs/output/s3/auditoria-documental.json": "b3fb2f73e5011c5484b2b92cfe1fb5ae43604cff6f58158f96315db69dd46a71",
+    "docs/output/s3/metricas.json": "2acde3d7b6086aebbbb71494e5646fe7ae2b58e7aa9fe2726d20954b55fde48c"
+  }
+}

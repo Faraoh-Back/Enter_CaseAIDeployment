@@ -1,0 +1,180 @@
+{
+  "estado": "aprovada",
+  "referencias": 100,
+  "processos": 100,
+  "condenacoes": 52,
+  "divergencias": [],
+  "revisao_prioritaria": {
+    "maiores_valores": [
+      {
+        "numero_processo": "7199635-46.2024.8.26.0004",
+        "valor_atualizado_centavos": 1123313
+      },
+      {
+        "numero_processo": "4469614-79.2024.8.26.0009",
+        "valor_atualizado_centavos": 1076387
+      },
+      {
+        "numero_processo": "3186394-32.2024.8.26.0003",
+        "valor_atualizado_centavos": 1034722
+      },
+      {
+        "numero_processo": "9734703-17.2024.8.26.0001",
+        "valor_atualizado_centavos": 1005106
+      },
+      {
+        "numero_processo": "6428820-53.2024.8.26.0008",
+        "valor_atualizado_centavos": 961839
+      },
+      {
+        "numero_processo": "9075854-37.2024.8.26.0008",
+        "valor_atualizado_centavos": 913501
+      },
+      {
+        "numero_processo": "8356660-78.2024.8.26.0004",
+        "valor_atualizado_centavos": 911866
+      },
+      {
+        "numero_processo": "2029542-34.2024.8.26.0007",
+        "valor_atualizado_centavos": 872441
+      },
+      {
+        "numero_processo": "3564217-57.2024.8.26.0004",
+        "valor_atualizado_centavos": 851790
+      },
+      {
+        "numero_processo": "4836769-74.2024.8.26.0003",
+        "valor_atualizado_centavos": 829217
+      }
+    ],
+    "perto_do_limiar": [
+      {
+        "numero_processo": "7094431-69.2024.8.26.0001",
+        "beneficio_esperado_centavos": 6420
+      },
+      {
+        "numero_processo": "4892305-63.2025.8.26.0005",
+        "beneficio_esperado_centavos": 9931
+      },
+      {
+        "numero_processo": "3320821-75.2025.8.26.0004",
+        "beneficio_esperado_centavos": -11254
+      },
+      {
+        "numero_processo": "7539454-22.2024.8.26.0006",
+        "beneficio_esperado_centavos": 15176
+      },
+      {
+        "numero_processo": "9154816-75.2024.8.26.0004",
+        "beneficio_esperado_centavos": -21874
+      },
+      {
+        "numero_processo": "6022741-94.2024.8.26.0001",
+        "beneficio_esperado_centavos": 25159
+      },
+      {
+        "numero_processo": "9751312-45.2024.8.26.0004",
+        "beneficio_esperado_centavos": -31218
+      },
+      {
+        "numero_processo": "8143080-27.2024.8.26.0008",
+        "beneficio_esperado_centavos": -43429
+      },
+      {
+        "numero_processo": "8712601-47.2025.8.26.0008",
+        "beneficio_esperado_centavos": 49075
+      },
+      {
+        "numero_processo": "9379649-83.2024.8.26.0006",
+        "beneficio_esperado_centavos": 63248
+      }
+    ],
+    "retentativas": [
+      {
+        "numero_processo": "4905582-22.2025.8.26.0002",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "5443951-27.2024.8.26.0003",
+        "tentativas": 3,
+        "estados": [
+          "extracao_invalida",
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "3219824-83.2025.8.26.0004",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "6304573-19.2024.8.26.0008",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "5216026-96.2025.8.26.0001",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "9166707-27.2025.8.26.0003",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "7804574-11.2024.8.26.0003",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "1882330-38.2024.8.26.0001",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "6489308-46.2025.8.26.0001",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      },
+      {
+        "numero_processo": "3373881-49.2025.8.26.0001",
+        "tentativas": 2,
+        "estados": [
+          "extracao_invalida",
+          "aprovada"
+        ]
+      }
+    ]
+  },
+  "limite": "Pré-anotação dos dispositivos e revisão assistida por IA; sem segunda revisão humana independente. Fundamentos e associação de temas exigem avaliação semântica separada.",
+  "referencia_sha256": "15ec8cb3926f3f6d616813e12ba65566254e058021337be64e87d1713a6c11fd",
+  "processos_sha256": "5ad3f0f9f2f17f49d518258fdcf5ba8fa8adb5f35b20bca5baf6d5de68dff540",
+  "auditoria_sha256": "68d3f15d2b7b3d2bf55df08d3d104184279b28f3eee1e109209ed55a7e25fad7"
+}

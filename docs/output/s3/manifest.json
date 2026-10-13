@@ -1,0 +1,341 @@
+{
+  "versao": "s3-final-v1",
+  "execucao_id": "2026-10-13T04-04-52-536Z-fda0092e-fc60-4627-ac3d-da3e9e00162d",
+  "consolidacao_id": "consolidacao-17d82b98-33eb-49a8-ab4d-15daeb0ab871",
+  "estado": "concluida",
+  "modo": "reconsolidacao_de_outputs_reais_sem_llm",
+  "chamadas_reais_nesta_consolidacao": 0,
+  "origem": {
+    "diretorio": "/home/dev/GitPessoal/Enter_CaseAIDeployment/outputs/s3/2026-10-13T04-04-52-536Z-fda0092e-fc60-4627-ac3d-da3e9e00162d",
+    "manifest_sha256": "ceee674534f4b8357e170569b4ca0d4cfa4f8b9385cad1e6261477ee18eb20c2",
+    "projeto_sha256": "a4b62a3e7d5b7861ffc8d962511299dedb684b3836782159fde63cb2d876d1cc",
+    "prompt_sha256": "8a6201d2c62fe7c5fa79752deaab3b70d03864d9e2c7a8b960526680384e6752"
+  },
+  "projeto_consolidacao_sha256": "70b4b7e61a0581785ebb6d0b0c25316c8d33d2e5be0c7582f6ab79ce830b9e3c",
+  "resumo": {
+    "data_referencia": "2026-05-31",
+    "total_identificado": 100,
+    "vitorias_confirmadas": 48,
+    "resultados_desconhecidos": 0,
+    "condenacoes": 52,
+    "processos_aptos": 100,
+    "pendencias": 0,
+    "passivo_centavos": 30917454,
+    "recursos_recomendados": 17,
+    "custo_recursos_centavos": 5440000,
+    "beneficio_esperado_recursos_centavos": 2467616,
+    "processos_com_valor_atualizado": 100,
+    "processos_sem_valor_atualizado": 0,
+    "decisoes_concluidas": 100,
+    "decisoes_pendentes": 0,
+    "passivo_parcial": false,
+    "distribuicoes": {
+      "resultados": [
+        {
+          "grupo": "extincao",
+          "total": 22,
+          "vitorias": 22,
+          "condenacoes": 0,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 22,
+          "valores_conhecidos": 22,
+          "passivo_centavos": 0,
+          "decisoes_concluidas": 22,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "improcedencia",
+          "total": 26,
+          "vitorias": 26,
+          "condenacoes": 0,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 26,
+          "valores_conhecidos": 26,
+          "passivo_centavos": 0,
+          "decisoes_concluidas": 26,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "parcial_procedencia",
+          "total": 17,
+          "vitorias": 0,
+          "condenacoes": 17,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 17,
+          "valores_conhecidos": 17,
+          "passivo_centavos": 9145409,
+          "decisoes_concluidas": 17,
+          "recursos_recomendados": 3
+        },
+        {
+          "grupo": "procedencia",
+          "total": 35,
+          "vitorias": 0,
+          "condenacoes": 35,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 35,
+          "valores_conhecidos": 35,
+          "passivo_centavos": 21772045,
+          "decisoes_concluidas": 35,
+          "recursos_recomendados": 14
+        }
+      ],
+      "subsidios": [
+        {
+          "grupo": "ausentes",
+          "total": 29,
+          "vitorias": 8,
+          "condenacoes": 21,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 29,
+          "valores_conhecidos": 29,
+          "passivo_centavos": 12481072,
+          "decisoes_concluidas": 29,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "completos",
+          "total": 33,
+          "vitorias": 23,
+          "condenacoes": 10,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 33,
+          "valores_conhecidos": 33,
+          "passivo_centavos": 5713250,
+          "decisoes_concluidas": 33,
+          "recursos_recomendados": 6
+        },
+        {
+          "grupo": "essenciais",
+          "total": 38,
+          "vitorias": 17,
+          "condenacoes": 21,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 38,
+          "valores_conhecidos": 38,
+          "passivo_centavos": 12723132,
+          "decisoes_concluidas": 38,
+          "recursos_recomendados": 11
+        }
+      ],
+      "temas": [
+        {
+          "grupo": "acidente de trânsito com danos ao veículo",
+          "total": 6,
+          "vitorias": 4,
+          "condenacoes": 2,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 6,
+          "valores_conhecidos": 6,
+          "passivo_centavos": 1614679,
+          "decisoes_concluidas": 6,
+          "recursos_recomendados": 1
+        },
+        {
+          "grupo": "atraso de voo superior a quatro horas",
+          "total": 12,
+          "vitorias": 7,
+          "condenacoes": 5,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 12,
+          "valores_conhecidos": 12,
+          "passivo_centavos": 3417580,
+          "decisoes_concluidas": 12,
+          "recursos_recomendados": 2
+        },
+        {
+          "grupo": "cancelamento unilateral de plano de saúde",
+          "total": 7,
+          "vitorias": 5,
+          "condenacoes": 2,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 7,
+          "valores_conhecidos": 7,
+          "passivo_centavos": 1109151,
+          "decisoes_concluidas": 7,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "cobrança de tarifas bancárias não contratadas",
+          "total": 13,
+          "vitorias": 6,
+          "condenacoes": 7,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 3513698,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 2
+        },
+        {
+          "grupo": "cobrança indevida em fatura",
+          "total": 8,
+          "vitorias": 1,
+          "condenacoes": 7,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 8,
+          "valores_conhecidos": 8,
+          "passivo_centavos": 4353931,
+          "decisoes_concluidas": 8,
+          "recursos_recomendados": 3
+        },
+        {
+          "grupo": "falha na prestação de serviço contratado",
+          "total": 13,
+          "vitorias": 7,
+          "condenacoes": 6,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 3642233,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 3
+        },
+        {
+          "grupo": "interrupção injustificada do fornecimento de energia",
+          "total": 13,
+          "vitorias": 5,
+          "condenacoes": 8,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 4388567,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 2
+        },
+        {
+          "grupo": "negativação indevida do nome em cadastro de inadimplentes",
+          "total": 13,
+          "vitorias": 6,
+          "condenacoes": 7,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 3561938,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 1
+        },
+        {
+          "grupo": "produto entregue em desacordo com o anunciado",
+          "total": 8,
+          "vitorias": 4,
+          "condenacoes": 4,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 8,
+          "valores_conhecidos": 8,
+          "passivo_centavos": 3171738,
+          "decisoes_concluidas": 8,
+          "recursos_recomendados": 1
+        },
+        {
+          "grupo": "vício de produto não sanado no prazo legal",
+          "total": 7,
+          "vitorias": 3,
+          "condenacoes": 4,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 7,
+          "valores_conhecidos": 7,
+          "passivo_centavos": 2143939,
+          "decisoes_concluidas": 7,
+          "recursos_recomendados": 2
+        }
+      ],
+      "comarcas": [
+        {
+          "grupo": "São Paulo",
+          "total": 100,
+          "vitorias": 48,
+          "condenacoes": 52,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 100,
+          "valores_conhecidos": 100,
+          "passivo_centavos": 30917454,
+          "decisoes_concluidas": 100,
+          "recursos_recomendados": 17
+        }
+      ],
+      "tribunais": [
+        {
+          "grupo": "TJSP",
+          "total": 100,
+          "vitorias": 48,
+          "condenacoes": 52,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 100,
+          "valores_conhecidos": 100,
+          "passivo_centavos": 30917454,
+          "decisoes_concluidas": 100,
+          "recursos_recomendados": 17
+        }
+      ]
+    }
+  },
+  "metricas_origem": {
+    "estado": "concluida",
+    "identificados": 100,
+    "processados": 100,
+    "nao_processados": 0,
+    "aptos": 100,
+    "pendencias": 0,
+    "erros_tecnicos": 0,
+    "primeira_tentativa_aprovada": 90,
+    "denominador_primeira_tentativa": 100,
+    "casos_com_retentativa": 10,
+    "requisicoes_extrator": 111,
+    "chamadas_reais": 111,
+    "duracao_ms": 272249,
+    "tokens_completos": true,
+    "tokens": {
+      "prompt_tokens": 145716,
+      "completion_tokens": 36753,
+      "total_tokens": 182469
+    },
+    "tokens_parciais_informados": {
+      "prompt_tokens": 145716,
+      "completion_tokens": 36753,
+      "total_tokens": 182469
+    },
+    "tentativas_com_uso_informado": 111,
+    "tentativas_sem_uso_informado": 0,
+    "custo_monetario": null,
+    "motivo_custo_null": "Não foi incorporada uma tabela de preços verificável com vigência; tokens não são custo monetário."
+  },
+  "artefatos": [
+    {
+      "nome": "processos.json",
+      "sha256": "e05c6eda76798eb148df755088252a56a79880dd8eb0c119da8d8a966ea2dea1"
+    },
+    {
+      "nome": "resumo.json",
+      "sha256": "4c4ff248ea7775d168714092119736ba18ab27fd4aa4506e36642b91a04a0de8"
+    },
+    {
+      "nome": "auditoria.json",
+      "sha256": "bad8e38cd77fd16f775cef8a777e1aaba70fa19a78f5c26883243d02f8611495"
+    },
+    {
+      "nome": "relatorio.md",
+      "sha256": "a1488b932528db04023d1da2e4407ed502bad92e56272e05dd327535969c921a"
+    },
+    {
+      "nome": "processos.xlsx",
+      "sha256": "8f92deec76165b8af23133be33833fd87517ae9896042a17c3d1ae9d81296f85"
+    },
+    {
+      "nome": "projeto.rivet-project",
+      "sha256": "d68dd567bd73d2621a562e90b6fc157c36864ba2c033aab99ece8ddac2c39fd4"
+    },
+    {
+      "nome": "aceite-consolidacao.rivet-project",
+      "sha256": "70b4b7e61a0581785ebb6d0b0c25316c8d33d2e5be0c7582f6ab79ce830b9e3c"
+    },
+    {
+      "nome": "auditoria-documental.json",
+      "sha256": "b3fb2f73e5011c5484b2b92cfe1fb5ae43604cff6f58158f96315db69dd46a71"
+    },
+    {
+      "nome": "metricas.json",
+      "sha256": "2acde3d7b6086aebbbb71494e5646fe7ae2b58e7aa9fe2726d20954b55fde48c"
+    }
+  ]
+}

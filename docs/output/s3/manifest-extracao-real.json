@@ -1,0 +1,1091 @@
+{
+  "versao_contrato": "s3-v1",
+  "execucao_id": "2026-10-13T04-04-52-536Z-fda0092e-fc60-4627-ac3d-da3e9e00162d",
+  "estado": "concluida",
+  "modo": "real",
+  "grafo": "analisar_lote",
+  "iniciado_em": "2026-10-13T04:04:52.538Z",
+  "encerrado_em": "2026-10-13T04:09:24.778Z",
+  "duracao_ms": 272249,
+  "node": "v20.20.2",
+  "sdk": "1.25.0",
+  "modelo_solicitado": "gpt-4.1-mini-2025-04-14",
+  "timeout_global_ms": 1800000,
+  "parametros_enviados": {
+    "model": "gpt-4.1-mini-2025-04-14",
+    "temperature": 0,
+    "max_tokens": 2500,
+    "response_format": "json_schema",
+    "strict": true
+  },
+  "entradas_sha256": {
+    "processos_texto": "71f061fe84188544c663ac9150b2bc53903ed27d923f13de9882f31d961be943",
+    "subsidios_texto": "3a22e20c884d69703ee3acf30eee771f83a132ea824792de56e7f4a9f9dde6c1",
+    "indices_texto": "d5d647e87d97ca2f17d1af7445b8fec97611870672a6dfb12be402ed55a7a683",
+    "custos_texto": "6cd9c5075e73163c1a73f4fbac493913899b45c373ceab777d3a0ff6aa074ba7",
+    "probabilidades_texto": "ad1d915821a6a7ec024225cb251096efc77d44ebbc422a57a03018eaaabefa77",
+    "data_referencia": "96b951df9bacc4611285f7cebe34c5cdaa57098b72af7e6101a0b6d0632abc1e"
+  },
+  "projeto_sha256": "a4b62a3e7d5b7861ffc8d962511299dedb684b3836782159fde63cb2d876d1cc",
+  "prompt_sha256": "8a6201d2c62fe7c5fa79752deaab3b70d03864d9e2c7a8b960526680384e6752",
+  "plugin_sha256": "86610a526e9f3cb55acd07f8c6261e35e9ad227425b5453c838adb98cd9bdb75",
+  "schemas_sha256": {
+    "extracao": "185099e8f8d671033c0b6d0dc0fe7a76e4fdfcb6998d51951f8714a444b521dc",
+    "processo": "2bdb28bd202b38002f45f8e61f5370eb0e81d6fb4ba67b32de9f545536b02bb0",
+    "resumo": "36eb16c9375b1da4c115bedfa2aab969f4faa8672290bb29526523c041f988bb"
+  },
+  "captura_sha256": null,
+  "identidades": [
+    "3094235-58.2024.8.26.0009",
+    "4226067-18.2024.8.26.0006",
+    "4905582-22.2025.8.26.0002",
+    "3871230-78.2024.8.26.0002",
+    "5528972-91.2024.8.26.0001",
+    "4567281-93.2024.8.26.0006",
+    "5443951-27.2024.8.26.0003",
+    "3320821-75.2025.8.26.0004",
+    "2065818-59.2025.8.26.0007",
+    "8294150-30.2025.8.26.0005",
+    "3564217-57.2024.8.26.0004",
+    "6159230-40.2024.8.26.0006",
+    "3770370-43.2025.8.26.0008",
+    "6229731-61.2025.8.26.0004",
+    "1352896-85.2024.8.26.0006",
+    "2188789-75.2024.8.26.0006",
+    "3219824-83.2025.8.26.0004",
+    "7897151-69.2024.8.26.0007",
+    "4191175-78.2025.8.26.0004",
+    "8761611-41.2024.8.26.0005",
+    "9075854-37.2024.8.26.0008",
+    "7550190-43.2025.8.26.0001",
+    "3597059-34.2025.8.26.0008",
+    "2022698-50.2024.8.26.0009",
+    "2149597-86.2024.8.26.0003",
+    "3011363-82.2024.8.26.0007",
+    "5004485-43.2024.8.26.0006",
+    "6304573-19.2024.8.26.0008",
+    "7199635-46.2024.8.26.0004",
+    "6022741-94.2024.8.26.0001",
+    "1499513-82.2024.8.26.0001",
+    "8908327-78.2025.8.26.0001",
+    "6036031-42.2024.8.26.0004",
+    "8838939-97.2024.8.26.0006",
+    "5873631-68.2024.8.26.0001",
+    "7539454-22.2024.8.26.0006",
+    "1584944-90.2024.8.26.0008",
+    "9534065-72.2024.8.26.0002",
+    "8336747-66.2025.8.26.0001",
+    "6091922-14.2025.8.26.0001",
+    "4836769-74.2024.8.26.0003",
+    "3812278-92.2025.8.26.0004",
+    "1595533-85.2025.8.26.0006",
+    "5993871-45.2025.8.26.0007",
+    "9889527-97.2025.8.26.0006",
+    "9751312-45.2024.8.26.0004",
+    "5375828-83.2024.8.26.0005",
+    "2029542-34.2024.8.26.0007",
+    "8143080-27.2024.8.26.0008",
+    "2623428-41.2024.8.26.0001",
+    "9154816-75.2024.8.26.0004",
+    "5216026-96.2025.8.26.0001",
+    "4469614-79.2024.8.26.0009",
+    "4516570-44.2024.8.26.0003",
+    "8660224-83.2025.8.26.0006",
+    "4795550-43.2025.8.26.0003",
+    "7094431-69.2024.8.26.0001",
+    "8712601-47.2025.8.26.0008",
+    "1341107-23.2024.8.26.0006",
+    "8170002-48.2024.8.26.0004",
+    "4218612-71.2024.8.26.0007",
+    "9046019-17.2024.8.26.0003",
+    "4325262-92.2024.8.26.0007",
+    "5718693-88.2024.8.26.0001",
+    "9379649-83.2024.8.26.0006",
+    "4892305-63.2025.8.26.0005",
+    "8234890-42.2024.8.26.0001",
+    "1325366-90.2024.8.26.0001",
+    "1262037-72.2024.8.26.0001",
+    "2135307-40.2025.8.26.0009",
+    "1389174-87.2024.8.26.0008",
+    "1068124-70.2025.8.26.0002",
+    "9107791-86.2024.8.26.0008",
+    "6055033-50.2024.8.26.0006",
+    "1810295-57.2024.8.26.0001",
+    "1971949-51.2025.8.26.0003",
+    "3186394-32.2024.8.26.0003",
+    "9645168-55.2025.8.26.0004",
+    "8635102-64.2024.8.26.0007",
+    "9166707-27.2025.8.26.0003",
+    "4721398-69.2024.8.26.0008",
+    "5492472-20.2024.8.26.0009",
+    "1488224-93.2025.8.26.0008",
+    "9789198-59.2025.8.26.0003",
+    "8356660-78.2024.8.26.0004",
+    "7804574-11.2024.8.26.0003",
+    "1310595-18.2024.8.26.0005",
+    "1882330-38.2024.8.26.0001",
+    "9008529-10.2024.8.26.0001",
+    "3049659-39.2024.8.26.0009",
+    "9166132-48.2025.8.26.0001",
+    "3999358-36.2025.8.26.0003",
+    "6489308-46.2025.8.26.0001",
+    "6428820-53.2024.8.26.0008",
+    "5778917-13.2024.8.26.0006",
+    "4461596-84.2025.8.26.0009",
+    "9734703-17.2024.8.26.0001",
+    "1831006-78.2025.8.26.0001",
+    "2107007-31.2024.8.26.0001",
+    "3373881-49.2025.8.26.0001"
+  ],
+  "processados": 100,
+  "nao_processados": [],
+  "requisicoes_extrator": 111,
+  "chamadas_reais": 111,
+  "http_status": [
+    {
+      "numero_processo": "3094235-58.2024.8.26.0009",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4226067-18.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4905582-22.2025.8.26.0002",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4905582-22.2025.8.26.0002",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "3871230-78.2024.8.26.0002",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5528972-91.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4567281-93.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5443951-27.2024.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5443951-27.2024.8.26.0003",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "5443951-27.2024.8.26.0003",
+      "tentativa": 3,
+      "status": 200
+    },
+    {
+      "numero_processo": "3320821-75.2025.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2065818-59.2025.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8294150-30.2025.8.26.0005",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3564217-57.2024.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6159230-40.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3770370-43.2025.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6229731-61.2025.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1352896-85.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2188789-75.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3219824-83.2025.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3219824-83.2025.8.26.0004",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "7897151-69.2024.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4191175-78.2025.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8761611-41.2024.8.26.0005",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9075854-37.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "7550190-43.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3597059-34.2025.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2022698-50.2024.8.26.0009",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2149597-86.2024.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3011363-82.2024.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5004485-43.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6304573-19.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6304573-19.2024.8.26.0008",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "7199635-46.2024.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6022741-94.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1499513-82.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8908327-78.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6036031-42.2024.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8838939-97.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5873631-68.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "7539454-22.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1584944-90.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9534065-72.2024.8.26.0002",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8336747-66.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6091922-14.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4836769-74.2024.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3812278-92.2025.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1595533-85.2025.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5993871-45.2025.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9889527-97.2025.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9751312-45.2024.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5375828-83.2024.8.26.0005",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2029542-34.2024.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8143080-27.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2623428-41.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9154816-75.2024.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5216026-96.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5216026-96.2025.8.26.0001",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "4469614-79.2024.8.26.0009",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4516570-44.2024.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8660224-83.2025.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4795550-43.2025.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "7094431-69.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8712601-47.2025.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1341107-23.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8170002-48.2024.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4218612-71.2024.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9046019-17.2024.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4325262-92.2024.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5718693-88.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9379649-83.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4892305-63.2025.8.26.0005",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8234890-42.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1325366-90.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1262037-72.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2135307-40.2025.8.26.0009",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1389174-87.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1068124-70.2025.8.26.0002",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9107791-86.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6055033-50.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1810295-57.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1971949-51.2025.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3186394-32.2024.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9645168-55.2025.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8635102-64.2024.8.26.0007",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9166707-27.2025.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9166707-27.2025.8.26.0003",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "4721398-69.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5492472-20.2024.8.26.0009",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1488224-93.2025.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9789198-59.2025.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "8356660-78.2024.8.26.0004",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "7804574-11.2024.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "7804574-11.2024.8.26.0003",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "1310595-18.2024.8.26.0005",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1882330-38.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1882330-38.2024.8.26.0001",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "9008529-10.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3049659-39.2024.8.26.0009",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9166132-48.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3999358-36.2025.8.26.0003",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6489308-46.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "6489308-46.2025.8.26.0001",
+      "tentativa": 2,
+      "status": 200
+    },
+    {
+      "numero_processo": "6428820-53.2024.8.26.0008",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "5778917-13.2024.8.26.0006",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "4461596-84.2025.8.26.0009",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "9734703-17.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "1831006-78.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "2107007-31.2024.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3373881-49.2025.8.26.0001",
+      "tentativa": 1,
+      "status": 200
+    },
+    {
+      "numero_processo": "3373881-49.2025.8.26.0001",
+      "tentativa": 2,
+      "status": 200
+    }
+  ],
+  "tokens": {
+    "entrada": 145716,
+    "saida": 36753,
+    "total": 182469
+  },
+  "custo_monetario": null,
+  "resumo": {
+    "data_referencia": "2026-05-31",
+    "total_identificado": 100,
+    "vitorias_confirmadas": 48,
+    "resultados_desconhecidos": 0,
+    "condenacoes": 52,
+    "processos_aptos": 100,
+    "pendencias": 0,
+    "passivo_centavos": 30917454,
+    "recursos_recomendados": 17,
+    "custo_recursos_centavos": 5440000,
+    "beneficio_esperado_recursos_centavos": 2467616,
+    "processos_com_valor_atualizado": 100,
+    "processos_sem_valor_atualizado": 0,
+    "decisoes_concluidas": 100,
+    "decisoes_pendentes": 0,
+    "passivo_parcial": false,
+    "distribuicoes": {
+      "resultados": [
+        {
+          "grupo": "extincao",
+          "total": 22,
+          "vitorias": 22,
+          "condenacoes": 0,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 22,
+          "valores_conhecidos": 22,
+          "passivo_centavos": 0,
+          "decisoes_concluidas": 22,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "improcedencia",
+          "total": 26,
+          "vitorias": 26,
+          "condenacoes": 0,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 26,
+          "valores_conhecidos": 26,
+          "passivo_centavos": 0,
+          "decisoes_concluidas": 26,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "parcial_procedencia",
+          "total": 17,
+          "vitorias": 0,
+          "condenacoes": 17,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 17,
+          "valores_conhecidos": 17,
+          "passivo_centavos": 9145409,
+          "decisoes_concluidas": 17,
+          "recursos_recomendados": 3
+        },
+        {
+          "grupo": "procedencia",
+          "total": 35,
+          "vitorias": 0,
+          "condenacoes": 35,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 35,
+          "valores_conhecidos": 35,
+          "passivo_centavos": 21772045,
+          "decisoes_concluidas": 35,
+          "recursos_recomendados": 14
+        }
+      ],
+      "subsidios": [
+        {
+          "grupo": "ausentes",
+          "total": 29,
+          "vitorias": 8,
+          "condenacoes": 21,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 29,
+          "valores_conhecidos": 29,
+          "passivo_centavos": 12481072,
+          "decisoes_concluidas": 29,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "completos",
+          "total": 33,
+          "vitorias": 23,
+          "condenacoes": 10,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 33,
+          "valores_conhecidos": 33,
+          "passivo_centavos": 5713250,
+          "decisoes_concluidas": 33,
+          "recursos_recomendados": 6
+        },
+        {
+          "grupo": "essenciais",
+          "total": 38,
+          "vitorias": 17,
+          "condenacoes": 21,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 38,
+          "valores_conhecidos": 38,
+          "passivo_centavos": 12723132,
+          "decisoes_concluidas": 38,
+          "recursos_recomendados": 11
+        }
+      ],
+      "temas": [
+        {
+          "grupo": "acidente de trânsito com danos ao veículo",
+          "total": 6,
+          "vitorias": 4,
+          "condenacoes": 2,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 6,
+          "valores_conhecidos": 6,
+          "passivo_centavos": 1614679,
+          "decisoes_concluidas": 6,
+          "recursos_recomendados": 1
+        },
+        {
+          "grupo": "atraso de voo superior a quatro horas",
+          "total": 12,
+          "vitorias": 7,
+          "condenacoes": 5,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 12,
+          "valores_conhecidos": 12,
+          "passivo_centavos": 3417580,
+          "decisoes_concluidas": 12,
+          "recursos_recomendados": 2
+        },
+        {
+          "grupo": "cancelamento unilateral de plano de saúde",
+          "total": 7,
+          "vitorias": 5,
+          "condenacoes": 2,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 7,
+          "valores_conhecidos": 7,
+          "passivo_centavos": 1109151,
+          "decisoes_concluidas": 7,
+          "recursos_recomendados": 0
+        },
+        {
+          "grupo": "cobrança de tarifas bancárias não contratadas",
+          "total": 13,
+          "vitorias": 6,
+          "condenacoes": 7,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 3513698,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 2
+        },
+        {
+          "grupo": "cobrança indevida em fatura",
+          "total": 8,
+          "vitorias": 1,
+          "condenacoes": 7,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 8,
+          "valores_conhecidos": 8,
+          "passivo_centavos": 4353931,
+          "decisoes_concluidas": 8,
+          "recursos_recomendados": 3
+        },
+        {
+          "grupo": "falha na prestação de serviço contratado",
+          "total": 13,
+          "vitorias": 7,
+          "condenacoes": 6,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 3642233,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 3
+        },
+        {
+          "grupo": "interrupção injustificada do fornecimento de energia",
+          "total": 13,
+          "vitorias": 5,
+          "condenacoes": 8,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 4388567,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 2
+        },
+        {
+          "grupo": "negativação indevida do nome em cadastro de inadimplentes",
+          "total": 13,
+          "vitorias": 6,
+          "condenacoes": 7,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 13,
+          "valores_conhecidos": 13,
+          "passivo_centavos": 3561938,
+          "decisoes_concluidas": 13,
+          "recursos_recomendados": 1
+        },
+        {
+          "grupo": "produto entregue em desacordo com o anunciado",
+          "total": 8,
+          "vitorias": 4,
+          "condenacoes": 4,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 8,
+          "valores_conhecidos": 8,
+          "passivo_centavos": 3171738,
+          "decisoes_concluidas": 8,
+          "recursos_recomendados": 1
+        },
+        {
+          "grupo": "vício de produto não sanado no prazo legal",
+          "total": 7,
+          "vitorias": 3,
+          "condenacoes": 4,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 7,
+          "valores_conhecidos": 7,
+          "passivo_centavos": 2143939,
+          "decisoes_concluidas": 7,
+          "recursos_recomendados": 2
+        }
+      ],
+      "comarcas": [
+        {
+          "grupo": "São Paulo",
+          "total": 100,
+          "vitorias": 48,
+          "condenacoes": 52,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 100,
+          "valores_conhecidos": 100,
+          "passivo_centavos": 30917454,
+          "decisoes_concluidas": 100,
+          "recursos_recomendados": 17
+        }
+      ],
+      "tribunais": [
+        {
+          "grupo": "TJSP",
+          "total": 100,
+          "vitorias": 48,
+          "condenacoes": 52,
+          "desconhecidos": 0,
+          "resultados_conhecidos": 100,
+          "valores_conhecidos": 100,
+          "passivo_centavos": 30917454,
+          "decisoes_concluidas": 100,
+          "recursos_recomendados": 17
+        }
+      ]
+    }
+  },
+  "erros": [],
+  "artefatos": [
+    {
+      "nome": "processos.json",
+      "sha256": "5ad3f0f9f2f17f49d518258fdcf5ba8fa8adb5f35b20bca5baf6d5de68dff540"
+    },
+    {
+      "nome": "resumo.json",
+      "sha256": "4c4ff248ea7775d168714092119736ba18ab27fd4aa4506e36642b91a04a0de8"
+    },
+    {
+      "nome": "auditoria.json",
+      "sha256": "68d3f15d2b7b3d2bf55df08d3d104184279b28f3eee1e109209ed55a7e25fad7"
+    },
+    {
+      "nome": "relatorio.md",
+      "sha256": "864a21f6076d4c8eddbe504b7cb6a856798a72578844da2889c2b655c68b84a2"
+    },
+    {
+      "nome": "processos.xlsx",
+      "sha256": "335f95061cf04a7b753ca5ac3bff455b404455e1b43842c36a6b41d873aef586"
+    }
+  ],
+  "requisicoes_por_identidade": {
+    "3094235-58.2024.8.26.0009": 1,
+    "4226067-18.2024.8.26.0006": 1,
+    "4905582-22.2025.8.26.0002": 2,
+    "3871230-78.2024.8.26.0002": 1,
+    "5528972-91.2024.8.26.0001": 1,
+    "4567281-93.2024.8.26.0006": 1,
+    "5443951-27.2024.8.26.0003": 3,
+    "3320821-75.2025.8.26.0004": 1,
+    "2065818-59.2025.8.26.0007": 1,
+    "8294150-30.2025.8.26.0005": 1,
+    "3564217-57.2024.8.26.0004": 1,
+    "6159230-40.2024.8.26.0006": 1,
+    "3770370-43.2025.8.26.0008": 1,
+    "6229731-61.2025.8.26.0004": 1,
+    "1352896-85.2024.8.26.0006": 1,
+    "2188789-75.2024.8.26.0006": 1,
+    "3219824-83.2025.8.26.0004": 2,
+    "7897151-69.2024.8.26.0007": 1,
+    "4191175-78.2025.8.26.0004": 1,
+    "8761611-41.2024.8.26.0005": 1,
+    "9075854-37.2024.8.26.0008": 1,
+    "7550190-43.2025.8.26.0001": 1,
+    "3597059-34.2025.8.26.0008": 1,
+    "2022698-50.2024.8.26.0009": 1,
+    "2149597-86.2024.8.26.0003": 1,
+    "3011363-82.2024.8.26.0007": 1,
+    "5004485-43.2024.8.26.0006": 1,
+    "6304573-19.2024.8.26.0008": 2,
+    "7199635-46.2024.8.26.0004": 1,
+    "6022741-94.2024.8.26.0001": 1,
+    "1499513-82.2024.8.26.0001": 1,
+    "8908327-78.2025.8.26.0001": 1,
+    "6036031-42.2024.8.26.0004": 1,
+    "8838939-97.2024.8.26.0006": 1,
+    "5873631-68.2024.8.26.0001": 1,
+    "7539454-22.2024.8.26.0006": 1,
+    "1584944-90.2024.8.26.0008": 1,
+    "9534065-72.2024.8.26.0002": 1,
+    "8336747-66.2025.8.26.0001": 1,
+    "6091922-14.2025.8.26.0001": 1,
+    "4836769-74.2024.8.26.0003": 1,
+    "3812278-92.2025.8.26.0004": 1,
+    "1595533-85.2025.8.26.0006": 1,
+    "5993871-45.2025.8.26.0007": 1,
+    "9889527-97.2025.8.26.0006": 1,
+    "9751312-45.2024.8.26.0004": 1,
+    "5375828-83.2024.8.26.0005": 1,
+    "2029542-34.2024.8.26.0007": 1,
+    "8143080-27.2024.8.26.0008": 1,
+    "2623428-41.2024.8.26.0001": 1,
+    "9154816-75.2024.8.26.0004": 1,
+    "5216026-96.2025.8.26.0001": 2,
+    "4469614-79.2024.8.26.0009": 1,
+    "4516570-44.2024.8.26.0003": 1,
+    "8660224-83.2025.8.26.0006": 1,
+    "4795550-43.2025.8.26.0003": 1,
+    "7094431-69.2024.8.26.0001": 1,
+    "8712601-47.2025.8.26.0008": 1,
+    "1341107-23.2024.8.26.0006": 1,
+    "8170002-48.2024.8.26.0004": 1,
+    "4218612-71.2024.8.26.0007": 1,
+    "9046019-17.2024.8.26.0003": 1,
+    "4325262-92.2024.8.26.0007": 1,
+    "5718693-88.2024.8.26.0001": 1,
+    "9379649-83.2024.8.26.0006": 1,
+    "4892305-63.2025.8.26.0005": 1,
+    "8234890-42.2024.8.26.0001": 1,
+    "1325366-90.2024.8.26.0001": 1,
+    "1262037-72.2024.8.26.0001": 1,
+    "2135307-40.2025.8.26.0009": 1,
+    "1389174-87.2024.8.26.0008": 1,
+    "1068124-70.2025.8.26.0002": 1,
+    "9107791-86.2024.8.26.0008": 1,
+    "6055033-50.2024.8.26.0006": 1,
+    "1810295-57.2024.8.26.0001": 1,
+    "1971949-51.2025.8.26.0003": 1,
+    "3186394-32.2024.8.26.0003": 1,
+    "9645168-55.2025.8.26.0004": 1,
+    "8635102-64.2024.8.26.0007": 1,
+    "9166707-27.2025.8.26.0003": 2,
+    "4721398-69.2024.8.26.0008": 1,
+    "5492472-20.2024.8.26.0009": 1,
+    "1488224-93.2025.8.26.0008": 1,
+    "9789198-59.2025.8.26.0003": 1,
+    "8356660-78.2024.8.26.0004": 1,
+    "7804574-11.2024.8.26.0003": 2,
+    "1310595-18.2024.8.26.0005": 1,
+    "1882330-38.2024.8.26.0001": 2,
+    "9008529-10.2024.8.26.0001": 1,
+    "3049659-39.2024.8.26.0009": 1,
+    "9166132-48.2025.8.26.0001": 1,
+    "3999358-36.2025.8.26.0003": 1,
+    "6489308-46.2025.8.26.0001": 2,
+    "6428820-53.2024.8.26.0008": 1,
+    "5778917-13.2024.8.26.0006": 1,
+    "4461596-84.2025.8.26.0009": 1,
+    "9734703-17.2024.8.26.0001": 1,
+    "1831006-78.2025.8.26.0001": 1,
+    "2107007-31.2024.8.26.0001": 1,
+    "3373881-49.2025.8.26.0001": 2
+  },
+  "tokens_parciais": 182469
+}

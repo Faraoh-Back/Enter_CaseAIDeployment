@@ -19,9 +19,13 @@ const tabela=linhas=>[
 ].join('\n');
 const selecionados=processos.filter(p=>p.decisao_recurso==='recorrer').sort((a,b)=>b.beneficio_esperado_centavos-a.beneficio_esperado_centavos||a.numero_processo.localeCompare(b.numero_processo));
 const maiores=[...processos].filter(p=>p.valor_atualizado_centavos!==null&&p.valor_atualizado_centavos>0).sort((a,b)=>b.valor_atualizado_centavos-a.valor_atualizado_centavos||a.numero_processo.localeCompare(b.numero_processo)).slice(0,10);
+const detalhes=processos.length<=12?processos:processos.filter(p=>p.status_processamento!=='ok');
+const percentual=(n,d)=>d===0?'não calculável':`${(100*n/d).toFixed(1).replace('.',',')}%`;
 const executivo=[
  '# Relatório executivo — análise de sentenças','',
  '## Síntese e ações','',
+ `A carteira informada reúne ${resumo.total_identificado} processos, com ${resumo.vitorias_confirmadas} vitórias (${percentual(resumo.vitorias_confirmadas,resumo.total_identificado)} do total) e ${resumo.condenacoes} condenações. Há ${resumo.resultados_desconhecidos} resultados desconhecidos. O passivo ${resumo.passivo_parcial?'parcial conhecido':'conhecido'} atualizado é ${reais(resumo.passivo_centavos)}.`,
+ `A estratégia econômica seleciona ${resumo.recursos_recomendados} recursos, com desembolso considerado de ${reais(resumo.custo_recursos_centavos)} e benefício líquido esperado de ${reais(resumo.beneficio_esperado_recursos_centavos)}. Priorizar as recomendações abaixo e conferir cabimento e prazo antes de recorrer.`, '',
  `Data-base: ${resumo.data_referencia}. Processos identificados: ${resumo.total_identificado}.`,
  `Passivo ${resumo.passivo_parcial?'parcial conhecido':'conhecido completo para este lote'}: **${reais(resumo.passivo_centavos)}**.`,
  textoCobertura(resumo),
@@ -54,6 +58,7 @@ const executivo=[
  `Excluídos da decisão econômica por pendência: ${excluidosDecisao.join(', ')||'nenhum'}.`,
  'Zero na soma não substitui um valor desconhecido. Vitórias validadas contribuem com zero conhecido.','',
  '| Processo | Estado | Atualizado | Decisão | Problemas |','| --- | --- | --- | --- | --- |',
- ...processos.map(p=>`| ${p.numero_processo} | ${p.status_processamento} | ${reais(p.valor_atualizado_centavos)} | ${p.decisao_recurso} | ${p.problemas.map(x=>x.codigo).join(', ')||'nenhum'} |`),'',
+ ...detalhes.map(p=>`| ${p.numero_processo} | ${p.status_processamento} | ${reais(p.valor_atualizado_centavos)} | ${p.decisao_recurso} | ${p.problemas.map(x=>x.codigo).join(', ')||'nenhum'} |`),'',
+ ...(!detalhes.length?['Não há pendências no lote informado. Os dados completos por processo estão na planilha e no JSON auditável.','']:[]),
  'Escopo: somente o lote informado. Um lote de desenvolvimento não representa a carteira completa. Grupos pequenos não sustentam generalização; as associações observadas não são causalidade. A auditoria acompanha evidências, tentativas e frações; campos não confirmados exigem revisão.',
 ].join('\n');

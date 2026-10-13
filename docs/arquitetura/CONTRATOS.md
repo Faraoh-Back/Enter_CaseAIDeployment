@@ -184,3 +184,9 @@ A CLI individual continua `analisar_carteira`, com manifesto `s2.5-v1`. `npm run
 ## 13. Integração S2.6
 
 O diagnóstico offline exporta os mesmos outputs do lote em JSON, XLSX e Markdown, sem recalcular regras no Node. O manifesto enumera seis artefatos, incluindo entradas e XLSX, com hashes; o formato do manifesto do executor individual não mudou. Na auditoria XLSX, memória nula é representada pelo campo `memoria` com valor vazio; frações continuam texto e dados desconhecidos não viram zero. Os seis testes de integração verificam o contrato em arquivos reabertos. [Aceite local e limites](../validacao/S2_6_VALIDACAO.md).
+
+## 14. Carteira e entregáveis S3
+
+A CLI da carteira usa `analisar_lote`, com manifesto `s3-v1`, snapshots, checkpoint e timeout global de 30 minutos. Falha preserva checkpoint e não processados; não há retomada automática. `resumo.distribuicoes` é opcional no schema para preservar a análise individual, e obrigatório no output atual do lote: grupos de resultado, subsídio, tema, comarca e tribunal, com denominadores e passivo conhecido. O XLSX materializa suas folhas, sem consolidar regras fora do grafo.
+
+O relatório final tem síntese, estratégia e associações descritivas; não duplica os 100 detalhes da planilha. A finalização `s3-final-v1` reconsolida processos/auditorias reais sem rede, verificando hashes e preservando histórico, consumo e dinheiro. Manifestos de extração e finalização são distintos; métricas reais referem-se à origem, não ao replay/consolidação. [Resultados e limites](../validacao/S3_VALIDACAO.md).

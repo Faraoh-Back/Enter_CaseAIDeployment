@@ -108,3 +108,7 @@ A [S2.5](S2_5_VALIDACAO.md) oferece evidência determinística para R02, R04, R0
 ## 6. Integração S2.6
 
 A [S2.6](S2_6_VALIDACAO.md) amplia a evidência de integridade dos artefatos: 128 testes aprovados, 7/7 identidades e reconciliação de células, totais, pendências, auditoria e relatório. O XLSX é gerado e reaberto no teste integrado. Aceite local concluído; desktop atualizado, qualidade da LLM e critérios da carteira completa permanecem pendentes.
+
+## 7. Carteira e avaliação S3
+
+A [S3](S3_VALIDACAO.md) concluiu execução real 100/100, com 52 condenações auditadas e zero divergências nos controles estruturais, financeiros e decisórios. A avaliação reservada inicial reprovou; correção testada em desenvolvimento e reavaliação de conjunto já visto passaram em 12/12. Os dois resultados estão preservados, sem alegação de estudo cego. Suíte: 150 testes determinísticos aprovados. Aceite visual dos novos arquivos, API e reprodução do ZIP permanecem pendentes.

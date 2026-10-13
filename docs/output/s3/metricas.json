@@ -1,0 +1,30 @@
+{
+  "estado": "concluida",
+  "identificados": 100,
+  "processados": 100,
+  "nao_processados": 0,
+  "aptos": 100,
+  "pendencias": 0,
+  "erros_tecnicos": 0,
+  "primeira_tentativa_aprovada": 90,
+  "denominador_primeira_tentativa": 100,
+  "casos_com_retentativa": 10,
+  "requisicoes_extrator": 111,
+  "chamadas_reais": 111,
+  "duracao_ms": 272249,
+  "tokens_completos": true,
+  "tokens": {
+    "prompt_tokens": 145716,
+    "completion_tokens": 36753,
+    "total_tokens": 182469
+  },
+  "tokens_parciais_informados": {
+    "prompt_tokens": 145716,
+    "completion_tokens": 36753,
+    "total_tokens": 182469
+  },
+  "tentativas_com_uso_informado": 111,
+  "tentativas_sem_uso_informado": 0,
+  "custo_monetario": null,
+  "motivo_custo_null": "Não foi incorporada uma tabela de preços verificável com vigência; tokens não são custo monetário."
+}

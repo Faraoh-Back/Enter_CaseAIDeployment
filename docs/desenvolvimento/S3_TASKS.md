@@ -4,13 +4,13 @@ Todas as sete tarefas autorizadas nesta rodada, com um commit por tarefa. A aval
 
 | Tarefa | Estado e entrega |
 | --- | --- |
-| S3.1 | Executor implementado; 100 identidades e 52 condenações reconciliadas em replay de anotações. Execução real prevista após a avaliação reservada. |
-| S3.2 | Primeira avaliação real preservada: 4/12 aptos, 6/12 com campos críticos corretos; reprovada. Prompt/gabaritos permaneceram congelados. |
-| S3.3 | Auditor implementado e testado contra oráculo Fraction; execução sobre a carteira real prevista na consolidação final. |
+| S3.1 | Executor implementado; 100 identidades e 52 condenações reconciliadas em replay de anotações. Execução real concluída: 100 aptos, 48 vitórias e 52 condenações. |
+| S3.2 | Primeira reprovação preservada; correção aprovada em desenvolvimento e reavaliação de conjunto já visto: 12/12 aptos/críticos. |
+| S3.3 | Auditoria da carteira real concluída, zero divergências nos 100 resultados e nas 52 condenações. |
 | S3.4 | Implementada identificação por execução/data-base nas quatro abas, com dois testes novos e sete regressões do exportador verdes. |
 | S3.5 | Implementado relatório executivo no grafo, com distribuições no resumo e três testes verdes. |
 | S3.6 | Revisão concluída e três testes aprovados: ausência de contraste, denominador zero e premissas econômicas. |
-| S3.7 | Pendente: métricas reais e evidências finais, roteiro visual. |
+| S3.7 | Concluída: 111 chamadas, 4min32s, 182.469 tokens na carteira; métricas, artefatos e roteiro visual preservados. |
 
 ## S3.1 — execução e interrupções
 
@@ -29,7 +29,7 @@ Replay requer captura com respostas por identidade e hashes de todas as entradas
 
 ## S3.2 — primeira avaliação reservada
 
-Três testes do avaliador aprovados. A primeira rodada real processou os 12 reservados sem ajustes de prompt: 27 chamadas, 41.928 tokens informados, quatro aptos e oito pendências. Identidade e resultado corretos em 12/12; componentes corretos em 6/12, datas aplicáveis em 6/6. O reservado já havia participado do resumo-base preliminar; não é avaliação cega.
+Três testes do avaliador aprovados. A primeira rodada real processou os 12 reservados sem ajustes de prompt: 29 chamadas, 41.928 tokens informados, quatro aptos e oito pendências. Identidade e resultado corretos em 12/12; componentes corretos em 6/12, datas aplicáveis em 6/6. O reservado já havia participado do resumo-base preliminar; não é avaliação cega.
 
 A meta não foi atingida. [Rodada inicial preservada](../output/s3.2-reservado-inicial.json). Mudanças posteriores serão testadas em desenvolvimento e qualquer repetição será rotulada como conjunto já visto, sem substituir silenciosamente a rodada original. Custo não medido permanece null.
 
@@ -66,3 +66,9 @@ A associação de subsídio usa resultados conhecidos como denominador; resultad
 ## S3.6 — interpretação e denominadores
 
 Três testes novos confirmam: uma única comarca identificada não vira comparação mesmo quando há dados ausentes; resultados totalmente desconhecidos não produzem taxa falsa; premissas e associação descritiva são explícitas. Não se apresentam probabilidades do CSV como calibradas nem benefício esperado como economia realizada. Grupos sempre informam n e desconhecidos; a revisão visual deve avaliar legibilidade, além da consistência numérica já automatizada.
+
+## S3.7 — resultado final e revisão visual
+
+Execução real: 100 aptos, sem pendências; passivo R$ 309.174,54; 17 recursos, custo R$ 54.400,00, benefício líquido esperado R$ 24.676,16. Métricas incluem tentativas rejeitadas, não convertem uso ausente em zero e deixam custo não verificado null. Dois testes de métricas e dois de finalização aprovados. Reconsolidação preserva processos/auditorias reais e atualiza o template sem API.
+
+**150 testes verdes.** [Validação completa e roteiro visual](../validacao/S3_VALIDACAO.md). Os sete trabalhos estão implementados e validados localmente; o aceite visual dos novos artefatos está pendente. Nenhum trabalho da API/S4 foi iniciado.

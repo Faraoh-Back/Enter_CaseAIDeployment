@@ -30,6 +30,15 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s2.6-validacao.json](s2.6-validacao.json) | 128 testes, reconciliação integrada, hashes e entradas prontas para aceite offline da consolidação no aplicativo. |
 | [s2.6-processos.xlsx](s2.6-processos.xlsx) | Sete processos, resumo, auditoria e pendências exportados na prova S2.6. |
 | [s2.6-relatorio.md](s2.6-relatorio.md) | Markdown da mesma execução S2.6, reconciliado com JSON e XLSX. |
+| [s3.2-reservado-inicial.json](s3.2-reservado-inicial.json) | Primeira avaliação real reservada reprovada, preservada com hashes e outputs. |
+| [s3.2-desenvolvimento-correcao.json](s3.2-desenvolvimento-correcao.json) | Correção de orientação validada nos 12 casos de desenvolvimento. |
+| [s3.2-reservado-reavaliacao.json](s3.2-reservado-reavaliacao.json) | Reavaliação explicitamente de conjunto já visto: 12/12 aptos/críticos. |
+| [s3/manifest.json](s3/manifest.json) | Artefatos finais reconsolidados sem LLM, vinculados à execução real. |
+| [s3/processos.xlsx](s3/processos.xlsx) | Carteira de 100 linhas com quatro abas e identificação da execução. |
+| [s3/relatorio.md](s3/relatorio.md) | Relatório executivo final gerado no grafo. |
+| [s3/manifest-extracao-real.json](s3/manifest-extracao-real.json) | Execução real dos 100, hashes, 111 chamadas e duração. |
+| [s3/auditoria-documental.json](s3/auditoria-documental.json) | Zero divergências e prioridades de revisão. |
+| [s3/metricas.json](s3/metricas.json) | Tempo, tentativas, tokens completos e custo não medido null. |
 | [resumo-aplicativo-recebido.csv](resumo-aplicativo-recebido.csv) | Transcrição normalizada dos 100 resumos do grafo-base. |
 | [resumo-aplicativo-conferencia.json](resumo-aplicativo-conferencia.json) | Confronto desses resumos com os insumos originais. |
 | [resumo-aplicativo-metricas.json](resumo-aplicativo-metricas.json) | Consumo e anomalia de custo informados no resumo-base. |

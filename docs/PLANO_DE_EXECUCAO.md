@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0/S1 e implementação local S2.1–S2.6 concluídas, com 128 testes aprovados. JSON/XLSX/Markdown do lote de sete casos reconciliados; aceite visual S2 parcial: plugin e três cenários de calendário confirmados pelo candidato; quatro outputs da consolidação recebidos e revisados; extração real de uma sentença e cenário sem subsídio validados. Resta a conferência visual dos arquivos exportados. S3–S5 ainda não executadas. [Tarefas S2](desenvolvimento/S2_TASKS.md).
+**Estado:** S0–S3 implementadas e validadas localmente, com 150 testes aprovados. Execução real: 100 aptos, 48 vitórias e 52 condenações; auditoria sem divergências. Aceite visual dos novos artefatos S3 pendente; S4/S5 ainda não executadas. [Validação S3](validacao/S3_VALIDACAO.md).
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -78,13 +78,15 @@ Execução autorizada das sete tarefas, com commits separados. [Estado e contrat
 
 Registrar na avaliação que os 12 reservados já apareceram na execução preliminar do resumo-base enviada pelo candidato. O novo extrator ainda não foi executado nesse conjunto; não descrever sua avaliação futura como primeira exposição dos documentos à LLM.
 
-- [ ] **S3.1** — Processar os 100 casos; reconciliar identidades e referências, sem limites fixos de 100 no código de produção.
-- [ ] **S3.2** — Aplicar o conjunto reservado sem novos ajustes de prompt. Se houver falha, registrar o resultado; uma nova rodada deverá declarar que o conjunto já foi visto.
-- [ ] **S3.3** — Auditar os valores, datas e decisões dos 52 casos condenatórios contra os insumos; conferir classificação dos 100 dispositivos. Priorizar também maiores valores, limiares e todas as retentativas.
-- [ ] **S3.4** — Gerar abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`; adicionar filtros, cabeçalhos, moeda, data-base e identificação da execução.
-- [ ] **S3.5** — Produzir relatório com síntese, êxito, passivo, estratégia de recursos, associações e limitações. Cálculos e texto-base são produzidos no grafo.
-- [ ] **S3.6** — Conferir correlação versus causalidade, denominadores, probabilidades assumidas e benefício esperado versus economia realizada.
-- [ ] **S3.7** — Medir tempo, falhas, retentativas e tokens disponíveis; registrar custo somente se houver informação verificável de preço/consumo.
+- [x] **S3.1** — Processar os 100 casos; reconciliar identidades e referências, sem limites fixos de 100 no código de produção.
+- [x] **S3.2** — Aplicar o conjunto reservado sem novos ajustes de prompt. Se houver falha, registrar o resultado; uma nova rodada deverá declarar que o conjunto já foi visto.
+- [x] **S3.3** — Auditar os valores, datas e decisões dos 52 casos condenatórios contra os insumos; conferir classificação dos 100 dispositivos. Priorizar também maiores valores, limiares e todas as retentativas.
+- [x] **S3.4** — Gerar abas `Processos`, `Resumo`, `Auditoria` e `Pendencias`; adicionar filtros, cabeçalhos, moeda, data-base e identificação da execução.
+- [x] **S3.5** — Produzir relatório com síntese, êxito, passivo, estratégia de recursos, associações e limitações. Cálculos e texto-base são produzidos no grafo.
+- [x] **S3.6** — Conferir correlação versus causalidade, denominadores, probabilidades assumidas e benefício esperado versus economia realizada.
+- [x] **S3.7** — Medir tempo, falhas, retentativas e tokens disponíveis; registrar custo somente se houver informação verificável de preço/consumo.
+
+**Validação local:** execução real e auditoria concluídas; [evidências e roteiro visual](validacao/S3_VALIDACAO.md).
 
 **Saída:** critérios obrigatórios atendidos; pendências resolvidas para o lote fornecido ou explicitamente reportadas como limitações, sem declarar a entrega validada integralmente.
 
