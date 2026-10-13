@@ -1,14 +1,13 @@
 import {mkdir, readFile, writeFile, rename, rm} from 'node:fs/promises';
 import path from 'node:path';
 import {randomUUID, createHash} from 'node:crypto';
-import {runGraphInFile} from './rivet-runtime.mjs';
+import {runGraphInFile, reservarExecucaoRivet, instalarTransporteRivet} from './rivet-runtime.mjs';
 import {inputDirectory} from '../scripts/case-files.mjs';
 import {exportarXlsx} from './exportar-xlsx.mjs';
 
 export const hash = value => createHash('sha256').update(value).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
 const names = {processos_texto:'processos.txt',subsidios_texto:'status_subsidios.txt',indices_texto:'tabela_indices.csv',custos_texto:'custo_recurso_por_tribunal.csv',probabilidades_texto:'subsidios_probabilidade_reversao.csv'};
-let active = false;
 export async function entradasCarteira(dir) {
   dir ??= await inputDirectory();
   if (!dir) throw new Error('INPUT_NAO_ENCONTRADO');
@@ -16,14 +15,16 @@ export async function entradasCarteira(dir) {
 }
 
 /** Executa o lote no Rivet. Node apenas transporta, registra eventos e materializa os outputs. */
-export async function executarCarteira({modo, destino='outputs/s3', entradas, captura, apiKey=process.env.OPENAI_API_KEY,
+export async function executarCarteira({execucao_id, modo, destino='outputs/s3', entradas, captura, apiKey=process.env.OPENAI_API_KEY,
   modelo=process.env.LLM_MODEL || 'gpt-4.1-mini-2025-04-14', signal, timeoutMs=30*60*1000, exportador=exportarXlsx}={}) {
+  if (execucao_id !== undefined && !/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(execucao_id)) throw new Error('ID_INVALIDO');
   if (!['real','replay'].includes(modo)) throw new Error('Escolha --real ou --replay');
   if (modo==='real' && !apiKey?.trim()) throw new Error('Configure OPENAI_API_KEY');
   if (modo==='replay' && !captura) throw new Error('Replay exige captura com respostas por identidade');
   if (!Number.isSafeInteger(timeoutMs) || timeoutMs<=0) throw new Error('TIMEOUT_INVALIDO');
-  if (active) throw new Error('EXECUCAO_ATIVA');
-  signal?.throwIfAborted();active=true;
+  signal?.throwIfAborted();
+  const liberarExecucao = reservarExecucaoRivet();
+  let restaurarTransporte = () => {};
   const nativeFetch=globalThis.fetch,warn=console.warn,errorLog=console.error;
   const redact=value=>String(value).replaceAll(apiKey||'\u0000','[CREDENCIAL OMITIDA]').replace(/sk-[A-Za-z0-9_*-]+/g,'[CREDENCIAL OMITIDA]');
   const controller=new AbortController();
@@ -49,9 +50,13 @@ export async function executarCarteira({modo, destino='outputs/s3', entradas, ca
     }
     const project=await readFile('rivet/analise_sentencas.rivet-project');
     const schemas=Object.fromEntries(await Promise.all(['extracao','processo','resumo'].map(async k=>[k,await readFile(`schemas/${k}.schema.json`,'utf8')])));
-    const id=`${new Date().toISOString().replace(/[:.]/g,'-')}-${randomUUID()}`;
-    await mkdir(destino,{recursive:true});directory=path.resolve(destino,id);await mkdir(directory);
-    manifest={versao_contrato:'s3-v1',execucao_id:id,estado:'executando',modo,grafo:'analisar_lote',iniciado_em:new Date().toISOString(),encerrado_em:null,duracao_ms:null,
+    const id=execucao_id??`${new Date().toISOString().replace(/[:.]/g,'-')}-${randomUUID()}`;
+    await mkdir(destino,{recursive:true});directory=path.resolve(destino,id);
+    if (execucao_id) {
+      const initial=JSON.parse(await readFile(path.join(directory,'manifest.json'),'utf8'));
+      if (initial.execucao_id!==id || initial.estado!=='executando' || initial.origem_http!==true) throw new Error('EXECUCAO_NAO_PREPARADA');
+    } else await mkdir(directory);
+    manifest={versao_contrato:'s4-v1',origem_http:Boolean(execucao_id),execucao_id:id,estado:'executando',modo,grafo:'analisar_lote',iniciado_em:new Date().toISOString(),encerrado_em:null,duracao_ms:null,
       node:process.version,sdk:'1.25.0',modelo_solicitado:modelo,timeout_global_ms:timeoutMs,parametros_enviados:null,
       entradas_sha256:Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,hash(v)])),projeto_sha256:hash(project),
       prompt_sha256:hash(await readFile('rivet/prompts/extracao-s1.txt')),plugin_sha256:hash(await readFile('rivet/plugins/enter-bounded-extraction/index.js')),
@@ -62,7 +67,7 @@ export async function executarCarteira({modo, destino='outputs/s3', entradas, ca
     if(captured) await atomic('captura.json',capturedBytes);
     console.warn=(...args)=>warn(...args.map(redact));console.error=(...args)=>errorLog(...args.map(redact));
     timer=setTimeout(()=>controller.abort(new Error('TIMEOUT_GLOBAL')),timeoutMs);
-    globalThis.fetch=async(url,options)=>{
+    restaurarTransporte=instalarTransporteRivet(async(url,options)=>{
       if(String(url)!=='https://api.openai.com/v1/chat/completions') throw new Error('ENDPOINT_INESPERADO');
       const body=JSON.parse(options.body);
       // Identidade conferida pelo grafo; aqui só associa a chamada ao registro de transporte.
@@ -78,7 +83,7 @@ export async function executarCarteira({modo, destino='outputs/s3', entradas, ca
       manifest.chamadas_reais++;
       const response=await nativeFetch(url,{...options,signal:AbortSignal.any([controller.signal,options.signal].filter(Boolean))});
       http.push({numero_processo:id,tentativa:calls[id],status:response.status});return response;
-    };
+    });
     outputs=await runGraphInFile(path.join(directory,'projeto.rivet-project'),{graph:'analisar_lote',openAiKey:modo==='real'?apiKey:'replay-sem-credencial',openAiEndpoint:'https://api.openai.com/v1/chat/completions',openAiOrganization:'',abortSignal:controller.signal,
       inputs:Object.fromEntries(Object.entries({...raw,modelo}).map(([k,value])=>[k,{type:'string',value}])),
       onNodeFinish:({node,outputs:r})=>{
@@ -111,7 +116,7 @@ export async function executarCarteira({modo, destino='outputs/s3', entradas, ca
     throw Object.assign(new Error(redact(error.message)),{diretorio:directory});
   } finally {
     clearTimeout(timer);controller.abort();signal?.removeEventListener('abort',abort);
-    await queue;globalThis.fetch=nativeFetch;console.warn=warn;console.error=errorLog;active=false;
+    await queue;restaurarTransporte();console.warn=warn;console.error=errorLog;liberarExecucao();
     if(manifest) {
       manifest.encerrado_em=new Date().toISOString();manifest.duracao_ms=Date.now()-start;
       manifest.processados=checkpoints.length;manifest.nao_processados=manifest.identidades.filter(id=>!checkpoints.some(c=>c.processos[0].numero_processo===id));

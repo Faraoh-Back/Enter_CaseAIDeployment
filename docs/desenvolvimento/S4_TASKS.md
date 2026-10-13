@@ -1,11 +1,11 @@
 # S4 — interface HTTP por tarefa
 
-S3 V0 aceita visualmente pelo candidato. Nesta rodada foi concluída somente S4.1: contrato HTTP em testes deliberadamente vermelhos. A API será implementada na S4.2.
+S3 V0 aceita visualmente pelo candidato. S4.1 preserva o vermelho inicial. S4.2 implementada: testes de contrato e integração verdes; tarefas seguintes em andamento.
 
 | Tarefa | Entrega | Estado |
 | --- | --- | --- |
 | S4.1 | Testes HTTP de POST, estado, downloads, concorrência, falhas e reinício. | Vermelho observado: 0/10 aprovados; módulo da API ausente. |
-| S4.2 | Servidor Node e executor compartilhado com CLI; uma execução ativa. | Pendente |
+| S4.2 | Servidor Node e executor compartilhado com CLI; uma execução ativa. | Concluída: 10 testes HTTP + 3 de integração verdes. |
 | S4.3 | Manifesto antes do 202, artefatos íntegros e recuperação após reinício. | Pendente |
 | S4.4 | Revisão: API sem classificação, dinheiro ou indicadores de negócio. | Pendente |
 | S4.5 | Sequência curl verificada, documentação e configuração segura. | Pendente |
@@ -27,3 +27,13 @@ Resultado observado: **0 aprovados, 10 falhas**, sem skips. Todos falharam ao im
 A suíte fica fora de `npm test` até ficar verde, como nas fatias anteriores. A referência de regressão é a suíte S3 de 150 testes já preservada; não foi repetida nesta rodada porque não houve alteração de código de produção. S4.2 deverá incorporar os testes HTTP quando aprovados. Sem chamadas à LLM e sem servidor de produção iniciado.
 
 Commit sugerido: `test: define contrato HTTP e registra vermelho da S4.1`.
+
+## S4.2 — servidor e executor compartilhado
+
+`src/api.mjs` usa HTTP nativo do Node, com POST estrito, consulta, downloads restritos e uma execução ativa. Nenhuma dependência foi adicionada. `scripts/servidor.mjs` inicia a API em loopback por padrão, com execução real ou replay configurado pelo operador; o cliente só envia `dataset=case`.
+
+A carteira aceita ID previamente alocado por HTTP e verifica seu manifesto inicial. A CLI continua criando seu próprio ID. S1 e carteira compartilham exclusão de execução no runtime. O transporte de replay/limites passou a ser específico do plugin, evitando interceptar o `fetch` de consultas HTTP concorrentes; no aplicativo, o plugin usa `fetch` nativo quando não há adaptador. As fórmulas e os schemas não foram alterados.
+
+10 testes HTTP e três de integração API/CLI aprovados com sockets locais reais. A comparação usa o grafo e a resposta capturada, sem rede LLM: JSONs/Markdown idênticos, planilha reaberta e downloads íntegros. Replay inválido preserva três tentativas e retorna concluída com pendências. Atualizar a cópia local do plugin antes de próxima conferência no aplicativo.
+
+Os sockets foram bloqueados pelo sandbox (`listen EPERM`); a execução autorizada fora desse bloqueio passou. Não foram substituídos por simulação de requisições. Regressões do executor S1/carteira foram executadas separadamente.

@@ -11,7 +11,7 @@
     "s0:build": "node scripts/build-s0.mjs",
     "s0:check": "node scripts/check-s0.mjs",
     "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
-    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte && npm run test:s2:fronteiras && npm run test:s2:cobertura && npm run test:s2:integracao && npm run test:s3:execucao && npm run test:s3:avaliacao && npm run test:s3:auditoria && npm run test:s3:xlsx && npm run test:s3:relatorio && npm run test:s3:premissas && npm run test:s3:metricas && npm run test:s3:finalizacao",
+    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte && npm run test:s2:fronteiras && npm run test:s2:cobertura && npm run test:s2:integracao && npm run test:s3:execucao && npm run test:s3:avaliacao && npm run test:s3:auditoria && npm run test:s3:xlsx && npm run test:s3:relatorio && npm run test:s3:premissas && npm run test:s3:metricas && npm run test:s3:finalizacao && npm run test:s4:http && npm run test:s4:integracao",
     "test:s2:incertezas": "node tests/s2-incertezas.test.mjs",
     "test:s2": "node tests/s2-resultados.test.mjs",
     "test:s0": "node tests/s0.test.mjs",
@@ -41,7 +41,9 @@
     "test:s3:metricas": "node tests/s3-metricas.test.mjs",
     "s3:finalizar": "node scripts/finalizar-carteira.mjs",
     "test:s3:finalizacao": "node tests/s3-finalizacao.test.mjs",
-    "test:s4:http": "node tests/s4-http.test.mjs"
+    "test:s4:http": "node tests/s4-http.test.mjs",
+    "api:start": "node scripts/servidor.mjs",
+    "test:s4:integracao": "node tests/s4-integracao.test.mjs"
   },
   "dependencies": {
     "@ironclad/rivet-node": "1.25.0",

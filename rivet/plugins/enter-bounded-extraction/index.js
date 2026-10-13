@@ -1,6 +1,6 @@
 // Plugin isomórfico: nenhum import de Node/Rivet e nenhum segredo no projeto.
 // A avaliação de domínio é delegada ao subgrafo informado, nunca reimplementada aqui.
-export default function initialize(rivet) {
+export default function initialize(rivet, transport = {}) {
   const object = value => ({type:'object',value});
   const string = value => ({type:'string',value});
   const ports = items => items.map(([id,dataType])=>({id,dataType,title:id,required:true}));
@@ -32,7 +32,7 @@ export default function initialize(rivet) {
           try {
             const headers={'Content-Type':'application/json',Authorization:`Bearer ${context.settings.openAiKey}`};
             if(context.settings.openAiOrganization) headers['OpenAI-Organization']=context.settings.openAiOrganization;
-            const response=await fetch(endpoint,{method:'POST',headers,signal:controller.signal,body:JSON.stringify({
+            const response=await (transport.fetch ?? globalThis.fetch)(endpoint,{method:'POST',headers,signal:controller.signal,body:JSON.stringify({
               model:inputs.model.value,temperature:0,max_tokens:2500,stream:true,stream_options:{include_usage:true},
               response_format:{type:'json_schema',json_schema:{name:'extracao_sentenca',strict:true,schema:inputs.responseSchema.value}},
               messages:correction?[...messages,{role:'user',content:`A extração anterior foi rejeitada. Releia o documento e corrija: ${correction}. Não invente dados ausentes; use null.`}]:messages,

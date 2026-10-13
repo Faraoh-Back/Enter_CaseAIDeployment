@@ -1,13 +1,12 @@
 import { mkdir, readFile, writeFile, rename, rm } from 'node:fs/promises';
 import path from 'node:path';
 import { randomUUID, createHash } from 'node:crypto';
-import { runGraphInFile } from './rivet-runtime.mjs';
+import { runGraphInFile, reservarExecucaoRivet, instalarTransporteRivet } from './rivet-runtime.mjs';
 import { entradasS1 } from '../scripts/s1-fixture.mjs';
 import { exportarXlsx } from './exportar-xlsx.mjs';
 
 const hash = value => createHash('sha256').update(value).digest('hex');
 const json = value => JSON.stringify(value, null, 2) + '\n';
-let active = false;
 
 // Orquestra transporte e arquivos; interpretação e cálculo permanecem no grafo.
 export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'docs/output/s1.2-llm-aprovada.json',
@@ -16,8 +15,8 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
   if (!['real','replay'].includes(modo)) throw new Error('Escolha --real ou --replay');
   if (modo === 'real' && !apiKey?.trim()) throw new Error('Configure OPENAI_API_KEY antes de executar --real');
   // O SDK usa fetch global; impedir interferência entre transportes na mesma instância.
-  if (active) throw new Error('EXECUCAO_ATIVA');
-  active = true;
+  const liberarExecucao = reservarExecucaoRivet();
+  let restaurarTransporte = () => {};
   const nativeFetch = globalThis.fetch, warn = console.warn, errorLog = console.error;
   const redact = value => {
     let text = String(value);
@@ -70,7 +69,7 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
     console.warn = (...args) => warn(...args.map(redact));
     console.error = (...args) => errorLog(...args.map(redact));
     timer = setTimeout(() => controller.abort(),45000);
-    globalThis.fetch = async (url, options) => {
+    restaurarTransporte = instalarTransporteRivet(async (url, options) => {
       if (String(url) !== 'https://api.openai.com/v1/chat/completions' || ++manifest.requisicoes_extrator > 3) {
         controller.abort(); throw new Error('Limite S2: três requisições ao endpoint de extração');
       }
@@ -88,7 +87,7 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
         manifest.http_status = response.status;
         return response;
       }
-    };
+    });
     const outputs = await runGraphInFile(path.join(directory,'projeto.rivet-project'), {
       graph:'analisar_carteira', openAiKey:modo === 'real' ? apiKey : 'replay-sem-credencial',
       openAiOrganization:'', openAiEndpoint:'https://api.openai.com/v1/chat/completions',
@@ -131,7 +130,7 @@ export async function executarS1({ destino = 'outputs/s1.4', modo, captura = 'do
     throw Object.assign(new Error(redact(error.message)), {diretorio:directory});
   } finally {
     clearTimeout(timer); controller.abort();
-    globalThis.fetch = nativeFetch; console.warn = warn; console.error = errorLog; active = false;
+    restaurarTransporte(); console.warn = warn; console.error = errorLog; liberarExecucao();
     if (manifest) {
       if (typeof responseText === 'string') {
         await atomic('extracao-resposta.txt',redact(responseText));
