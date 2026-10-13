@@ -24,6 +24,9 @@ Esta pasta reúne os registros preservados das verificações do projeto. Os rel
 | [s2.4-validacao.json](s2.4-validacao.json) | 84 testes offline aprovados, hashes e exemplos reais do grafo com transporte simulado; aceite visual pendente. |
 | [s2.5-validacao.json](s2.5-validacao.json) | 122 testes, vermelho observado, hashes e lote misto de sete casos com transporte simulado. |
 | [s2.5-relatorio.md](s2.5-relatorio.md) | Relatório do lote misto, com exclusões financeiras e decisórias explícitas. |
+| [s2-aplicativo-sem-subsidio.json](s2-aplicativo-sem-subsidio.json) | Cenário real sem linha de subsídio: atualização preservada, decisão pendente e uma tentativa aprovada, conforme outputs do candidato. |
+| [s2-aplicativo-extracao-real.json](s2-aplicativo-extracao-real.json) | Outputs enviados pelo candidato da extração real no aplicativo: uma sentença, primeira tentativa aprovada, evidências e financeiro conferidos. |
+| [s2-aplicativo-aceite-parcial.json](s2-aplicativo-aceite-parcial.json) | Plugin e calendário confirmados pelo candidato; quatro outputs da consolidação recebidos e revisados; demais verificações pendentes. |
 | [s2.6-validacao.json](s2.6-validacao.json) | 128 testes, reconciliação integrada, hashes e entradas prontas para aceite offline da consolidação no aplicativo. |
 | [s2.6-processos.xlsx](s2.6-processos.xlsx) | Sete processos, resumo, auditoria e pendências exportados na prova S2.6. |
 | [s2.6-relatorio.md](s2.6-relatorio.md) | Markdown da mesma execução S2.6, reconciliado com JSON e XLSX. |

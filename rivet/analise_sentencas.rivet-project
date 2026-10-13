@@ -7638,5 +7638,9 @@ data:
     id: eA1bC2dE3fG4hI5jK6lMn
     mainGraphId: analisar_carteira
     title: Resumo de Sentença
-  plugins: []
+  plugins:
+    - id: enter-bounded-extraction
+      package: enter-bounded-extraction
+      tag: latest
+      type: package
   references: []

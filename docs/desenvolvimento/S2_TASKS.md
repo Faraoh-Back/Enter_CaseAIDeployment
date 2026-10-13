@@ -1,6 +1,6 @@
 # S2 — desenvolvimento por tarefa
 
-Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.6 implementada e aceita localmente**: 128 testes aprovados e JSON/XLSX/Markdown reconciliados. Aceite visual da versão atual pendente. [Validação e reprodução](../validacao/S2_6_VALIDACAO.md).
+Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.6 implementada e aceita localmente**: 128 testes aprovados e JSON/XLSX/Markdown reconciliados. Aceite visual parcial: carregamento do plugin e três cenários de calendário confirmados pelo candidato; quatro outputs da consolidação recebidos e revisados; extração real de uma sentença e cenário sem subsídio validados. Resta a conferência visual dos arquivos exportados. [Validação e reprodução](../validacao/S2_6_VALIDACAO.md).
 
 | Tarefa | Entrega revisável | Estado |
 | --- | --- | --- |
@@ -9,7 +9,7 @@ Uma tarefa por rodada, com revisão e commit pelo candidato. **S2.6 implementada
 | S2.3 — aceitação das incertezas | Testes de dados ausentes/inválidos/futuros, divergências, duplicatas, JSON inválido, retentativas e falhas HTTP, distinguindo falhas globais de pendências individuais. | Concluída |
 | S2.4 — pendências e retentativas | Implementar contratos de S2.3 no Rivet e ajustar limites do executor; até três tentativas totais, diagnóstico auditável e estados terminais. | Concluída no SDK |
 | S2.5 — fronteiras e cobertura | Calendário e dinheiro nas fronteiras; pequeno lote misto, uma linha por identidade, totais parciais e exclusões explícitas. | Concluída no SDK |
-| S2.6 — integração e aceite | Reconciliar JSON/XLSX/Markdown, revisar responsabilidades e contratos, reunir suítes verdes e registrar aceite local/aplicativo. | Implementação e aceite local concluídos; aplicativo pendente |
+| S2.6 — integração e aceite | Reconciliar JSON/XLSX/Markdown, revisar responsabilidades e contratos, reunir suítes verdes e registrar aceite local/aplicativo. | Implementação e aceite local concluídos; aplicativo parcial (plugin, calendário, consolidação, extração real e cenário sem subsídio; falta conferir os arquivos visualmente) |
 
 Cada tarefa começa verificando seu escopo e termina com resultado e sugestão de commit. Caso os testes revelem uma mudança necessária no contrato, documentá-la na tarefa correspondente antes da implementação. Processamento dos 100 casos e avaliação do conjunto reservado permanecem em S3.
 

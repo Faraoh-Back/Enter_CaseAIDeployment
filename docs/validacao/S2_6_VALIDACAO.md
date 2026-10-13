@@ -1,6 +1,6 @@
 # S2.6 — integração e aceite local
 
-**Implementação e aceite local concluídos: 128 testes aprovados, sem chamadas reais. Aceite no aplicativo pendente.** A prova de sete processos agora produz JSON, XLSX e Markdown na mesma execução do grafo. [Evidência](../output/s2.6-validacao.json), [planilha](../output/s2.6-processos.xlsx) e [relatório](../output/s2.6-relatorio.md).
+**Implementação e aceite local concluídos: 128 testes aprovados, sem chamadas reais. Aceite no aplicativo parcial: plugin e calendário confirmados pelo candidato; quatro outputs da consolidação recebidos e revisados.** A prova de sete processos agora produz JSON, XLSX e Markdown na mesma execução do grafo. [Evidência](../output/s2.6-validacao.json), [planilha](../output/s2.6-processos.xlsx) e [relatório](../output/s2.6-relatorio.md).
 
 ## Entrega e contrato
 
@@ -54,9 +54,27 @@ npm run s2:check
 
 Os três comandos são offline, não carregam `.env` e não medem qualidade de extração de uma LLM. O último informa o diretório completo da execução. Abra `processos.xlsx` e `relatorio.md` desse mesmo diretório para uma conferência manual. Os exemplos em `docs/output/` são cópias selecionadas; o comando não os sobrescreve.
 
-## Aceite no aplicativo: pendente
+## Aceite no aplicativo: parcial
 
-O aceite visual informado para S1.5 não atesta os nós adicionados em S2.4/S2.5. Nesta tarefa não houve acesso ao aplicativo do candidato nem recebimento de novos outputs. O SDK passou; não se declarou o desktop aprovado por inferência.
+Durante o aceite, o candidato encontrou `Unknown node type enterBoundedExtraction`. A inspeção confirmou que a instalação local continha os arquivos corretos, mas o projeto estava serializado com `plugins: []`. O SDK registrava o plugin por código, ocultando essa lacuna. O gerador e o projeto agora declaram a dependência de pacote `enter-bounded-extraction`, tag `latest`. O teste de estrutura foi ampliado: falhou antes da correção e passou depois; as suítes de refatoração (2 testes) e integração (6 testes) foram reexecutadas e aprovadas sem rede. As evidências S2.6 anteriores permanecem históricas, com o hash do projeto daquela rodada.
+
+Feche a cópia antiga no aplicativo e reabra o arquivo atualizado do disco, evitando sobrescrevê-lo com a versão antiga ainda em memória. Não é necessário repetir `git init` ou copiar o plugin, se os arquivos já correspondem ao repositório. Após a reabertura, o candidato confirmou o nó disponível, suas quatro entradas e três saídas. Isso confirma o carregamento, mas ainda não a execução do extrator.
+
+O aceite visual informado para S1.5 não atesta os nós adicionados em S2.4/S2.5. O aceite atual é informado pelo candidato; não houve acesso direto ao aplicativo. Os quatro outputs da consolidação foram posteriormente recebidos e revisados contra a referência; o resumo também foi comparado por código. A evidência distingue essa confirmação dos testes automatizados.
+
+Estado confirmado nesta conversa ([registro](../output/s2-aplicativo-aceite-parcial.json)):
+
+- [x] Plugin carregado; tipo `enterBoundedExtraction` disponível, com quatro entradas e três saídas.
+- [x] `s2_calendario`: `2026-01-31` → `2026-02-28` = **0**.
+- [x] `s2_calendario`: `2024-02-29` → `2025-02-28` = **11**.
+- [x] `s2_calendario`: `2026-02-27` → `2026-05-31` = **3**.
+- [x] Execução de `s2_consolidacao_lote` e resumo: output recebido em 13/10/2026, todos os campos iguais à evidência S2.6.
+- [x] `processos`, `auditoria` e `relatorio_markdown` recebidos e revisados em 13/10/2026: sete identidades, valores, estados, tentativas, memória e relatório coerentes com a referência. A revisão do conteúdo da conversa não é comparação byte a byte de arquivos.
+
+Essa prova valida a consolidação offline. Os históricos de HTTP/retentativas já estavam nas entradas preenchidas: não representam chamadas novas ao provedor durante essa execução.
+- [x] Execução real de `analisar_lote` com uma sentença: extração aprovada na primeira tentativa, HTTP 200, 1.467 tokens. Sete evidências literais conferidas contra a sentença original; financeiro e memória iguais à referência. [Registro](../output/s2-aplicativo-extracao-real.json). Não certifica execução de múltiplos itens ou carteira completa.
+- [x] Cenário de subsídio não localizado no aplicativo: atualizado `667314`, decisão pendente, probabilidade/benefício nulos, código `SUBSIDIO_NAO_LOCALIZADO`. Extração aprovada na primeira tentativa, HTTP 200 e 1.467 tokens informados. Memória preserva atualização sem simular benefício. [Outputs recebidos](../output/s2-aplicativo-sem-subsidio.json).
+- [ ] Conferência visual dos arquivos exportados.
 
 Para uma conferência **sem chamada à LLM**:
 

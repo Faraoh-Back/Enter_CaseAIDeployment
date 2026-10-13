@@ -78,6 +78,9 @@ for (const [index, [id, dataType]] of Object.entries({ processos: 'object[]', re
 }
 const file = 'rivet/analise_sentencas.rivet-project';
 const project = await loadProjectFromFile(file);
+// O SDK registra o plugin por código; o aplicativo precisa da dependência serializada.
+const extractionPlugin = { type: 'package', id: 'enter-bounded-extraction', package: 'enter-bounded-extraction', tag: 'latest' };
+project.plugins = [...(project.plugins ?? []).filter(p => p.id !== extractionPlugin.id), extractionPlugin];
 // Encapsula os nós existentes sem duplicar suas regras. Portas de fronteira
 // tornam-se Graph Inputs/Outputs tipados; erros continuam propagados ao principal.
 let mainNodes = nodes;

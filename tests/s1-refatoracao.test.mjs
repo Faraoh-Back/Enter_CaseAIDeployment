@@ -8,6 +8,9 @@ import { executarS1 } from '../src/executar-s1.mjs';
 
 test('S1.5: orquestrador delega às cinco responsabilidades em subgrafos', async () => {
   const project = await loadProjectFromFile('rivet/analise_sentencas.rivet-project');
+  assert.deepEqual(project.plugins?.filter(p => p.id === 'enter-bounded-extraction'), [{
+    type: 'package', id: 'enter-bounded-extraction', package: 'enter-bounded-extraction', tag: 'latest',
+  }], 'O aplicativo precisa da dependência declarada no projeto, além do registro no SDK');
   const main = project.graphs.analisar_carteira;
   const calls = main.nodes.filter(n => n.type === 'subGraph');
   assert.equal(calls.length,5);

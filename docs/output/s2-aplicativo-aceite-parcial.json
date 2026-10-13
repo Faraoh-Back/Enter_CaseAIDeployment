@@ -1,0 +1,168 @@
+{
+  "etapa": "S2",
+  "aceite_aplicativo": "parcial",
+  "origem": "Plugin e calendário: confirmação textual do candidato. Consolidação: quatro outputs enviados pelo candidato nesta conversa e revisados contra a evidência S2.6.",
+  "plugin": {
+    "estado": "carregamento_confirmado_pelo_candidato",
+    "tipo": "enterBoundedExtraction",
+    "entradas": [
+      "prompt",
+      "model",
+      "responseSchema",
+      "preparado"
+    ],
+    "saidas": [
+      "response",
+      "usage",
+      "controle"
+    ],
+    "execucao_extrator_validada": true
+  },
+  "calendario": {
+    "grafo": "s2_calendario",
+    "estado": "validado_pelo_candidato",
+    "cenarios": [
+      {
+        "citacao": "2026-01-31",
+        "referencia": "2026-02-28",
+        "meses_esperados": 0,
+        "resultado": "candidato confirmou correspondência"
+      },
+      {
+        "citacao": "2024-02-29",
+        "referencia": "2025-02-28",
+        "meses_esperados": 11,
+        "resultado": "candidato confirmou correspondência"
+      },
+      {
+        "citacao": "2026-02-27",
+        "referencia": "2026-05-31",
+        "meses_esperados": 3,
+        "resultado": "candidato confirmou correspondência"
+      }
+    ]
+  },
+  "pendencias": [
+    "Conferência visual dos arquivos exportados."
+  ],
+  "consolidacao": {
+    "grafo": "s2_consolidacao_lote",
+    "estado": "validada_com_quatro_outputs",
+    "data_confirmacao": "2026-10-13",
+    "origem": "Output do aplicativo enviado pelo candidato na conversa.",
+    "resumo_recebido": {
+      "type": "object",
+      "value": {
+        "data_referencia": "2026-05-31",
+        "total_identificado": 7,
+        "vitorias_confirmadas": 2,
+        "resultados_desconhecidos": 2,
+        "condenacoes": 3,
+        "processos_aptos": 3,
+        "pendencias": 4,
+        "passivo_centavos": 1657946,
+        "recursos_recomendados": 1,
+        "custo_recursos_centavos": 320000,
+        "beneficio_esperado_recursos_centavos": 6420,
+        "processos_com_valor_atualizado": 4,
+        "processos_sem_valor_atualizado": 3,
+        "decisoes_concluidas": 3,
+        "decisoes_pendentes": 4,
+        "passivo_parcial": true
+      }
+    },
+    "resumo_confere_integralmente": true,
+    "demais_outputs": "processos, auditoria e relatorio_markdown recebidos e revisados; nenhuma divergência identificada.",
+    "metodo_demais_outputs": "Revisão do conteúdo colado na conversa contra a referência local; não é comparação automatizada byte a byte dos arquivos do aplicativo.",
+    "limite": "Execução offline da consolidação com entradas previamente preenchidas; históricos de tentativas são dados de teste recebidos, não chamadas novas do aplicativo.",
+    "conferencia_resumida": {
+      "colunas": [
+        "numero_processo",
+        "status_processamento",
+        "valor_atualizado_centavos",
+        "decisao_recurso",
+        "beneficio_esperado_centavos",
+        "tentativas"
+      ],
+      "linhas_transcritas": [
+        [
+          "7094431-69.2024.8.26.0001",
+          "ok",
+          652840,
+          "recorrer",
+          6420,
+          1
+        ],
+        [
+          "1325366-90.2024.8.26.0001",
+          "ok",
+          0,
+          "nao_recorrer",
+          null,
+          1
+        ],
+        [
+          "9154816-75.2024.8.26.0004",
+          "pendente_revisao",
+          null,
+          "pendente",
+          null,
+          3
+        ],
+        [
+          "9734703-17.2024.8.26.0001",
+          "pendente_revisao",
+          1005106,
+          "pendente",
+          null,
+          1
+        ],
+        [
+          "9107791-86.2024.8.26.0008",
+          "pendente_revisao",
+          null,
+          "pendente",
+          null,
+          3
+        ],
+        [
+          "8908327-78.2025.8.26.0001",
+          "erro",
+          null,
+          "pendente",
+          null,
+          3
+        ],
+        [
+          "6304573-19.2024.8.26.0008",
+          "ok",
+          0,
+          "nao_recorrer",
+          null,
+          1
+        ]
+      ],
+      "processos": 7,
+      "auditorias": 7,
+      "relatorio": "Totais, sete linhas, exclusões financeiras e decisórias e limitações conferem."
+    }
+  },
+  "extracao_real": {
+    "estado": "validada_em_uma_sentenca_de_desenvolvimento",
+    "grafo_informado": "analisar_lote",
+    "evidencia": "s2-aplicativo-extracao-real.json",
+    "tentativas": 1,
+    "http_status": 200,
+    "tokens_total": 1467,
+    "limite": "Fluxo sequencial exercitado com um item; não certifica carteira completa ou falhas reais."
+  },
+  "sem_subsidio": {
+    "estado": "validado_no_aplicativo",
+    "evidencia": "s2-aplicativo-sem-subsidio.json",
+    "valor_atualizado_centavos": 667314,
+    "decisao_recurso": "pendente",
+    "tentativas": 1,
+    "http_status": 200,
+    "tokens_total": 1467
+  }
+}
