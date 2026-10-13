@@ -6,7 +6,7 @@ Todas as sete tarefas autorizadas nesta rodada, com um commit por tarefa. A aval
 | --- | --- |
 | S3.1 | Executor implementado; 100 identidades e 52 condenações reconciliadas em replay de anotações. Execução real prevista após a avaliação reservada. |
 | S3.2 | Primeira avaliação real preservada: 4/12 aptos, 6/12 com campos críticos corretos; reprovada. Prompt/gabaritos permaneceram congelados. |
-| S3.3 | Pendente: auditoria independente da classificação, datas, dinheiro e decisões dos 100 casos. |
+| S3.3 | Auditor implementado e testado contra oráculo Fraction; execução sobre a carteira real prevista na consolidação final. |
 | S3.4 | Pendente: planilha identificada por execução e data-base, reabertura e reconciliação. |
 | S3.5 | Pendente: relatório executivo com distribuições, recursos e limites. |
 | S3.6 | Pendente: conferir denominadores, associações, premissas e benefício esperado. |
@@ -32,3 +32,13 @@ Replay requer captura com respostas por identidade e hashes de todas as entradas
 Três testes do avaliador aprovados. A primeira rodada real processou os 12 reservados sem ajustes de prompt: 27 chamadas, 41.928 tokens informados, quatro aptos e oito pendências. Identidade e resultado corretos em 12/12; componentes corretos em 6/12, datas aplicáveis em 6/6. O reservado já havia participado do resumo-base preliminar; não é avaliação cega.
 
 A meta não foi atingida. [Rodada inicial preservada](../output/s3.2-reservado-inicial.json). Mudanças posteriores serão testadas em desenvolvimento e qualquer repetição será rotulada como conjunto já visto, sem substituir silenciosamente a rodada original. Custo não medido permanece null.
+
+## S3.3 — auditoria documental
+
+O auditor compara todas as identidades, classificação, componentes, datas, meses, índices por memória, valores atualizados, subsídios, custos e decisões contra a referência preparada dos dispositivos e CSVs. Frações são comparadas por multiplicação cruzada com as frações Python. Evidências devem continuar literais; ausências, duplicatas e valores adulterados geram divergências por identidade.
+
+Dois testes aprovados, incluindo adulteração de data, centavo, decisão e fração. A referência automática é uma ferramenta de revisão assistida, não revisão humana independente. A lista de maiores exposições, proximidade ao limiar e todas as retentativas orientará a conferência da execução real.
+
+```bash
+npm run s3:auditar -- --execucao outputs/s3/<execucao_id>
+```

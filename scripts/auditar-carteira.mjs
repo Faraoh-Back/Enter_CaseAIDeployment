@@ -1,0 +1,12 @@
+import {parseArgs} from 'node:util';
+import {readFile,writeFile} from 'node:fs/promises';
+import {auditarCarteira} from './auditoria-carteira.mjs';
+import {hash} from '../src/executar-carteira.mjs';
+const {values:v}=parseArgs({options:{execucao:{type:'string'}},strict:true});
+if(!v.execucao)throw new Error('Informe --execucao diretorio');
+const ref='tests/fixtures/carteira-referencia.json';
+const rs=JSON.parse(await readFile(ref)),ps=JSON.parse(await readFile(`${v.execucao}/processos.json`)),as=JSON.parse(await readFile(`${v.execucao}/auditoria.json`));
+const result={...auditarCarteira(rs,ps,as),referencia_sha256:hash(await readFile(ref)),processos_sha256:hash(await readFile(`${v.execucao}/processos.json`)),auditoria_sha256:hash(await readFile(`${v.execucao}/auditoria.json`))};
+await writeFile(`${v.execucao}/auditoria-documental.json`,JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({estado:result.estado,processos:result.processos,condenacoes:result.condenacoes,divergencias:result.divergencias.length},null,2));
+if(result.divergencias.length)process.exitCode=1;
