@@ -72,11 +72,16 @@ export async function exportarXlsx(analise, destino, contexto = {}) {
     }
     for (const problem of process.problemas) row(pending, [process.numero_processo, process.status_processamento, problem.codigo, problem.mensagem]);
   }
-  for (const [field, value] of Object.entries(analise.resumo)) {
+  function summaryValue(field, value) {
+    if (value !== null && typeof value === 'object') {
+      for (const [key, item] of Object.entries(value)) summaryValue(Array.isArray(value) ? `${field}[${key}]` : `${field}.${key}`, item);
+      return;
+    }
     const monetary = field.endsWith('_centavos');
     const r = row(summary, [field, monetary ? money(value) : value, monetary ? 'R$' : null]);
     if (monetary) r.getCell(2).numFmt = MONEY_FORMAT;
   }
+  for (const [field, value] of Object.entries(analise.resumo)) summaryValue(field, value);
   if (contexto.execucao_id !== undefined) row(summary, ['execucao_id', contexto.execucao_id, null]);
   function auditValue(numero, field, value) {
     if (value !== null && typeof value === 'object') {

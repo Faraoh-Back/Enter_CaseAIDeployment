@@ -8,7 +8,7 @@ Todas as sete tarefas autorizadas nesta rodada, com um commit por tarefa. A aval
 | S3.2 | Primeira avaliação real preservada: 4/12 aptos, 6/12 com campos críticos corretos; reprovada. Prompt/gabaritos permaneceram congelados. |
 | S3.3 | Auditor implementado e testado contra oráculo Fraction; execução sobre a carteira real prevista na consolidação final. |
 | S3.4 | Implementada identificação por execução/data-base nas quatro abas, com dois testes novos e sete regressões do exportador verdes. |
-| S3.5 | Pendente: relatório executivo com distribuições, recursos e limites. |
+| S3.5 | Implementado relatório executivo no grafo, com distribuições no resumo e três testes verdes. |
 | S3.6 | Pendente: conferir denominadores, associações, premissas e benefício esperado. |
 | S3.7 | Pendente: métricas reais e evidências finais, roteiro visual. |
 
@@ -52,3 +52,13 @@ A avaliação real de desenvolvimento passou em 12/12 completos e críticos, com
 ## S3.4 — planilha identificada
 
 As quatro abas mantêm filtros, cabeçalhos congelados, moeda e células tipadas. O exportador recebe somente contexto de apresentação: ID da execução e data-base. A identificação aparece em propriedades da pasta de trabalho, linha de Resumo e cabeçalho de impressão de cada aba, sem deslocar as linhas de processos. Contexto com data divergente falha antes de gravar. Dois testes novos e sete regressões do exportador aprovados.
+
+### Reavaliação reservada
+
+A reavaliação passou em 12/12 completos e campos críticos, sem alteração durante a própria rodada. [Evidência](../output/s3.2-reservado-reavaliacao.json). Resultado válido para este conjunto já visto; não desfaz a primeira reprovação nem comprova generalização. Fundamentos foram conferidos por literalidade e regras semânticas do grafo, sem segunda revisão humana independente.
+
+## S3.5 — relatório executivo
+
+O grafo produz síntese, distribuição por resultado/subsídio/tema/comarca/tribunal, estratégia de recursos, maiores exposições, exclusões e premissas. As distribuições são publicadas em `resumo.distribuicoes`, propriedade opcional para preservar a análise individual. O exportador apenas materializa as folhas desses dados na aba Resumo. Três testes verificam fechamento de grupos, dinheiro e apresentação.
+
+A associação de subsídio usa resultados conhecidos como denominador; resultados desconhecidos aparecem separadamente. Não interpreta diferenças como efeitos causais. Probabilidades do CSV são cenários, não estimativas calibradas; benefício é esperado sob reversão integral, não economia realizada.

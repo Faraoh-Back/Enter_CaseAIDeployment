@@ -11,7 +11,7 @@
     "s0:build": "node scripts/build-s0.mjs",
     "s0:check": "node scripts/check-s0.mjs",
     "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
-    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte && npm run test:s2:fronteiras && npm run test:s2:cobertura && npm run test:s2:integracao && npm run test:s3:execucao && npm run test:s3:avaliacao && npm run test:s3:auditoria && npm run test:s3:xlsx",
+    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte && npm run test:s2:fronteiras && npm run test:s2:cobertura && npm run test:s2:integracao && npm run test:s3:execucao && npm run test:s3:avaliacao && npm run test:s3:auditoria && npm run test:s3:xlsx && npm run test:s3:relatorio",
     "test:s2:incertezas": "node tests/s2-incertezas.test.mjs",
     "test:s2": "node tests/s2-resultados.test.mjs",
     "test:s0": "node tests/s0.test.mjs",
@@ -34,7 +34,8 @@
     "test:s3:avaliacao": "node tests/s3-avaliacao.test.mjs",
     "s3:auditar": "node scripts/auditar-carteira.mjs",
     "test:s3:auditoria": "node tests/s3-auditoria.test.mjs",
-    "test:s3:xlsx": "node tests/s3-xlsx.test.mjs"
+    "test:s3:xlsx": "node tests/s3-xlsx.test.mjs",
+    "test:s3:relatorio": "node tests/s3-relatorio.test.mjs"
   },
   "dependencies": {
     "@ironclad/rivet-node": "1.25.0",

@@ -9,7 +9,8 @@ export async function addS2Graphs({project,node,inputs,preparation,entryHelpers,
     typedInput('citacao','string','2026-02-27'),typedInput('referencia','string','2026-05-31'),
     node('code','meses',{inputNames:['citacao','referencia'],outputNames:['meses'],code:calendar+"\nreturn {meses:{type:'number',value:mesesCompletos(inputs.citacao.value,inputs.referencia.value)}};"},440,0),typedOutput('meses','number')],
     connections:[edge('citacao','data','meses','citacao'),edge('referencia','data','meses','referencia'),edge('meses','meses','out_meses','value')]};
-  const consolidation=node('code','consolidar_lote',{inputNames:['resultados','identidades','data_referencia'],outputNames:Object.keys(outputs),code:summary+await readFile('rivet/code/s2/consolidar-lote.js','utf8')},440,0,'Consolidar e reconciliar identidades');
+  const report=await readFile('rivet/code/s2/relatorio-carteira.js','utf8');
+  const consolidation=node('code','consolidar_lote',{inputNames:['resultados','identidades','data_referencia'],outputNames:Object.keys(outputs),code:summary+(await readFile('rivet/code/s2/consolidar-lote.js','utf8')).replace("//__RELATORIO__", report)},440,0,'Consolidar e reconciliar identidades');
   project.graphs.s2_consolidacao_lote={metadata:{id:'s2_consolidacao_lote',name:'s2_consolidacao_lote'},nodes:[
     typedInput('resultados','object[]'),typedInput('identidades','string[]'),typedInput('data_referencia','string','2026-05-31'),consolidation,
     ...Object.entries(outputs).map(([id,type])=>typedOutput(id,type))],connections:[

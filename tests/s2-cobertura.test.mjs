@@ -40,7 +40,7 @@ test('S2.5: pequeno lote misto preserva sete identidades e informa cobertura fin
   assert.equal(validateSummary(s),true,JSON.stringify(validateSummary.errors));
   assert.deepEqual(ps.map(p=>p.status_processamento),['ok','ok','pendente_revisao','pendente_revisao','pendente_revisao','erro','ok']);
   assert.deepEqual(f.records.map(r=>calls[r.numero_processo]),[1,1,3,1,3,3,1]);
-  assert.deepEqual(s,{data_referencia:'2026-05-31',total_identificado:7,vitorias_confirmadas:2,resultados_desconhecidos:2,condenacoes:3,processos_aptos:3,pendencias:4,
+  assert.deepEqual(Object.fromEntries(Object.entries(s).filter(([k])=>k!=='distribuicoes')),{data_referencia:'2026-05-31',total_identificado:7,vitorias_confirmadas:2,resultados_desconhecidos:2,condenacoes:3,processos_aptos:3,pendencias:4,
     passivo_centavos:f.expected.passivo,recursos_recomendados:1,custo_recursos_centavos:f.expected.custo,beneficio_esperado_recursos_centavos:f.expected.beneficio,
     processos_com_valor_atualizado:4,processos_sem_valor_atualizado:3,decisoes_concluidas:3,decisoes_pendentes:4,passivo_parcial:true});
   const report=output.relatorio_markdown.value;
