@@ -1,0 +1,830 @@
+[
+  {
+    "origem": "README.md",
+    "destino": "README.md"
+  },
+  {
+    "origem": "package.json",
+    "destino": "package.json"
+  },
+  {
+    "origem": "package-lock.json",
+    "destino": "package-lock.json"
+  },
+  {
+    "origem": ".nvmrc",
+    "destino": ".nvmrc"
+  },
+  {
+    "origem": ".env.example",
+    "destino": ".env.example"
+  },
+  {
+    "origem": "src/api.mjs",
+    "destino": "src/api.mjs"
+  },
+  {
+    "origem": "src/armazenamento-api.mjs",
+    "destino": "src/armazenamento-api.mjs"
+  },
+  {
+    "origem": "src/executar-carteira.mjs",
+    "destino": "src/executar-carteira.mjs"
+  },
+  {
+    "origem": "src/executar-s1.mjs",
+    "destino": "src/executar-s1.mjs"
+  },
+  {
+    "origem": "src/exportar-xlsx-s0.mjs",
+    "destino": "src/exportar-xlsx-s0.mjs"
+  },
+  {
+    "origem": "src/exportar-xlsx.mjs",
+    "destino": "src/exportar-xlsx.mjs"
+  },
+  {
+    "origem": "src/relatorio-pdf.mjs",
+    "destino": "src/relatorio-pdf.mjs"
+  },
+  {
+    "origem": "src/rivet-runtime.mjs",
+    "destino": "src/rivet-runtime.mjs"
+  },
+  {
+    "origem": "scripts/auditar-carteira.mjs",
+    "destino": "scripts/auditar-carteira.mjs"
+  },
+  {
+    "origem": "scripts/auditoria-carteira.mjs",
+    "destino": "scripts/auditoria-carteira.mjs"
+  },
+  {
+    "origem": "scripts/avaliacao.mjs",
+    "destino": "scripts/avaliacao.mjs"
+  },
+  {
+    "origem": "scripts/avaliar-reservado.mjs",
+    "destino": "scripts/avaliar-reservado.mjs"
+  },
+  {
+    "origem": "scripts/avaliar-s1.mjs",
+    "destino": "scripts/avaliar-s1.mjs"
+  },
+  {
+    "origem": "scripts/build-s0.mjs",
+    "destino": "scripts/build-s0.mjs"
+  },
+  {
+    "origem": "scripts/build-s1.mjs",
+    "destino": "scripts/build-s1.mjs"
+  },
+  {
+    "origem": "scripts/build-s2.mjs",
+    "destino": "scripts/build-s2.mjs"
+  },
+  {
+    "origem": "scripts/case-files.mjs",
+    "destino": "scripts/case-files.mjs"
+  },
+  {
+    "origem": "scripts/check-api-curl.mjs",
+    "destino": "scripts/check-api-curl.mjs"
+  },
+  {
+    "origem": "scripts/check-llm.mjs",
+    "destino": "scripts/check-llm.mjs"
+  },
+  {
+    "origem": "scripts/check-s0.mjs",
+    "destino": "scripts/check-s0.mjs"
+  },
+  {
+    "origem": "scripts/check-s2-5.mjs",
+    "destino": "scripts/check-s2-5.mjs"
+  },
+  {
+    "origem": "scripts/executar-carteira.mjs",
+    "destino": "scripts/executar-carteira.mjs"
+  },
+  {
+    "origem": "scripts/executar-s1.mjs",
+    "destino": "scripts/executar-s1.mjs"
+  },
+  {
+    "origem": "scripts/finalizar-carteira.mjs",
+    "destino": "scripts/finalizar-carteira.mjs"
+  },
+  {
+    "origem": "scripts/medir-carteira.mjs",
+    "destino": "scripts/medir-carteira.mjs"
+  },
+  {
+    "origem": "scripts/metricas-carteira.mjs",
+    "destino": "scripts/metricas-carteira.mjs"
+  },
+  {
+    "origem": "scripts/preparar-entrega.mjs",
+    "destino": "scripts/preparar-entrega.mjs"
+  },
+  {
+    "origem": "scripts/preparar-replay-carteira.mjs",
+    "destino": "scripts/preparar-replay-carteira.mjs"
+  },
+  {
+    "origem": "scripts/render.mjs",
+    "destino": "scripts/render.mjs"
+  },
+  {
+    "origem": "scripts/s1-fixture.mjs",
+    "destino": "scripts/s1-fixture.mjs"
+  },
+  {
+    "origem": "scripts/servidor.mjs",
+    "destino": "scripts/servidor.mjs"
+  },
+  {
+    "origem": "schemas/extracao.exemplo.json",
+    "destino": "schemas/extracao.exemplo.json"
+  },
+  {
+    "origem": "schemas/extracao.schema.json",
+    "destino": "schemas/extracao.schema.json"
+  },
+  {
+    "origem": "schemas/processo.schema.json",
+    "destino": "schemas/processo.schema.json"
+  },
+  {
+    "origem": "schemas/resumo.schema.json",
+    "destino": "schemas/resumo.schema.json"
+  },
+  {
+    "origem": "rivet/analise_sentencas.rivet-project",
+    "destino": "rivet/analise_sentencas.rivet-project"
+  },
+  {
+    "origem": "rivet/code/calculo-s0.js",
+    "destino": "rivet/code/calculo-s0.js"
+  },
+  {
+    "origem": "rivet/code/comum/calendario.js",
+    "destino": "rivet/code/comum/calendario.js"
+  },
+  {
+    "origem": "rivet/code/comum/entradas.js",
+    "destino": "rivet/code/comum/entradas.js"
+  },
+  {
+    "origem": "rivet/code/comum/resumo.js",
+    "destino": "rivet/code/comum/resumo.js"
+  },
+  {
+    "origem": "rivet/code/s1/calcular.js",
+    "destino": "rivet/code/s1/calcular.js"
+  },
+  {
+    "origem": "rivet/code/s1/consolidar.js",
+    "destino": "rivet/code/s1/consolidar.js"
+  },
+  {
+    "origem": "rivet/code/s1/preparar.js",
+    "destino": "rivet/code/s1/preparar.js"
+  },
+  {
+    "origem": "rivet/code/s1/validar.js",
+    "destino": "rivet/code/s1/validar.js"
+  },
+  {
+    "origem": "rivet/code/s2/consolidar-lote.js",
+    "destino": "rivet/code/s2/consolidar-lote.js"
+  },
+  {
+    "origem": "rivet/code/s2/preparar-lote.js",
+    "destino": "rivet/code/s2/preparar-lote.js"
+  },
+  {
+    "origem": "rivet/code/s2/relatorio-carteira.js",
+    "destino": "rivet/code/s2/relatorio-carteira.js"
+  },
+  {
+    "origem": "rivet/code/validacao-s0.js",
+    "destino": "rivet/code/validacao-s0.js"
+  },
+  {
+    "origem": "rivet/plugins/enter-bounded-extraction/index.js",
+    "destino": "rivet/plugins/enter-bounded-extraction/index.js"
+  },
+  {
+    "origem": "rivet/plugins/enter-bounded-extraction/package.json",
+    "destino": "rivet/plugins/enter-bounded-extraction/package.json"
+  },
+  {
+    "origem": "rivet/prompts/extracao-s1.txt",
+    "destino": "rivet/prompts/extracao-s1.txt"
+  },
+  {
+    "origem": "rivet/s0_compatibilidade.rivet-project",
+    "destino": "rivet/s0_compatibilidade.rivet-project"
+  },
+  {
+    "origem": "tests/fixtures/README.md",
+    "destino": "tests/fixtures/README.md"
+  },
+  {
+    "origem": "tests/fixtures/carteira-referencia.json",
+    "destino": "tests/fixtures/carteira-referencia.json"
+  },
+  {
+    "origem": "tests/fixtures/fronteiras-financeiras.json",
+    "destino": "tests/fixtures/fronteiras-financeiras.json"
+  },
+  {
+    "origem": "tests/fixtures/gerar-fronteiras.py",
+    "destino": "tests/fixtures/gerar-fronteiras.py"
+  },
+  {
+    "origem": "tests/fixtures/golden/desenvolvimento.json",
+    "destino": "tests/fixtures/golden/desenvolvimento.json"
+  },
+  {
+    "origem": "tests/fixtures/golden/manifest.json",
+    "destino": "tests/fixtures/golden/manifest.json"
+  },
+  {
+    "origem": "tests/fixtures/golden/reservado.json",
+    "destino": "tests/fixtures/golden/reservado.json"
+  },
+  {
+    "origem": "tests/fixtures/preparar_gabaritos.py",
+    "destino": "tests/fixtures/preparar_gabaritos.py"
+  },
+  {
+    "origem": "tests/helpers/oraculo-carteira.py",
+    "destino": "tests/helpers/oraculo-carteira.py"
+  },
+  {
+    "origem": "tests/helpers/s2-lote.mjs",
+    "destino": "tests/helpers/s2-lote.mjs"
+  },
+  {
+    "origem": "tests/helpers/s4-http.mjs",
+    "destino": "tests/helpers/s4-http.mjs"
+  },
+  {
+    "origem": "tests/s0.test.mjs",
+    "destino": "tests/s0.test.mjs"
+  },
+  {
+    "origem": "tests/s1-execucao.test.mjs",
+    "destino": "tests/s1-execucao.test.mjs"
+  },
+  {
+    "origem": "tests/s1-grafo.test.mjs",
+    "destino": "tests/s1-grafo.test.mjs"
+  },
+  {
+    "origem": "tests/s1-refatoracao.test.mjs",
+    "destino": "tests/s1-refatoracao.test.mjs"
+  },
+  {
+    "origem": "tests/s1-xlsx.test.mjs",
+    "destino": "tests/s1-xlsx.test.mjs"
+  },
+  {
+    "origem": "tests/s1.test.mjs",
+    "destino": "tests/s1.test.mjs"
+  },
+  {
+    "origem": "tests/s2-cobertura.test.mjs",
+    "destino": "tests/s2-cobertura.test.mjs"
+  },
+  {
+    "origem": "tests/s2-fronteiras.test.mjs",
+    "destino": "tests/s2-fronteiras.test.mjs"
+  },
+  {
+    "origem": "tests/s2-incertezas.test.mjs",
+    "destino": "tests/s2-incertezas.test.mjs"
+  },
+  {
+    "origem": "tests/s2-integracao.test.mjs",
+    "destino": "tests/s2-integracao.test.mjs"
+  },
+  {
+    "origem": "tests/s2-resultados.test.mjs",
+    "destino": "tests/s2-resultados.test.mjs"
+  },
+  {
+    "origem": "tests/s2-transporte.test.mjs",
+    "destino": "tests/s2-transporte.test.mjs"
+  },
+  {
+    "origem": "tests/s3-auditoria.test.mjs",
+    "destino": "tests/s3-auditoria.test.mjs"
+  },
+  {
+    "origem": "tests/s3-avaliacao.test.mjs",
+    "destino": "tests/s3-avaliacao.test.mjs"
+  },
+  {
+    "origem": "tests/s3-execucao.test.mjs",
+    "destino": "tests/s3-execucao.test.mjs"
+  },
+  {
+    "origem": "tests/s3-finalizacao.test.mjs",
+    "destino": "tests/s3-finalizacao.test.mjs"
+  },
+  {
+    "origem": "tests/s3-metricas.test.mjs",
+    "destino": "tests/s3-metricas.test.mjs"
+  },
+  {
+    "origem": "tests/s3-premissas.test.mjs",
+    "destino": "tests/s3-premissas.test.mjs"
+  },
+  {
+    "origem": "tests/s3-relatorio.test.mjs",
+    "destino": "tests/s3-relatorio.test.mjs"
+  },
+  {
+    "origem": "tests/s3-xlsx.test.mjs",
+    "destino": "tests/s3-xlsx.test.mjs"
+  },
+  {
+    "origem": "tests/s4-cli.test.mjs",
+    "destino": "tests/s4-cli.test.mjs"
+  },
+  {
+    "origem": "tests/s4-http.test.mjs",
+    "destino": "tests/s4-http.test.mjs"
+  },
+  {
+    "origem": "tests/s4-integracao.test.mjs",
+    "destino": "tests/s4-integracao.test.mjs"
+  },
+  {
+    "origem": "tests/s4-persistencia.test.mjs",
+    "destino": "tests/s4-persistencia.test.mjs"
+  },
+  {
+    "origem": "tests/s5-api-pdf.test.mjs",
+    "destino": "tests/s5-api-pdf.test.mjs"
+  },
+  {
+    "origem": "tests/s5-entrega.test.mjs",
+    "destino": "tests/s5-entrega.test.mjs"
+  },
+  {
+    "origem": "tests/s5-pdf.test.mjs",
+    "destino": "tests/s5-pdf.test.mjs"
+  },
+  {
+    "origem": "docs/PLANO_DE_EXECUCAO.md",
+    "destino": "docs/PLANO_DE_EXECUCAO.md"
+  },
+  {
+    "origem": "docs/README.md",
+    "destino": "docs/README.md"
+  },
+  {
+    "origem": "docs/arquitetura/CONTRATOS.md",
+    "destino": "docs/arquitetura/CONTRATOS.md"
+  },
+  {
+    "origem": "docs/arquitetura/README.md",
+    "destino": "docs/arquitetura/README.md"
+  },
+  {
+    "origem": "docs/arquitetura/RFC.md",
+    "destino": "docs/arquitetura/RFC.md"
+  },
+  {
+    "origem": "docs/desenvolvimento/README.md",
+    "destino": "docs/desenvolvimento/README.md"
+  },
+  {
+    "origem": "docs/desenvolvimento/S1_TASKS.md",
+    "destino": "docs/desenvolvimento/S1_TASKS.md"
+  },
+  {
+    "origem": "docs/desenvolvimento/S2_TASKS.md",
+    "destino": "docs/desenvolvimento/S2_TASKS.md"
+  },
+  {
+    "origem": "docs/desenvolvimento/S3_TASKS.md",
+    "destino": "docs/desenvolvimento/S3_TASKS.md"
+  },
+  {
+    "origem": "docs/desenvolvimento/S4_TASKS.md",
+    "destino": "docs/desenvolvimento/S4_TASKS.md"
+  },
+  {
+    "origem": "docs/desenvolvimento/S5_TASKS.md",
+    "destino": "docs/desenvolvimento/S5_TASKS.md"
+  },
+  {
+    "origem": "docs/entrega/REPRODUCAO.md",
+    "destino": "docs/entrega/REPRODUCAO.md"
+  },
+  {
+    "origem": "docs/entrega/racional.md",
+    "destino": "docs/entrega/racional.md"
+  },
+  {
+    "origem": "docs/output/README.md",
+    "destino": "docs/output/README.md"
+  },
+  {
+    "origem": "docs/output/resumo-aplicativo-conferencia.json",
+    "destino": "docs/output/resumo-aplicativo-conferencia.json"
+  },
+  {
+    "origem": "docs/output/resumo-aplicativo-metricas.json",
+    "destino": "docs/output/resumo-aplicativo-metricas.json"
+  },
+  {
+    "origem": "docs/output/resumo-aplicativo-recebido.csv",
+    "destino": "docs/output/resumo-aplicativo-recebido.csv"
+  },
+  {
+    "origem": "docs/output/s0-aplicativo.json",
+    "destino": "docs/output/s0-aplicativo.json"
+  },
+  {
+    "origem": "docs/output/s0-llm.json",
+    "destino": "docs/output/s0-llm.json"
+  },
+  {
+    "origem": "docs/output/s0-offline.json",
+    "destino": "docs/output/s0-offline.json"
+  },
+  {
+    "origem": "docs/output/s0-reproducao.json",
+    "destino": "docs/output/s0-reproducao.json"
+  },
+  {
+    "origem": "docs/output/s1.1-vermelho.json",
+    "destino": "docs/output/s1.1-vermelho.json"
+  },
+  {
+    "origem": "docs/output/s1.2-llm-aprovada.json",
+    "destino": "docs/output/s1.2-llm-aprovada.json"
+  },
+  {
+    "origem": "docs/output/s1.2-llm-rejeitada.json",
+    "destino": "docs/output/s1.2-llm-rejeitada.json"
+  },
+  {
+    "origem": "docs/output/s1.3-processos.xlsx",
+    "destino": "docs/output/s1.3-processos.xlsx"
+  },
+  {
+    "origem": "docs/output/s1.3-xlsx.json",
+    "destino": "docs/output/s1.3-xlsx.json"
+  },
+  {
+    "origem": "docs/output/s1.4-execucao.json",
+    "destino": "docs/output/s1.4-execucao.json"
+  },
+  {
+    "origem": "docs/output/s1.4-processos.xlsx",
+    "destino": "docs/output/s1.4-processos.xlsx"
+  },
+  {
+    "origem": "docs/output/s1.4-relatorio.md",
+    "destino": "docs/output/s1.4-relatorio.md"
+  },
+  {
+    "origem": "docs/output/s1.5-aceite.json",
+    "destino": "docs/output/s1.5-aceite.json"
+  },
+  {
+    "origem": "docs/output/s1.5-validacao.json",
+    "destino": "docs/output/s1.5-validacao.json"
+  },
+  {
+    "origem": "docs/output/s2-aplicativo-aceite-parcial.json",
+    "destino": "docs/output/s2-aplicativo-aceite-parcial.json"
+  },
+  {
+    "origem": "docs/output/s2-aplicativo-extracao-real.json",
+    "destino": "docs/output/s2-aplicativo-extracao-real.json"
+  },
+  {
+    "origem": "docs/output/s2-aplicativo-sem-subsidio.json",
+    "destino": "docs/output/s2-aplicativo-sem-subsidio.json"
+  },
+  {
+    "origem": "docs/output/s2.1-vermelho.json",
+    "destino": "docs/output/s2.1-vermelho.json"
+  },
+  {
+    "origem": "docs/output/s2.2-validacao.json",
+    "destino": "docs/output/s2.2-validacao.json"
+  },
+  {
+    "origem": "docs/output/s2.3-vermelho.json",
+    "destino": "docs/output/s2.3-vermelho.json"
+  },
+  {
+    "origem": "docs/output/s2.4-validacao.json",
+    "destino": "docs/output/s2.4-validacao.json"
+  },
+  {
+    "origem": "docs/output/s2.5-relatorio.md",
+    "destino": "docs/output/s2.5-relatorio.md"
+  },
+  {
+    "origem": "docs/output/s2.5-validacao.json",
+    "destino": "docs/output/s2.5-validacao.json"
+  },
+  {
+    "origem": "docs/output/s2.6-processos.xlsx",
+    "destino": "docs/output/s2.6-processos.xlsx"
+  },
+  {
+    "origem": "docs/output/s2.6-relatorio.md",
+    "destino": "docs/output/s2.6-relatorio.md"
+  },
+  {
+    "origem": "docs/output/s2.6-validacao.json",
+    "destino": "docs/output/s2.6-validacao.json"
+  },
+  {
+    "origem": "docs/output/s3/aceite-consolidacao.rivet-project",
+    "destino": "docs/output/s3/aceite-consolidacao.rivet-project"
+  },
+  {
+    "origem": "docs/output/s3/auditoria-documental.json",
+    "destino": "docs/output/s3/auditoria-documental.json"
+  },
+  {
+    "origem": "docs/output/s3/auditoria.json",
+    "destino": "docs/output/s3/auditoria.json"
+  },
+  {
+    "origem": "docs/output/s3/manifest-extracao-real.json",
+    "destino": "docs/output/s3/manifest-extracao-real.json"
+  },
+  {
+    "origem": "docs/output/s3/manifest.json",
+    "destino": "docs/output/s3/manifest.json"
+  },
+  {
+    "origem": "docs/output/s3/metricas.json",
+    "destino": "docs/output/s3/metricas.json"
+  },
+  {
+    "origem": "docs/output/s3/processos.json",
+    "destino": "docs/output/s3/processos.json"
+  },
+  {
+    "origem": "docs/output/s3/processos.xlsx",
+    "destino": "docs/output/s3/processos.xlsx"
+  },
+  {
+    "origem": "docs/output/s3/projeto.rivet-project",
+    "destino": "docs/output/s3/projeto.rivet-project"
+  },
+  {
+    "origem": "docs/output/s3/relatorio.md",
+    "destino": "docs/output/s3/relatorio.md"
+  },
+  {
+    "origem": "docs/output/s3/resumo.json",
+    "destino": "docs/output/s3/resumo.json"
+  },
+  {
+    "origem": "docs/output/s3/validacao-final.json",
+    "destino": "docs/output/s3/validacao-final.json"
+  },
+  {
+    "origem": "docs/output/s3-aceite-visual.json",
+    "destino": "docs/output/s3-aceite-visual.json"
+  },
+  {
+    "origem": "docs/output/s3.2-desenvolvimento-correcao.json",
+    "destino": "docs/output/s3.2-desenvolvimento-correcao.json"
+  },
+  {
+    "origem": "docs/output/s3.2-reservado-inicial.json",
+    "destino": "docs/output/s3.2-reservado-inicial.json"
+  },
+  {
+    "origem": "docs/output/s3.2-reservado-reavaliacao.json",
+    "destino": "docs/output/s3.2-reservado-reavaliacao.json"
+  },
+  {
+    "origem": "docs/output/s4/curl.json",
+    "destino": "docs/output/s4/curl.json"
+  },
+  {
+    "origem": "docs/output/s4/download-auditoria.json.headers",
+    "destino": "docs/output/s4/download-auditoria.json.headers"
+  },
+  {
+    "origem": "docs/output/s4/download-processos.json.headers",
+    "destino": "docs/output/s4/download-processos.json.headers"
+  },
+  {
+    "origem": "docs/output/s4/download-processos.xlsx.headers",
+    "destino": "docs/output/s4/download-processos.xlsx.headers"
+  },
+  {
+    "origem": "docs/output/s4/download-relatorio.md.headers",
+    "destino": "docs/output/s4/download-relatorio.md.headers"
+  },
+  {
+    "origem": "docs/output/s4/download-resumo.json.headers",
+    "destino": "docs/output/s4/download-resumo.json.headers"
+  },
+  {
+    "origem": "docs/output/s4/erro-configuracao.json",
+    "destino": "docs/output/s4/erro-configuracao.json"
+  },
+  {
+    "origem": "docs/output/s4/estado.json",
+    "destino": "docs/output/s4/estado.json"
+  },
+  {
+    "origem": "docs/output/s4/post.headers",
+    "destino": "docs/output/s4/post.headers"
+  },
+  {
+    "origem": "docs/output/s4/post.json",
+    "destino": "docs/output/s4/post.json"
+  },
+  {
+    "origem": "docs/output/s4/validacao-final.json",
+    "destino": "docs/output/s4/validacao-final.json"
+  },
+  {
+    "origem": "docs/output/s4.1-vermelho.json",
+    "destino": "docs/output/s4.1-vermelho.json"
+  },
+  {
+    "origem": "docs/output/s4.4-revisao.json",
+    "destino": "docs/output/s4.4-revisao.json"
+  },
+  {
+    "origem": "docs/output/s5/aceite-consolidacao.rivet-project",
+    "destino": "docs/output/s5/aceite-consolidacao.rivet-project"
+  },
+  {
+    "origem": "docs/output/s5/auditoria-documental.json",
+    "destino": "docs/output/s5/auditoria-documental.json"
+  },
+  {
+    "origem": "docs/output/s5/auditoria.json",
+    "destino": "docs/output/s5/auditoria.json"
+  },
+  {
+    "origem": "docs/output/s5/manifest.json",
+    "destino": "docs/output/s5/manifest.json"
+  },
+  {
+    "origem": "docs/output/s5/metricas.json",
+    "destino": "docs/output/s5/metricas.json"
+  },
+  {
+    "origem": "docs/output/s5/processos.json",
+    "destino": "docs/output/s5/processos.json"
+  },
+  {
+    "origem": "docs/output/s5/processos.xlsx",
+    "destino": "docs/output/s5/processos.xlsx"
+  },
+  {
+    "origem": "docs/output/s5/projeto.rivet-project",
+    "destino": "docs/output/s5/projeto.rivet-project"
+  },
+  {
+    "origem": "docs/output/s5/relatorio.md",
+    "destino": "docs/output/s5/relatorio.md"
+  },
+  {
+    "origem": "docs/output/s5/resumo.json",
+    "destino": "docs/output/s5/resumo.json"
+  },
+  {
+    "origem": "docs/validacao/MATRIZ_VALIDACAO.md",
+    "destino": "docs/validacao/MATRIZ_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/README.md",
+    "destino": "docs/validacao/README.md"
+  },
+  {
+    "origem": "docs/validacao/REVISAO_EXECUCAO_APLICATIVO.md",
+    "destino": "docs/validacao/REVISAO_EXECUCAO_APLICATIVO.md"
+  },
+  {
+    "origem": "docs/validacao/S0_VALIDACAO.md",
+    "destino": "docs/validacao/S0_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S1_2_VALIDACAO.md",
+    "destino": "docs/validacao/S1_2_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S1_3_VALIDACAO.md",
+    "destino": "docs/validacao/S1_3_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S1_4_VALIDACAO.md",
+    "destino": "docs/validacao/S1_4_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S1_5_VALIDACAO.md",
+    "destino": "docs/validacao/S1_5_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S2_2_VALIDACAO.md",
+    "destino": "docs/validacao/S2_2_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S2_3_VALIDACAO.md",
+    "destino": "docs/validacao/S2_3_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S2_4_VALIDACAO.md",
+    "destino": "docs/validacao/S2_4_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S2_5_VALIDACAO.md",
+    "destino": "docs/validacao/S2_5_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S2_6_VALIDACAO.md",
+    "destino": "docs/validacao/S2_6_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S3_VALIDACAO.md",
+    "destino": "docs/validacao/S3_VALIDACAO.md"
+  },
+  {
+    "origem": "docs/validacao/S4_4_REVISAO.md",
+    "destino": "docs/validacao/S4_4_REVISAO.md"
+  },
+  {
+    "origem": "docs/validacao/S4_VALIDACAO.md",
+    "destino": "docs/validacao/S4_VALIDACAO.md"
+  },
+  {
+    "origem": "case/[Enter] Case Programa de Estágio - AI Deployment-20261011T185318Z-1-001/[Enter] Case Programa de Estágio - AI Deployment/Input/processos.txt",
+    "destino": "case/Input/processos.txt"
+  },
+  {
+    "origem": "case/[Enter] Case Programa de Estágio - AI Deployment-20261011T185318Z-1-001/[Enter] Case Programa de Estágio - AI Deployment/Input/status_subsidios.txt",
+    "destino": "case/Input/status_subsidios.txt"
+  },
+  {
+    "origem": "case/[Enter] Case Programa de Estágio - AI Deployment-20261011T185318Z-1-001/[Enter] Case Programa de Estágio - AI Deployment/Input/tabela_indices.csv",
+    "destino": "case/Input/tabela_indices.csv"
+  },
+  {
+    "origem": "case/[Enter] Case Programa de Estágio - AI Deployment-20261011T185318Z-1-001/[Enter] Case Programa de Estágio - AI Deployment/Input/custo_recurso_por_tribunal.csv",
+    "destino": "case/Input/custo_recurso_por_tribunal.csv"
+  },
+  {
+    "origem": "case/[Enter] Case Programa de Estágio - AI Deployment-20261011T185318Z-1-001/[Enter] Case Programa de Estágio - AI Deployment/Input/subsidios_probabilidade_reversao.csv",
+    "destino": "case/Input/subsidios_probabilidade_reversao.csv"
+  },
+  {
+    "origem": "docs/output/s5/projeto.rivet-project",
+    "destino": "projeto.rivet-project"
+  },
+  {
+    "origem": "docs/output/s5/processos.xlsx",
+    "destino": "processos.xlsx"
+  },
+  {
+    "origem": "docs/entrega/racional.md",
+    "destino": "racional.md"
+  },
+  {
+    "origem": "docs/entrega/validacao.md",
+    "destino": "validacao.md"
+  },
+  {
+    "origem": "docs/entrega/arquivos.json",
+    "destino": "docs/entrega/arquivos.json"
+  },
+  {
+    "origem": "scripts/verificar-s5.mjs",
+    "destino": "scripts/verificar-s5.mjs"
+  },
+  {
+    "origem": "docs/entrega/validacao.md",
+    "destino": "docs/entrega/validacao.md"
+  },
+  {
+    "origem": "docs/output/s5/revisao.json",
+    "destino": "docs/output/s5/revisao.json"
+  },
+  {
+    "origem": "docs/output/s5/testes.json",
+    "destino": "docs/output/s5/testes.json"
+  }
+]

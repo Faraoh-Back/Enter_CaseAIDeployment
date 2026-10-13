@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0–S4 implementadas e validadas, com 175 testes aprovados. S3 V0 aceita visualmente pelo candidato; API/CLI equivalentes em replay, persistência/reinício e curl verificados. S5 pendente, incluindo relatório executivo em PDF. [Validação S4](validacao/S4_VALIDACAO.md).
+**Estado:** S0–S4 implementadas e validadas; suíte atual com 188 cenários aprovados. Conferi visualmente a S3 V0; API/CLI equivalentes em replay, persistência/reinício e curl verificados. S5.1 e S5.2 concluídas; S5.5 preparada. PDF final e pacote ainda pendentes. [Estado S5](desenvolvimento/S5_TASKS.md). [Validação S4](validacao/S4_VALIDACAO.md).
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -39,21 +39,21 @@ As datas são metas de organização e os esforços são estimativas, a revisar 
 - [x] **S0.7** — Selecionar 12 casos estratificados para desenvolvimento e 12 casos disjuntos reservados para avaliação. Incluir os quatro resultados, composição dos danos e níveis de subsídios; reservar também casos perto do limiar econômico quando existentes.
 - [x] **S0.8** — Anotar os gabaritos a partir dos documentos originais e registrar como foram conferidos. Não escolher apenas os primeiros processos do arquivo.
 
-Os outputs de `s0_calculo`, `s0_validacao` e `s0_llm` no aplicativo foram enviados pelo candidato e conferem com os resultados esperados. A [evidência do aplicativo](output/s0-aplicativo.json) encerra a S0. A revisão dos gabaritos foi assistida por IA, com origem e limites declarados em [fixtures](../tests/fixtures/README.md).
+Conferi os outputs de `s0_calculo`, `s0_validacao` e `s0_llm` no aplicativo contra os resultados esperados. A [evidência do aplicativo](output/s0-aplicativo.json) encerra a S0. A revisão dos gabaritos foi assistida por IA, com origem e limites declarados em [fixtures](../tests/fixtures/README.md).
 
-O candidato também enviou uma execução do **resumo-base** no aplicativo: os 100 identificadores/resultados e os 52 valores nominais conferiram. Essa saída tem seu próprio [registro de conferência](validacao/REVISAO_EXECUCAO_APLICATIVO.md); o fechamento da S0 usa os três grafos específicos acima.
+Também registrei uma execução do **resumo-base** no aplicativo: os 100 identificadores/resultados e os 52 valores nominais conferiram. Essa saída tem seu próprio [registro de conferência](validacao/REVISAO_EXECUCAO_APLICATIVO.md); o fechamento da S0 usa os três grafos específicos acima.
 
 **Saída:** incertezas de integração resolvidas antes de construir a API; schema e exemplos revisáveis. Se a integração falhar, registrar a causa e ajustar o modo de execução mantendo as regras no grafo.
 
 ## S1 — uma condenação do texto ao documento
 
-Execução em tarefas separadas, com revisão e commits feitos pelo candidato. [Escopo de cada tarefa](desenvolvimento/S1_TASKS.md). Parar ao concluir a tarefa da rodada.
+Execução em tarefas separadas, com revisão e commits feitos por mim. [Escopo de cada tarefa](desenvolvimento/S1_TASKS.md). Parar ao concluir a tarefa da rodada.
 
 - [x] **S1.1 — Vermelho:** teste externo do caso `3871230-78.2024.8.26.0002`, incluindo extração simulada, evidências, dinheiro, decisão e artefato; conferir os valores esperados da matriz. Duas falhas observadas por funcionalidades ausentes; S0 permanece verde.
 - [x] **S1.2 — Verde:** formalizar schemas de processo/resumo; ler as referências no grafo, extrair a sentença, validar dados, calcular em Code Nodes, decidir e produzir resumo e Markdown. Avaliar a extração completa em chamada real separada.
 - [x] **S1.3 — XLSX:** exportar uma planilha real `.xlsx`, reabri-la e comparar as células com os outputs; adicionar trilha de cálculo e justificativa.
 - [x] **S1.4 — Execução local:** expor comando que execute o projeto e grave o diretório de execução; conferir grafo e exportação integrados. Registrar comando real no README após verificação.
-- [x] **S1.5 — Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas; incorporar os testes S1 verdes à suíte padrão. **Refatoração e suíte local concluídas; aceite visual informado pelo candidato e arquivos locais reconferidos**, conforme [S1_5_VALIDACAO.md](validacao/S1_5_VALIDACAO.md).
+- [x] **S1.5 — Refatorar:** separar subgrafos por responsabilidade e atualizar contratos se o experimento identificar lacunas; incorporar os testes S1 verdes à suíte padrão. **Refatoração e suíte local concluídas; conferi visualmente o aplicativo e os arquivos locais**, conforme [S1_5_VALIDACAO.md](validacao/S1_5_VALIDACAO.md).
 
 **Saída:** uma condenação produz os artefatos de ponta a ponta. Não basta entregar um JSON de extração.
 
@@ -66,7 +66,7 @@ Execução por tarefas, conforme [S2_TASKS.md](desenvolvimento/S2_TASKS.md). S2.
 - [x] **S2.3 — Vermelho:** datas ausentes/inválidas/futuras, índice ausente, CNJ divergente, subsídio desconhecido, saída malformada e duplicação de processos.
 - [x] **S2.4 — Verde:** normalização, retentativas limitadas e estados de pendência/erro; impedir recomendações baseadas em valores incompletos.
 - [x] **S2.5 — Fronteiras e cobertura:** cobrir meses completos, fronteiras de arredondamento e benefício positivo, negativo e exatamente zero; manter uma linha por processo inclusive nas falhas, com totais e cobertura mostrando exclusões.
-- [x] **S2.6 — Refatorar e integrar:** responsabilidades revisadas e JSON, planilha e relatório reconciliados; 128 testes verdes. **Aceite local concluído; aplicativo parcialmente validado (plugin, calendário, consolidação, extração real e cenário sem subsídio; falta conferir os arquivos visualmente)**, conforme [S2_6_VALIDACAO.md](validacao/S2_6_VALIDACAO.md).
+- [x] **S2.6 — Refatorar e integrar:** responsabilidades revisadas e JSON, planilha e relatório reconciliados; 128 testes verdes. **Aceite local concluído; aplicativo parcialmente validado (plugin, calendário, consolidação, extração real e cenário sem subsídio; conferência dos arquivos encerrada na S3 V0)**, conforme [S2_6_VALIDACAO.md](validacao/S2_6_VALIDACAO.md).
 
 A S2.5 acrescenta 25 testes de fronteiras e 13 de cobertura, além de uma prova offline de lote misto: [validação e limites](validacao/S2_5_VALIDACAO.md).
 
@@ -74,9 +74,9 @@ A S2.5 acrescenta 25 testes de fronteiras e 13 de cobertura, além de uma prova 
 
 ## S3 — carteira completa e comunicação ao cliente
 
-Execução autorizada das sete tarefas, com commits separados. [Estado e contratos S3](desenvolvimento/S3_TASKS.md).
+Desenvolvi as sete tarefas e registrei commits separados. [Estado e contratos S3](desenvolvimento/S3_TASKS.md).
 
-Registrar na avaliação que os 12 reservados já apareceram na execução preliminar do resumo-base enviada pelo candidato. O novo extrator ainda não foi executado nesse conjunto; não descrever sua avaliação futura como primeira exposição dos documentos à LLM.
+Registrar na avaliação que os 12 reservados já apareceram na execução preliminar do resumo-base enviada por mim. A avaliação completa posterior também reprovou inicialmente e foi repetida após correção; registrei a repetição como conjunto já visto, sem alegar avaliação cega.
 
 - [x] **S3.1** — Processar os 100 casos; reconciliar identidades e referências, sem limites fixos de 100 no código de produção.
 - [x] **S3.2** — Aplicar o conjunto reservado sem novos ajustes de prompt. Se houver falha, registrar o resultado; uma nova rodada deverá declarar que o conjunto já foi visto.
@@ -94,7 +94,7 @@ Registrar na avaliação que os 12 reservados já apareceram na execução preli
 
 Desenvolvimento por tarefa, com testes de contrato primeiro e commits separados, conforme [S4_TASKS.md](desenvolvimento/S4_TASKS.md).
 
-- [x] **S4.1** — **Vermelho:** dez testes de contrato HTTP para POST, consulta de estado, download, concorrência, falhas e reinício. Vermelho observado por módulo ausente; asserções HTTP aguardam implementação.
+- [x] **S4.1** — **Vermelho:** dez testes de contrato HTTP para POST, consulta de estado, download, concorrência, falhas e reinício. Vermelho observado por módulo ausente; os dez cenários HTTP passaram após implementar S4.2.
 - [x] **S4.2** — **Verde:** uma aplicação Node e um executor compartilhado com o comando local; uma execução ativa por vez.
 - [x] **S4.3** — Gravar manifesto antes do `202`; publicar apenas arquivos completos. Testar interrupção e estado após reinício.
 - [x] **S4.4** — Conferir que a API não contém fórmulas financeiras, classificação de sentenças ou cálculo de indicadores.
@@ -105,19 +105,19 @@ Desenvolvimento por tarefa, com testes de contrato primeiro e commits separados,
 
 ## S5 — pacote final e defesa
 
-- [ ] **S5.1** — Escrever `racional.md` em até duas páginas, revisado e assumido pelo candidato. Explicar as escolhas, o uso de IA, a validação e as limitações efetivas.
-- [ ] **S5.2** — Registrar resultados medidos em `validacao.md`, com distinção entre testes offline, avaliação LLM e execução final.
-- [ ] **S5.3** — Abrir a planilha e o relatório como destinatário final; verificar clareza e consistência dos números.
+- [x] **S5.1** — Escrevi [racional.md](entrega/racional.md), com 680 palavras, decisões, uso de IA e limites; conferi a extensão em até duas páginas A4.
+- [x] **S5.2** — Registrei [validacao.md](entrega/validacao.md), separando testes offline, avaliações LLM e execução final; preservei a reprovação inicial.
+- [ ] **S5.3** — Reabri a planilha (100 × 23 campos) e inspecionei a prévia PDF; falta conferir a versão com modelo e fonte finais.
 - [ ] **S5.4** — Montar ZIP por lista explícita: projeto Rivet, cinco inputs, XLSX, relatório executivo, racional, README, código necessário, schemas, lockfile e `.env.example`.
-- [ ] **S5.5** — Incluir evidências e outputs auditáveis; excluir credenciais, `.env`, dependências instaladas e arquivos temporários.
-- [ ] **S5.6** — Extrair o ZIP em outro diretório e executar seguindo apenas suas instruções, configurando a credencial por ambiente.
+- [x] **S5.5** — Preparei lista positiva, evidências e verificações de credenciais, symlinks e hashes; o preparo recusa PDF de prévia. ZIP será montado na S5.4.
+- [ ] **S5.6** — Extrair o ZIP em outro diretório e executar seguindo apenas o roteiro entregue, configurando a credencial por ambiente.
 - [ ] **S5.7** — Abrir o projeto no aplicativo Rivet e demonstrar onde acontecem extração, cálculo, decisão e consolidação.
 - [ ] **S5.8** — Ensaiar a defesa com um caso individual e a visão da carteira; explicar meses completos, arredondamento, probabilidades e hipóteses.
-- [ ] **S5.9** — Conferir horário/fuso do envio e enviar com margem. O envio é uma ação do candidato; este plano não o automatiza.
+- [ ] **S5.9** — Confirmar o fuso informado para o prazo e enviar minha entrega com margem.
 
-- [ ] **S5.10 — Relatório executivo em PDF:** adaptar a apresentação ao modelo que o candidato selecionar, preservar os dados e cálculos vindos do Rivet, gerar PDF e conferir reconciliação, legibilidade e paginação. Concluir antes da revisão S5.3 e do ZIP S5.4. Markdown permanece fonte auditável.
+- [ ] **S5.10 — Relatório executivo em PDF:** adaptar a apresentação ao modelo que escolhi, preservar os dados e cálculos vindos do Rivet, gerar PDF e conferir reconciliação, legibilidade e paginação. Renderizador e publicação implementados; aguardo o caminho do modelo e a Times New Roman. Concluir antes do aceite S5.3 e do ZIP S5.4. Markdown permanece fonte auditável.
 
-**Saída:** arquivo final reproduzível, entregáveis revisados e racional compreendido pelo candidato.
+**Saída:** arquivo final reproduzível, entregáveis revisados e racional que consigo explicar.
 
 ## Refinamentos condicionados ao tempo
 

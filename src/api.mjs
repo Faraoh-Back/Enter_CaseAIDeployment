@@ -6,7 +6,7 @@ import {gravarAtomico, reservarDiretorio} from './armazenamento-api.mjs';
 import {executarCarteira, entradasCarteira, hash} from './executar-carteira.mjs';
 
 const files = {'processos.json':'application/json','resumo.json':'application/json','auditoria.json':'application/json',
-  'relatorio.md':'text/markdown; charset=utf-8','processos.xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'};
+  'relatorio.md':'text/markdown; charset=utf-8','processos.xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','relatorio.pdf':'application/pdf'};
 const validId = id => /^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(id);
 const terminal = new Set(['concluida','concluida_com_pendencias','falhou','interrompida']);
 const json = value => JSON.stringify(value,null,2)+'\n';
@@ -14,7 +14,7 @@ const json = value => JSON.stringify(value,null,2)+'\n';
 /** Interface de execução/arquivos. Não interpreta sentenças nem calcula indicadores. */
 export async function criarApi({destino='outputs/api',apiKey=process.env.OPENAI_API_KEY,
   modelo=process.env.LLM_MODEL||'gpt-4.1-mini-2025-04-14',modo='real',captura,executor=executarCarteira,
-  lerEntradas=entradasCarteira,persistirManifesto=gravarAtomico}={}) {
+  lerEntradas=entradasCarteira,persistirManifesto=gravarAtomico,renderizador}={}) {
   if(!['real','replay'].includes(modo))throw new Error('MODO_INVALIDO');
   destino=path.resolve(destino);const liberarDiretorio=await reservarDiretorio(destino);
   let active=false,controller,job=Promise.resolve(),closing=false;
@@ -66,7 +66,7 @@ export async function criarApi({destino='outputs/api',apiKey=process.env.OPENAI_
         await persistirManifesto(manifestPath(id),json(initial));
         send(res,202,{execucao_id:id,estado:'executando',status_url:`/execucoes/${id}`});
         controller=new AbortController();
-        job=Promise.resolve().then(()=>executor({execucao_id:id,destino,entradas:raw,modo,captura,apiKey,modelo,signal:controller.signal}))
+        job=Promise.resolve().then(()=>executor({execucao_id:id,destino,entradas:raw,modo,captura,apiKey,modelo,signal:controller.signal,renderizador}))
           .catch(async error=>{
             const m=await manifest(id);
             if(m&&!terminal.has(m.estado))await persistirManifesto(manifestPath(id),json({...m,estado:controller.signal.aborted?'interrompida':'falhou',encerrado_em:new Date().toISOString(),erros:[...(m.erros??[]),{mensagem:redact(error.message)}]}));
@@ -85,7 +85,7 @@ export async function criarApi({destino='outputs/api',apiKey=process.env.OPENAI_
           if(!bytes){fail(res,409,'ARTEFATO_INDISPONIVEL','Artefato ainda indisponível ou sem integridade confirmada.');return;}
           res.writeHead(200,{'Content-Type':files[name],'Content-Length':bytes.length,'Content-Disposition':`attachment; filename="${name}"`,'Cache-Control':'no-store'});res.end(bytes);return;
         }
-        const artifacts=await Promise.all(Object.keys(files).map(async name=>{
+        const artifacts=await Promise.all(Object.keys(files).filter(name=>name!=='relatorio.pdf'||renderizador||m.artefatos?.some(a=>a.nome===name)).map(async name=>{
           const registered=m.artefatos?.find(a=>a.nome===name),ready=Boolean(await artifact(id,m,name));
           return {nome:name,disponivel:ready,sha256:registered?.sha256??null,url:ready?`/execucoes/${id}/artefatos/${name}`:null};
         }));

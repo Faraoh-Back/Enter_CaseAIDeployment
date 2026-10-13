@@ -16,7 +16,7 @@ export async function entradasCarteira(dir) {
 
 /** Executa o lote no Rivet. Node apenas transporta, registra eventos e materializa os outputs. */
 export async function executarCarteira({execucao_id, modo, destino='outputs/s3', entradas, captura, apiKey=process.env.OPENAI_API_KEY,
-  modelo=process.env.LLM_MODEL || 'gpt-4.1-mini-2025-04-14', signal, timeoutMs=30*60*1000, exportador=exportarXlsx}={}) {
+  modelo=process.env.LLM_MODEL || 'gpt-4.1-mini-2025-04-14', signal, timeoutMs=30*60*1000, exportador=exportarXlsx, renderizador}={}) {
   if (execucao_id !== undefined && !/^[A-Za-z0-9][A-Za-z0-9_-]{0,159}$/.test(execucao_id)) throw new Error('ID_INVALIDO');
   if (!['real','replay'].includes(modo)) throw new Error('Escolha --real ou --replay');
   if (modo==='real' && !apiKey?.trim()) throw new Error('Configure OPENAI_API_KEY');
@@ -110,6 +110,16 @@ export async function executarCarteira({execucao_id, modo, destino='outputs/s3',
     try {await exportador(data,`${file}.tmp`,{execucao_id:id,data_referencia:raw.data_referencia});await rename(`${file}.tmp`,file);}
     finally {await rm(`${file}.tmp`,{force:true});}
     artifacts.push({nome:'processos.xlsx',sha256:hash(await readFile(file))});
+    if(renderizador) {
+      const pdf=path.join(directory,'relatorio.pdf');
+      try {
+        await renderizador(data,`${pdf}.tmp`);
+        if((await readFile(`${pdf}.tmp`)).subarray(0,5).toString()!=='%PDF-')throw new Error('PDF_INVALIDO');
+        await rename(`${pdf}.tmp`,pdf);
+      }
+      finally {await rm(`${pdf}.tmp`,{force:true});}
+      artifacts.push({nome:'relatorio.pdf',sha256:hash(await readFile(pdf))});
+    }
     manifest.estado=data.resumo.pendencias?'concluida_com_pendencias':'concluida';
   } catch(error) {
     if(manifest){manifest.estado=controller.signal.aborted&&!queueError?'interrompida':'falhou';manifest.erros.push({mensagem:redact(error.message)});}

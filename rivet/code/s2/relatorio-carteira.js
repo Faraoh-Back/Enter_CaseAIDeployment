@@ -24,14 +24,12 @@ const percentual=(n,d)=>d===0?'não calculável':`${(100*n/d).toFixed(1).replace
 const executivo=[
  '# Relatório executivo — análise de sentenças','',
  '## Síntese e ações','',
- `A carteira informada reúne ${resumo.total_identificado} processos, com ${resumo.vitorias_confirmadas} vitórias (${percentual(resumo.vitorias_confirmadas,resumo.total_identificado)} do total) e ${resumo.condenacoes} condenações. Há ${resumo.resultados_desconhecidos} resultados desconhecidos. O passivo ${resumo.passivo_parcial?'parcial conhecido':'conhecido'} atualizado é ${reais(resumo.passivo_centavos)}.`,
- `A estratégia econômica seleciona ${resumo.recursos_recomendados} recursos, com desembolso considerado de ${reais(resumo.custo_recursos_centavos)} e benefício líquido esperado de ${reais(resumo.beneficio_esperado_recursos_centavos)}. Priorizar as recomendações abaixo e conferir cabimento e prazo antes de recorrer.`, '',
+ `A carteira informada reúne ${resumo.total_identificado} processos, com ${resumo.vitorias_confirmadas} vitórias (${percentual(resumo.vitorias_confirmadas,resumo.total_identificado)} do total) e ${resumo.condenacoes} condenações. Há ${resumo.resultados_desconhecidos} resultados desconhecidos.`,
  `Data-base: ${resumo.data_referencia}. Processos identificados: ${resumo.total_identificado}.`,
  `Passivo ${resumo.passivo_parcial?'parcial conhecido':'conhecido completo para este lote'}: **${reais(resumo.passivo_centavos)}**.`,
  textoCobertura(resumo),
- `Êxito pela definição do case: ${resumo.vitorias_confirmadas}/${resumo.total_identificado}; resultados desconhecidos: ${resumo.resultados_desconhecidos}.`,
  `Recursos recomendados: ${resumo.recursos_recomendados}; custo: ${reais(resumo.custo_recursos_centavos)}; benefício líquido esperado: ${reais(resumo.beneficio_esperado_recursos_centavos)}.`,
- `Ação: avaliar os ${resumo.recursos_recomendados} recursos selecionados economicamente e revisar ${resumo.decisoes_pendentes} decisões pendentes antes de decidir.`,
+ `Ação: avaliar os ${resumo.recursos_recomendados} recursos selecionados economicamente e ${resumo.decisoes_pendentes?`revisar ${resumo.decisoes_pendentes} decisões pendentes`:`conferir prazo e cabimento antes de recorrer`}.`,
  ...(auditoria.some(a=>a.memoria?.beneficio_residual_positivo)?['Há recurso com benefício exato positivo inferior a meio centavo; a apresentação arredondada é zero. A decisão usa o sinal exato registrado na auditoria.']:[]),
  'Custos e benefícios somam apenas recursos recomendados; são estimativas sob reversão integral, não economia realizada.','',
  '## Resultado, subsídios e temas','',
@@ -50,6 +48,12 @@ const executivo=[
  ...selecionados.map(p=>`| ${p.numero_processo} | ${escapeCell(p.status_subsidios)} | ${p.probabilidade_reversao_percentual}% | ${reais(p.valor_atualizado_centavos)} | ${reais(p.custo_recurso_centavos)} | ${reais(p.beneficio_esperado_centavos)} |`),
  ...(!selecionados.length?['Nenhum recurso foi selecionado economicamente neste lote.']:[]),'',
  'Recomendações dependem de reversão integral e dos custos informados. Prazo, admissibilidade, reforma parcial e custos adicionais não foram avaliados. Conferir juridicamente antes de agir.','',
+ '## Conclusões','',
+ ...(resumo.distribuicoes.temas.some(g=>g.passivo_centavos>0)?[(()=>{
+   const g=[...resumo.distribuicoes.temas].sort((a,b)=>b.passivo_centavos-a.passivo_centavos)[0];
+   return `O tema com maior exposição conhecida é ${escapeCell(g.grupo)}: ${reais(g.passivo_centavos)}, em ${g.condenacoes} condenações de ${g.total} processos. Priorizar a revisão desse grupo e dos recursos com maior benefício esperado.`;
+ })()]:['Não há exposição positiva conhecida por tema para priorizar.']),
+ 'As diferenças por subsídios orientam investigação da composição e da documentação dos casos; não comprovam efeito causal. As recomendações econômicas devem ser confrontadas com prazo, cabimento e perspectiva jurídica de reversão.','',
  '## Maiores exposições conhecidas','',
  '| Processo | Valor atualizado | Decisão |','| --- | ---: | --- |',
  ...maiores.map(p=>`| ${p.numero_processo} | ${reais(p.valor_atualizado_centavos)} | ${p.decisao_recurso} |`),'',
@@ -57,8 +61,8 @@ const executivo=[
  `Excluídos do passivo por valor desconhecido: ${excluidosFinanceiros.join(', ')||'nenhum'}.`,
  `Excluídos da decisão econômica por pendência: ${excluidosDecisao.join(', ')||'nenhum'}.`,
  'Zero na soma não substitui um valor desconhecido. Vitórias validadas contribuem com zero conhecido.','',
- '| Processo | Estado | Atualizado | Decisão | Problemas |','| --- | --- | --- | --- | --- |',
+ ...(detalhes.length?['| Processo | Estado | Atualizado | Decisão | Problemas |','| --- | --- | --- | --- | --- |']:[]),
  ...detalhes.map(p=>`| ${p.numero_processo} | ${p.status_processamento} | ${reais(p.valor_atualizado_centavos)} | ${p.decisao_recurso} | ${p.problemas.map(x=>x.codigo).join(', ')||'nenhum'} |`),'',
  ...(!detalhes.length?['Não há pendências no lote informado. Os dados completos por processo estão na planilha e no JSON auditável.','']:[]),
- 'Escopo: somente o lote informado. Um lote de desenvolvimento não representa a carteira completa. Grupos pequenos não sustentam generalização; as associações observadas não são causalidade. A auditoria acompanha evidências, tentativas e frações; campos não confirmados exigem revisão.',
+ 'Escopo: somente o lote informado. Este lote não representa a carteira completa de outros períodos ou clientes. Grupos pequenos não sustentam generalização; as associações observadas não são causalidade. A auditoria acompanha evidências, tentativas e frações; campos não confirmados exigem revisão.',
 ].join('\n');
