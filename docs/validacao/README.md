@@ -16,3 +16,6 @@
 A [S2.6](S2_6_VALIDACAO.md) registra a reconciliação JSON/XLSX/Markdown, 128 testes verdes e o roteiro de aceite do aplicativo ainda pendente.
 
 - [S3 — carteira, avaliação, auditoria e roteiro visual](S3_VALIDACAO.md).
+
+- [S4 — API, persistência e curl](S4_VALIDACAO.md).
+- [S4.4 — responsabilidades](S4_4_REVISAO.md).

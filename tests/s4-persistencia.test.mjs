@@ -62,3 +62,8 @@ test('S4.3: arquivos completos já registrados permanecem disponíveis quando ex
   await gravarAtomico(file,JSON.stringify({...m,artefatos:[{nome:'processos.json',sha256:hash(bytes)}]}));throw new Error('Falha posterior na planilha');
  }}),r=await accepted(f),state=await terminal(f,r.execucao_id);assert.equal(state.estado,'falhou');assert.equal(state.artefatos.find(a=>a.nome==='processos.json').disponivel,true);assert.equal(state.artefatos.find(a=>a.nome==='processos.xlsx').disponivel,false);
 });
+
+test('S4.5: corpo acima do limite retorna 413 sem iniciar executor',async t=>{
+ const f=await setup(t),r=await fetch(`${f.base}/execucoes`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({dataset:'case',padding:'a'.repeat(9000)})});
+ assert.equal(r.status,413);assert.equal((await r.json()).erro.codigo,'ENTRADA_INVALIDA');assert.equal(f.calls.length,0);
+});

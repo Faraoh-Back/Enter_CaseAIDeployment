@@ -2,7 +2,7 @@
 
 **Versão:** 0.2 — modelagem revisada em 11/10/2026.
 
-**Estado:** especificado; implementação e medições pendentes.
+**Estado:** arquitetura implementada até S4; 175 testes aprovados, carteira real S3 e API HTTP em replay validadas. Pacote final/PDF ficam na S5.
 
 **Objetivo:** cumprir os entregáveis do case com execução reproduzível e recomendações auditáveis. A RFC é documentação interna; o racional final terá até duas páginas.
 

@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Length: 99011
+Content-Disposition: attachment; filename="processos.xlsx"
+Cache-Control: no-store
+Date: Tue, 13 Oct 2026 05:25:11 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+

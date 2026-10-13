@@ -1,6 +1,6 @@
 # Contratos — versão 0.2
 
-Especificação a implementar no projeto Rivet e em sua interface de execução. O [schema de extração](../../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../../schemas/processo.schema.json) e [resumo](../../schemas/resumo.schema.json); a implementação S2.2 cobre uma sentença válida por execução, nos quatro resultados. Estados de pendência continuam previstos nas próximas tarefas S2.
+Contratos implementados no projeto Rivet e na interface HTTP até S4. O [schema de extração](../../schemas/extracao.schema.json) define a estrutura; as regras abaixo definem consistência e comportamento. Aprovação de schema, sozinha, não comprova fidelidade à sentença. A S1.2 também formaliza [processo](../../schemas/processo.schema.json) e [resumo](../../schemas/resumo.schema.json); a implementação S2.2 cobre uma sentença válida por execução, nos quatro resultados. Estados de pendência continuam previstos nas próximas tarefas S2.
 
 ## 1. Insumos e identidade
 
@@ -190,3 +190,9 @@ O diagnóstico offline exporta os mesmos outputs do lote em JSON, XLSX e Markdow
 A CLI da carteira usa `analisar_lote`, com manifesto `s3-v1`, snapshots, checkpoint e timeout global de 30 minutos. Falha preserva checkpoint e não processados; não há retomada automática. `resumo.distribuicoes` é opcional no schema para preservar a análise individual, e obrigatório no output atual do lote: grupos de resultado, subsídio, tema, comarca e tribunal, com denominadores e passivo conhecido. O XLSX materializa suas folhas, sem consolidar regras fora do grafo.
 
 O relatório final tem síntese, estratégia e associações descritivas; não duplica os 100 detalhes da planilha. A finalização `s3-final-v1` reconsolida processos/auditorias reais sem rede, verificando hashes e preservando histórico, consumo e dinheiro. Manifestos de extração e finalização são distintos; métricas reais referem-se à origem, não ao replay/consolidação. [Resultados e limites](../validacao/S3_VALIDACAO.md).
+
+## 15. API implementada S4
+
+HTTP nativo Node: POST estrito dataset=case, GET de estado e cinco downloads restritos ao manifesto/whitelist/hash. JSON inválido retorna 400, contrato inválido 422, corpo acima de 8192 bytes 413, execução ativa 409 e configuração/insumos ausentes 503. Manifesto é persistido antes do 202; executor HTTP usa o ID prealocado, e CLI gera seu próprio ID.
+
+Lock local por diretório precede recuperação de jobs e impede outra instância de alterar a execução ativa. Jobs antigos tornam-se interrompida; não há retomada automática. Configuração real e replay são escolhas do operador, sem caminhos arbitrários no POST. API/CLI compartilham executarCarteira; transporte específico do plugin preserva consultas HTTP concorrentes. [Validação e comandos](../validacao/S4_VALIDACAO.md).

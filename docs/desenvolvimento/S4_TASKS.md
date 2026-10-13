@@ -1,6 +1,6 @@
 # S4 — interface HTTP por tarefa
 
-S3 V0 aceita visualmente pelo candidato. S4.1 preserva o vermelho inicial. S4.2 implementada: testes de contrato e integração verdes; tarefas seguintes em andamento.
+S3 V0 aceita visualmente pelo candidato. S4.1 preserva o vermelho inicial. S4.2–S4.5 concluídas, com commits separados e 175 testes verdes.
 
 | Tarefa | Entrega | Estado |
 | --- | --- | --- |
@@ -8,7 +8,7 @@ S3 V0 aceita visualmente pelo candidato. S4.1 preserva o vermelho inicial. S4.2 
 | S4.2 | Servidor Node e executor compartilhado com CLI; uma execução ativa. | Concluída: 10 testes HTTP + 3 de integração verdes. |
 | S4.3 | Manifesto antes do 202, artefatos íntegros e recuperação após reinício. | Concluída: nove testes adicionais verdes. |
 | S4.4 | Revisão: API sem classificação, dinheiro ou indicadores de negócio. | Concluída; responsabilidades e equivalência API/CLI conferidas. |
-| S4.5 | Sequência curl verificada, documentação e configuração segura. | Pendente |
+| S4.5 | Sequência curl verificada, documentação e configuração segura. | Concluída: curl real, 100 em replay, cinco downloads e testes de processos. |
 
 ## S4.1 — contrato observável
 
@@ -47,3 +47,9 @@ A API reserva o diretório com lock local por PID/token antes da recuperação, 
 ## S4.4 — responsabilidades
 
 [Revisão de código e limites](../validacao/S4_4_REVISAO.md). A API copia estado/resumo e serve arquivos registrados, sem executar regras de negócio. Transporte, escrita atômica e exclusão são infraestrutura; todas as regras de análise continuam nos grafos. Prova externa: três testes API/CLI aprovados com outputs iguais, consulta HTTP durante execução e pendência auditável.
+
+## S4.5 — comandos comprovados
+
+[Documentação e reprodução](../validacao/S4_VALIDACAO.md). `s4:replay` prepara as respostas finais reais da S3 para replay; `s4:check` executa curl real contra servidor local, confere POST/GET/download, hashes e resumo dos 100 casos, sem LLM. Configuração ausente retorna 503. Dois testes de processos reais confirmam ausência de carga implícita de .env e recuperação após SIGKILL; teste adicional confere 413 para corpo acima do limite. `.env.example` agora lista somente variáveis usadas.
+
+Resultado final: **175 testes aprovados**, 150 anteriores + 10 HTTP + 3 integração + 10 persistência/limites + 2 CLI. Todas as tarefas concluídas. Nenhuma chamada paga ou frontend nesta etapa. S5 permanece pendente.

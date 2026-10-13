@@ -1,0 +1,78 @@
+{
+  "etapa": "S4.5",
+  "estado": "aprovado",
+  "suite": {
+    "tests": 175,
+    "pass": 175,
+    "fail": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "log_sha256": "041dd8fd31501e346f2f72e6f56d8acc9e2719789157f96780c6ee462e3d61ad",
+  "chamadas_reais_llm": 0,
+  "http": {
+    "post": 202,
+    "consulta": 200,
+    "downloads": [
+      {
+        "nome": "processos.json",
+        "http_status": 200,
+        "sha256": "5ad3f0f9f2f17f49d518258fdcf5ba8fa8adb5f35b20bca5baf6d5de68dff540"
+      },
+      {
+        "nome": "resumo.json",
+        "http_status": 200,
+        "sha256": "4c4ff248ea7775d168714092119736ba18ab27fd4aa4506e36642b91a04a0de8"
+      },
+      {
+        "nome": "auditoria.json",
+        "http_status": 200,
+        "sha256": "0b0120c586b2813d3d195d98f0cc63b8f44ec49a5d64eb283e1e86f984107965"
+      },
+      {
+        "nome": "relatorio.md",
+        "http_status": 200,
+        "sha256": "a1488b932528db04023d1da2e4407ed502bad92e56272e05dd327535969c921a"
+      },
+      {
+        "nome": "processos.xlsx",
+        "http_status": 200,
+        "sha256": "4eacfc0677deda94ffbd8846edc1b84710ad3133db10cce901516fd67f0c50e0"
+      }
+    ],
+    "sem_credencial": 503
+  },
+  "testes_processos_reais": {
+    "sem_credencial": "503, sem execução e sem carregar .env implicitamente",
+    "crash_reinicio": "SIGKILL e nova instância: recupera lock, marca interrompida, sem retomar análise"
+  },
+  "limites": [
+    "API validada com executor Rivet em replay e transporte controlado; sem POST pago nesta rodada.",
+    "Uma instância local por diretório; sem retomada automática ou coordenação distribuída."
+  ],
+  "sha256": {
+    "src/api.mjs": "7b66dfc3c5f7a07141faeb26a8389f5749914b3d012dc29e8478b909ce550484",
+    "src/armazenamento-api.mjs": "b320cc446853dca710bcbb7bd3daf3dc6f9cb3a728d15c910bee82e2d502a85d",
+    "src/rivet-runtime.mjs": "2cb591a301eae1d39808ef5677d8eec39f15651f50d3d8a952c312fea1379abf",
+    "src/executar-carteira.mjs": "9033cb05a2d8ef9343127580129dc10fbf815b2a6d057f50b110b8976597a21c",
+    "src/executar-s1.mjs": "4a0fe314064b3335215e7ab5643ce0986047f7f3af936726213d697d02903772",
+    "rivet/plugins/enter-bounded-extraction/index.js": "1c142903272cc1113b0fe2cca74be2d1a336b2490d16328999c7555d06e7755f",
+    "scripts/servidor.mjs": "32850bbda9edd148483d7ead318e71db75c4983513087c6929e3167acf069358",
+    "scripts/check-api-curl.mjs": "e75755924a3d4d1f1e247570a18475dbbd97c7f12c7dd57edda38389d957bf80",
+    "scripts/preparar-replay-carteira.mjs": "815d6c6d6653702a7b18eaf24348a42714cfcec4a56c4e04f51c70c3c9a8a36e",
+    "tests/s4-http.test.mjs": "b202b60b54b1ae34ad1a8d92eb9e80e0d3b273aea10f50cf08cb4b6995ba2055",
+    "tests/s4-integracao.test.mjs": "68660dfe71f419837b0c2ca3f9049339e00e6a672b13906bfe943e5a77c75787",
+    "tests/s4-persistencia.test.mjs": "6cd6cf1228b9e6bf3e3df8f38f6d55a37c0cdbf809210c734430d6e813d703ef",
+    "tests/s4-cli.test.mjs": "63763289391478e35327982335736a3d1ca63caccd6f82b6b84c32bb7d151621",
+    "package.json": "5261594616be7a144aec46f572c036d6b4bea7157b7a7a9b564e298b7140d199",
+    ".env.example": "deb65fbda845cf60fd6ee7fc20399d05048778a130060548556e4157e5ae650a"
+  },
+  "comando_curl_verificado": "npm run s4:check",
+  "evidencia_curl_sha256": "08a6dc6345a0c59fb297ff85042ac599138fb87cad25f5537feeced0c1e6c4c4",
+  "ajuste_smoke": {
+    "observado": "Uma repetição expirou na consulta curl com prazo de 10 segundos; diagnóstico técnico sem conclusão sobre a causa.",
+    "diretorio_execucao_anterior": "outputs/s4-curl/d9515a5d-5d70-4a37-9fba-d041bdb1f991",
+    "prazo_atual_curl_segundos": 60,
+    "repeticao": "aprovada; 100 processos e cinco downloads íntegros sem chamadas à LLM."
+  }
+}

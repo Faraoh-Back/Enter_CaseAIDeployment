@@ -2,13 +2,13 @@
 
 Modelagem de uma solução que transforma as sentenças fornecidas em dados auditáveis, valores atualizados para maio/2026, recomendações econômicas de recurso e um relatório executivo.
 
-**Estado atual:** S3 implementada: 150 testes offline aprovados e carteira real com 100 processos aptos, 48 vitórias e 52 condenações. Auditoria financeira/documental sem divergências. Passivo atualizado R$ 309.174,54; 17 recursos com benefício líquido esperado de R$ 24.676,16. [Resultados, reprodução e aceite visual V0 confirmado](docs/validacao/S3_VALIDACAO.md). API e pacote final ficam em S4/S5.
+**Estado atual:** S4 concluída: API Node.js funcional, executor compartilhado com CLI e 175 testes aprovados. POST, consulta, downloads, concorrência e reinício verificados; curl real reproduziu os 100 casos sem chamada paga. S3 V0 aceita visualmente. [Validação e comandos S4](docs/validacao/S4_VALIDACAO.md). PDF executivo e ZIP ficam na S5.
 
 **Prazo informado no convite:** 16/10/2026, às 23:59. O convite não explicita o fuso. Meta interna: pacote reproduzível em 15/10, com 16/10 reservado para revisão e envio antecipado.
 
 ## Solução escolhida
 
-Uma API **Node.js**, acessível por POST e GET, executará o arquivo `.rivet-project` usando `@ironclad/rivet-node`. Toda a análise — extração, validação, cruzamentos, cálculo financeiro, recomendação e consolidação — ficará no grafo Rivet. O exportador apenas materializará os outputs em arquivos.
+Uma API **Node.js**, acessível por POST e GET, executa o arquivo `.rivet-project` usando `@ironclad/rivet-node`. Toda a análise — extração, validação, cruzamentos, cálculo financeiro, recomendação e consolidação — fica no grafo Rivet. O exportador apenas materializa os outputs em arquivos.
 
 ```mermaid
 flowchart LR
@@ -58,9 +58,9 @@ Para uma chamada real, configure `OPENAI_API_KEY` no `.env` local e rode `npm ru
 
 ## Como será utilizado
 
-A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 150 testes de S0–S3; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/desenvolvimento/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
+A S1 está sendo desenvolvida uma tarefa por vez. A **S1.2** implementou o grafo `analisar_carteira` para uma condenação; `npm run test:s1:grafo` aprova 11 testes. A **S1.3** implementou o XLSX: `npm run test:s1` passa os dois testes de aceitação e `npm run test:s1:xlsx` passa os sete cenários específicos do exportador. `npm test` executa agora os 175 testes de S0–S4; `npm run test:s0` mantém a execução isolada da S0. Consulte [S1_TASKS.md](docs/desenvolvimento/S1_TASKS.md) para revisar escopo, contratos e os próximos commits.
 
-Após a implementação e a inicialização do servidor, o contrato previsto é:
+Com o servidor iniciado conforme a seção S4 abaixo, o POST é:
 
 ```bash
 curl -X POST http://127.0.0.1:3000/execucoes -H 'Content-Type: application/json' -d '{"dataset":"case"}'
@@ -68,7 +68,7 @@ curl -X POST http://127.0.0.1:3000/execucoes -H 'Content-Type: application/json'
 
 A resposta `202 Accepted` conterá `execucao_id` e `status_url`. O cliente consultará `GET /execucoes/{execucao_id}` e obterá os links dos arquivos concluídos. Cada execução terá um diretório próprio, evitando sobrescrever resultados anteriores.
 
-Os comandos da API serão acrescentados em S4 após implementação e verificação. A CLI S1 processa uma sentença; a CLI S3 processa a carteira completa e exporta os resultados, incluindo eventuais pendências.
+Os comandos da API foram implementados e verificados na S4. A CLI S1 processa uma sentença; a CLI S3 processa a carteira completa e exporta os resultados, incluindo eventuais pendências.
 
 ## Configuração e credenciais
 
@@ -119,7 +119,7 @@ A documentação está organizada por finalidade em [docs/README.md](docs/README
 
 ## Fronteiras e cobertura S2.5
 
-`npm run test:s2:fronteiras` executa 25 cenários de calendário e dinheiro. `npm run test:s2:cobertura` executa 13 cenários de lote, reconciliação e exclusões. Todos integram `npm test` (150 testes, incluindo S3).
+`npm run test:s2:fronteiras` executa 25 cenários de calendário e dinheiro. `npm run test:s2:cobertura` executa 13 cenários de lote, reconciliação e exclusões. Todos integram `npm test` (175 testes, incluindo S4).
 
 `npm run s2:check` gera JSONs, XLSX, relatório e manifesto de um lote misto de sete identidades em `outputs/s2.6/<execucao_id>/`, com transporte inteiramente simulado e sem cobrança. O grafo `analisar_lote` reutiliza a análise individual, sem omitir pendências. Veja [contratos, resultados e roteiro do aplicativo](docs/validacao/S2_5_VALIDACAO.md). A [S2.6](docs/validacao/S2_6_VALIDACAO.md) reconcilia os artefatos com `npm run test:s2:integracao`; a CLI de produção da carteira e sua avaliação completa continuam pendentes.
 
@@ -135,3 +135,15 @@ node --env-file=.env scripts/executar-carteira.mjs --real
 O segundo comando é uma nova execução paga, com até três tentativas por sentença. O diretório informado contém manifesto, snapshots, checkpoint, JSONs, Markdown e XLSX. Auditoria e métricas são comandos separados documentados na validação S3. O corpus reservado reprovou inicialmente; a correção e a reavaliação de conjunto já visto foram preservadas. Não interpretar a prova como estudo cego ou validação da API futura.
 
 O candidato aprovou visualmente os artefatos S3 como V0. A tarefa S5.10 adaptará o relatório ao modelo executivo escolhido e produzirá PDF, preservando a fonte Markdown e os números do Rivet.
+
+## API local — S4
+
+Para reproduzir a sequência HTTP sem credencial ou chamadas pagas:
+
+```bash
+npm run s4:check
+```
+
+O comando usa curl real, inicia/encerra servidores locais e grava evidência/downloads em outputs/s4-curl/. Para uso manual, execute `npm run s4:replay`, copie o caminho de captura informado e inicie `npm run api:start -- --replay --captura <caminho>`. Veja [passos de curl, configuração real e limites](docs/validacao/S4_VALIDACAO.md).
+
+Para nova análise paga por POST, inicie `node --env-file=.env scripts/servidor.mjs --real`. O servidor usa 127.0.0.1:3000 por padrão e grava em outputs/api/. Um POST inicia a carteira; GETs consultam/baixam arquivos sem chamar a LLM. Uma execução ativa por instância e diretório exclusivo; reinício marca jobs antigos como interrompidos, sem retomada automática. O relatório publicado é Markdown V0; PDF será integrado na S5.10.

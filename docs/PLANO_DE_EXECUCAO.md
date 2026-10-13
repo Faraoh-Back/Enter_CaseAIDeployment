@@ -1,6 +1,6 @@
 # Plano de execução — Rivet e API Node.js
 
-**Estado:** S0–S3 implementadas e validadas localmente, com 150 testes aprovados. Execução real: 100 aptos, 48 vitórias e 52 condenações; auditoria sem divergências. Aceite visual S3 V0 confirmado pelo candidato. S4.1 em desenvolvimento; S5 pendente. [Validação S3](validacao/S3_VALIDACAO.md).
+**Estado:** S0–S4 implementadas e validadas, com 175 testes aprovados. S3 V0 aceita visualmente pelo candidato; API/CLI equivalentes em replay, persistência/reinício e curl verificados. S5 pendente, incluindo relatório executivo em PDF. [Validação S4](validacao/S4_VALIDACAO.md).
 
 **Entrega externa:** 16/10/2026, 23:59, conforme convite; fuso não informado.
 
@@ -98,7 +98,7 @@ Desenvolvimento por tarefa, com testes de contrato primeiro e commits separados,
 - [x] **S4.2** — **Verde:** uma aplicação Node e um executor compartilhado com o comando local; uma execução ativa por vez.
 - [x] **S4.3** — Gravar manifesto antes do `202`; publicar apenas arquivos completos. Testar interrupção e estado após reinício.
 - [x] **S4.4** — Conferir que a API não contém fórmulas financeiras, classificação de sentenças ou cálculo de indicadores.
-- [ ] **S4.5** — Documentar comandos reais e uma sequência `curl` executada com sucesso. Testar tratamento de configuração ausente sem expor credenciais.
+- [x] **S4.5** — Documentar comandos reais e uma sequência `curl` executada com sucesso. Testar tratamento de configuração ausente sem expor credenciais.
 
 
 **Saída:** execução por POST e reprodução local geram resultados equivalentes para os mesmos outputs de extração capturados.

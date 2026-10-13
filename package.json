@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Preparação S0: execução Rivet, contratos e exportação verificável.",
+  "description": "Análise auditável de sentenças no Rivet, com CLI e API HTTP local.",
   "engines": {
     "node": "20.20.2"
   },
@@ -11,7 +11,7 @@
     "s0:build": "node scripts/build-s0.mjs",
     "s0:check": "node scripts/check-s0.mjs",
     "s0:llm": "node --env-file=.env scripts/check-llm.mjs",
-    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte && npm run test:s2:fronteiras && npm run test:s2:cobertura && npm run test:s2:integracao && npm run test:s3:execucao && npm run test:s3:avaliacao && npm run test:s3:auditoria && npm run test:s3:xlsx && npm run test:s3:relatorio && npm run test:s3:premissas && npm run test:s3:metricas && npm run test:s3:finalizacao && npm run test:s4:http && npm run test:s4:integracao && npm run test:s4:persistencia",
+    "test": "npm run test:s0 && npm run test:s1 && npm run test:s1:grafo && npm run test:s1:xlsx && npm run test:s1:execucao && npm run test:s1:refatoracao && npm run test:s2 && npm run test:s2:incertezas && npm run test:s2:transporte && npm run test:s2:fronteiras && npm run test:s2:cobertura && npm run test:s2:integracao && npm run test:s3:execucao && npm run test:s3:avaliacao && npm run test:s3:auditoria && npm run test:s3:xlsx && npm run test:s3:relatorio && npm run test:s3:premissas && npm run test:s3:metricas && npm run test:s3:finalizacao && npm run test:s4:http && npm run test:s4:integracao && npm run test:s4:persistencia && npm run test:s4:cli",
     "test:s2:incertezas": "node tests/s2-incertezas.test.mjs",
     "test:s2": "node tests/s2-resultados.test.mjs",
     "test:s0": "node tests/s0.test.mjs",
@@ -44,7 +44,10 @@
     "test:s4:http": "node tests/s4-http.test.mjs",
     "api:start": "node scripts/servidor.mjs",
     "test:s4:integracao": "node tests/s4-integracao.test.mjs",
-    "test:s4:persistencia": "node tests/s4-persistencia.test.mjs"
+    "test:s4:persistencia": "node tests/s4-persistencia.test.mjs",
+    "s4:replay": "node scripts/preparar-replay-carteira.mjs",
+    "s4:check": "node scripts/check-api-curl.mjs",
+    "test:s4:cli": "node tests/s4-cli.test.mjs"
   },
   "dependencies": {
     "@ironclad/rivet-node": "1.25.0",
