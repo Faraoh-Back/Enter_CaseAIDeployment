@@ -74,6 +74,8 @@ A S2.5 acrescenta 25 testes de fronteiras e 13 de cobertura, além de uma prova 
 
 ## S3 — carteira completa e comunicação ao cliente
 
+Execução autorizada das sete tarefas, com commits separados. [Estado e contratos S3](desenvolvimento/S3_TASKS.md).
+
 Registrar na avaliação que os 12 reservados já apareceram na execução preliminar do resumo-base enviada pelo candidato. O novo extrator ainda não foi executado nesse conjunto; não descrever sua avaliação futura como primeira exposição dos documentos à LLM.
 
 - [ ] **S3.1** — Processar os 100 casos; reconciliar identidades e referências, sem limites fixos de 100 no código de produção.
