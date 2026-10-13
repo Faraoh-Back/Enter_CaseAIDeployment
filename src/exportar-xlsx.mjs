@@ -47,12 +47,17 @@ const columns = [
 ];
 
 /** Materializa outputs já analisados. O diretório deve existir; não sobrescreve arquivos. */
-export async function exportarXlsx(analise, destino) {
+export async function exportarXlsx(analise, destino, contexto = {}) {
   if (!analise || !Array.isArray(analise.processos) || !Array.isArray(analise.auditoria)
       || !analise.resumo || typeof analise.resumo !== 'object' || Array.isArray(analise.resumo)
       || typeof analise.relatorio_markdown !== 'string') throw new Error('XLSX: outputs de análise inválidos');
   const book = new ExcelJS.Workbook();
   book.creator = 'Enter Case AI Deployment';
+  if (contexto.execucao_id !== undefined) {
+    if (typeof contexto.execucao_id !== 'string' || !/^[A-Za-z0-9_.:-]{1,160}$/.test(contexto.execucao_id)) throw new Error('XLSX: identificador de execução inválido');
+    if (contexto.data_referencia !== analise.resumo.data_referencia) throw new Error('XLSX: data-base divergente');
+    book.subject = `Execução ${contexto.execucao_id}; data-base ${contexto.data_referencia}`;
+  }
   const processes = sheet(book, 'Processos', columns.map(([label,,width]) => [label,width]));
   const summary = sheet(book, 'Resumo', [['Campo',42],['Valor',30],['Unidade',16]]);
   const audit = sheet(book, 'Auditoria', [['Processo',30],['Campo',48],['Valor',100]]);
@@ -72,6 +77,7 @@ export async function exportarXlsx(analise, destino) {
     const r = row(summary, [field, monetary ? money(value) : value, monetary ? 'R$' : null]);
     if (monetary) r.getCell(2).numFmt = MONEY_FORMAT;
   }
+  if (contexto.execucao_id !== undefined) row(summary, ['execucao_id', contexto.execucao_id, null]);
   function auditValue(numero, field, value) {
     if (value !== null && typeof value === 'object') {
       if (Array.isArray(value)) {
@@ -95,6 +101,10 @@ export async function exportarXlsx(analise, destino) {
     }
   }
   for (const ws of book.worksheets) {
+    if (contexto.execucao_id !== undefined) {
+      ws.headerFooter.oddHeader = `&LExecução: ${contexto.execucao_id}&RData-base: ${contexto.data_referencia}`;
+      ws.headerFooter.oddFooter = '&CPágina &P de &N';
+    }
     ws.autoFilter = { from: { row: 1, column: 1 }, to: { row: ws.rowCount, column: ws.columnCount } };
   }
   // Constrói o XLSX completo antes de tocar no destino. Erros são propagados ao chamador.

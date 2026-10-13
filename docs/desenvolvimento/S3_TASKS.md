@@ -7,7 +7,7 @@ Todas as sete tarefas autorizadas nesta rodada, com um commit por tarefa. A aval
 | S3.1 | Executor implementado; 100 identidades e 52 condenações reconciliadas em replay de anotações. Execução real prevista após a avaliação reservada. |
 | S3.2 | Primeira avaliação real preservada: 4/12 aptos, 6/12 com campos críticos corretos; reprovada. Prompt/gabaritos permaneceram congelados. |
 | S3.3 | Auditor implementado e testado contra oráculo Fraction; execução sobre a carteira real prevista na consolidação final. |
-| S3.4 | Pendente: planilha identificada por execução e data-base, reabertura e reconciliação. |
+| S3.4 | Implementada identificação por execução/data-base nas quatro abas, com dois testes novos e sete regressões do exportador verdes. |
 | S3.5 | Pendente: relatório executivo com distribuições, recursos e limites. |
 | S3.6 | Pendente: conferir denominadores, associações, premissas e benefício esperado. |
 | S3.7 | Pendente: métricas reais e evidências finais, roteiro visual. |
@@ -48,3 +48,7 @@ npm run s3:auditar -- --execucao outputs/s3/<execucao_id>
 A orientação passou a explicitar zero nas vitórias, null somente nos campos não aplicáveis, preservação de pontuação/quebras e escolha de trechos contínuos sem anexar frases de rejeição. A descrição do tema também passou a pedir a causa completa. Nenhuma fórmula, referência ou schema foi flexibilizado.
 
 A avaliação real de desenvolvimento passou em 12/12 completos e críticos, com 16 chamadas. [Evidência](../output/s3.2-desenvolvimento-correcao.json). A próxima rodada reservada será uma reavaliação de conjunto já visto, identificada por `--reavaliacao`.
+
+## S3.4 — planilha identificada
+
+As quatro abas mantêm filtros, cabeçalhos congelados, moeda e células tipadas. O exportador recebe somente contexto de apresentação: ID da execução e data-base. A identificação aparece em propriedades da pasta de trabalho, linha de Resumo e cabeçalho de impressão de cada aba, sem deslocar as linhas de processos. Contexto com data divergente falha antes de gravar. Dois testes novos e sete regressões do exportador aprovados.
