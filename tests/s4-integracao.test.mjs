@@ -11,14 +11,14 @@ import {hash} from '../src/executar-carteira.mjs';
 import {executarS1} from '../src/executar-s1.mjs';
 
 async function setup(t,{response,exportador}={}) {
- const root=await mkdtemp(path.join(tmpdir(),'enter-s4-integracao-'));t.after(()=>rm(root,{recursive:true,force:true}));
+ const root=await mkdtemp(path.join(tmpdir(),'enter-s4-integracao-'));let server;
+ t.after(async()=>{if(server)await server.encerrar();await rm(root,{recursive:true,force:true});});
  const raw=await entradasS1(),captured=JSON.parse(await readFile('docs/output/s1.2-llm-aprovada.json'));
  const capture={modelo_solicitado:captured.modelo_solicitado,entradas_sha256:Object.fromEntries(Object.entries(raw).map(([k,v])=>[k,hash(v)])),respostas:{'3871230-78.2024.8.26.0002':response??captured.resposta_llm_original}};
  const file=path.join(root,'captura.json'),inputs=path.join(root,'entradas.json');await writeFile(file,JSON.stringify(capture));await writeFile(inputs,JSON.stringify(raw));
  const options={destino:path.join(root,'api'),modo:'replay',captura:file,apiKey:'',lerEntradas:async()=>raw};
  if(exportador){const {executarCarteira}=await import('../src/executar-carteira.mjs');options.executor=o=>executarCarteira({...o,exportador});}
- const server=await criarApi(options);server.listen(0,'127.0.0.1');await new Promise((r,j)=>{server.once('listening',r);server.once('error',j);});
- t.after(()=>server.encerrar());
+ server=await criarApi(options);server.listen(0,'127.0.0.1');await new Promise((r,j)=>{server.once('listening',r);server.once('error',j);});
  return {root,server,file,inputs,base:`http://127.0.0.1:${server.address().port}`,dir:options.destino};
 }
 async function start(f){const r=await fetch(`${f.base}/execucoes`,{method:'POST',headers:{'Content-Type':'application/json'},body:'{"dataset":"case"}'});assert.equal(r.status,202);return r.json();}

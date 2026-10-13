@@ -6,7 +6,7 @@ S3 V0 aceita visualmente pelo candidato. S4.1 preserva o vermelho inicial. S4.2 
 | --- | --- | --- |
 | S4.1 | Testes HTTP de POST, estado, downloads, concorrência, falhas e reinício. | Vermelho observado: 0/10 aprovados; módulo da API ausente. |
 | S4.2 | Servidor Node e executor compartilhado com CLI; uma execução ativa. | Concluída: 10 testes HTTP + 3 de integração verdes. |
-| S4.3 | Manifesto antes do 202, artefatos íntegros e recuperação após reinício. | Pendente |
+| S4.3 | Manifesto antes do 202, artefatos íntegros e recuperação após reinício. | Concluída: nove testes adicionais verdes. |
 | S4.4 | Revisão: API sem classificação, dinheiro ou indicadores de negócio. | Pendente |
 | S4.5 | Sequência curl verificada, documentação e configuração segura. | Pendente |
 
@@ -37,3 +37,9 @@ A carteira aceita ID previamente alocado por HTTP e verifica seu manifesto inici
 10 testes HTTP e três de integração API/CLI aprovados com sockets locais reais. A comparação usa o grafo e a resposta capturada, sem rede LLM: JSONs/Markdown idênticos, planilha reaberta e downloads íntegros. Replay inválido preserva três tentativas e retorna concluída com pendências. Atualizar a cópia local do plugin antes de próxima conferência no aplicativo.
 
 Os sockets foram bloqueados pelo sandbox (`listen EPERM`); a execução autorizada fora desse bloqueio passou. Não foram substituídos por simulação de requisições. Regressões do executor S1/carteira foram executadas separadamente.
+
+## S4.3 — persistência, publicação e reinício
+
+Nove testes novos aprovados, mais 13 regressões HTTP/integração. Manifesto é gravado atomicamente antes do 202; falha nesse passo não inicia executor, remove a alocação incompleta e libera a próxima solicitação. Erros são sanitizados. Arquivos temporários, adulterados ou symlinks não são servidos; arquivos completos registrados continuam disponíveis se uma exportação posterior falhar.
+
+A API reserva o diretório com lock local por PID/token antes da recuperação, impedindo uma segunda instância de interromper o job do servidor ativo. Lock de processo morto é recuperado com exclusão da recuperação. Estados antigos executando tornam-se interrompida, sem chamar executor. Não é mecanismo distribuído entre máquinas. Encerramento aborta o job, aguarda seu término e libera o diretório; checkpoints são preservados. Não oferece retomada automática.

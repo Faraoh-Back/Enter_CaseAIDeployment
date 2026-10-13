@@ -1,41 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtemp, mkdir, readFile, writeFile, rm} from 'node:fs/promises';
+import {mkdtemp,mkdir,readFile,writeFile} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
-import {createHash} from 'node:crypto';
+import {setup,post,accepted,terminal} from './helpers/s4-http.mjs';
 
-// HTTP usa sockets reais. Executor controlado não chama LLM nem calcula regras de negócio.
-const sha=value=>createHash('sha256').update(value).digest('hex');
-function gate() {let release;const promise=new Promise(resolve=>{release=resolve;});return {promise,release};}
-async function setup(t,{apiKey='credencial-ficticia',fail=false,root,executor,lerEntradas}={}) {
- root??=await mkdtemp(path.join(tmpdir(),'enter-s4-http-'));
- t.after(()=>rm(root,{recursive:true,force:true}));
- const wait=gate(),calls=[];t.after(()=>wait.release());
- const fake=async options=>{
-  calls.push(options);await wait.promise;
-  if(fail)throw new Error('Falha de exportação simulada');
-  const dir=path.join(options.destino,options.execucao_id);
-  const manifest=JSON.parse(await readFile(path.join(dir,'manifest.json'),'utf8'));
-  const content='[{"numero_processo":"caso-controlado"}]\n';
-  await writeFile(path.join(dir,'processos.json'),content);
-  const final={...manifest,estado:'concluida',processados:1,resumo:{total_identificado:1,pendencias:0},artefatos:[{nome:'processos.json',sha256:sha(content)}]};
-  await writeFile(path.join(dir,'manifest.json'),JSON.stringify(final));
-  return {execucao_id:options.execucao_id,diretorio:dir,estado:'concluida'};
- };
- const {criarApi}=await import('../src/api.mjs');
- const server=await criarApi({destino:root,apiKey,modelo:'modelo-controlado',executor:executor??fake,lerEntradas:lerEntradas??(async()=>({processos_texto:'entrada-controlada'}))});
- server.listen(0,'127.0.0.1');await new Promise((resolve,reject)=>{server.once('listening',resolve);server.once('error',reject);});
- t.after(async()=>{wait.release();server.closeAllConnections();await new Promise(resolve=>server.close(resolve));});
- const base=`http://127.0.0.1:${server.address().port}`;
- return {root,server,base,calls,release:wait.release};
-}
-async function post(f,body={dataset:'case'}) {return fetch(`${f.base}/execucoes`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});}
-async function accepted(f) {const r=await post(f);assert.equal(r.status,202);return r.json();}
-async function terminal(f,id) {
- for(let i=0;i<100;i++){const r=await fetch(`${f.base}/execucoes/${id}`);const state=await r.json();if(['concluida','concluida_com_pendencias','falhou','interrompida'].includes(state.estado))return state;await new Promise(resolve=>setTimeout(resolve,10));}
- assert.fail('Execução não chegou ao estado terminal no prazo do teste');
-}
 test('S4.1: POST retorna 202 somente com ID/URL e manifesto persistido; GET mostra execução ativa',async t=>{
  const f=await setup(t),r=await accepted(f);assert.match(r.execucao_id,/^[A-Za-z0-9_.:-]+$/);assert.equal(r.estado,'executando');assert.equal(r.status_url,`/execucoes/${r.execucao_id}`);
  const disk=JSON.parse(await readFile(path.join(f.root,r.execucao_id,'manifest.json')));assert.equal(disk.estado,'executando');assert.equal(disk.execucao_id,r.execucao_id);
