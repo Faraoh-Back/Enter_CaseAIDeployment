@@ -1,0 +1,20 @@
+{
+  "versao": "s5-render-v1",
+  "execucao_origem": "2026-10-13T04-04-52-536Z-fda0092e-fc60-4627-ac3d-da3e9e00162d",
+  "manifest_origem_sha256": "e5ff6975a7ad85f8eb138921704f84c2b05048ebe61e33ceae634c956cb1b254",
+  "familia": "Liberation Serif",
+  "previa": true,
+  "chamadas_llm": 0,
+  "artefatos": [
+    {
+      "nome": "relatorio-previa.pdf",
+      "sha256": "12bead21210d0170537735161f541345532591e30d57a720d0a8a8a891c8a94b"
+    }
+  ],
+  "inspecao_visual": {
+    "metodo": "rasterização Poppler e inspeção das quatro páginas",
+    "paginas": 4,
+    "tabelas_cortadas_observadas": false,
+    "aceite_final": false
+  }
+}

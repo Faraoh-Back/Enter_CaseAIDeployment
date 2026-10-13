@@ -1,0 +1,55 @@
+{
+  "etapa": "S5",
+  "chamadas_llm": 0,
+  "artefatos_reconsolidados_hashes_conferidos": 9,
+  "processos_resumo_auditoria_preservados": true,
+  "xlsx": {
+    "abas": [
+      "Processos",
+      "Resumo",
+      "Auditoria",
+      "Pendencias"
+    ],
+    "processos": 100,
+    "campos_por_linha_conferidos": 23,
+    "pendencias": 0
+  },
+  "projeto": {
+    "grafo": "analisar_lote",
+    "defaults_cinco_insumos_conferidos": true,
+    "sha256": "db129f3c65a8f547755e5e07ee19c37d50b2bd0a08b8159f465e7cb31b2d45de"
+  },
+  "racional": {
+    "palavras": 680,
+    "sha256": "870b92b48c1bb82b5bf7954ea043984a48d756b3aac0bfe221dba631a215f23e",
+    "extensao_pdf_teste": "até duas páginas A4, corpo 11pt, margem 18mm; fonte controlada de teste"
+  },
+  "lista_positiva": {
+    "arquivos": 207,
+    "credenciais_detectadas": 0,
+    "sha256": "7cded37a672865f2dfaae2e1394b26e9f3994c6139641e1816026ba3589f39fe"
+  },
+  "testes": {
+    "tests": 188,
+    "pass": 188,
+    "fail": 0,
+    "skipped": 0,
+    "metodo": "175 regressões na última execução completa + 13 cenários S5 finais; a cópia portátil da lista foi adicionalmente reconferida com os cinco testes de entrega.",
+    "registro": "testes.json"
+  },
+  "relatorio_previa": {
+    "paginas": 4,
+    "familia": "Liberation Serif",
+    "previa": true,
+    "registro": "previa-render.json"
+  },
+  "pendentes": [
+    "modelo e fonte final do PDF",
+    "aceite visual do PDF final",
+    "S5.4 ZIP",
+    "S5.6 reprodução após extrair ZIP",
+    "S5.7 demonstração final no aplicativo",
+    "S5.8 defesa",
+    "S5.9 envio"
+  ]
+}

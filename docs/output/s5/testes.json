@@ -1,0 +1,41 @@
+{
+  "rodadas": [
+    {
+      "log_sha256": "c608872db95cbd4440eba699767a7f3de8b362ceddd2677f5a4195ea16ebdf94",
+      "tests": 185,
+      "pass": 185,
+      "fail": 0
+    },
+    {
+      "log_sha256": "e929a02b6fb1ab9cce7cfbc0bc05850371a1484c8c714d6acf8529b10eea39da",
+      "tests": 180,
+      "pass": 179,
+      "fail": 1
+    },
+    {
+      "escopo": "suite completa antes dos dois últimos cenários",
+      "log_sha256": "b06aad913c434dd20851fc244f77247607563af1778acbd011446d7c285007d4",
+      "tests": 186,
+      "pass": 186,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "escopo": "treze cenários S5 finais",
+      "log_sha256": "c7c82d0659274cd44c8b00a171b165d9f161522ca89e5fa844b94b5430181c03",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "correcao": "A extração de texto PDF quebra linhas; normalizei espaços na conferência da frase, preservando a exigência de conteúdo e de até duas páginas.",
+  "estado_final": "aprovado",
+  "suite_atual": {
+    "tests": 188,
+    "pass": 188,
+    "fail": 0,
+    "skipped": 0,
+    "metodo": "175 regressões na última execução completa + 13 cenários S5 finais; a cópia portátil da lista foi adicionalmente reconferida com os cinco testes de entrega."
+  }
+}
